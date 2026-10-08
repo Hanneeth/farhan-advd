@@ -1,0 +1,14 @@
+Raise it further by lengthening both devices. This is the load in every op amp you've studied.
+
+The remaining two loads:
+
+
+
+Triode load. Bias M2 deep in triode so it behaves as a resistor:
+
+Ron2 = 1 / [ μp Cox (W/L)₂ (VDD − Vb − |VthP|) ]        Av = −gm1 Ron2
+Its one advantage over the diode load: Vout,max = VDD, not VDD − |VthP| — a triode load eats less headroom. Its fatal drawback, in Razavi's words: Ron2 depends on μpCox, Vb and VthP, all of which drift with process and temperature, and generating a precise Vb needs extra circuitry. Difficult to use in practice.
+
+Active load. Drive both gates. M1 pulls harder while M2 pushes less, so the transconductances add:
+
+Av = − (gm1 + gm2)(rO1 ‖ rO2)

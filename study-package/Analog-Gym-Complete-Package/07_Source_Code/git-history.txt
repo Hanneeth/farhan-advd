@@ -1,0 +1,26 @@
+5f879b3  2026-10-02  End-of-topic Tutorials & PYQs pages; desktop problem layout; figures hide answers until the solution
+28f4de4  2026-09-29  Topic links to every tutorial/problem-set question; Lecture 5 notes: Ex 9.6 CM-choice lesson, folding figure
+7efd832  2026-09-29  Lecture 1-4 notes audit: bias-branch figure, Ex 9.7 power split, notes' gain 1428, closed-loop model card
+16ce962  2026-09-29  Figures beside every text step, all Tutorial 1–6 questions in the bank, TeX escaping fix
+410484f  2026-09-28  Add Razavi/Allen intuitions: kT/C noise basics and one- vs two-stage load-cap lessons
+3f787bd  2026-09-28  UI refresh from the research pass; overlap fixes; test timeout
+a708add  2026-09-28  Digital VLSI half (L15–L38): 24 lessons, physics, figures, generators, labs, Problem Set 3
+8cabfa7  2026-09-28  L10–L14 built: PSRR and noise, stability, compensation; unlock every unit
+c22686c  2026-09-26  Ignore TypeScript build info
+9becaa5  2026-09-26  Audit pass: fix gm·rO wording, figure overlaps, practice menu, number display
+3983feb  2026-09-26  Lab sheets 1–9 (calculation parts), chat questions and the 20-question audit deck; smoke tests cover every lesson, lab and exam mode
+c8261eb  2026-09-26  L5–L9: two-stage, gain boosting, CMFB, slew lessons; Tutorials 4–6 and Quiz 2 in the bank; seven new generators
+d22436d  2026-09-26  M4: L1–L4 lessons, folded cascode/two-stage/mirror-telescopic figures, Tutorials 2–3, Problem Set 1, Razavi examples, Quiz 1 A/B, exam mode, folded lab; flag PS1 P5 triode
+41220a6  2026-09-26  M3: differential pair, 5-T OTA, poles/settling lessons (U10–U12), four labs, Tutorial 1 + exam in the bank
+eb4a11c  2026-09-26  M2: schematic engine, U6–U9 lessons, impedance/CS/cascode labs; M3 physics and figures; lab sheets 1–9; research notes
+f5da6b9  2026-09-26  Visual refresh and desktop-first layout
+2b032d4  2026-09-26  Inventory: record the recovered conversation images and exam paper
+9f14b1f  2026-09-26  Make settings work inside a sandboxed frame; respect host theme and safe areas
+e22cc6d  2026-09-26  Milestone 1: foundations app (U0-U5), MOSFET lab, DC stepper, practice, review
+5820e86  2026-09-26  Add content inventory and design token proposal
+0158b23  2026-09-26  Add physics engine with unit, regression and tutorial tests
+2a9ad37  2026-09-26  Add course handout, quiz 1-2 solutions and current-mirror notes
+469c13f  2026-09-26  Add tutorials 1-6, lecture notes 1-12 and settling-time example to source/
+95f2a6d  2026-09-26  Organise source material into source/ and add CLAUDE.md build instructions
+6579fd4  2026-09-27  Add files via upload
+5d73a91  2026-09-27  Initial commit

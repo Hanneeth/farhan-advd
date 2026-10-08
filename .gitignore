@@ -11,9 +11,8 @@ Analog VLSI Vault/Attachments/Large/
 Analog VLSI Vault/.obsidian/workspace*.json
 Analog VLSI Vault/.obsidian/plugins/obsidian-spaced-repetition/data.json
 
-# kept out of this public copy: textbook, raw course PDFs, and the duplicate build folder
-source/
-study-package/
-pyqs/
+# kept out of this public copy: Razavi's textbook, and the duplicate build folder
+source/razavi.pdf
+study-package/Analog-Gym-Complete-Package/03_Textbook_and_References/Razavi_Design-of-Analog-CMOS-Integrated-Circuits_2nd-ed.pdf
 anim-dist/
 .DS_Store
