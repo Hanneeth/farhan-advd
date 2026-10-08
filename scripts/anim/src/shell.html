@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>/*TITLE*/</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>/*KATEXCSS*/</style>
+<style>/*STYLE*/</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1>/*H1*/</h1>
+    <span class="sub">/*SUB*/</span>
+  </header>
+  <div class="layout">
+    <div>
+      <div class="screen">
+        <svg class="stage" viewBox="0 0 1600 900" style="background:radial-gradient(ellipse at 50% 40%, #121a27 0%, #0a0e15 70%)" role="img" aria-label="animated lesson"></svg>
+        <div class="try"><div class="box"></div></div>
+        <div class="subs"></div>
+        <div class="holdbar" title="study pause"><i></i></div>
+        <div class="ctrl">
+          <button id="play">▶ Play</button>
+          <button id="prev" title="Previous scene (←)">⏮</button>
+          <button id="next" title="Next scene (→)">⏭</button>
+          <button id="back" title="Back 10 s (j)">↺ 10s</button>
+          <div class="bar"><div class="track"></div><div class="fill"></div><div class="knob"></div></div>
+          <span class="time">0:00</span>
+          <select id="speed" aria-label="speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+          <button id="voice" title="Read the subtitles aloud; the picture waits for the voice">🔈 Voice</button>
+          <button id="again" title="Read this line again (r)">↺ Line</button>
+          <select id="pace" aria-label="pace" title="Pause after each line so you can read it again"></select>
+          <button id="drills" class="on" title="At the end of a topic: hear each key line, say it with the voice, then from memory">🗣 Say it back</button>
+          <select id="vpick" aria-label="voice" title="Pick the voice" style="display:none"></select>
+        </div>
+      </div>
+      <div class="below">
+        <div class="card">
+          <div class="tabs"><button class="on">Read along</button><button>Formula sheet</button><button>Flashcards</button><button>Past papers in this lesson</button></div>
+          <div class="pane"><div class="notes"></div></div>
+          <div class="pane" style="display:none"><div class="fs"></div></div>
+          <div class="pane" style="display:none"><div class="flash"></div></div>
+          <div class="pane" style="display:none"><div class="qlist"></div></div>
+          <p class="foot">Keys: <span class="kbd">space</span> play/pause · <span class="kbd">←</span> <span class="kbd">→</span> scene · <span class="kbd">j</span> <span class="kbd">l</span> ±10 s · <span class="kbd">r</span> read the line again. Orange stops are your turn: the lesson waits for your answer.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="side"><h3>Chapters</h3><div class="list"></div></aside>
+  </div>
+</div>
+<script>/*KATEXJS*/</script>
+<script>/*APPJS*/</script>
+</body>
+</html>

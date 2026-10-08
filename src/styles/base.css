@@ -1,0 +1,295 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0 0 var(--s3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(28px, 4.4vw, 40px);
+}
+h2 {
+  font-size: clamp(22px, 3vw, 26px);
+}
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+p {
+  margin: 0 0 var(--s3);
+}
+
+a {
+  color: var(--signal);
+  text-underline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.mono,
+code {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+code {
+  font-size: 0.92em;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+button {
+  font: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  min-height: 44px;
+  padding: 0 var(--s4);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+}
+.btn:hover:not([disabled]) {
+  border-color: var(--ink-2);
+}
+.btn:active:not([disabled]) {
+  transform: translateY(1px);
+}
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn.primary {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--signal-ink);
+  font-weight: 600;
+}
+.btn.primary:hover:not([disabled]) {
+  filter: brightness(1.06);
+  border-color: var(--signal);
+}
+.btn.dark {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.btn.ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-2);
+}
+.btn.ghost:hover:not([disabled]) {
+  background: var(--surface-2);
+  border-color: transparent;
+}
+.btn.small {
+  min-height: 34px;
+  padding: 0 var(--s3);
+  font-size: 14px;
+}
+.btn.big {
+  min-height: 52px;
+  padding: 0 var(--s5);
+  font-size: 17px;
+}
+
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  font: inherit;
+  font-family: var(--font-mono);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s2) var(--s3);
+  min-height: 44px;
+}
+input[type='text']:focus,
+select:focus {
+  border-color: var(--signal);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--signal-bg);
+}
+
+.page {
+  max-width: var(--wide-col);
+  margin: 0 auto;
+  padding: var(--s5) var(--s4) calc(var(--s8) + var(--tabbar-h));
+}
+.page.narrow {
+  max-width: calc(var(--text-col) + 2 * var(--s4));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+/* The "bench": where circuits and plots live — a faint dot grid like a breadboard. */
+.bench {
+  background-color: var(--bench);
+  background-image: radial-gradient(var(--bench-dot) 1px, transparent 1.2px);
+  background-size: 16px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--s3);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.stack > * + * {
+  margin-top: var(--s3);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+.badge.ok {
+  color: var(--ok);
+  background: var(--ok-bg);
+  border-color: transparent;
+}
+.badge.bad {
+  color: var(--bad);
+  background: var(--bad-bg);
+  border-color: transparent;
+}
+.badge.signal {
+  color: var(--signal);
+  background: var(--signal-bg);
+  border-color: transparent;
+}
+.badge.muted {
+  color: var(--muted);
+}
+
+.callout {
+  border-radius: var(--radius);
+  background: var(--signal-bg);
+  padding: var(--s3) var(--s4);
+}
+.callout.ok {
+  background: var(--ok-bg);
+}
+.callout.bad {
+  background: var(--bad-bg);
+}
+
+.rule-box {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--s3) var(--s4);
+  background: var(--surface);
+  overflow-x: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.katex {
+  font-size: 1.08em;
+}
+.katex-display {
+  margin: var(--s2) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 0;
+}
+
+svg text {
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Big monitors (24" at 1920 px and up): a touch larger text for reading at arm’s length. */
+@media (min-width: 1700px) {
+  body { font-size: 17.5px; }
+}

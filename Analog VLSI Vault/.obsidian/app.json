@@ -1,0 +1,10 @@
+{
+  "attachmentFolderPath": "Attachments",
+  "newFileFolderPath": "My notes",
+  "newFileLocation": "folder",
+  "showFrontmatter": false,
+  "alwaysUpdateLinks": true,
+  "readableLineLength": true,
+  "livePreview": true,
+  "defaultViewMode": "preview"
+}

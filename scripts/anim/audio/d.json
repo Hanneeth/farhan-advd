@@ -1,0 +1,1418 @@
+[
+ {
+  "k": "1gmu8ei",
+  "text": "Lecture 14 ended with Barkhausen: a loop oscillates when the signal comes back the same size and turned by 180 degrees. These three lectures answer the next questions."
+ },
+ {
+  "k": "vsy29c",
+  "text": "Lecture 15: how far a loop is from that cliff, read off a Bode plot. Lecture 16: what a small margin looks like, as a peak and as ringing. Lecture 17: how to fix it with compensation, and the Miller capacitor of the two-stage op amp."
+ },
+ {
+  "k": "1kzz5e2",
+  "text": "Every mid sem, quiz and tutorial question on these lectures comes after its theory, and you solve each part first, against the exam clock."
+ },
+ {
+  "k": "205qn6",
+  "text": "Start with the one component that makes everything slow: the capacitor. It is two plates; current flowing in piles charge on them, and the charge shows up as a voltage: Q equals Cv."
+ },
+ {
+  "k": "1rak1l4",
+  "text": "Think of a bucket: current is water flowing in, voltage is the water level, and C is how wide the bucket is. A wide bucket (big C ) rises slowly."
+ },
+ {
+  "k": "5kjnfu",
+  "text": "With a constant current the level rises by the same amount every second: a straight ramp."
+ },
+ {
+  "k": "ogyg7a",
+  "text": "In symbols: i equals C dv over dt, so the slope is dv over dt equals I over C volts per second. Double the current, then double the slope; double C, then half the slope."
+ },
+ {
+  "k": "1d9xv9j",
+  "text": "Units trick: micro A divided by pF gives volts per microsecond directly. 100 microamps into 5 picofarads ramps at 20 volts per microsecond. Remember this picture, slewing in Lecture 13 is nothing more than this ramp."
+ },
+ {
+  "k": "15swkot",
+  "text": "i equals C dv over dt: a constant current gives a ramp of slope I over C."
+ },
+ {
+  "k": "6eo68z",
+  "text": "Now feed the capacitor from a voltage step V 0 through a resistor R. This is your Lecture 13 page’s first circuit, and every op amp output behaves like it."
+ },
+ {
+  "k": "13ygvml",
+  "text": "At first the capacitor is empty, so the whole V 0 sits across R: a big current V 0 over R flows and v shoots up."
+ },
+ {
+  "k": "u4tuvz",
+  "text": "But as v rises, the voltage across R, V 0 minus v, shrinks, so the current shrinks, so v rises more slowly. It never quite stops: an exponential."
+ },
+ {
+  "k": "11q4rc1",
+  "text": "The curve is v(t) equals V 0 (1 minus e to the minus t over tau ) with the time constant tau equals RC, ohms times farads gives seconds."
+ },
+ {
+  "k": "1eivw1i",
+  "text": "Landmarks to memorise: after one τ it has covered 63 percent of the way,"
+ },
+ {
+  "k": "e3fyk0",
+  "text": "after 2.3τ, 90 percent,"
+ },
+ {
+  "k": "6h41z6",
+  "text": "after 4.6τ, 99 percent (within 1 percent), and after 6.9τ, 99.9 percent (within 0.1 percent)."
+ },
+ {
+  "k": "1khfrmg",
+  "text": "Where those numbers come from: the gap left after time t is e to the minus t over tau. Set it equal to the allowed error ε: t equals tau natural log of (1 over epsilon ). natural log of 100 equals 4.6, natural log of 1000 equals 6.9. This is how every settle within x % question is solved."
+ },
+ {
+  "k": "1gcir8p",
+  "text": "One more fact Lecture 13 needs: the starting slope is V 0 over tau, if it kept going straight it would reach V 0 in exactly one τ. A bigger step means a steeper start."
+ },
+ {
+  "k": "dj8wmu",
+  "text": "And the lab favourite: the 10 percent, 90 percent rise time is 2.2 tau."
+ },
+ {
+  "k": "1oi5gyh",
+  "text": "v equals V 0 (1 minus e to the minus t over tau ), tau equals RC."
+ },
+ {
+  "k": "m8p760",
+  "text": "63 percent at τ; 1 percent error after 4.6τ, 0.1 percent after 6.9τ."
+ },
+ {
+  "k": "eqinkd",
+  "text": "Frequency is about sine waves. Picture a point going round a circle at a steady speed; its height, plotted against time, is a sine wave."
+ },
+ {
+  "k": "1s2gmj5",
+  "text": "How fast it goes round is the frequency f, in turns per second, hertz. Engineers often count in radians instead: one turn is 2 pi radians, so omega equals 2 pi f in radians per second."
+ },
+ {
+  "k": "5bl160",
+  "text": "Units trap in every question: formulas like 1 over (RC) give ω in radians per second. Divide by 2 pi only when the question asks for hertz."
+ },
+ {
+  "k": "eq07e9",
+  "text": "Phase is how far round the circle a wave is. The dashed wave is the same wave arriving a quarter-turn, 90 degrees, later: it lags by 90 degrees."
+ },
+ {
+  "k": "1bd07li",
+  "text": "Remember two special lags: 90 degrees (a quarter turn) and 180 degrees (half a turn, the wave comes out upside down). Lecture 14’s stability story is built on these."
+ },
+ {
+  "k": "1r6n7dq",
+  "text": "omega equals 2 pi f."
+ },
+ {
+  "k": "jkkvd2",
+  "text": "Every amplifier output, seen as a model: the input device pushes a current G M V in into a node that has a resistance R out and a capacitance C L to ground."
+ },
+ {
+  "k": "hab0xf",
+  "text": "At DC (frequency zero) the capacitor is an open circuit: all the current goes through R out and V out equals G M V in R out, the normal gain."
+ },
+ {
+  "k": "is8lbo",
+  "text": "For a sine wave, a capacitor acts like a resistance 1 over ( omega C): enormous at low frequency, tiny at high frequency."
+ },
+ {
+  "k": "9i4xee",
+  "text": "Now raise the frequency (R equals 100 kilo-ohms, C equals 5 picofarads). Watch the two current paths: the purple arrow through R, the teal one through C."
+ },
+ {
+  "k": "1ltdebt",
+  "text": "As 1 over ( omega C) falls below R, more and more of the current escapes through the capacitor instead of through R, and V out, which is the current in R times R, shrinks."
+ },
+ {
+  "k": "51s35r",
+  "text": "Back to the special frequency where the two paths are equal: 1 over ( omega C) equals R. There the output is down to 70.7 percent of its DC value."
+ },
+ {
+  "k": "1lxx9n4",
+  "text": "That frequency is the pole: omega p equals 1 over (RC), or F P equals 1 over (2 pi RC) in hertz. Here 2 megaradians per second, that is, 318 kilohertz."
+ },
+ {
+  "k": "xmg8dz",
+  "text": "The one sentence to keep: every node with a resistance and a capacitance makes a pole at 1 over (RC), the same RC as the time constant. Fast in time ⇔ high in frequency."
+ },
+ {
+  "k": "1rpdzsm",
+  "text": "A node with R and C makes a pole at omega p equals 1 over (RC)."
+ },
+ {
+  "k": "1wxicom",
+  "text": "Gains range from 1 to 100 000, so engineers use decibels: dB equals 20 log ( gain ). Every times 10 adds 20 decibels. A gain of 1 is 0 decibels."
+ },
+ {
+  "k": "19ly0by",
+  "text": "The one to remember: minus 3 decibels means the gain has dropped to 1 over root 2 equals 0.707, exactly what happened at the pole."
+ },
+ {
+  "k": "1hs9trz",
+  "text": "The Bode plot: gain in dB against frequency on a log axis, where every decade ( times 10) gets the same width."
+ },
+ {
+  "k": "oyah4h",
+  "text": "For one pole the curve is flat at Ay 0 (40 decibels), then bends down at the pole,"
+ },
+ {
+  "k": "h5l17r",
+  "text": "and the dashed straight-line approximation explains the shape: flat, then falling 20 decibels per decade, ten times the frequency, one tenth of the gain."
+ },
+ {
+  "k": "1na9cbn",
+  "text": "The pole also delays the wave. The phase goes from 0 degrees to minus 90 degrees: minus 45 degrees exactly at the pole, about minus 6 degrees a decade below it, minus 84 degrees a decade above."
+ },
+ {
+  "k": "rakwc1",
+  "text": "Slide along. Up to the pole the gain is still 100,"
+ },
+ {
+  "k": "1bxfvz0",
+  "text": "at the pole: 37 decibels ( times 70.7, minus 3 decibels) and minus 45 degrees. That frequency is the bandwidth, the minus 3 decibels frequency of a one-pole amplifier is its pole."
+ },
+ {
+  "k": "1r5vd1c",
+  "text": "one decade higher: gain times 10 smaller (about 20 decibels), phase minus 84 degrees, nearly the full minus 90 degrees."
+ },
+ {
+  "k": "5d9bxe",
+  "text": "After the pole: minus 20 decibels per decade; at the pole: minus 3 decibels and minus 45 degrees."
+ },
+ {
+  "k": "hsfd9j",
+  "text": "Your notes write every amplifier as a function of s. For one pole: A(s) equals Ay 0 over (1 plus s over omega p). Here s is a shorthand that does two jobs."
+ },
+ {
+  "k": "1pjcsim",
+  "text": "Job 1, frequency: for a sine wave put s equals j omega ( j equals root minus 1 marks the 90 degrees direction). The size and angle of 1 plus j omega over omega p give exactly the Bode magnitude and phase you just saw."
+ },
+ {
+  "k": "z2kok7",
+  "text": "Job 2, the pole’s location: the pole is the value of s that makes the denominator zero: 1 plus s over omega p equals 0, so s equals minus omega p. Draw it as an cross on the s-plane."
+ },
+ {
+  "k": "isacrh",
+  "text": "And in time? A pole at s equals minus omega p means the response contains e to the minus omega pt, a decaying exponential with time constant tau equals 1 over omega p."
+ },
+ {
+  "k": "6ie6n7",
+  "text": "Push the pole further left (a higher omega p ): the step response gets faster. Same fact as before, now in pictures: high pole frequency ⇔ short time constant."
+ },
+ {
+  "k": "1e4choz",
+  "text": "Why this matters later: a pole on the left decays; a pole on the right would grow forever. Stability (Lecture 14 onwards) is all about where the poles sit."
+ },
+ {
+  "k": "1tk9ny4",
+  "text": "tau equals 1 over omega p."
+ },
+ {
+  "k": "1w5ejxw",
+  "text": "Past its pole a one-pole gain falls 10 times for every 10 times in frequency. So the product gain times frequency stays the same all along that sloping line."
+ },
+ {
+  "k": "28utco",
+  "text": "Follow the line down to gain 1 (0 decibels). That frequency is the unity-gain frequency omega u, and by the constant product, omega u equals Ay 0 omega p: the gain-bandwidth product, GBW."
+ },
+ {
+  "k": "hcr0ca",
+  "text": "Now the 5-T O T A. Ay 0 equals G M R out and omega p equals 1 over ( R out C L ). Watch what happens if R out changes: more gain, but the pole moves down by the same factor,"
+ },
+ {
+  "k": "1sos6j0",
+  "text": "less gain, the pole moves up. The sloping line never moves. Multiply them:"
+ },
+ {
+  "k": "5y9od1",
+  "text": "R out cancels: omega u equals G M over C L. The speed of an O T A is set only by the input G M and the load capacitor. In hertz: F U equals G M over (2 pi C L )."
+ },
+ {
+  "k": "19ip6nk",
+  "text": "So two different questions: the open-loop bandwidth 1 over (2 pi R out C L ), and the GBW G M over (2 pi C L ). Lab 7 and Quiz 1 ask both."
+ },
+ {
+  "k": "1y2rf3n",
+  "text": "omega u equals Ay 0 omega p equals G M over C L."
+ },
+ {
+  "k": "1uaxc1k",
+  "text": "The open-loop op amp (blue): gain 1000, pole at 10 kilohertz, unity gain at 10 megahertz."
+ },
+ {
+  "k": "12t3tk3",
+  "text": "Close the loop with β equals 0.1 (a gain-of-10 amplifier, orange). The gain drops to about 10, but the curve now stays flat until it meets the blue line, at about 1 megahertz."
+ },
+ {
+  "k": "rm7kui",
+  "text": "The algebra (one line): put A(s) equals Ay 0 over (1 plus s over omega p) into A over (1 plus beta A). The gain is divided by (1 plus beta Ay 0 ) and the pole is multiplied by (1 plus beta Ay 0 )."
+ },
+ {
+  "k": "1nb7bnl",
+  "text": "Change β and watch: less feedback, then more gain, less bandwidth; more feedback, then less gain, more bandwidth. The corner always slides along the blue line, so gain times bandwidth stays omega u."
+ },
+ {
+  "k": "migjg3",
+  "text": "Since beta Ay 0 much greater than 1: the closed-loop pole is is about beta omega u and the closed-loop time constant is tau equals 1 over ( beta omega u). A buffer (β equals 1) gets the whole omega u."
+ },
+ {
+  "k": "scrtea",
+  "text": "Put this together with t equals tau natural log of (1 over epsilon ) and you can already solve every settling-time question, two of them are coming up."
+ },
+ {
+  "k": "15nfuyw",
+  "text": "Feedback: gain divided by (1 plus beta Ay 0 ), pole times (1 plus beta Ay 0 ); tau cl equals 1 over ( beta omega u)."
+ },
+ {
+  "k": "12i6mo",
+  "text": "Read it once. Then four questions that use only this chapter: Lab 1, a past tutorial on pole shifting, Lab 7 and Lab 8."
+ },
+ {
+  "k": "1xgdn9u",
+  "text": "What it tests: τ equals RC, rise time equals 2.2τ, and bandwidth equals the pole 1 over (2 pi RC)."
+ },
+ {
+  "k": "3k01qj",
+  "text": "C equals tau over R equals 1 nanosecond over 1 kilo-ohm equals 1 picofarad."
+ },
+ {
+  "k": "1jcuz38",
+  "text": "10 percent is reached at 0.105τ and 90 percent at 2.303τ: the difference is 2.2τ equals 2.2 nanoseconds."
+ },
+ {
+  "k": "1aj2tpj",
+  "text": "One pole at 1 over (RC) radians per second; divide by 2 pi: 159 megahertz. DC gain 1 (0 decibels)."
+ },
+ {
+  "k": "6v6h25",
+  "text": "Three facts did it all: τ equals RC, rise time 2.2τ, bandwidth 1 over (2 pi tau )."
+ },
+ {
+  "k": "1xg7msq",
+  "text": "What it tests: the closed-loop pole omega p(1 plus beta Ay 0 ) from the last theory scene."
+ },
+ {
+  "k": "1uo4kyk",
+  "text": "The pole is multiplied by 1 plus beta Ay 0 equals 1001: from 100 hertz to 100.1 kilohertz (orange)."
+ },
+ {
+  "k": "1gjlnch",
+  "text": "With β equals 1 the factor is 100 001: the pole lands at 10 megahertz, the op amp’s whole F U equals Ay 0 F P (yellow)."
+ },
+ {
+  "k": "kt9rwc",
+  "text": "Quick check you can always do: the closed-loop pole is about beta F U. Here F U equals 10 to the 5 times 100 hertz equals 10 megahertz."
+ },
+ {
+  "k": "1g6stzc",
+  "text": "What it tests: gain equals G M R O, a pole 1 over (2 pi R O C L ), and GBW equals G M over (2 pi C L ): the cascode multiplies gain and divides bandwidth by the same factor."
+ },
+ {
+  "k": "lwdhhy",
+  "text": "0.2 millisiemens."
+ },
+ {
+  "k": "bjhqiy",
+  "text": "50."
+ },
+ {
+  "k": "1j4m60v",
+  "text": "About the square: 2500."
+ },
+ {
+  "k": "97z1dt",
+  "text": "637 kilohertz."
+ },
+ {
+  "k": "s1keyo",
+  "text": "31.8 megahertz for both: the cascode has 50 times the gain and a fiftieth of the bandwidth."
+ },
+ {
+  "k": "uzrd3k",
+  "text": "Gain-bandwidth is fixed by G M and C L; the output resistance only trades one for the other."
+ },
+ {
+  "k": "2rgyhz",
+  "text": "What it tests: GBW equals G M over (2 pi C L ) and converting dB back to a ratio."
+ },
+ {
+  "k": "16wnhhp",
+  "text": "G M equals 2 pi (5 megahertz)(5 picofarads) equals 0.157 millisiemens."
+ },
+ {
+  "k": "la8fjk",
+  "text": "10 to the 34 over 20 equals 50.1."
+ },
+ {
+  "k": "rfuroo",
+  "text": "10 to the 74 over 20 about 5012."
+ },
+ {
+  "k": "m7bodj",
+  "text": "GBW gives G M directly, no R out needed, because it cancels."
+ },
+ {
+  "k": "o2xfh0",
+  "text": "What it tests: everything in this chapter at once: F U equals G M over (2 pi C), Ay 0 equals G M R, β, A over (1 plus beta A) and the pole times (1 plus beta Ay 0 )."
+ },
+ {
+  "k": "11d76x0",
+  "text": "From GBW: C O U T equals G M over (2 pi F U ) equals 5.06 picofarads."
+ },
+ {
+  "k": "1fhadpi",
+  "text": "From the DC gain: R O U T equals 58.75 over 159 mu S equals 369 kilo-ohms."
+ },
+ {
+  "k": "69yox7",
+  "text": "A capacitive divider works like a resistive one: β equals 4 over (4+4) equals 0.5."
+ },
+ {
+  "k": "114792y",
+  "text": "58.75 over 30.375 equals 1.934, the ideal 2 is missed by the gain error 1 over (1 plus beta A) (Lecture 1)."
+ },
+ {
+  "k": "1t1wbdv",
+  "text": "Open-loop pole 85 kilohertz, multiplied by 30.4: 2.59 megahertz (close to beta F U equals 2.5 megahertz )."
+ },
+ {
+  "k": "2xl53j",
+  "text": "Notice the order: two specs fix the model (C from GBW, R from gain), then β, then the two feedback rules."
+ },
+ {
+  "k": "mzthvs",
+  "text": "Every op-amp circuit in this course is a loop. The input goes into a subtractor, then the amplifier A, then a divider β feeds part of the output back to the minus input."
+ },
+ {
+  "k": "jyxai1",
+  "text": "Follow one small signal round the loop. The amplifier multiplies it by A, say 100. The divider takes a fraction β, say 0.1. When it arrives back at the start it has been multiplied by beta A, here 10."
+ },
+ {
+  "k": "10dbmlc",
+  "text": "That trip-round number is the loop gain, beta A. The closed-loop gain is A over (1 plus beta A): the bigger the loop gain, the closer the answer is to 1 over beta."
+ },
+ {
+  "k": "bpisoz",
+  "text": "The minus sign is what makes feedback calm: the returning signal opposes the change. But if the loop turns the signal upside down, a delay of half a cycle, 180 degrees, then subtracting it is the same as adding it."
+ },
+ {
+  "k": "1xzhawa",
+  "text": "If on top of that the trip round gives a gain of at least 1, the signal keeps itself going with no input at all: the circuit oscillates. Capacitors make that delay, and that is why every lecture from here on is about the phase of beta A."
+ },
+ {
+  "k": "10sd5hd",
+  "text": "Two things to track at every frequency, then: how big beta A is, and how much it delays the signal. The next scene gives you one picture for both."
+ },
+ {
+  "k": "1n2rff2",
+  "text": "Loop gain beta A: the gain once round the loop. Ay F equals A over (1 plus beta A)."
+ },
+ {
+  "k": "14km7xw",
+  "text": "At one frequency, a gain has two parts: how much it multiplies the signal, and how much it delays it. One arrow carries both."
+ },
+ {
+  "k": "wt72ep",
+  "text": "Write the gain as a plus jb: walk a to the right, then b upwards. The arrow from the start to the end is the gain. Here 3: no tilt, no delay, size 3."
+ },
+ {
+  "k": "esm3qx",
+  "text": "2 plus 2j: size root 2 squared plus 2 squared equals 2.83, tilted 45 degrees. A tilt is a delay: 45 degrees means the wave comes out an eighth of a cycle late."
+ },
+ {
+  "k": "1x6dbzw",
+  "text": "1 plus 1.73j: tilted 60 degrees. 2j: straight up, 90 degrees, a quarter of a cycle late."
+ },
+ {
+  "k": "8bxqs9",
+  "text": "And pointing left, minus 2: 180 degrees, half a cycle, the wave comes out upside down. That is the angle that turned the feedback loop into an oscillator."
+ },
+ {
+  "k": "hm2g6j",
+  "text": "The one rule for the whole lesson: when gains multiply, their sizes multiply and their angles add. A pole divides by an arrow, so it shrinks the gain and adds a delay. Phase-margin questions are nothing more than adding those angles."
+ },
+ {
+  "k": "1iwenbr",
+  "text": "Gains multiply: sizes multiply, angles add. A pole subtracts its angle."
+ },
+ {
+  "k": "1x8butj",
+  "text": "Lecture 14 ended at a cliff. If the signal going once round the loop comes back turned by 180 degrees and still at full size, it feeds itself: the amplifier oscillates."
+ },
+ {
+  "k": "1cak6qe",
+  "text": "Picture it as a walk. As the frequency rises, two things happen to the loop gain beta A. Its size shrinks: that is the walker’s energy, in dB. Its phase lag grows: that is how far the walker has gone towards the cliff edge at minus 180 degrees."
+ },
+ {
+  "k": "162gljq",
+  "text": "This first loop runs out of energy first. The walker stops with ground to spare. That spare distance, in degrees, is the phase margin."
+ },
+ {
+  "k": "8mst4e",
+  "text": "Now a loop with more gain and three poles. The phase reaches minus 180 degrees while the energy is still above 0 decibels: over the edge. This one oscillates."
+ },
+ {
+  "k": "ldcg10",
+  "text": "So Lectures 15 to 17 in one sentence: run out of gain before you run out of phase. The Bode plot of the loop gain is the map of this walk; let us draw it."
+ },
+ {
+  "k": "14at9v3",
+  "text": "Run out of gain before you run out of phase."
+ },
+ {
+  "k": "okespe",
+  "text": "Your page starts with the two-pole A(s) and the tool to read it: every pole factor has a size and an angle. Start with one pole."
+ },
+ {
+  "k": "puq1nn",
+  "text": "One pole at 100 kilohertz and a gain of 100, that is 40 decibels. Put s equals j omega: the factor 1 plus j omega over omega p is an arrow, 1 to the right and omega over omega p upwards."
+ },
+ {
+  "k": "sw12zc",
+  "text": "At a tenth of the pole the upward part is only 0.1: the arrow barely tilts, about 6 degrees. The gain is still flat."
+ },
+ {
+  "k": "1n8dg5y",
+  "text": "At the pole the arrow sits at 45 degrees, with length root 2: the gain is 3 decibels down and the phase is minus 45 degrees. Your page marks exactly this point."
+ },
+ {
+  "k": "jtbfeg",
+  "text": "Ten times higher the arrow is nearly vertical: 84 degrees of lag, and the gain is now falling 20 decibels per decade."
+ },
+ {
+  "k": "1q0r2mh",
+  "text": "Keep this shape: the phase starts moving a decade before the pole and finishes a decade after, but the gain only bends at the pole. Phase is eaten early, and that is the root of every stability problem."
+ },
+ {
+  "k": "1rwc1fe",
+  "text": "At the pole: minus 3 decibels and minus 45 degrees; the phase moves from 0.1 omega p to 10 omega p."
+ },
+ {
+  "k": "1fr2mxk",
+  "text": "Your page’s A(s) has two poles: two arrows. Dividing by both, the sizes multiply, which in dB means they add, and the angles add."
+ },
+ {
+  "k": "1ptxqc1",
+  "text": "Each pole’s own phase curve, dashed: the first starts moving a decade before omega p1, the second a decade before omega p2."
+ },
+ {
+  "k": "1w5r19",
+  "text": "Add them, in amber. At omega p1: minus 45 degrees. Between the poles: about minus 90 degrees. At omega p2: minus 90 degrees minus 45 degrees equals minus 135 degrees. Far above: towards minus 180 degrees. Exactly the ticks on your page."
+ },
+ {
+  "k": "s6h6c9",
+  "text": "The size: minus 20 decibels per decade after the first pole, minus 40 after the second. Each pole adds another minus 20."
+ },
+ {
+  "k": "1btqgr0",
+  "text": "The bar on the right is the walk again: each pole can take up to 90 degrees of the 180 degrees you have. Two poles only approach the cliff; a third pole can cross it."
+ },
+ {
+  "k": "1gex5yf",
+  "text": "the angle of beta A equals minus arc tan of omega omega p1 minus arc tan of omega omega p2."
+ },
+ {
+  "k": "1pkscdu",
+  "text": "Your page draws the loop gain twice: once for β equals 1, and in red for β smaller than 1. The red curve has the same shape, just lower."
+ },
+ {
+  "k": "1elckmw",
+  "text": "In dB, multiplying by β subtracts 20 log (1 over beta ): the whole magnitude curve slides down. The phase curve does not move at all: β is a resistor or capacitor divider, it adds no delay."
+ },
+ {
+  "k": "1h7ntm9",
+  "text": "Watch the 0 decibels crossing, the gain crossover. As β falls, the curve reaches 0 decibels earlier, at a lower frequency,"
+ },
+ {
+  "k": "1fqrcsj",
+  "text": "where the phase has used less of its 180 degrees. The green bar, the distance still left to minus 180 degrees, grows. Weaker feedback is safer."
+ },
+ {
+  "k": "4ev86s",
+  "text": "So more feedback is harder to stabilise, and the worst case is β equals 1, the unity-gain buffer: the highest curve and the latest crossing. That is why exam questions say unity-gain feedback."
+ },
+ {
+  "k": "5xav90",
+  "text": "Smaller β lowers beta A: more stable. β equals 1 is the worst case."
+ },
+ {
+  "k": "25ngn3",
+  "text": "The key picture on your page: two special frequencies on the loop-gain plots."
+ },
+ {
+  "k": "w2t4w3",
+  "text": "Gain crossover, omega GX: where beta A falls to 1, that is 0 decibels. Above it the loop gain is too small to sustain anything."
+ },
+ {
+  "k": "asseql",
+  "text": "Phase crossover, omega PX: where the phase reaches minus 180 degrees, the cliff edge. For a stable loop omega GX comes first."
+ },
+ {
+  "k": "1h87epr",
+  "text": "Phase margin: stand at omega GX and measure how far the phase still is from minus 180 degrees: PM equals 180 degrees plus the angle of beta A there."
+ },
+ {
+  "k": "lraom2",
+  "text": "Gain margin: stand at omega PX and measure how far the gain is below 0 decibels."
+ },
+ {
+  "k": "1ngzu9l",
+  "text": "The recipe for every question: one, find omega GX from beta A equals 1. Two, add up the pole angles there. Three, the phase margin is what is left of 180 degrees. Keep the calculator in degree mode."
+ },
+ {
+  "k": "95l8oi",
+  "text": "PM equals 180 degrees plus the angle of beta A( omega GX )."
+ },
+ {
+  "k": "b37dah",
+  "text": "GM equals minus 20 log beta A( omega PX )."
+ },
+ {
+  "k": "1pw1b2t",
+  "text": "The simplest case on your page: a single-pole amplifier with β equals 1."
+ },
+ {
+  "k": "1adw816",
+  "text": "One pole lags at most 90 degrees. At the crossover it is essentially at minus 90 degrees, so PM equals 180 degrees minus 90 degrees equals 90 degrees. The walker can never reach the cliff: a single-pole amplifier is always, unconditionally, stable."
+ },
+ {
+  "k": "y90doq",
+  "text": "Now close the loop and follow your page’s algebra. Put A(s) into A over (1 plus beta A),"
+ },
+ {
+  "k": "eiltm7",
+  "text": "multiply top and bottom by 1 plus s over omega p1,"
+ },
+ {
+  "k": "gwdrhx",
+  "text": "and take 1 plus beta Ay 0 out. Still one pole, but now at omega p1 (1 plus beta Ay 0 ): the red dashed line on your page. Watch it move."
+ },
+ {
+  "k": "70ybpi",
+  "text": "Gain divided by 1 plus beta Ay 0, bandwidth multiplied by the same factor: the trade from Lectures 3 and 13. The closed-loop pole lands at about beta omega u, right at the crossover."
+ },
+ {
+  "k": "1imaby7",
+  "text": "One pole: PM equals 90 degrees; the closed-loop pole moves to omega p1 (1 plus beta Ay 0 )."
+ },
+ {
+  "k": "nr55qi",
+  "text": "Your page’s last picture: two poles with β equals 1. The first pole is far below the crossover, so by then it is already giving its full minus 90 degrees."
+ },
+ {
+  "k": "400dts",
+  "text": "So everything depends on the second pole. The margin is 90 degrees minus what the second pole has eaten at the crossover: PM about 90 degrees minus arc tan of ( omega GX over omega p2 )."
+ },
+ {
+  "k": "1fz9hrd",
+  "text": "Slide the second pole down towards the crossover and watch the margin shrink. Exactly at the crossover it gives 45 degrees, so PM equals 45 degrees."
+ },
+ {
+  "k": "34tq36",
+  "text": "Push it up to 1.73 times the crossover, because 30 degrees equals 0.577, and PM equals 60 degrees, the usual target."
+ },
+ {
+  "k": "10afbsy",
+  "text": "Two numbers to keep: the second pole at the crossover gives 45 degrees; at 1.73 times the crossover gives 60 degrees. Lecture 17’s compensation is all about placing that second pole."
+ },
+ {
+  "k": "v3b9ut",
+  "text": "PM equals 90 degrees minus arc tan of ( omega GX over omega p2 ): 45 degrees at omega p2 equals omega GX, 60 degrees at 1.73 omega GX."
+ },
+ {
+  "k": "1d5tbl5",
+  "text": "Read it once. Now every Lecture 15 question, and you solve each part first."
+ },
+ {
+  "k": "11xjq0t",
+  "text": "What it tests: βA0, the minus 20 decibels over dec slope to the crossover, and PM of a single pole."
+ },
+ {
+  "k": "1cdlbbj",
+  "text": "Three decades above 10 hertz: 10 kilohertz. That is just beta Ay 0 F P."
+ },
+ {
+  "k": "nhl40r",
+  "text": "arc tan of (1000) equals 89.94 degrees, so PM equals 90.06 degrees. One pole: 90 degrees every time."
+ },
+ {
+  "k": "djl984",
+  "text": "An ideal one-pole op amp has 90 degrees of margin whatever the gain."
+ },
+ {
+  "k": "1puyo4o",
+  "text": "What it tests: the PM recipe with two poles, the β slide, and a first look at Lecture 16’s peaking."
+ },
+ {
+  "k": "1o71cq6",
+  "text": "The quadratic gives F G X equals 62.5 megahertz: above the second pole."
+ },
+ {
+  "k": "77uy76",
+  "text": "89.95 degrees + 51.3 degrees of lag: PM equals 38.7 degrees. Too little."
+ },
+ {
+  "k": "145u8xi",
+  "text": "Crossover at 18.7 megahertz, where the second pole has eaten only 20 degrees: PM equals 69.6 degrees. Weaker feedback, more margin."
+ },
+ {
+  "k": "1lle696",
+  "text": "1 over (2 19.4 degrees) equals 1.51: a 51 percent peak. Lecture 16 explains why."
+ },
+ {
+  "k": "18mazh2",
+  "text": "Same op amp: unstable-looking as a buffer, comfortable at gain 5."
+ },
+ {
+  "k": "bg588r",
+  "text": "mid sem 2025-26 Q 5 times 9 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "103ihym",
+  "text": "What it tests: the PM recipe when both poles sit far below omega GX, and Lecture 16’s peak formula backwards. It is Razavi Problems 10.3 and 10.4 together."
+ },
+ {
+  "k": "1l48sei",
+  "text": "Both poles are far below the crossover, so beta A about 1000 times 2 over ( omega over omega p1 ) squared equals 1: omega GX about 44.7 omega p1."
+ },
+ {
+  "k": "hdngx5",
+  "text": "88.7 degrees + 87.4 degrees equals 176.2 degrees: PM equals 3.8 degrees. Almost an oscillator."
+ },
+ {
+  "k": "1u6wwzn",
+  "text": "Only 4.5 degrees. Moving one pole a little does nothing: with this much gain both poles eat almost 90 degrees each."
+ },
+ {
+  "k": "15beufn",
+  "text": "(PM over 2) equals 1 over 3: PM equals 38.9 degrees. Lecture 16 shows where that formula comes from."
+ },
+ {
+  "k": "gewzwd",
+  "text": "Two poles close together under a big loop gain leave almost no margin: they need compensation (Lecture 17)."
+ },
+ {
+  "k": "m5yy2w",
+  "text": "The circuit, redrawn. Try each part when the lesson stops, then watch how it is done."
+ },
+ {
+  "k": "1eryh6f",
+  "text": "What it tests: the PM recipe in reverse: choose the crossover from the phase, then the gain from the size."
+ },
+ {
+  "k": "199hbur",
+  "text": "The first pole gives about 88 degrees, so the second needs about 32 degrees: F G X equals 311 megahertz."
+ },
+ {
+  "k": "1tuq80c",
+  "text": "Ay 0 equals 36.6. Only 36: two poles 50 times apart leave very little room for gain at 60 degrees."
+ },
+ {
+  "k": "14wsodr",
+  "text": "Forwards: find the crossover, then the angles. Backwards: pick the angle, then the gain."
+ },
+ {
+  "k": "ccuo8a",
+  "text": "What it tests: splitting the allowed 120 degrees between equal poles, and how β trades against Ay 0."
+ },
+ {
+  "k": "1dua4ei",
+  "text": "beta Ay 0 equals 4: as a buffer, Ay 0 equals 4."
+ },
+ {
+  "k": "zqgmvq",
+  "text": "Still beta Ay 0 equals 4, so Ay 0 equals 16. Weaker feedback allows four times the gain."
+ },
+ {
+  "k": "10i2qj1",
+  "text": "The rule behind it: the margin depends on beta Ay 0, not on Ay 0 alone."
+ },
+ {
+  "k": "1cxk3x6",
+  "text": "Lecture 16 starts with your page’s two-pole amplifier at β equals 1: minus 20 decibels per decade after the first pole, minus 40 after the second, and the phase heading for minus 180 degrees."
+ },
+ {
+  "k": "1p6vy3v",
+  "text": "Reading the phase margin off the two plots is a three-step routine you should be able to do in your sleep."
+ },
+ {
+  "k": "1qwo8yo",
+  "text": "One: on the gain plot, slide along the curve to where it crosses 0 decibels. That is omega GX."
+ },
+ {
+  "k": "5q4kr1",
+  "text": "Two: drop straight down to the phase plot at the same frequency and read the phase."
+ },
+ {
+  "k": "1m65cgi",
+  "text": "Three: measure the gap from there to minus 180 degrees. That gap is the phase margin."
+ },
+ {
+  "k": "8bzck5",
+  "text": "Your page’s example: at the crossover the phase is minus 175 degrees, so the margin is only 5 degrees. The loop does not oscillate, but it is five degrees from the cliff. What does that do to the closed-loop gain?"
+ },
+ {
+  "k": "1vs8690",
+  "text": "Why should a small margin matter if the loop does not oscillate? Your page answers it. At the crossover beta A equals 1, so A equals 1 over beta there."
+ },
+ {
+  "k": "c7czxi",
+  "text": "So the closed-loop gain at the crossover is 1 over beta divided by the size of 1 plus beta A, where beta A is an arrow of length 1 pointing at PM minus 180 degrees."
+ },
+ {
+  "k": "dd6jrz",
+  "text": "Draw it. The white arrow is the 1. The amber arrow is beta A, length 1. Their sum, in green, is 1 plus beta A."
+ },
+ {
+  "k": "1s2oe0d",
+  "text": "With a big margin the two arrows open wide and the green arrow is long: the closed-loop gain stays at or below 1 over beta. Now shrink the margin,"
+ },
+ {
+  "k": "bjw0np",
+  "text": "and the amber arrow folds back over the white one. They nearly cancel, the green arrow shrinks to almost nothing, and dividing by it makes the closed-loop gain shoot up: a peak."
+ },
+ {
+  "k": "1iwcczl",
+  "text": "Two unit arrows with an angle PM between them: the gap is 2 (PM over 2). So the peak is 1 over (2 (PM over 2)) times 1 over beta. At 5 degrees: about 11.5 times. That is your page’s number."
+ },
+ {
+  "k": "61o34f",
+  "text": "Ay F ( omega GX ) equals 1 over beta times 1 over 2 (PM over 2)."
+ },
+ {
+  "k": "12ipzfy",
+  "text": "Your page does it the long way, with cos and sin. PM equals 5 degrees means the angle of beta A equals minus 175 degrees. Then 1 plus 175 degrees minus j 175 degrees equals 0.0038 minus j0.087, whose size is 0.087: the gain is 11.5 over β."
+ },
+ {
+  "k": "12buovk",
+  "text": "PM equals 45 degrees: the angle is minus 135 degrees, 1 plus beta A equals 0.293 minus j0.707, size 0.765: a gain of 1.3 over β, a 30 percent peak."
+ },
+ {
+  "k": "r6n18l",
+  "text": "PM equals 60 degrees: 0.5 minus j0.866 has size exactly 1. The gain at the crossover is exactly 1 over beta: no peak at all. That is why 60 degrees is the favourite target."
+ },
+ {
+  "k": "te74f6",
+  "text": "And the shortcut does all of them in one go: 1 over (2 (PM over 2)). For 90 degrees it gives 0.707, the ordinary 3 decibels point of a single pole. Memorise 45, then 1.3 and 60, then 1."
+ },
+ {
+  "k": "7813so",
+  "text": "5 degrees gives 11.5, 45 degrees gives 1.3, 60 degrees gives 1, all times 1 over beta."
+ },
+ {
+  "k": "7gdvmf",
+  "text": "Your page sketches what the peak looks like in time: the step response. Here are four phase margins, and a car going up a kerb to feel them."
+ },
+ {
+  "k": "mclkjp",
+  "text": "PM equals 15 degrees: the output shoots past and rings for a long time, like a car with no shock absorbers bouncing on and on."
+ },
+ {
+  "k": "1eg6wwh",
+  "text": "PM equals 45 degrees: one clear overshoot and a little ringing: the 30 percent peak from the last scene, seen in time."
+ },
+ {
+  "k": "71atqr",
+  "text": "PM equals 60 degrees: up fast, a tiny overshoot, settled. That is the comfortable ride and the usual design target."
+ },
+ {
+  "k": "9s9l93",
+  "text": "PM equals 90 degrees: no overshoot at all, but it creeps up slowly, like a car with stiff, over-damped suspension."
+ },
+ {
+  "k": "yc1og9",
+  "text": "That is exactly your page’s square-wave sketch: red, PM 60 degrees, gets to the top fast; green, PM 90 degrees, is smooth but slow. Peaking in frequency and ringing in time are the same fact."
+ },
+ {
+  "k": "1azi040",
+  "text": "One honest caveat from Razavi: phase margin is a small-signal idea. A big step also slews (Lecture 13), and that is a separate limit."
+ },
+ {
+  "k": "8ueg92",
+  "text": "60 degrees is fast with a small overshoot; 90 degrees is smooth but slow."
+ },
+ {
+  "k": "1k39jtw",
+  "text": "The last sketch on your page is a shortcut you will use in Lecture 17. You usually get the open-loop plot A, not the loop gain."
+ },
+ {
+  "k": "o6rgm9",
+  "text": "In dB, 20 log beta A equals 20 log A minus 20 log (1 over beta ). So draw a horizontal line at 20 log (1 over beta ), the closed-loop gain in dB. The gap between A and the line is the loop gain."
+ },
+ {
+  "k": "xjeg2f",
+  "text": "Where A meets the line, the loop gain is 0 decibels: that is omega GX. Lower the line, a smaller closed-loop gain, and the meeting point moves right, into worse phase."
+ },
+ {
+  "k": "1g0ghpo",
+  "text": "At a closed-loop gain of 1 this three-pole amplifier meets the line where the phase is already past minus 180 degrees: the buffer oscillates. Lecture 17 fixes exactly this."
+ },
+ {
+  "k": "efu73",
+  "text": "20 log A minus 20 log 1 over beta equals 20 log beta A."
+ },
+ {
+  "k": "115bo2a",
+  "text": "Read it once. Now the Lecture 16 questions."
+ },
+ {
+  "k": "ue0ke0",
+  "text": "What it tests: writing βA as theta plus j theta at the crossover, and the size of 1 plus beta A."
+ },
+ {
+  "k": "10l2t4",
+  "text": "1 over 0.0873 equals 11.5."
+ },
+ {
+  "k": "16w2o92",
+  "text": "1 over 0.765 equals 1.31."
+ },
+ {
+  "k": "17a8gc2",
+  "text": "Exactly 1."
+ },
+ {
+  "k": "rxtvg3",
+  "text": "In the exam use the shortcut, but know where it comes from."
+ },
+ {
+  "k": "qu5cer",
+  "text": "What it tests: the peak formula, including the 90 degrees case that gives the usual minus 3 decibels."
+ },
+ {
+  "k": "1roeyb9",
+  "text": "1.93: almost double the gain at the crossover."
+ },
+ {
+  "k": "jdmmdc",
+  "text": "0.707: the minus 3 decibels point of a one-pole response."
+ },
+ {
+  "k": "1kw2pal",
+  "text": "Three margins, three shapes: peaking, flat, rolled off."
+ },
+ {
+  "k": "t00tyq",
+  "text": "What it tests: the peak formula backwards (it is also part (b) of the 2025 mid sem Q 5)."
+ },
+ {
+  "k": "h76p6b",
+  "text": "2 times 19.47 degrees equals 38.9 degrees."
+ },
+ {
+  "k": "4qv80c",
+  "text": "A sanity check you can always do: more peak, less margin."
+ },
+ {
+  "k": "1shpu78",
+  "text": "Lecture 17 opens with this plot on your page: an op amp with 100 decibels of gain and three poles, and a red horizontal line at 20 log (1 over beta )."
+ },
+ {
+  "k": "xthsje",
+  "text": "Remember the shortcut from Lecture 16: where the gain curve meets the line is the crossover, and the gap between them is the loop gain."
+ },
+ {
+  "k": "cucflx",
+  "text": "With the line high up, a big closed-loop gain, they meet before the second pole. The phase there is only about minus 90 degrees: lots of margin."
+ },
+ {
+  "k": "g1rztd",
+  "text": "Now lower the line, asking for less closed-loop gain. The meeting point slides right, past the second pole, past the third, and the phase there goes beyond minus 180 degrees."
+ },
+ {
+  "k": "1467ufc",
+  "text": "So the amplifier works at high gain but oscillates as a buffer. Compensation means: make the loop gain fall to 1 before the phase gets dangerous, for every gain down to 1."
+ },
+ {
+  "k": "ulqwhb",
+  "text": "Compensation: the loop gain must reach 1 before the phase reaches minus 180 degrees, down to β equals 1."
+ },
+ {
+  "k": "v54j7s",
+  "text": "The first fix, the green dashed line on your page: dominant-pole compensation. Leave the fast poles alone and slide the first pole down, by adding capacitance at its node."
+ },
+ {
+  "k": "ys5zln",
+  "text": "Think of driving towards that cliff: instead of trying to move the cliff, you take your foot off the accelerator early. The gain starts falling sooner, so it reaches 0 decibels sooner, at a frequency where the other poles have barely started to bite."
+ },
+ {
+  "k": "hcklwk",
+  "text": "Watch the first pole slide down. The whole sloping part of the curve slides left with it, the crossover moves left, and the margin grows."
+ },
+ {
+  "k": "srxbq4",
+  "text": "Where to stop? Put the crossover on the second pole: that leaves 45 degrees. From beta Ay 0 the gain falls 20 decibels per decade down to 1 at F G X, so the new first pole is F G X over ( beta Ay 0 ): here 1 megahertz over 10 to the 5, just 10 hertz."
+ },
+ {
+  "k": "13nwxcc",
+  "text": "Razavi’s shortcut on the plot: from the second pole on the 0 decibels line, draw a minus 20 decibels per decade line back up to the flat gain. The price is obvious: the open-loop bandwidth is now only 10 hertz. The Miller capacitor does it far more cheaply."
+ },
+ {
+  "k": "1jshncu",
+  "text": "F P 1 ' equals F G X over ( beta Ay 0 )."
+ },
+ {
+  "k": "1xktvcy",
+  "text": "The cheap way to make a very low pole is on your page: put a capacitor C C across an inverting amplifier with gain minus Ay 2. This is the Miller effect."
+ },
+ {
+  "k": "9rqyou",
+  "text": "A capacitor’s current depends on the voltage across it, the difference between its two ends. Here both ends move."
+ },
+ {
+  "k": "5kvoa7",
+  "text": "Raise node 1 by v. The amplifier drives node 2 the opposite way, down by Ay 2 v. The voltage across C C changes by v plus Ay 2 v equals (1 plus Ay 2 )v."
+ },
+ {
+  "k": "uib06q",
+  "text": "Picture a rope tied between two people. If one steps up 1 metre while the other steps down 4, the rope stretches 5 metres, not 1. The capacitor has to swallow (1 plus Ay 2 ) times the charge a grounded one would."
+ },
+ {
+  "k": "10v2mzv",
+  "text": "So node 1, which only moved by v, feels a capacitor (1 plus Ay 2 ) times bigger. A small C C looks enormous from the input side."
+ },
+ {
+  "k": "1bvbq6c",
+  "text": "Seen from node 1: C C (1 plus Ay 2 ). Seen from node 2, which moves a lot, the extra is small: C C (1 plus 1 over Ay 2 ), about C C. Exactly the two labels on your page."
+ },
+ {
+  "k": "jk32vc",
+  "text": "One picofarad across a gain of 100 behaves like 101 picofarads at the input. That is how a tiny on-chip capacitor makes a very low dominant pole."
+ },
+ {
+  "k": "3p3uf3",
+  "text": "C in equals C C (1 plus Ay 2 ), C out equals C C (1 plus 1 over Ay 2 )."
+ },
+ {
+  "k": "d4u6mh",
+  "text": "Now the two-stage amplifier on your page: stage 1 drives node 1 ( R 1, C 1 ), stage 2 drives the output ( R 2, C 2 ). Without C C each node gives a pole, and here they sit close together, around a megahertz: a recipe for ringing."
+ },
+ {
+  "k": "c31tf1",
+  "text": "Add C C and grow it. Node 1 now carries C 1 plus (1 plus Ay 2 ) C C: the first pole dives down, your page’s P 1 ' about 1 over ( R 1 Ay 2 C C )."
+ },
+ {
+  "k": "1ykjewc",
+  "text": "And the second pole goes up. At high frequency C C acts like a wire from M 6’s gate to its drain, so the output stage becomes a diode with resistance about 1 over G M 2, and the output pole jumps to about G M 2 over C 2."
+ },
+ {
+  "k": "1gad8hm",
+  "text": "That is pole splitting: one small capacitor pushes the poles far apart, P 1 down to a few kilohertz and P 2 up past a hundred megahertz. Far-apart poles are exactly what a good phase margin needs."
+ },
+ {
+  "k": "b5v4o9",
+  "text": "P 1 ' is about 1 over R 1 Ay 2 C C, P 2 ' is about G M 2 C L."
+ },
+ {
+  "k": "o8euzr",
+  "text": "Here is that two-stage amplifier as a real circuit, the one on your page. Stage 1 is the five-transistor O T A from Lecture 2: input pair M 1, M 2, mirror load M 3, M 4, tail M 5."
+ },
+ {
+  "k": "18v93yg",
+  "text": "Its output node P sees two big resistances in parallel, R O 2 and R O 4, and a small capacitance C 1."
+ },
+ {
+  "k": "16y0cl5",
+  "text": "Stage 2 is a common-source P mos M 6 with the current source M 7 as its load. Its output Q, the op amp’s output, sees R O 6 in parallel with R O 7 and the load C L."
+ },
+ {
+  "k": "oc3zh",
+  "text": "Two high-resistance nodes, two low poles: your page writes them in red, P 1 equals 1 over (( R O 2 in parallel with R O 4 ) C 1 ) and P 2 equals 1 over (( R O 6 in parallel with R O 7 ) C 2 )."
+ },
+ {
+  "k": "1wq6qou",
+  "text": "C C goes from P to Q, across the inverting second stage: exactly the Miller picture. M 6 is the minus Ay 2 with Ay 2 equals G M 6 ( R O 6 in parallel with R O 7 )."
+ },
+ {
+  "k": "1poxhjl",
+  "text": "So for this circuit: R 1 equals R O 2 in parallel with R O 4, R 2 equals R O 6 in parallel with R O 7, G M 1 equals G M 1, G M 2 equals G M 6. Every two-stage question uses this dictionary."
+ },
+ {
+  "k": "1nvz1ju",
+  "text": "P 1 equals 1 ( R O 2 in parallel with R O 4 ) C 1, P 2 equals 1 ( R O 6 in parallel with R O 7 ) C 2."
+ },
+ {
+  "k": "1cbo7my",
+  "text": "Now design it. Above the dominant pole, stage 1’s current G M 1 V in simply charges C C, so the gain is G M 1 over ( omega C C ) and it reaches 1 at omega u equals G M 1 over C C. The GBW depends only on stage 1 and C C."
+ },
+ {
+  "k": "1jwm4xm",
+  "text": "The second pole sits at about G M 2 over C L. With β equals 1 the first pole gives its full minus 90 degrees, so the margin is 90 degrees minus the second pole’s angle at omega u."
+ },
+ {
+  "k": "9yk2jl",
+  "text": "Solve for C C: C C equals G M 1 C L PM over G M 2. Too small a C C, as now, puts omega u right next to the second pole: a poor margin."
+ },
+ {
+  "k": "ipb6eg",
+  "text": "Grow C C: the GBW slides left, away from P 2, which stays put, and the margin climbs, until C C equals 0.35 picofarads gives exactly 60 degrees."
+ },
+ {
+  "k": "19mt2eh",
+  "text": "Two versions to memorise: 45 degrees needs C C equals ( G M 1 over G M 2 ) C L, and 60 degrees needs 1.73 times that. A bigger G M 2 (a stronger output stage) lets you use a smaller C C and keep more bandwidth."
+ },
+ {
+  "k": "1bof9vh",
+  "text": "The papers often use Allen’s version: put the right-half-plane zero (next scene) at 10 times the GBW, which means G M 6 equals 10 G M 1, and then 60 degrees needs C C is at least 0.22 C L."
+ },
+ {
+  "k": "re8jo1",
+  "text": "omega u equals G M 1 over C C."
+ },
+ {
+  "k": "gt3xsd",
+  "text": "C C equals G M 1 C L PM G M 2; Allen: C C is at least 0.22 C L."
+ },
+ {
+  "k": "13u6199",
+  "text": "Your page ends with the full transfer function of the compensated two-stage op amp. Do not panic: the denominator is just the two poles in disguise."
+ },
+ {
+  "k": "1covpad",
+  "text": "Match it with (1 plus s over omega p1 )(1 plus s over omega p2 ), with the poles far apart. The s term gives omega p1 about 1 over ( R 1 G M 2 R 2 C C ), the Miller pole. Dividing the s squared term by it gives omega p2 about G M 2 over C 2 when C C is large. Pole splitting, in algebra."
+ },
+ {
+  "k": "5d8x5l",
+  "text": "The new thing is in the numerator: (1 minus s C C over G M 2 ). Where does it come from? Node P drives the output Q along two paths."
+ },
+ {
+  "k": "9a5cir",
+  "text": "The main path: M 6 turns v into a current G M 2 v pulling Q down. The sneak path: C C passes a current omega C C v straight across, pushing Q up, the opposite sign."
+ },
+ {
+  "k": "13s8cjb",
+  "text": "As frequency rises the sneak current grows. At omega equals G M 2 over C C the two are equal and opposite and nothing reaches the output: a zero. Because of the minus sign it sits in the right half plane."
+ },
+ {
+  "k": "1d7mubo",
+  "text": "A right-half-plane zero is double trouble: it slows the fall of the gain, like a zero, but it adds phase lag, like a pole. In a PM calculation it is one more angle to subtract."
+ },
+ {
+  "k": "iv2mf7",
+  "text": "So the full margin of a two-stage op amp: 90 degrees, minus the second pole’s angle, minus the zero’s angle, all at omega u."
+ },
+ {
+  "k": "137qrkq",
+  "text": "The fix: a resistor R Z in series with C C weakens the sneak path. The zero moves to 1 over ( C C (1 over G M 2 minus R Z )), and with R Z equals 1 over G M 2 it disappears to infinity."
+ },
+ {
+  "k": "1yxuiii",
+  "text": "omega z equals G M 2 over C C, it lags like a pole; R Z equals 1 over G M 2 removes it."
+ },
+ {
+  "k": "fk7l4p",
+  "text": "PM equals 90 degrees minus arc tan of omega u omega p2 minus arc tan of omega u over omega z."
+ },
+ {
+  "k": "v3go0s",
+  "text": "Slewing in the two-stage op amp, needed by both mid sem questions. Give the input a big step: the pair steers completely and all of the tail current I 5 flows one way."
+ },
+ {
+  "k": "1y2i590",
+  "text": "Node P barely moves, because the output stage around C C holds it, so that whole current goes into C C. The output then ramps at I 5 over C C."
+ },
+ {
+  "k": "1349yqi",
+  "text": "But the output stage must also charge C L at that rate, and on a falling edge M 7 can only sink its bias current, of which I 5 is already going into C C. So ( I 7 minus I 5 ) over C L is a second limit; the smaller one wins."
+ },
+ {
+  "k": "1cystsu",
+  "text": "In design questions read it backwards: once C C is chosen, the slew-rate spec fixes the tail current, I 5 equals slew rate times C C."
+ },
+ {
+  "k": "1fp0jqe",
+  "text": "slew rate equals the smaller of ( I 5 over C C, ( I 7 minus I 5 ) over C L )."
+ },
+ {
+  "k": "vu4av1",
+  "text": "Read it once. Now every compensation question, including the two biggest mid sem questions."
+ },
+ {
+  "k": "1nfu4ks",
+  "text": "What it tests: the dominant-pole rule F D equals F G X over ( beta Ay 0 ) in its two versions."
+ },
+ {
+  "k": "z78sr4",
+  "text": "1 megahertz over 10 to the 4: 100 hertz."
+ },
+ {
+  "k": "b1wzao",
+  "text": "1 kilohertz: ten times more bandwidth than Example 5, because the old first pole is gone."
+ },
+ {
+  "k": "1ekj0b4",
+  "text": "1000 times the capacitance. That is why we use Miller: a capacitor 1000 times bigger is impossible on chip."
+ },
+ {
+  "k": "1rorcwb",
+  "text": "Lowering an existing pole beats adding a new one."
+ },
+ {
+  "k": "vcobbx",
+  "text": "What it tests: the PM recipe with three poles, then dominant-pole compensation with two remaining poles."
+ },
+ {
+  "k": "3hazn9",
+  "text": "The crossover is at 3 megahertz, where the three poles have used 178.4 degrees: PM equals 1.6 degrees. It would ring for ages."
+ },
+ {
+  "k": "1v7u3dn",
+  "text": "The new first pole will give 90 degrees, so the other two may use 45 degrees between them: that happens at 844 kilohertz."
+ },
+ {
+  "k": "yyxsvo",
+  "text": "84.4 hertz."
+ },
+ {
+  "k": "154jl3",
+  "text": "11.8 times."
+ },
+ {
+  "k": "gvgqin",
+  "text": "Notice we never needed a 45 degrees shortcut here: two poles share the 45 degrees, so solve the angle equation."
+ },
+ {
+  "k": "147pncw",
+  "text": "Quiz 2 2024-25 Q 1 times 6 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1siakww",
+  "text": "What it tests: GBW equals Ay 0 F P 1, the PM with a second pole and an RHP zero, and omega p2 equals G M 2 over C L, omega z equals G M 2 over C C."
+ },
+ {
+  "k": "1pbjnu1",
+  "text": "159 megahertz."
+ },
+ {
+  "k": "1ig9mx0",
+  "text": "12.1 degrees and 2.9 degrees: PM equals 75 degrees."
+ },
+ {
+  "k": "76aihr",
+  "text": "G M 2 equals 23.2 millisiemens, so C C equals 1.16 picofarads."
+ },
+ {
+  "k": "pcs061",
+  "text": "Every number in a Miller op amp is tied to G M 1, G M 2, C C and C L."
+ },
+ {
+  "k": "x62l3v",
+  "text": "mid sem 2023-24 Q 5 times 5 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "vvtduq",
+  "text": "What it tests: Lecture 16’s peak formula, and the PM equation of a Miller op amp with its zero."
+ },
+ {
+  "k": "1p79kf9",
+  "text": "1.18: an 18 percent peak."
+ },
+ {
+  "k": "1v2ogaa",
+  "text": "The zero takes 5.7 degrees, so the second pole may take only 39.3 degrees at the GBW."
+ },
+ {
+  "k": "ntdzva",
+  "text": "C C is at least 0.122 C L. For 60 degrees the same steps give Allen’s 0.22."
+ },
+ {
+  "k": "1vuzko7",
+  "text": "Small question, two big ideas: peaking from PM, and the zero’s share of the margin."
+ },
+ {
+  "k": "1m15vmd",
+  "text": "What it tests: GBW equals G M 1 over C C placed on omega p2 equals G M 9 over C L."
+ },
+ {
+  "k": "138w3qb",
+  "text": "0.4 picofarads."
+ },
+ {
+  "k": "1qjw57u",
+  "text": "0.28 picofarads: a slightly smaller capacitor is enough."
+ },
+ {
+  "k": "1kg3je1",
+  "text": "A first estimate: real designs take 60 degrees and a little extra."
+ },
+ {
+  "k": "1241tud",
+  "text": "mid sem 2024-25 Q 2 times 15 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1krkm7y",
+  "text": "What it tests: every Lecture 17 formula on one circuit: mirror ratios for currents, slew rate equals I 5 over C C, GBW equals G M 1 over 2 pi C C, Ay 1 Ay 2, F P 2 equals G M 7 over 2 pi C L, F Z equals G M 7 over 2 pi C C, and the PM."
+ },
+ {
+  "k": "17rm58i",
+  "text": "M 5 is twice M 6, so I 5 equals 20 microamps and each input device carries 10 microamps. slew rate equals 90.9 volts per microsecond."
+ },
+ {
+  "k": "1yludaq",
+  "text": "72.3 megahertz."
+ },
+ {
+  "k": "akn63x",
+  "text": "V G S 7 equals V G S 4, so I 7 scales with W over L: 80 over 10 times 10 microamps equals 80 microamps, and G M 7 equals 1.13 millisiemens."
+ },
+ {
+  "k": "jyqp2e",
+  "text": "Ay 1 equals 33.3, Ay 2 equals 47.1: Ay 0 equals 1571, about 64 decibels."
+ },
+ {
+  "k": "mp7k3a",
+  "text": "46 kilohertz: the dominant pole."
+ },
+ {
+  "k": "4votck",
+  "text": "Part 2: the second pole, the zero and the margin."
+ },
+ {
+  "k": "1mht2u9",
+  "text": "What it tests: F P 2 equals G M 7 over 2 pi C L, F Z equals G M 7 over 2 pi C C and the three-angle PM."
+ },
+ {
+  "k": "ck3t43",
+  "text": "180 megahertz."
+ },
+ {
+  "k": "nzztht",
+  "text": "818 megahertz."
+ },
+ {
+  "k": "1p3a2iq",
+  "text": "21.9 degrees from the pole, 5.1 degrees from the zero: PM equals 63.1 degrees."
+ },
+ {
+  "k": "cgnqhg",
+  "text": "Fifteen marks, one dictionary: G M 1 equals G M 1, G M 2 equals G M 7, C C, C L."
+ },
+ {
+  "k": "1m4xde3",
+  "text": "What it tests: the design chain: C C from the margin, GBW, the Miller pole, R Z, and the two slew limits."
+ },
+ {
+  "k": "v40ouc",
+  "text": "1.39 picofarads."
+ },
+ {
+  "k": "u8lei9",
+  "text": "91.9 megahertz."
+ },
+ {
+  "k": "6lplfp",
+  "text": "12.9 kilohertz."
+ },
+ {
+  "k": "1jc0oxv",
+  "text": "250 ohms."
+ },
+ {
+  "k": "owpo9x",
+  "text": "86.6 volts per microsecond from C C; the output stage could do 95, so C C limits."
+ },
+ {
+  "k": "pt34ur",
+  "text": "The order to remember: margin, then C C, then GBW, then Miller pole, then R Z, then slew."
+ },
+ {
+  "k": "vxth4w",
+  "text": "mid sem 2025-26 Q 2 times 14 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1yuso3m",
+  "text": "What it tests: Allen’s design order: C C from the margin, I 5 from slew rate, (W over L) 1 from GBW, (W over L) 3 from ICMR(+), (W over L) 5 from ICMR( minus ), then the output stage."
+ },
+ {
+  "k": "eeohhf",
+  "text": "1.1 picofarads."
+ },
+ {
+  "k": "mkbfca",
+  "text": "55 microamps."
+ },
+ {
+  "k": "54drj",
+  "text": "G M 1 equals 0.346 millisiemens and (W over L) 1,2 equals 7.24."
+ },
+ {
+  "k": "gyzgav",
+  "text": "Only 0.16 volts of overdrive left for M 3: (W over L) 3,4 equals 35.8."
+ },
+ {
+  "k": "xrfaw6",
+  "text": "Part 2: the tail and the output stage."
+ },
+ {
+  "k": "5kkfbn",
+  "text": "What it tests: the floor check for the tail, the zero rule for the output device, and a mirror ratio for its current source."
+ },
+ {
+  "k": "1fwcv79",
+  "text": "(W over L) 5,6 equals 16.1."
+ },
+ {
+  "k": "fpggaf",
+  "text": "(W over L) 7 equals 360: a wide output device."
+ },
+ {
+  "k": "1eswigd",
+  "text": "I 7 equals 276 microamps and (W over L) 8 equals 81."
+ },
+ {
+  "k": "t9rmhn",
+  "text": "Seven steps in a fixed order. Write the order down first in the exam, then fill in numbers."
+ },
+ {
+  "k": "1i13xyj",
+  "text": "Compre 2023-24 Q 8 times 10 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "legr4a",
+  "text": "What it tests: the same Miller dictionary on a ±2.5 volts circuit: a diode stack sets I 8, mirrors give the rest."
+ },
+ {
+  "k": "ns7m6n",
+  "text": "The overdrives share 3.6 volts: I 8 equals 115.6 microamps. M 5 is twice M 8 and M 7 ten times: 231 microamps and 1.156 milliamps."
+ },
+ {
+  "k": "j81x",
+  "text": "Ay 1 equals 48.5 and Ay 2 equals 32.7: about 1580 (the key: 1581)."
+ },
+ {
+  "k": "7nbq6c",
+  "text": "16.05 megahertz and 46.2 volts per microsecond."
+ },
+ {
+  "k": "115dc5x",
+  "text": "7.51 milliwatts, and a margin of 50.9 degrees: matches the key exactly."
+ },
+ {
+  "k": "agec1q",
+  "text": "Note the printed open loop unity gain bandwidth 1 megahertz is never used: the answer key computes the GBP from the circuit."
+ },
+ {
+  "k": "1ud28k6",
+  "text": "One card for the exam: phase margin forwards and backwards, peaking, the dominant pole, and the Miller two-stage dictionary. Every question in this lesson used these."
+ },
+ {
+  "k": "7wla52",
+  "text": "Use the chapter list to replay any topic, and the Past papers tab to jump straight to a question. Good luck."
+ },
+ {
+  "k": "1txkelf",
+  "text": "Say it back. Listen first."
+ },
+ {
+  "k": "1ugcqec",
+  "text": "Next line."
+ },
+ {
+  "k": "1j12cua",
+  "text": "Now from memory."
+ }
+]

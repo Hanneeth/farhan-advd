@@ -1,0 +1,878 @@
+[
+ {
+  "k": "10dtops",
+  "text": "This lesson assumes you start at Lecture 6. First a foundations chapter builds every tool your page uses, fences, checks and links, towers, look-in resistances, the pair, the cascode and the fold itself."
+ },
+ {
+  "k": "cqwa5n",
+  "text": "Then your Lecture 6 page, region by region. Then every question tied to it, two from this lecture, plus the folded-cascode, buffer-window and low-voltage-load questions, each stopping for your answer first."
+ },
+ {
+  "k": "1cdjper",
+  "text": "Before any symbols, one picture. A transistor is a tap: current is water flowing from the source to the drain, and the gate is the handle."
+ },
+ {
+  "k": "10rlyl2",
+  "text": "Turn the gate voltage up from zero. At first nothing flows: the first V threshold, half a volt, only lifts the gate to the edge of the pipe. That is the entry fee."
+ },
+ {
+  "k": "1j8tf1b",
+  "text": "Past V threshold, the opening is the overdrive V overdrive. Half the opening gives a quarter of the flow: I D grows like V overdrive squared. And W over L is simply how big the pipe is."
+ },
+ {
+  "k": "1eq14iw",
+  "text": "Now the drain side. The water leaves the tap over a cliff, and the height of the cliff is V D S."
+ },
+ {
+  "k": "11lhwd8",
+  "text": "Make the cliff taller: exactly the same water falls. The flow is decided upstream, by the opening, not by the cliff. That is saturation, and it is why a saturated transistor is a current source."
+ },
+ {
+  "k": "f940yn",
+  "text": "Now shrink the cliff. Once it is lower than V overdrive, the pool below rises over the edge, pushes back, and the flow drops. That is triode: no longer a current source."
+ },
+ {
+  "k": "5c7dcc",
+  "text": "So the whole lesson rests on one rule: keep every cliff at least V overdrive tall. Next, the same picture in symbols."
+ },
+ {
+  "k": "1lp1nu",
+  "text": "Tap: V threshold is the entry fee, V overdrive is the opening, I D grows like V overdrive squared."
+ },
+ {
+  "k": "1vlm59c",
+  "text": "Waterfall: saturated while the cliff V D S is at least V overdrive; the flow is set upstream."
+ },
+ {
+  "k": "1ar51a",
+  "text": "Everything in Lecture 6 is bookkeeping of voltages around transistors, so start with one. An N mos has a gate, a source and a drain."
+ },
+ {
+  "k": "1yx0llv",
+  "text": "Gate-to-source voltage has two parts. The first V threshold (0.5 volts here) is an entry fee: it only switches the channel on. Only the part above it, the overdrive V overdrive, sets the current."
+ },
+ {
+  "k": "1vpr1vg",
+  "text": "So V G S equals V threshold plus V overdrive, with our numbers 0.7 volts, and the square law ties the current to V overdrive alone."
+ },
+ {
+  "k": "t21gwm",
+  "text": "To amplify, the transistor must be saturated: the drain must keep at least V overdrive above the source. Less than that, it falls into triode."
+ },
+ {
+  "k": "w3xzz3",
+  "text": "The same rule measured from the gate: an N mos drain may sit up to V threshold below its gate; a P mos (the upside-down twin) drain may sit up to V threshold above its gate. These two lines are the fences."
+ },
+ {
+  "k": "alqajm",
+  "text": "Every limit in Lecture 6, every C M range, every swing, is one of these two fences applied to one transistor."
+ },
+ {
+  "k": "10aic0p",
+  "text": "V G S equals V threshold plus V overdrive."
+ },
+ {
+  "k": "1v9myj5",
+  "text": "Saturated: V D S is at least V overdrive."
+ },
+ {
+  "k": "1kusggr",
+  "text": "N mos: V D is at least V G minus V threshold. P mos: V D is at most V G plus V threshold."
+ },
+ {
+  "k": "asipgy",
+  "text": "Your second chat cleared this up for good. When you walk along a column of transistors you take two kinds of step."
+ },
+ {
+  "k": "1de08jy",
+  "text": "A check goes through a channel, source to drain. It must be at least V overdrive (0.2 volts). Checks are what fail, that is where limits come from."
+ },
+ {
+  "k": "2glpyv",
+  "text": "A link goes from a source to its own gate. It is always exactly V G S (0.7 volts). A link never fails; it just tells you where a gate sits once you know its source."
+ },
+ {
+  "k": "1fst90z",
+  "text": "Example: how low can an N mos pair’s input go? Walk up from ground: the tail needs its check ( V I S S ), then a link up to the gate ( V G S 1 )."
+ },
+ {
+  "k": "1ju7kzg",
+  "text": "And the fences of the last scene are just a check and a link combined: subtract them and the source drops out."
+ },
+ {
+  "k": "jcoeg4",
+  "text": "The three-step method you will use in every scene and question: push towards a rail, find the squeezed channel (check), convert with links."
+ },
+ {
+  "k": "1rvvq0o",
+  "text": "Check: source to drain, at least V overdrive, can fail. Link: source to gate, exactly V G S."
+ },
+ {
+  "k": "6um3w2",
+  "text": "A cascode amplifier: a load on top, a cascode device, an input device, three transistors stacked between 1.8 volts and ground. Where can V out go?"
+ },
+ {
+  "k": "1i643h0",
+  "text": "Draw the column as a tower: one block per transistor, its height equals the voltage across it. The blocks always add up to 1.8 volts. The input block is held at its 0.2 volts (its check) by the bias."
+ },
+ {
+  "k": "1r3s94",
+  "text": "Push V out up: the boundary slides, the load’s block shrinks, until it is squeezed to its 0.2 volts minimum, red. That is the ceiling: 1.6 volts."
+ },
+ {
+  "k": "1xu2iog",
+  "text": "Pull V out down: now the cascode’s block shrinks to 0.2 volts at 0.4 volts. That is the floor."
+ },
+ {
+  "k": "qjel5q",
+  "text": "Rules to keep. Every C M range and swing in this lesson is which block gets squeezed first?."
+ },
+ {
+  "k": "qtvnso",
+  "text": "The limit is the first block squeezed to its V overdrive."
+ },
+ {
+  "k": "1qb8dl5",
+  "text": "The four look-in rules. Looking into a drain with the source grounded you see R O, big (tens of k ohms )."
+ },
+ {
+  "k": "i8c8yf",
+  "text": "Put a resistance R S under the source and the drain looks G M R O times bigger: the transistor fights any change. Up multiplies. This is why a cascode works."
+ },
+ {
+  "k": "1hh6b53",
+  "text": "Looking into a source you see only about 1 over G M, small (around a k ohms ). Down divides. Current pushed into a source flows in easily."
+ },
+ {
+  "k": "aqvsyf",
+  "text": "Into a gate: no current at all, infinite."
+ },
+ {
+  "k": "gk2ly8",
+  "text": "Any gain is a current times a resistance: the input device makes G M V in, and at the output it meets the resistance looking up in parallel with the one looking down. Two roughly equal resistances in parallel halve."
+ },
+ {
+  "k": "cmy6tc",
+  "text": "And the current divider: offered a source (about 1 over G M ) and an R O, nearly all the current goes into the source. Folding relies on this."
+ },
+ {
+  "k": "15umxn",
+  "text": "Up multiplies: G M R O R S. Down divides: 1 over G M."
+ },
+ {
+  "k": "yav3ve",
+  "text": "Ay V equals G M ( R up in parallel with R down )."
+ },
+ {
+  "k": "1okwj0b",
+  "text": "Op amps start with a differential pair: two matched devices sharing a tail current I S S."
+ },
+ {
+  "k": "1vm9pmk",
+  "text": "Any two inputs can be described as their average, the common mode V C M, plus their difference V D. C M always means the average of a pair."
+ },
+ {
+  "k": "pb289",
+  "text": "The difference is the signal: it steers current from one side to the other. The tail fixes the total, so the shared level V C M changes neither current."
+ },
+ {
+  "k": "44if3b",
+  "text": "So the question input C M range means: how far down and up can that shared level go with every device saturated? That is the first thing your Lecture 6 page computes, for folded cascodes."
+ },
+ {
+  "k": "5lqbb2",
+  "text": "V C M equals ( V in 1 plus V in 2 ) over 2, V D equals V in 1 minus V in 2."
+ },
+ {
+  "k": "146a4ym",
+  "text": "A cascode is two devices in one column. M 1 is the pump: its gate takes V in and it turns it into a current G M 1 V in."
+ },
+ {
+  "k": "1jy82o2",
+  "text": "M 2 is the shield, M 1’s bodyguard: its gate is held at a fixed V B, so its source X barely moves. M 1 is protected from the output swinging, and looking down from V out you see R O 1 multiplied by G M 2 R O 2."
+ },
+ {
+  "k": "7h677f",
+  "text": "Down divides at X, so all of M 1’s current goes up through M 2: G M about G M 1. Up multiplies: R down equals G M 2 R O 2 R O 1. The gain becomes about g M r O, squared, 2500 instead of 50."
+ },
+ {
+  "k": "1qvpx92",
+  "text": "The price, as a tower: one more block in the output column, so the output can go only down to 0.4 volts instead of 0.2 volts."
+ },
+ {
+  "k": "1mg6z50",
+  "text": "Do it to a whole differential pair and you get the telescopic op amp: five blocks per column. The output gets only what is left, and the input pair sits in the same column, input and output fight over the same headroom."
+ },
+ {
+  "k": "1rbrel4",
+  "text": "Lecture 5’s answer to that fight is folding: move the input device out of the output column. Next scene, watched step by step."
+ },
+ {
+  "k": "1nvkfv6",
+  "text": "R down equals G M 2 R O 2 R O 1, so Ay V is about g M r O, squared."
+ },
+ {
+  "k": "126l2al",
+  "text": "Start with the plain cascode: input M 1 under cascode M 2, X between them."
+ },
+ {
+  "k": "1k0g3ja",
+  "text": "The key observation: M 2 only needs a current pushed into its source at X. It does not care whether that current comes from below or from the side."
+ },
+ {
+  "k": "inqkqd",
+  "text": "So move M 1 out of the column and turn it upside down: it becomes a P mos, source on V D D, gate on V in, and its drain plugs into X from the side."
+ },
+ {
+  "k": "1u09ym7",
+  "text": "Why does it have to flip type? X now sits below the P mos’s source at V D D: current must flow down out of its drain into X, a P mos does exactly that."
+ },
+ {
+  "k": "17hk8wq",
+  "text": "But now nothing below X carries current to ground. Add a current source I B from X to ground: it must carry M 1’s current and M 2’s current."
+ },
+ {
+  "k": "1rozw6n",
+  "text": "The currents now turn at X, they fold: I B is shared, so M 2 carries I B minus I D 1. That is the meaning of fold."
+ },
+ {
+  "k": "6onpvn",
+  "text": "Follow a signal: raise V in, the P mos pushes less current into X, so M 2 must carry more, so V out falls. Same gain mechanism as before, the input device simply left the output column."
+ },
+ {
+  "k": "jv7b4w",
+  "text": "Gains and costs in one line: the input level and the output stop fighting; you pay with power, a bit of gain and an extra pole."
+ },
+ {
+  "k": "eix4fr",
+  "text": "K C L at the fold: I D, cascode equals I B minus I D, in."
+ },
+ {
+  "k": "yfua2t",
+  "text": "Fold a whole P mos pair (M 1, M 2, tail M 11) into two cascode columns, with your page’s names: top P mos sources M 7, M 8; P mos cascodes M 5, M 6; outputs; N mos cascodes M 3, M 4; fold nodes X, Y; bottom sources M 9, M 10."
+ },
+ {
+  "k": "153esur",
+  "text": "Each column from V D D to ground: source, cascode, output, cascode, source, four blocks. The input pair is not in it."
+ },
+ {
+  "k": "17lhyix",
+  "text": "Look up from V out 1: the P mos cascode M 5 on M 7, an ordinary cascode, G M 5 R O 5 R O 7."
+ },
+ {
+  "k": "1hlwd63",
+  "text": "Look down: the N mos cascode M 3, but under its source (X) hang two things, the bottom source’s R O 9 and the input device’s R O 1. In parallel, about R O over 2. That is the only new piece."
+ },
+ {
+  "k": "htcv0d",
+  "text": "M 1’s signal current reaches X and has two exits: up into M 3’s source ( about 1 over G M 3, easy) or down into R O 1 in parallel with R O 9 (hard). Nearly all goes up, so G M about G M 1 and the gain is G M 1 ( R up in parallel with R down ), a little below a telescopic."
+ },
+ {
+  "k": "xigd7e",
+  "text": "Current bookkeeping you need for the design questions: each bottom source carries its cascode branch plus half the tail."
+ },
+ {
+  "k": "17yxcr4",
+  "text": "You now have every tool. Next: your Lecture 6 page."
+ },
+ {
+  "k": "18cmt7y",
+  "text": "R up equals G M 5 R O 5 R O 7."
+ },
+ {
+  "k": "valz2k",
+  "text": "R down equals G M 3 R O 3 ( R O 1 in parallel with R O 9 )."
+ },
+ {
+  "k": "7r1mmx",
+  "text": "Bottom source current equals I cascode plus I S S over 2."
+ },
+ {
+  "k": "zw6zr1",
+  "text": "Read it once. Now your Lecture 6 page."
+ },
+ {
+  "k": "gwsewm",
+  "text": "Your page’s first circuit: the P mos-input folded cascode you just built. Question: what range of input C M keeps every transistor saturated?"
+ },
+ {
+  "k": "84t1tj",
+  "text": "Only one column matters for the input: M 11, then P, then M 1, then X, then M 9. Let us lift it out."
+ },
+ {
+  "k": "1muh82h",
+  "text": "Two facts fix this column. X is held at V overdrive 9 equals 0.2 volts by the bias of M 9 (and the cascode above it). And P sits one link above the gate: P equals V in plus V G S 1 equals V in plus 0.7."
+ },
+ {
+  "k": "6chr4v",
+  "text": "So changing V in moves only P, and P decides how the 1.8 volts above X is shared between M 11 (above P) and M 1 (below P)."
+ },
+ {
+  "k": "1k4p79k",
+  "text": "The tower of that column (1.8 volts tall). M 9’s block is fixed at 0.2 volts; M 1’s block runs from X to P; M 11’s from P to V D D."
+ },
+ {
+  "k": "18k2hc4",
+  "text": "Ceiling: push V in up. P rises with it, and M 11’s block shrinks, squeezed to 0.2 volts when P equals 1.6 volts, that is, V in equals 1.6 minus 0.7 equals 0.9 volts."
+ },
+ {
+  "k": "1is3afb",
+  "text": "In symbols: check M 11 ( V overdrive 11 below V D D ), then the link down to the gate ( V G S 1 ). Your page’s first line."
+ },
+ {
+  "k": "d5xs7n",
+  "text": "Floor: pull V in down. P falls towards X and now M 1’s block shrinks, squeezed when P equals X + 0.2 equals 0.4 volts, that is, V in equals 0.4 minus 0.7 equals minus 0.3 volts. Below ground!"
+ },
+ {
+  "k": "yvtdsi",
+  "text": "Your page writes it two ways: walk up, check M 9, check M 1, then back down the link: V overdrive 9 plus V overdrive 1 minus V G S 1. Since V G S 1 equals V overdrive 1 plus V threshold P the V overdrive 1 ’s cancel: V overdrive 9 minus V threshold P."
+ },
+ {
+  "k": "1j3ee9c",
+  "text": "Why V overdrive for M 11 but V G S for M 1? M 11’s step is a check (through its channel); M 1’s step is the link to its gate, where V in lives. Both limits use both kinds; only the squeezed block changes."
+ },
+ {
+  "k": "ggcwt0",
+  "text": "V in, C M, max equals V D D minus V overdrive 11 minus V G S 1."
+ },
+ {
+  "k": "cxr9ul",
+  "text": "V in, C M, min equals V overdrive 9 minus V threshold P, below ground."
+ },
+ {
+  "k": "85ppci",
+  "text": "Your second circuit: the mirror image. N mos input pair M 1, M 2 with tail M 11 to ground; it folds into the top: fold nodes X, Y hang under P mos sources M 9, M 10. Below them: P mos cascodes M 7, M 8, the outputs, N mos cascodes M 5, M 6 and bottom sources M 3, M 4."
+ },
+ {
+  "k": "1igkpua",
+  "text": "Gain, two looks. Up from V out 2: the P mos cascode M 8, and under its source (Y) hang two R O: M 10’s and the input device M 2’s."
+ },
+ {
+  "k": "1nteamt",
+  "text": "Down: an ordinary N mos cascode M 6 on M 4. Multiply by G M about G M 1 (the current divider again)."
+ },
+ {
+  "k": "765l14",
+  "text": "C M range, same method. Column: M 9 (from V D D ), then X, then M 1, then its source S, then tail M 11. X is held at V D D minus V overdrive 9 equals 1.6 volts; the link is now S equals V in minus V G S 1."
+ },
+ {
+  "k": "14fexej",
+  "text": "Floor: pull V in down; S falls and the tail’s block is squeezed: V in, min equals V overdrive 11 plus V G S 1 equals 0.9 volts."
+ },
+ {
+  "k": "tlhqhz",
+  "text": "Ceiling: push V in up; S rises towards X and M 1’s block is squeezed at S equals 1.4 volts: V in, max equals 1.4 plus 0.7 equals 2.1 volts, above V D D."
+ },
+ {
+  "k": "1pxiayd",
+  "text": "One rule for both versions: P mos input, then floor below ground; N mos input, then ceiling above V D D. The other limit is always the usual tail check plus link."
+ },
+ {
+  "k": "1opf8oi",
+  "text": "V in, C M, min equals V overdrive 11 plus V G S 1."
+ },
+ {
+  "k": "4f3eid",
+  "text": "V in, C M, max equals V D D minus V overdrive 10 plus V threshold 1, above V D D."
+ },
+ {
+  "k": "y71d8",
+  "text": "Ay V equals G M 1 G M 8 R O 8 ( R O 10 in parallel with R O 2 ) in parallel with G M 6 R O 6 R O 4."
+ },
+ {
+  "k": "7quy3c",
+  "text": "Each folded version passes only one rail. So your page puts both pairs in parallel: an N mos pair and a P mos pair take the same inputs and fold into the same cascode branches."
+ },
+ {
+  "k": "32tiib",
+  "text": "Sweep the input C M from below ground to above V D D. Near ground only the P mos pair conducts; in the middle both do; near V D D only the N mos pair. Some pair always works: rail-to-rail."
+ },
+ {
+  "k": "ih6mz3",
+  "text": "One exam-worthy side effect: G M is not constant, it roughly doubles where both pairs conduct."
+ },
+ {
+  "k": "1iontwg",
+  "text": "Rail-to-rail: N mos and P mos pairs in parallel; G M doubles in the middle."
+ },
+ {
+  "k": "1jyaohy",
+  "text": "Before your page’s folded buffer, the telescopic one it is compared with (Lecture 3 to 4, and three questions here). A unity-gain buffer: V out is wired to M 2’s gate, the inverting input."
+ },
+ {
+  "k": "11e4vt9",
+  "text": "Now the output is also an input gate, so it has to keep two transistors happy. First a link: Q (M 2’s drain equals M 4’s source) sits one V G S 4 below M 4’s gate: Q equals V B 1 minus V G S 4, fixed."
+ },
+ {
+  "k": "155wlxo",
+  "text": "Floor, M 4: its drain is V out, its gate V B 1: N mos fence V out is at least V B 1 minus V threshold 4."
+ },
+ {
+  "k": "xk17nu",
+  "text": "Ceiling, M 2: its gate is now V out, its drain is the pinned Q. An N mos gate may sit at most V threshold above its drain: V out is at most V B 1 minus V G S 4 plus V threshold 2."
+ },
+ {
+  "k": "jnxqzd",
+  "text": "Subtract: V B 1 cancels and only V threshold minus V overdrive 4 is left, a tiny window. Moving V B 1 only slides it."
+ },
+ {
+  "k": "msks13",
+  "text": "The root cause: the input device M 2 shares the output’s column. Your Lecture 6 page shows what happens when it doesn’t."
+ },
+ {
+  "k": "panej5",
+  "text": "V out lies between V B 1 minus V threshold 4 and V B 1 minus V G S 4 plus V threshold 2."
+ },
+ {
+  "k": "mpr50b",
+  "text": "Window width equals V threshold minus V overdrive 4."
+ },
+ {
+  "k": "scfyq8",
+  "text": "Your page zooms into the folded cascode used as a buffer: V out wired to the gate of the P mos input M 2. The N mos cascode M 4 (gate V B 2 ) sits above the bottom source M 10; between them is the fold node, which is also M 2’s drain."
+ },
+ {
+  "k": "14feuf0",
+  "text": "Same job as the telescopic: write each device’s condition with V out in it. First the link: fold node equals V B 2 minus V G S 4 equals 0.8 minus 0.6 equals 0.2 volts, pinned."
+ },
+ {
+  "k": "cjaqri",
+  "text": "M 4 (N mos): drain V out at least gate minus V threshold: V out is at least 0.4 volts. (Your page writes the fence with the source terms cancelling, same line.)"
+ },
+ {
+  "k": "o48dua",
+  "text": "M 2 (P mos): drain may be at most V threshold above the gate: 0.2 is at most V out plus 0.5, so V out is at least minus 0.3 volts."
+ },
+ {
+  "k": "8ul0nw",
+  "text": "Both are floors ( V out is at least, ), and the output must satisfy both, so the higher one binds: V out is at least 0.4 volts. There is no squeezing ceiling from M 2."
+ },
+ {
+  "k": "17gqh70",
+  "text": "Why it works: the fold node does not move with the output, so M 2 can never be squeezed by a rising output. Compare the half-volt telescopic window you just saw."
+ },
+ {
+  "k": "b1hh0u",
+  "text": "Folded buffer: both are floors, the higher binds: V out is at least V B 2 minus V threshold 4."
+ },
+ {
+  "k": "1gwghho",
+  "text": "The single-ended telescopic needs a mirror on top. The simple way (Lecture 3): M 7 and M 5 are both diodes (gates tied to their drains, orange), and M 8, M 6 copy their gates."
+ },
+ {
+  "k": "1n6v5fe",
+  "text": "A diode always takes a whole V G S, never just V overdrive. Two diodes in a row put M 6’s gate (= X) two V G S below V D D."
+ },
+ {
+  "k": "1lffzok",
+  "text": "M 6 stays saturated while its drain ( V out ) is at most V threshold above its gate. So the output tops out at V D D minus 2 V G S plus V threshold equals V D D minus V overdrive 8 minus V overdrive 6 minus V threshold P."
+ },
+ {
+  "k": "1uz6wao",
+  "text": "Compared with ideal cascode sources, one whole V threshold P is wasted, the diode tax. Problem Set 1 P 5 and the 2024 mid sem Q 3 use this. Your page’s last circuit is the fix."
+ },
+ {
+  "k": "jwdw2f",
+  "text": "V out, max equals V D D minus V overdrive 8 minus V overdrive 6 minus V threshold P."
+ },
+ {
+  "k": "t377ib",
+  "text": "Look closely at the last circuit: the gates of M 7 and M 8 are not tied to M 7’s drain. They go down to X, the drain of the cascode M 5 (orange). M 5, M 6 get their own bias (called V B 2 here, V B 1 on your page)."
+ },
+ {
+  "k": "akhjb",
+  "text": "Read the voltages from the top. M 7’s source is V D D and its gate is X, a link: X equals V D D minus V G S 7 equals 1.8 minus 0.7 equals 1.1 volts."
+ },
+ {
+  "k": "cdqo79",
+  "text": "M 5 saturated (P mos fence): its drain X may be at most V threshold 5 above its gate: V B is at least 1.1 minus 0.5 equals 0.6 volts, your page’s first line."
+ },
+ {
+  "k": "1ft0e4c",
+  "text": "M 7 saturated: its drain P (= M 5’s source, one link above V B ) must keep V overdrive 7 below V D D: P max equals 1.6 volts, so V B is at most 1.6 minus 0.7 equals 0.9 volts."
+ },
+ {
+  "k": "1lvvtuj",
+  "text": "So the bias has a window, 0.6 to 0.9 volts, set by two fences. Anywhere inside, both M 5 and M 7 are saturated."
+ },
+ {
+  "k": "1y83wlr",
+  "text": "And the reason to bother: the output can now rise to V D D minus V overdrive 8 minus V overdrive 6 (1.4 volts) instead of losing a V threshold P (0.9 volts)."
+ },
+ {
+  "k": "1x9cfv8",
+  "text": "One slip to fix on your page: V D D minus V overdrive 7 expands to V D D minus V G S 7 plus V threshold 7, with a plus. Tutorial 3 Q 1 d asks for this exact window."
+ },
+ {
+  "k": "3ukru1",
+  "text": "X equals V D D minus V G S 7."
+ },
+ {
+  "k": "jgij7w",
+  "text": "V B lies between V D D minus V G S 7 minus V threshold 5 and V D D minus V overdrive 7 minus V G S 5."
+ },
+ {
+  "k": "1fxznhl",
+  "text": "Your page ends by opening the next topic. Every gain is G M times R out."
+ },
+ {
+  "k": "13ufjgp",
+  "text": "G M is the input device’s G M equals 2 I D over V overdrive: more of it needs more current. Hard."
+ },
+ {
+  "k": "1rydo1b",
+  "text": "R out can be multiplied by G M R O with every cascode, but each stacked cascode costs another V overdrive block."
+ },
+ {
+  "k": "1vxahgk",
+  "text": "Lectures 7 and 8 answer it, a second stage, and gain boosting. The Lecture 7 to 12 lesson picks up exactly here."
+ },
+ {
+  "k": "f4v8u6",
+  "text": "Ay V equals G M times R out."
+ },
+ {
+  "k": "840mr1",
+  "text": "Now every question tied to Lecture 6, you solve each part first."
+ },
+ {
+  "k": "4vdjk9",
+  "text": "What it tests: your page’s first circuit with numbers: the P mos input’s fence and the tail’s check give the input C M range, then checks on the output column give the output range."
+ },
+ {
+  "k": "17j0tke",
+  "text": "Floor: 0.5 minus 0.8 equals minus 0.3 volts, below ground."
+ },
+ {
+  "k": "160625c",
+  "text": "Ceiling: 3 minus 0.4 minus 1.1 equals 1.5 volts."
+ },
+ {
+  "k": "13fns27",
+  "text": "Lowest output: V overdrive 5 plus V overdrive 3 equals 1 volt."
+ },
+ {
+  "k": "66kjtu",
+  "text": "Highest: 3 minus 0.5 minus 0.5 equals 2 volts. A C M of 1.5 volts lies inside both the input range [minus 0.3, 1.5] and the output range [1, 2]: input C M equals output C M is possible (the telescopic of Example 9.6 could not do this)."
+ },
+ {
+  "k": "1rnuv9e",
+  "text": "This is why folded cascodes suit buffers and capacitive feedback: the same DC level can sit at the input and the output."
+ },
+ {
+  "k": "1kfs54c",
+  "text": "Tutorial 2 Q 3 times Razavi 9.3, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "18u72em",
+  "text": "What it tests: the Example 9.7-style design order on a folded cascode, the two looks for gain, and your page’s C M floor V overdrive 5 minus V threshold P."
+ },
+ {
+  "k": "l21cam",
+  "text": "I S S equals 1 milliamp (0.5 milliamps per input device), and each cascode branch gets 0.5 milliamps, so each bottom source carries 1 milliamp."
+ },
+ {
+  "k": "tnabf2",
+  "text": "Four blocks in each output column (tail is not in it, folding!): V overdrive equals (3 minus 1.2) over 4 equals 0.45 volts."
+ },
+ {
+  "k": "bn26re",
+  "text": "Two looks: P mos cascode up, N mos cascode with two R O at the fold node down. About 247."
+ },
+ {
+  "k": "lmyr3z",
+  "text": "0.45 minus 0.8 equals minus 0.35 volts < 0: yes, the input C M can go to 0 volts (and below)."
+ },
+ {
+  "k": "uq57fy",
+  "text": "Exactly your page’s point: the P mos-input folded cascode accepts inputs at ground."
+ },
+ {
+  "k": "m5yy2w",
+  "text": "The circuit, redrawn. Try each part when the lesson stops, then watch how it is done."
+ },
+ {
+  "k": "2lnanr",
+  "text": "What it tests: the folded-cascode bookkeeping: bottom sources carry I S S over 2 plus I; four blocks share the headroom; square law for sizes; omega u equals G M over C L."
+ },
+ {
+  "k": "1ykwrmv",
+  "text": "I S S equals 0.75 milliamps, branch current I equals 0.375 milliamps, bottom sources 0.375 plus 0.375 equals 0.75 milliamps."
+ },
+ {
+  "k": "16g1azm",
+  "text": "V overdrive equals 0.5 volts for M 3, M 10."
+ },
+ {
+  "k": "115erz6",
+  "text": "(W over L) 3,4 equals 22.3; the bottom N mos (twice the current) 44.7; the P mos (I, lower mobility) 78.2."
+ },
+ {
+  "k": "likixh",
+  "text": "(W over L) 1,2 equals 2(0.375 m) over (38.36 mu times 0.09) equals 217."
+ },
+ {
+  "k": "12gglu7",
+  "text": "Ay V about 333 (with G M equals G M 1; P 7 corrects this)."
+ },
+ {
+  "k": "x16kcq",
+  "text": "omega u equals 2.5 millisiemens over 2 picofarads equals 1.25 gigaradians per second."
+ },
+ {
+  "k": "sflrcr",
+  "text": "Same order every time: power, then currents, swing, then overdrives, square law, then sizes, then gain and speed."
+ },
+ {
+  "k": "1ckhj7l",
+  "text": "What it tests: the current divider of the foundations, the reason G M about G M 1, with real numbers."
+ },
+ {
+  "k": "15jcqk2",
+  "text": "About 91 percent of M 1’s signal current goes up through M 3; 9 percent is lost into R O 1 in parallel with R O 5."
+ },
+ {
+  "k": "16q49sl",
+  "text": "333 times 0.911 about 304."
+ },
+ {
+  "k": "1eabc7i",
+  "text": "G M about G M 1 is a good approximation, not exact, the fold node loses a few percent."
+ },
+ {
+  "k": "xe77zy",
+  "text": "Quiz 1 2023-24 Q 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1fxtol7",
+  "text": "What it tests: your page’s N mos-input folded cascode: tail check + link for the floor, fold node + V threshold for the ceiling, links for the bias limits, fences for the swing, two looks for the gain."
+ },
+ {
+  "k": "x9b9lh",
+  "text": "0.15 plus 0.45 equals 0.6 volts."
+ },
+ {
+  "k": "nnkbcq",
+  "text": "Top source check: fold at most 2.85 volts. The fold node is M 3’s source, one link above its gate: V B 2 is at most 2.4 volts."
+ },
+ {
+  "k": "1p43cts",
+  "text": "2.85 plus 0.3 equals 3.15 volts, above V D D, exactly your page’s point (in practice capped at 3 volts)."
+ },
+ {
+  "k": "jp8z37",
+  "text": "Each output runs 0.3 to 2.7 volts; differential 2 times 2.4 equals 4.8 volts."
+ },
+ {
+  "k": "ynkgiz",
+  "text": "1 millisiemens times 833 k about 833."
+ },
+ {
+  "k": "14kvqqs",
+  "text": "Fold node 2.75 volts, then C M max 3.05 volts; outputs 0.4 to 2.6 volts, then swing 4.4 volts."
+ },
+ {
+  "k": "ftgcko",
+  "text": "Every number came from a check, a link, or a fence. Biases at their limits buy the most swing."
+ },
+ {
+  "k": "6khypl",
+  "text": "What it tests: the background scene: M 4’s fence gives the floor, M 2’s fence (gate equals output) the ceiling."
+ },
+ {
+  "k": "s6r6u5",
+  "text": "1.2 minus 0.4 equals 0.8 volts."
+ },
+ {
+  "k": "z8n2f5",
+  "text": "1.2 minus 0.55 plus 0.4 equals 1.05 volts."
+ },
+ {
+  "k": "hbdo2b",
+  "text": "Only 0.25 volts for the output."
+ },
+ {
+  "k": "pz2kdt",
+  "text": "Compare the folded buffer on your page: no ceiling from M 2 at all."
+ },
+ {
+  "k": "n6l8ud",
+  "text": "What it tests: a link for X, M 4’s fence for the floor, the diode tax for the ceiling, and the buffer window."
+ },
+ {
+  "k": "16ro4ft",
+  "text": "1.6 minus 0.893 equals 0.707 volts."
+ },
+ {
+  "k": "1chg06v",
+  "text": "V out is at least 1.6 minus 0.7 equals 0.9 volts."
+ },
+ {
+  "k": "q40ddf",
+  "text": "(c) 3 minus 0.8 minus 0.361 minus 0.361 equals 1.478 volts: one V threshold P lower than ideal cascode loads would allow, the diode tax."
+ },
+ {
+  "k": "12g82av",
+  "text": "1.407 volts; the window is 0.9 to 1.407 volts."
+ },
+ {
+  "k": "1y8sinb",
+  "text": "One honesty note: with W over L equals 200 the diode stack puts M 3’s drain below X, so M 3 is actually in triode; the key assumes saturation."
+ },
+ {
+  "k": "1wy9h2v",
+  "text": "mid sem 2024-25 Q 3 times 10 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1plfxoj",
+  "text": "What it tests: the P mos-flipped telescopic: two looks for gain, P mos fence for the ceiling, the diode stack for the floor, and the buffer fence that now gives a floor."
+ },
+ {
+  "k": "144xosl",
+  "text": "M 2 is the input, M 4 the P mos cascode, M 6 the N mos cascode, M 8 the source. G M 2 equals 0.25 millisiemens, R O P equals 200 kilo-ohms, R O N equals 400 kilo-ohms."
+ },
+ {
+  "k": "1abklrk",
+  "text": "0.25 millisiemens times 8.9 M about 2222."
+ },
+ {
+  "k": "1nk8fg1",
+  "text": "0.7 plus 0.5 equals 1.2 volts."
+ },
+ {
+  "k": "1jg21ew",
+  "text": "1.0 minus 0.4 equals 0.6 volts, the diode tax again, this time at the bottom."
+ },
+ {
+  "k": "jo3krw",
+  "text": "1.4 is at most V out plus 0.5, so V out is at least 0.9 volts: for a P mos input, M 2’s fence becomes a floor."
+ },
+ {
+  "k": "1paqwwz",
+  "text": "Still 1.2 volts. Buffer window 0.9 to 1.2 volts."
+ },
+ {
+  "k": "1apchu0",
+  "text": "Flip N mos and P mos and every fence flips: the P mos telescopic’s buffer window is limited from below by M 2."
+ },
+ {
+  "k": "1ty8y46",
+  "text": "Tutorial 3 Q 1 times Razavi 9.4, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "12yp9vg",
+  "text": "What it tests: a fence for the C M ceiling, a link for X, the telescopic buffer window, and the two fences that bound V B 2, your page’s last circuit."
+ },
+ {
+  "k": "1vxy7v4",
+  "text": "1.7 minus 0.893 plus 0.7 equals 1.507 volts."
+ },
+ {
+  "k": "xhjonc",
+  "text": "X equals 3 minus 1.161 equals 1.839 volts."
+ },
+ {
+  "k": "v07dpy",
+  "text": "Window 1.0 to 1.507 volts (width V threshold minus V overdrive 4 )."
+ },
+ {
+  "k": "1v4mfd0",
+  "text": "V B 2 is at least 1.039 volts, your page’s first line."
+ },
+ {
+  "k": "1qquaqc",
+  "text": "V B 2 is at most 1.478 volts. (Same as your page’s P is at most V D D minus V overdrive 7, written with M 7’s gate at X.)"
+ },
+ {
+  "k": "7r0gng",
+  "text": "Your page’s last circuit in exam form: one link for X, two fences for the bias window."
+ },
+ {
+  "k": "agghzq",
+  "text": "Tutorial 2 Q 2 times Razavi 9.2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "lfrzqw",
+  "text": "What it tests: the diode tax: two P mos diodes take two whole V G S, then the N mos fence on M 3; the buffer fence on M 2 for the ceiling."
+ },
+ {
+  "k": "t8y4z3",
+  "text": "3 minus 2 V G S, P is at least 1.4 minus 0.7, so each P mos may use at most 1.15 volts: an overdrive of at most 0.35 volts."
+ },
+ {
+  "k": "1hb2k8e",
+  "text": "W over L equals 212.8, so W equals 106 micro m."
+ },
+ {
+  "k": "nbdeoa",
+  "text": "0.7 volts."
+ },
+ {
+  "k": "xkqit6",
+  "text": "The buffer fence on M 2 wins: 1.21 volts. The window is only half a volt."
+ },
+ {
+  "k": "7gi5ns",
+  "text": "About 1300."
+ },
+ {
+  "k": "9qdrow",
+  "text": "Exactly the diode tax and the buffer window from the background scenes, now with numbers."
+ },
+ {
+  "k": "ffs27r",
+  "text": "mid sem 2023-24 Q 3 times 14 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1hsdkc6",
+  "text": "What it tests: the design order: slew rate, then current; floor, then N mos overdrive; ceiling, then P mos overdrive (the tail carries twice the side current); bias limits by checks and links; two-look gain."
+ },
+ {
+  "k": "juv20l",
+  "text": "I S S equals 5 volts per microsecond times 10 picofarads equals 50 microamps: 25 microamps per side."
+ },
+ {
+  "k": "1sjb39x",
+  "text": "22.2."
+ },
+ {
+  "k": "1ba6neo",
+  "text": "22.5: both types end up the same size."
+ },
+ {
+  "k": "o4d2jr",
+  "text": "0.6 volts."
+ },
+ {
+  "k": "1de41g3",
+  "text": "0.88 volts."
+ },
+ {
+  "k": "puxznr",
+  "text": "1.3 volts."
+ },
+ {
+  "k": "5o829u",
+  "text": "About 1900."
+ },
+ {
+  "k": "1sywozi",
+  "text": "Specs to sizes in a fixed order: current, floor, ceiling, biases, gain."
+ },
+ {
+  "k": "1i3syin",
+  "text": "Four moves solve every Lecture 6 question: currents, levels by checks and links, fences for buffers and biases, and gain by two looks."
+ },
+ {
+  "k": "1txkelf",
+  "text": "Say it back. Listen first."
+ },
+ {
+  "k": "1ugcqec",
+  "text": "Next line."
+ },
+ {
+  "k": "1j12cua",
+  "text": "Now from memory."
+ }
+]

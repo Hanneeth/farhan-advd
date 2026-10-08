@@ -1,13 +1,32 @@
-# Analog Lab: animated lessons (ADVD / EEE F313)
+# Analog Gym
 
-Open any file in `lessons/` in a browser (works offline; best on a large screen, full-screen with F11).
+An offline, interactive tutor for Razavi's op-amp chapter (EEE/INSTR F313), built from `docs/build-spec.md` (the original build prompt; `CLAUDE.md` is now a short working guide).
 
-| File | Covers |
+## Use it
+
+- **One file, anywhere:** `npm run build:single` → open `dist-single/index.html` in any browser (works offline, on a phone too).
+- **Develop:** `npm install`, then `npm run dev`.
+
+Progress lives in your browser. Export or import it from **Settings**.
+
+## Checks
+
+| Command | What it checks |
 |---|---|
-| Analog Lab Lec 6 (animated).html | Folded cascodes from the ground up + every Lec 6 question |
-| Analog Lab Lec 7-12 (animated).html | Two-stage op amps, gain boosting, boosters, CMFB |
-| Analog Lab Lec 11-14 (animated).html | CMFB, frequency and poles from zero, settling, slewing, stability |
-| Analog Lab Lec 15-17 (animated).html | Phase margin, peaking/ringing, compensation (dominant pole, Miller, RHP zero) |
-| Analog Lab Revision Lec 1-10 (animated).html | One scene per lecture + timed rapid-fire drills |
+| `npm test` | Physics unit tests, the full CLAUDE.md §11 regression table, Quiz 1/2 keys, Tutorials 2–3, generators (300 seeds each, two independent solves), answer checker, content lint |
+| `npm run shots` | Playwright: every figure at 1280 px and 390 px in light and dark mode, with automatic label-overlap detection; a smoke test of every lesson and page; the offline single-file build |
+| `npm run typecheck` | TypeScript |
 
-Orange stops are your turn: the lesson waits for your answer, checks every intermediate step, and shows the full method after.
+## Layout
+
+```
+src/physics/    pure functions + tests: the single source of truth for every number
+src/circuits/   SVG component library (transistor symbols or simplified boxes) and parametric figures
+src/labs/       MOSFET lab, DC recipe stepper (more labs in later milestones)
+src/content/    curriculum, lessons as data, glossary
+src/practice/   problem schema, generators, fixed bank, checker, mistake catalogue
+src/review/     Leitner review deck, mistake log
+src/app/        routing, Path map, progress store, settings
+content/        inventory.md (source inventory and flags), design-tokens.md
+source/         your material: conversation, Razavi, notes, tutorials, quizzes, handout
+```

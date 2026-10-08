@@ -1,0 +1,554 @@
+[
+ {
+  "k": "1om6ovm",
+  "text": "This is the fast revision of Lectures 1 to 10, built for one goal: solving mid sem and quiz questions quickly, with every formula in your head, because you cannot carry a sheet."
+ },
+ {
+  "k": "1cclh7o",
+  "text": "Each lecture gets one scene: its circuit on the left and every exam formula on the right, one at a time. Say each formula with the voice. Then an if the question says box tells you which formula a question is asking for."
+ },
+ {
+  "k": "1qll13l",
+  "text": "Every few lectures, rapid-fire questions with a tight clock. At the end, a formula sprint. Use Memorise pace if you want longer pauses."
+ },
+ {
+  "k": "1ivujge",
+  "text": "Square law: I D equals half mu C O X W over L V overdrive squared, and the overdrive is V G S minus V threshold."
+ },
+ {
+  "k": "1ubym8i",
+  "text": "G M three ways. The fastest in exams is 2 I D over V overdrive."
+ },
+ {
+  "k": "1w9bejb",
+  "text": "R O equals 1 over ( lambda I D ), and the intrinsic gain G M R O equals 2 over ( lambda V overdrive )."
+ },
+ {
+  "k": "pwnyaq",
+  "text": "Saturated: N mos drain at least V threshold below its gate; P mos drain at most V threshold above."
+ },
+ {
+  "k": "y08rur",
+  "text": "And for every design question, the square law turned round: W over L equals 2 I D over ( mu C O X V overdrive squared )."
+ },
+ {
+  "k": "exg3jd",
+  "text": "If a question asks for W over L: find the current and the overdrive first. For G M: two I D over V overdrive. For is it saturated: the fence."
+ },
+ {
+  "k": "19wmo56",
+  "text": "Every number in this course comes from one transistor. Five formulas."
+ },
+ {
+  "k": "159hixh",
+  "text": "G M equals 2 I D over V overdrive, R O equals 1 over ( lambda I D )."
+ },
+ {
+  "k": "1ek63lo",
+  "text": "W over L equals 2 I D over ( mu C O X V overdrive squared )."
+ },
+ {
+  "k": "rqwrbd",
+  "text": "Into a drain: R O. With R S under the source it multiplies: about G M R O R S. Up multiplies."
+ },
+ {
+  "k": "1cs01vp",
+  "text": "Into a source: about 1 over G M. Down divides."
+ },
+ {
+  "k": "d0plrn",
+  "text": "A cascode: G M 2 R O 2 R O 1, so its gain is about g M r O, squared."
+ },
+ {
+  "k": "16qrj7k",
+  "text": "Every gain: G M times R up in parallel with R down."
+ },
+ {
+  "k": "1ua2mv",
+  "text": "Mirrors copy current in the ratio of the W over L values."
+ },
+ {
+  "k": "koteq",
+  "text": "Any gain question: look up, look down, parallel them, times G M. Any current question: mirror ratios."
+ },
+ {
+  "k": "1dlax1p",
+  "text": "The second toolkit: what resistance you see looking into each terminal, and how every gain is built from it."
+ },
+ {
+  "k": "15umxn",
+  "text": "Up multiplies: G M R O R S. Down divides: 1 over G M."
+ },
+ {
+  "k": "yav3ve",
+  "text": "Ay V equals G M ( R up in parallel with R down )."
+ },
+ {
+  "k": "13viioa",
+  "text": "The divider sets beta equals R 2 over ( R 1 plus R 2 ), and the ideal gain is 1 over beta."
+ },
+ {
+  "k": "vgzs30",
+  "text": "The real gain is A over (1 plus beta A), a little below 1 over beta."
+ },
+ {
+  "k": "18cis7x",
+  "text": "The gain error: 1 over (1 plus beta A), about 1 over ( beta A)."
+ },
+ {
+  "k": "hbg610",
+  "text": "So the minimum open-loop gain is the closed-loop gain divided by the allowed error."
+ },
+ {
+  "k": "9d7w6j",
+  "text": "Gain error below some percent: the open-loop gain must be at least the ideal gain divided by the error."
+ },
+ {
+  "k": "x4alio",
+  "text": "Lecture 1, Razavi Example 9.1: why an op amp needs a huge open-loop gain."
+ },
+ {
+  "k": "1286fte",
+  "text": "Ay closed equals A over 1 plus beta A, epsilon is about 1 over beta A."
+ },
+ {
+  "k": "ljx2l0",
+  "text": "One pole: GBW is Ay 0 times the pole, and the pole is the output resistance times C L."
+ },
+ {
+  "k": "ssvfy8",
+  "text": "Gain of both: G M times R O of the input in parallel with R O of the load."
+ },
+ {
+  "k": "crptpa",
+  "text": "Input C M: floor V I S S plus V G S 1 for both. Ceiling: with current-source loads V D D minus V overdrive 3 plus V threshold N; with the diode of the 5-T, V D D minus V G S 3 plus V threshold 1."
+ },
+ {
+  "k": "1lfb17d",
+  "text": "Fully differential swing: twice V D D minus three overdrives."
+ },
+ {
+  "k": "1i7mhoi",
+  "text": "5-T swing: no factor two, single output."
+ },
+ {
+  "k": "p2m118",
+  "text": "Input C M range: floor is the tail check plus a link, ceiling is the load plus the fence. Swing: V D D minus the blocks in the output column."
+ },
+ {
+  "k": "1uythg",
+  "text": "Lecture 2: the two one-stage op amps. For each, four numbers: gain, input C M range, swing, bandwidth."
+ },
+ {
+  "k": "1l9jze6",
+  "text": "5-T: Ay V equals G M 2 ( R O 2 in parallel with R O 4 ), C M max V D D minus V G S 3 plus V threshold 1."
+ },
+ {
+  "k": "1niocbi",
+  "text": "Fully differential swing: 2( V D D minus V overdrive 3 minus V overdrive 1 minus V I S S )."
+ },
+ {
+  "k": "h22os7",
+  "text": "As a buffer the 5-T output resistance falls to 1 over G M 2 and its pole moves up to G M 2 over C L."
+ },
+ {
+  "k": "31yvz2",
+  "text": "Telescopic gain: about g M r O, squared over 2."
+ },
+ {
+  "k": "13rzbcn",
+  "text": "Fully differential telescopic swing: twice V D D minus five blocks."
+ },
+ {
+  "k": "xc0c0d",
+  "text": "With a diode-stack mirror, one whole V threshold P is lost."
+ },
+ {
+  "k": "1uauxni",
+  "text": "As a buffer the telescopic only works in a window V threshold minus V overdrive 4 wide."
+ },
+ {
+  "k": "fnh6ma",
+  "text": "Telescopic used as a buffer: two fences, M 4 gives the floor and M 2 the ceiling."
+ },
+ {
+  "k": "76ov51",
+  "text": "Lecture 3: the 5-T as a unity-gain buffer, then the telescopic op amp and its narrow buffer window."
+ },
+ {
+  "k": "1azlluq",
+  "text": "Telescopic: A is about g M r O, squared over 2."
+ },
+ {
+  "k": "1w9d9zq",
+  "text": "Buffer window: V B 1 minus V threshold 4 to V B 1 minus V G S 4 plus V threshold 2."
+ },
+ {
+  "k": "51e0wn",
+  "text": "0.316 volts."
+ },
+ {
+  "k": "abaia5",
+  "text": "G M equals 0.316 millisiemens, R O equals 200 kilo-ohms: G M R O equals 63.2."
+ },
+ {
+  "k": "if5662",
+  "text": "10 over 0.01: 1000."
+ },
+ {
+  "k": "1ihstcb",
+  "text": "1.8 minus 0.7 plus 0.4: 1.5 volts."
+ },
+ {
+  "k": "1jygps4",
+  "text": "Five blocks of 0.2: 1.6 volts peak to peak."
+ },
+ {
+  "k": "id9ju3",
+  "text": "Only 0.2 volts."
+ },
+ {
+  "k": "ighuu9",
+  "text": "If any of those took longer than its clock, replay that lecture’s scene once more."
+ },
+ {
+  "k": "96ujhz",
+  "text": "One: the power gives the current; each side gets half the tail."
+ },
+ {
+  "k": "141zy67",
+  "text": "Two: the swing budget. What is left of V D D is shared among the stacked overdrives."
+ },
+ {
+  "k": "tu5697",
+  "text": "Three: sizes from the square law."
+ },
+ {
+  "k": "1mp1wbs",
+  "text": "Four: check the gain with the two looks."
+ },
+ {
+  "k": "137ac83",
+  "text": "Five: not enough gain? Make the loads longer: G M R O grows with root WL over I D, while the overdrives stay put."
+ },
+ {
+  "k": "a5pws5",
+  "text": "Any design question: write the five steps down first, then fill in numbers."
+ },
+ {
+  "k": "4zdug0",
+  "text": "Lecture 4: the design recipe. Every design question follows the same order."
+ },
+ {
+  "k": "t55428",
+  "text": "Design order: currents, overdrives, sizes, gain, lengthen."
+ },
+ {
+  "k": "yrpmy8",
+  "text": "Example 9.6: the output C M is V B minus ( V G S 3, 4 minus V threshold 1, 2 )."
+ },
+ {
+  "k": "1q5zdvt",
+  "text": "K C L at the fold: each bottom source carries the cascode branch plus half the tail."
+ },
+ {
+  "k": "1ngs1x1",
+  "text": "Looking up: an ordinary P mos cascode."
+ },
+ {
+  "k": "1aaklcj",
+  "text": "Looking down: two R O hang on the fold node, R O 1 and R O 9."
+ },
+ {
+  "k": "yyigde",
+  "text": "Gain: G M 1 times the two looks in parallel."
+ },
+ {
+  "k": "k6iz2b",
+  "text": "Currents in a folded cascode: bottom source equals branch plus half the tail. Gain: remember the two R O at the fold node."
+ },
+ {
+  "k": "x1jr2n",
+  "text": "Lecture 5: folding takes the input device out of the output column."
+ },
+ {
+  "k": "valz2k",
+  "text": "R down equals G M 3 R O 3 ( R O 1 in parallel with R O 9 )."
+ },
+ {
+  "k": "1ax3cdu",
+  "text": "Bottom source equals I branch plus I S S over 2."
+ },
+ {
+  "k": "1tokytb",
+  "text": "P mos input: floor V overdrive 9 minus V threshold P, below ground; ceiling V D D minus V overdrive 11 minus V G S 1."
+ },
+ {
+  "k": "efl3n",
+  "text": "N mos input: floor V overdrive 11 plus V G S 1; ceiling V D D minus V overdrive 10 plus V threshold 1, above V D D."
+ },
+ {
+  "k": "1v6xyea",
+  "text": "Rail-to-rail: both pairs; G M doubles in the middle."
+ },
+ {
+  "k": "1b1dw3t",
+  "text": "Folded buffer: two floors, the higher binds, no ceiling from the input device."
+ },
+ {
+  "k": "65fsjy",
+  "text": "Diode-stack load: a whole V threshold P is lost."
+ },
+ {
+  "k": "1ilrl15",
+  "text": "Low-voltage cascode load: V B sits between two fences, and no diode tax."
+ },
+ {
+  "k": "enbne3",
+  "text": "Folded input range: it passes the rail opposite to the input pair. Bias limits: a source at its edge, then a link."
+ },
+ {
+  "k": "smjex9",
+  "text": "Lecture 6, the page you have already done in detail. Six lines."
+ },
+ {
+  "k": "l527vq",
+  "text": "P mos input floor V overdrive 9 minus V threshold P; N mos input ceiling V D D minus V overdrive 10 plus V threshold 1."
+ },
+ {
+  "k": "d0t6dz",
+  "text": "1 milliamp in total, 0.5 per side."
+ },
+ {
+  "k": "1r7o8m1",
+  "text": "125."
+ },
+ {
+  "k": "1y1zgy5",
+  "text": "1 milliamp."
+ },
+ {
+  "k": "ubb7ai",
+  "text": "Minus 0.3 volts, below ground."
+ },
+ {
+  "k": "1c7bl72",
+  "text": "2 volts, above V D D."
+ },
+ {
+  "k": "qrsems",
+  "text": "Folding moves the input range past one rail. Remember which rail."
+ },
+ {
+  "k": "11fhu53",
+  "text": "Two stages: the gains multiply."
+ },
+ {
+  "k": "1kf9qps",
+  "text": "Stage 1 telescopic: the two cascode looks."
+ },
+ {
+  "k": "3ki77l",
+  "text": "Stage 2, a common-source: G M 9 times R O 9 in parallel with R O 11."
+ },
+ {
+  "k": "13lnuxr",
+  "text": "The DC level between the stages is a link: V D D minus V G S 9."
+ },
+ {
+  "k": "3qyylg",
+  "text": "Boosting: an amplifier holding the source multiplies the output resistance by (1 plus Ay 1 )."
+ },
+ {
+  "k": "zpksly",
+  "text": "Two-stage: multiply the gains, find X by a link. Auxiliary amplifier: multiply the cascode term by one plus Ay 1."
+ },
+ {
+  "k": "1v7vq3y",
+  "text": "Lecture 7: two stages split the jobs, and the first gain-boosting result."
+ },
+ {
+  "k": "e5p6y0",
+  "text": "A equals Ay 1 Ay 2, V X equals V D D minus V G S 9."
+ },
+ {
+  "k": "1aufs1z",
+  "text": "R out equals R S plus R O plus (1 plus Ay 1 ) G M R S R O."
+ },
+ {
+  "k": "dggdro",
+  "text": "Boosted cascode: G M is still G M 1; R out gains a factor (1 plus Ay 1 )."
+ },
+ {
+  "k": "og7mwt",
+  "text": "So the gain is about ( G M R O ) cubed."
+ },
+ {
+  "k": "lctla",
+  "text": "A CS booster: Ay 1 equals G M 3 R O 3, but X sits at V G S 3: the output floor is V G S 3 plus V overdrive 2."
+ },
+ {
+  "k": "4o23n8",
+  "text": "A P mos booster forces V G S 2 is at most V threshold 3: M 2 barely on. It fails."
+ },
+ {
+  "k": "1i54fl3",
+  "text": "The folded booster: Ay 1 equals G M 3 G M 4 R O 3 R O 4, no swing lost."
+ },
+ {
+  "k": "14pm9rg",
+  "text": "Boosted cascode: (1 plus Ay 1 ) G M 2 R O 2 R O 1. Lowest output with a CS booster: V G S 3 plus V overdrive 2."
+ },
+ {
+  "k": "1nfozbb",
+  "text": "Lecture 8: the full boosted cascode, and the three ways to build the booster."
+ },
+ {
+  "k": "1jyh8uw",
+  "text": "R out is about (1 plus Ay 1 ) G M 2 R O 2 R O 1."
+ },
+ {
+  "k": "hat6sz",
+  "text": "CS booster: V out, min equals V G S 3 plus V overdrive 2."
+ },
+ {
+  "k": "f6m37g",
+  "text": "With the folded booster: G M 1 times one plus the booster gain times the cascode."
+ },
+ {
+  "k": "6lkdes",
+  "text": "Differential CS booster: check, link, check: V I S S 1 plus V G S 5 plus V overdrive 3."
+ },
+ {
+  "k": "1ib3t59",
+  "text": "A whole folded cascode as booster: its gain by two looks."
+ },
+ {
+  "k": "fbexdy",
+  "text": "Low nodes need P mos-input boosters; high nodes need N mos-input ones."
+ },
+ {
+  "k": "2e7kd8",
+  "text": "Why C M F B: a tiny current mismatch times a huge resistance moves the output C M to a rail."
+ },
+ {
+  "k": "1rzc58k",
+  "text": "Which input pair: look at the DC level. C M drift: the mismatch current times R P parallel R N."
+ },
+ {
+  "k": "1tfriw2",
+  "text": "Lecture 9: the booster is just another amplifier, and a fully differential op amp needs C M F B."
+ },
+ {
+  "k": "1h0vjmc",
+  "text": "delta V out, C M equals ( I P minus I N )( R P in parallel with R N )."
+ },
+ {
+  "k": "1o3ug3p",
+  "text": "Low cascodes: P mos-input booster. High cascodes: N mos-input."
+ },
+ {
+  "k": "1k7ir50",
+  "text": "31 thousand 250."
+ },
+ {
+  "k": "pd103q",
+  "text": "50 times 51 times 50: about 127 thousand. That is ( G M R O ) cubed."
+ },
+ {
+  "k": "vhas9h",
+  "text": "0.8 volts."
+ },
+ {
+  "k": "9rov0x",
+  "text": "Half a volt from one microamp: that is why C M F B."
+ },
+ {
+  "k": "1k28gl0",
+  "text": "Boosting multiplies, and every booster costs a little headroom."
+ },
+ {
+  "k": "shc7in",
+  "text": "Any two signals: the average is C M, the difference is D M."
+ },
+ {
+  "k": "1x0aicg",
+  "text": "C M F B: sense the output C M, compare with V R E F, correct a current source."
+ },
+ {
+  "k": "14p82k8",
+  "text": "Two resistors average the outputs, but they load them: R 1 appears in parallel in the gain."
+ },
+ {
+  "k": "1qycsux",
+  "text": "Source followers do not load the outputs, but shift the level by V G S and cost swing."
+ },
+ {
+  "k": "bqfayh",
+  "text": "The C M F B loop gain: error-amp gain, times G M of the corrected device, times the output resistance."
+ },
+ {
+  "k": "1ta1nkf",
+  "text": "Sensing resistors: put them in parallel in the gain. C M F B loop gain: sense, amplify, current, resistance."
+ },
+ {
+  "k": "1p0xh4k",
+  "text": "Lecture 10: common-mode feedback."
+ },
+ {
+  "k": "1vh0tka",
+  "text": "Resistive sensing: Ay V equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R 1 )."
+ },
+ {
+  "k": "1vhzooz",
+  "text": "C M F B: sense, compare with V R E F, correct."
+ },
+ {
+  "k": "fc4rxf",
+  "text": "The average: 1 volt."
+ },
+ {
+  "k": "1lnclvx",
+  "text": "Two R O on the fold node."
+ },
+ {
+  "k": "1k3tlgd",
+  "text": "One over the loop gain."
+ },
+ {
+  "k": "1mp81j5",
+  "text": "The diode takes a whole V G S."
+ },
+ {
+  "k": "7h4tux",
+  "text": "The cascode term times one plus Ay 1."
+ },
+ {
+  "k": "10amz88",
+  "text": "V threshold minus V overdrive 4."
+ },
+ {
+  "k": "1iunyb7",
+  "text": "That is Lectures 1 to 10. For the frequency, slewing and stability half, use the Lecture 11 to 14 and 15 to 17 lessons."
+ },
+ {
+  "k": "1vi7npx",
+  "text": "Last: the clock. mid sem: one and a half minutes per mark. Quiz: two minutes per mark. If you are over, write the method line and move on."
+ },
+ {
+  "k": "9h4xdq",
+  "text": "Every question: name the circuit and write the formula first, then currents, then levels, then gain. Good luck tomorrow."
+ },
+ {
+  "k": "1txkelf",
+  "text": "Say it back. Listen first."
+ },
+ {
+  "k": "1ugcqec",
+  "text": "Next line."
+ },
+ {
+  "k": "1j12cua",
+  "text": "Now from memory."
+ }
+]

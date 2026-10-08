@@ -1,0 +1,19 @@
+node_modules
+dist
+*.local
+test-results
+playwright-report
+dist-single
+*.tsbuildinfo
+scripts/anim/.kokoro
+
+Analog VLSI Vault/Attachments/Large/
+Analog VLSI Vault/.obsidian/workspace*.json
+Analog VLSI Vault/.obsidian/plugins/obsidian-spaced-repetition/data.json
+
+# kept out of this public copy: textbook, raw course PDFs, and the duplicate build folder
+source/
+study-package/
+pyqs/
+anim-dist/
+.DS_Store

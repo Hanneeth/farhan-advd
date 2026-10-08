@@ -1,0 +1,1958 @@
+[
+ {
+  "k": "njrjqt",
+  "text": "Two halves. First the common-mode feedback of Lectures 10 to 12, with every C M F B question. Then speed: how fast an op amp’s output can move."
+ },
+ {
+  "k": "3eieca",
+  "text": "Speed needs frequency, poles and bandwidth. You have not met those yet, so a whole chapter builds them from zero, a capacitor, a time constant, a sine wave, before Lecture 13 uses them."
+ },
+ {
+  "k": "wnfncq",
+  "text": "Every theory chapter ends with its questions, and every question stops for your answer before it is explained."
+ },
+ {
+  "k": "6n4pax",
+  "text": "Your page starts with an identity that is always true: each input is the average of the two (the common mode) plus half the difference."
+ },
+ {
+  "k": "1gsegk9",
+  "text": "The C M part is the same in both. The D M part has equal size and opposite sign. Nothing else is needed to describe two signals."
+ },
+ {
+  "k": "14kjvw5",
+  "text": "Picture it: two sine waves moving in opposite directions around a shared level. That shared level is V C M; the swinging part is the differential signal."
+ },
+ {
+  "k": "420qob",
+  "text": "Change only the C M and both waves slide up together; the difference does not change. Change only the D M and they move further apart; the average stays put."
+ },
+ {
+  "k": "yi8oa8",
+  "text": "Why we care: at the outputs, the differential part is our signal. The common part, the outputs’ shared DC level, is not controlled by anything yet."
+ },
+ {
+  "k": "1nzh0d7",
+  "text": "Lecture 9 showed what goes wrong: with current-source loads the output C M is set by a tiny current mismatch times a huge resistance. Lecture 10 builds the loop that fixes it."
+ },
+ {
+  "k": "1y5myew",
+  "text": "C M is V 1 plus V 2 over 2, D M is V 1 minus V 2. D M moves the outputs apart, C M moves them together."
+ },
+ {
+  "k": "3pc55k",
+  "text": "Before the C M F B loop, follow the currents in the amplifier it controls. Two rules: in an N mos, current flows from drain to source, downwards. And current never chooses a path: the sources set it, the devices share it."
+ },
+ {
+  "k": "1ixb78x",
+  "text": "Start at the bottom. The tail source pulls I S S out of node P, where the sources of M 1 and M 2 meet, and sends it to ground."
+ },
+ {
+  "k": "18qlbrx",
+  "text": "That current reaches P through M 1 and M 2. K C L at P: I S S equals I D 1 plus I D 2. With equal inputs the pair is symmetric, so each side carries half, I S S over 2."
+ },
+ {
+  "k": "1tzezu5",
+  "text": "At the top, each load source pushes I 1 down from V D D into its output node."
+ },
+ {
+  "k": "1ssdggs",
+  "text": "K C L at each output: I 1 comes in and I D 1 goes out, so they must be equal. But two separate sources set them. Any mismatch has nowhere to go except the node’s huge resistance: that is the Lecture 9 drift."
+ },
+ {
+  "k": "ycien2",
+  "text": "That is the C M F B amplifier’s job: it trims the tail until I S S equals 2 I 1 exactly. Then both output nodes balance and nothing drifts."
+ },
+ {
+  "k": "32u3jb",
+  "text": "Now a small differential input: V in 1 up a little, V in 2 down. M 1 takes delta I more, M 2 gives up the same delta I. The total is still I S S: the tail does not care how it is shared."
+ },
+ {
+  "k": "19t9l49",
+  "text": "M 1 pulls delta I more than its load gives, so V out 1 falls; V out 2 rises by the same amount. The average does not move, so the C M F B loop sees nothing."
+ },
+ {
+  "k": "uuf26z",
+  "text": "The current rules for this pair, in one card. Sources set the currents; K C L at each node tells you how they split."
+ },
+ {
+  "k": "1nbxrd4",
+  "text": "Your page’s general structure. The pair M 1, M 2 with current-source loads I 1, the amplifier whose output C M floats."
+ },
+ {
+  "k": "1mpgmhc",
+  "text": "Block 1, the C M sensing circuit: takes V out 1 and V out 2 and produces their average, V out, C M, ignoring the differential signal."
+ },
+ {
+  "k": "cctylk",
+  "text": "Block 2, the C M F B amplifier: compares V out, C M with a reference V R E F, the level we want."
+ },
+ {
+  "k": "dma8w7",
+  "text": "Block 3, the correction: its output adjusts one current source, here the tail I S S."
+ },
+ {
+  "k": "5ih0oh",
+  "text": "Follow the loop. Suppose the outputs drift up: V out, C M exceeds V R E F,"
+ },
+ {
+  "k": "566tew",
+  "text": "the C M F B amplifier’s output rises,"
+ },
+ {
+  "k": "1ideo66",
+  "text": "the tail pulls more current,"
+ },
+ {
+  "k": "1m34xuq",
+  "text": "and both outputs are pulled back down. Negative feedback: it settles where V out, C M equals V R E F."
+ },
+ {
+  "k": "11ih8eq",
+  "text": "Key point: the differential signal leaves the average unchanged, so the C M F B loop never fights the signal. It only fixes the shared level."
+ },
+ {
+  "k": "1r9doja",
+  "text": "C M F B: sense V out, C M, compare with V R E F, correct a current source."
+ },
+ {
+  "k": "1j04qh2",
+  "text": "The same pair, now with P mos loads M 3 and M 4 and two sensing resistors between the outputs. Follow the bias currents first, then the resistor current."
+ },
+ {
+  "k": "wjxsxq",
+  "text": "Bias first. The tail pulls I S S out of node P. M 3 and M 4 each push I S S over 2 down from V D D, straight through M 1 and M 2. P mos: source to drain. N mos: drain to source. Both downwards."
+ },
+ {
+  "k": "y71ikk",
+  "text": "At rest both outputs sit at the same voltage. No voltage across R 1 and R 2 means no current in them."
+ },
+ {
+  "k": "1uf2da2",
+  "text": "Now a differential output: V out 1 up, V out 2 down. A current I R flows from the higher output, through R 1 and R 2, into the lower one. The midpoint stays at the average."
+ },
+ {
+  "k": "1wobwqk",
+  "text": "Where does I R come from? K C L at V out 1: M 3’s current now feeds both M 1 and the resistor. The resistor takes signal current away from the output node. That is the gain loss: R 1 appears in parallel with R O."
+ },
+ {
+  "k": "1kb8oqz",
+  "text": "In common mode the midpoint rises with the outputs, so no extra current flows. The sensing resistors carry only the differential current."
+ },
+ {
+  "k": "1iisi6z",
+  "text": "The current rules for resistive sensing: bias currents go down, the resistor current goes across, and only for a differential signal."
+ },
+ {
+  "k": "x02c8b",
+  "text": "The simplest C M sensor: two resistors R 1 equals R 2 in series between the outputs. Their midpoint is the C M."
+ },
+ {
+  "k": "1nh4e0w",
+  "text": "Why the midpoint is the average, superposition (your page). Keep only V out 1 (set V out 2 to 0): a divider gives V out 1 R 2 over ( R 1 plus R 2 )."
+ },
+ {
+  "k": "1k1jver",
+  "text": "Keep only V out 2: V out 2 R 1 over ( R 1 plus R 2 )."
+ },
+ {
+  "k": "vvgc50",
+  "text": "Add them; with R 1 equals R 2 every factor is ½: exactly the average."
+ },
+ {
+  "k": "10fgke9",
+  "text": "The cost: for the differential signal the midpoint is AC ground, so each output now has R 1 hanging on it, in parallel with R O 1 in parallel with R O 3."
+ },
+ {
+  "k": "1tc3mho",
+  "text": "Unless R 1 is far bigger than R O (megohms), the gain drops. That is why Tutorial 5 Q 3 uses R equals 10 mega-ohms, and still loses a little."
+ },
+ {
+  "k": "1f2q6f8",
+  "text": "The fix on your page: put a source follower between each output and its resistor, so the resistors never touch the high-resistance outputs."
+ },
+ {
+  "k": "fgyunz",
+  "text": "V out, C M equals V out 1 plus V out 2 2."
+ },
+ {
+  "k": "mbdb5h",
+  "text": "The cost: Ay V equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R 1 )."
+ },
+ {
+  "k": "2r0hge",
+  "text": "The follower sensor. Three separate groups of current live here: the main pair, follower M 5 with I 1, and follower M 6 with I 2."
+ },
+ {
+  "k": "1qo9rhq",
+  "text": "The followers carry their own bias. I 1 flows from V D D down through M 5, drain to source, into its current source. I 2 does the same through M 6."
+ },
+ {
+  "k": "80o7k7",
+  "text": "The main pair is unchanged: I S S in the tail, half down each side. The outputs touch only the followers’ gates, and a gate takes no current, so these groups never mix."
+ },
+ {
+  "k": "1u0dg4f",
+  "text": "Now a differential signal: M 5’s source goes up, M 6’s goes down. A current I R flows out of M 5’s source, through R 1 and R 2, into M 6’s source."
+ },
+ {
+  "k": "14zzlfg",
+  "text": "K C L at M 5’s source: M 5 now supplies I 1 plus I R, and M 6 supplies I R less. The followers deliver the resistor current."
+ },
+ {
+  "k": "ichkz6",
+  "text": "So the outputs keep their full resistance and the gain is untouched. Only the followers work harder."
+ },
+ {
+  "k": "1iqqhet",
+  "text": "The current rules for follower sensing: each follower carries its own bias, and the resistor current comes from the followers, never from the outputs."
+ },
+ {
+  "k": "8hiam2",
+  "text": "Your page’s second sensor: each output drives the gate of a source follower (M 5, M 6, biased by I 1, I 2 ). The resistors hang on the followers’ sources instead."
+ },
+ {
+  "k": "czkq30",
+  "text": "Why it works: a gate draws no current, so the outputs see nothing extra, their high resistance (and the gain) is untouched."
+ },
+ {
+  "k": "qmkblg",
+  "text": "The price: a follower’s source sits one link below its gate. Your page’s numbers: outputs at 0.9 volts, follower sources at 0.5 volts."
+ },
+ {
+  "k": "19xddky",
+  "text": "So the sensed value is the average shifted down by V G S 5, 6, choose V R E F (or the amplifier’s other input) to match."
+ },
+ {
+  "k": "10y97v6",
+  "text": "Your page also marks each follower output as DC + AC: the C M level plus the signal. Averaging cancels the signal and keeps the level."
+ },
+ {
+  "k": "1jfgfjs",
+  "text": "One more cost to remember (Lecture 10 handout): the outputs are now follower gates, so they cannot go below about V G S plus V overdrive, the followers eat some swing."
+ },
+ {
+  "k": "1bvzelw",
+  "text": "Follower sensing: V sense equals V out, C M minus V G S, no loading, some swing lost."
+ },
+ {
+  "k": "qxqk2j",
+  "text": "Now every Lecture 10 question: Quiz 2 2024 Q 2, the 2024 mid sem Q 1 (Tutorial 5 Q 3) in two parts, and Tutorial 5 Q 2."
+ },
+ {
+  "k": "1d73b5m",
+  "text": "The Quiz 2 circuit. Start at the reference: 50 microamps flows from V D D down through diode M 6 into the current source."
+ },
+ {
+  "k": "i78cwc",
+  "text": "M 3 and M 4 have the same W over L and the same gate voltage as M 6, so each copies 50 microamps. Each copy flows straight down through its input transistor, M 1 or M 2, into node P."
+ },
+ {
+  "k": "i6v0lx",
+  "text": "K C L at P: M 5 must pull exactly 100 microamps. Nothing copies that number into M 5. The C M F B amplifier moves M 5’s gate until it does."
+ },
+ {
+  "k": "9onfdy",
+  "text": "Suppose M 5 pulled 110 microamps. The loads still give only 100 microamps, so the extra 10 microamps is drawn out of the output nodes and both outputs fall. The amplifier sees V O, C M below V R E F and lowers M 5’s gate until the tail is back to 100 microamps."
+ },
+ {
+  "k": "1rudiyq",
+  "text": "A differential input only re-shares: M 1 takes 50 microamps plus delta I, M 2 takes 50 microamps minus delta I, and the tail still sees 100 microamps."
+ },
+ {
+  "k": "weczm0",
+  "text": "The current rules for this circuit: the mirrors fix the loads, K C L fixes the tail, and the C M F B amplifier makes M 5 obey it."
+ },
+ {
+  "k": "1zndj0",
+  "text": "Quiz 2 2024-25 Q 2 times 9 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "qj76y7",
+  "text": "What it tests: turning a gain into an overdrive ( Ay D equals 1 over ( lambda V overdrive ) ), the output range from checks (its middle is V R E F ), the input-C M range from a check + a fence, and what ±1 percent means for the C M gain."
+ },
+ {
+  "k": "pvsgbe",
+  "text": "The trick: with equal λ, R O 1 in parallel with R O 3 equals 1 over (2 lambda I D ) and G M equals 2 I D over V overdrive, so the current cancels: Ay D equals 1 over ( lambda V overdrive 1 ), giving V overdrive 1 equals 0.1 volts, V overdrive 5 equals 0.2 volts, V overdrive 3 equals 0.3 volts."
+ },
+ {
+  "k": "1a9jxz4",
+  "text": "Lowest output: the tail’s and M 1’s overdrives, 0.3 volts. Highest: 1.8 minus 0.3 equals 1.5 volts. C M F B holds the C M at V R E F, so put it in the middle: 0.9 volts."
+ },
+ {
+  "k": "6l3nyq",
+  "text": "Floor: tail check plus the link up to M 1’s gate, 0.2 plus 0.5 equals 0.7 volts. Ceiling: M 1’s drain sits at V O, C M equals 0.9 volts and its gate may be V threshold above: 1.3 volts. The middle, 1.0 volt, is the optimum."
+ },
+ {
+  "k": "olyafs",
+  "text": "C M gain equals output-C M change divided by input-C M change: (2 times 0.01 times 0.9) over 0.6 equals 0.03. The C M F B loop must make the C M gain at least this small."
+ },
+ {
+  "k": "i00irh",
+  "text": "Pattern for C M F B level questions: overdrives first, output range by checks (middle equals V R E F ), input range by check + link and fence (middle equals optimum), then C M gain equals allowed change divided by input range."
+ },
+ {
+  "k": "m5yy2w",
+  "text": "The circuit, redrawn. Try each part when the lesson stops, then watch how it is done."
+ },
+ {
+  "k": "yz630",
+  "text": "The 2024 mid sem circuit, with I 1 equals 50 microamps, I 2 equals 200 microamps and W over L equals 50 for every device. The main amplifier is the Quiz circuit again: M 3 and M 4 copy 50 microamps, so the tail M 5 carries 100 microamps. Now follow the error amplifier on the right."
+ },
+ {
+  "k": "14jv7nc",
+  "text": "In the error amplifier, I 2 equals 200 microamps flows down through diode M 12. M 11 has the same W over L and gate voltage, so it copies 200 microamps and feeds the joined sources of the P mos pair M 7, M 8."
+ },
+ {
+  "k": "5tha34",
+  "text": "K C L at the pair’s sources: the 200 microamps splits. With V O, C M equals V R E F the gates are equal, so 100 microamps goes down each side, into the diodes M 9 and M 10."
+ },
+ {
+  "k": "4mdexi",
+  "text": "Diode M 9 and the tail M 5 share a gate voltage and have the same W over L, so M 5 copies M 9’s 100 microamps. That is exactly the 100 microamps the main amplifier needs: the loop is balanced."
+ },
+ {
+  "k": "9jnjtj",
+  "text": "V O, C M going up makes M 8 conduct less, so M 7 takes the extra share. M 9’s current rises, M 5 copies it and pulls harder, and both outputs come back down. Negative feedback."
+ },
+ {
+  "k": "17leheg",
+  "text": "The current rules for this C M F B circuit: each mirror copies its reference, the error pair re-shares a fixed 200 microamps, and M 5 copies M 7’s share."
+ },
+ {
+  "k": "9t5hno",
+  "text": "mid sem 2024-25 Q 1 equals Tutorial 5 Q 3 times 20 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "oeqolj",
+  "text": "What it tests: mirror currents, the D M half circuit (the R midpoint is AC ground), the C M half circuit (tail counts as 2 R O 5 ), the output range’s middle, and CMRR equals Ay D over Ay C M."
+ },
+ {
+  "k": "ujqg6b",
+  "text": "Mirrors first: M 3, M 4 copy 50 microamps, so M 5 carries 100 microamps. G M 1 equals 0.707 millisiemens, R O 1 equals 200 kilo-ohms, R O 3 equals R O 5 equals 100 kilo-ohms."
+ },
+ {
+  "k": "1sjjr74",
+  "text": "Lecture 10’s cost of resistive sensing shows up here: Ay D equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R) equals 46.8."
+ },
+ {
+  "k": "wib23o",
+  "text": "In C M both outputs move together, so the R’s carry nothing. Each half sees the tail as 2 R O 5: Ay C M equals R O 3 over (1 over G M 1 plus 2 R O 5 ) about 0.5."
+ },
+ {
+  "k": "680ynb",
+  "text": "Output floor: tail + M 1 overdrives, 0.341 volts. Ceiling: 1.8 minus V overdrive 3 equals 1.6 volts. Middle: 0.971 volts."
+ },
+ {
+  "k": "u4m13f",
+  "text": "CMRR equals 46.8 over 0.497 about 94 (39.5 decibels). Poor, part 2 adds the C M F B loop."
+ },
+ {
+  "k": "2ynmbm",
+  "text": "These match the 2024 key. Two half circuits, two different answers: in D M the R midpoint is ground, in C M the R’s are open."
+ },
+ {
+  "k": "1qhy8r9",
+  "text": "mid sem 2024-25 Q 1 equals Tutorial 5 Q 3 times part 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1f7q9vu",
+  "text": "What it tests: the C M F B loop gain traced around the loop (sense, then error amp, then tail, then back), and feedback dividing the C M gain by (1 + T) while Ay D stays."
+ },
+ {
+  "k": "208vxt",
+  "text": "Same method as the quiz: allowed output-C M change divided by input-C M range equals 0.031."
+ },
+ {
+  "k": "gsaawd",
+  "text": "Trace the loop once round: the output C M change enters M 8, the pair passes half its G M into diode M 9 ( about 971 ohms), M 9 drives M 5, and M 5’s current change splits into the two outputs. Product about 17."
+ },
+ {
+  "k": "1nuy0lx",
+  "text": "Feedback divides the C M gain by (1 plus T): 0.497 over 18.1 equals 0.027. The D M gain is unchanged."
+ },
+ {
+  "k": "1pah27h",
+  "text": "CMRR jumps to about 1700 (64.6 decibels). And 0.027 is below the 0.031 allowed, so the ±1 percent spec is met."
+ },
+ {
+  "k": "1lyv8s2",
+  "text": "Your key’s loop gain (55.7) comes from a slip in one G M. If the marker insists on the key, quote 55.7 and say why your 17 differs."
+ },
+ {
+  "k": "1y4odjq",
+  "text": "Write-up: loop gain equals product of every gain around the C M loop; closed-loop C M gain equals open-loop C M gain divided by (1 + T); CMRR equals Ay D divided by that."
+ },
+ {
+  "k": "112kq7m",
+  "text": "The Tutorial 5 Q 2 folded cascode. Two P mos sources at the top each push I P down from V D D into a folding node."
+ },
+ {
+  "k": "bg3mqs",
+  "text": "The input pair hangs from those nodes. The tail pulls I S S, and with equal inputs M 1 and M 2 each take I S S over 2, out of the left and the right folding node."
+ },
+ {
+  "k": "1s3i0fz",
+  "text": "K C L at the left folding node: I P comes in, and leaves either through M 1 or down the cascode branch."
+ },
+ {
+  "k": "w83n5f",
+  "text": "The rest, I P minus I S S over 2, folds down through the P mos cascode, the output node and the N mos cascode into M 3. M 3 must sink exactly that, and its gate is V E: the C M F B amplifier makes it match."
+ },
+ {
+  "k": "b7sb6d",
+  "text": "With a differential input each cascode branch changes opposite to its input transistor. M 3 and M 4 do not change, so the difference flows out of one output and into the other. The outputs move apart; the C M stays."
+ },
+ {
+  "k": "1hryvxm",
+  "text": "The current rules for the folded cascode: the top source current folds, part into the input pair and the rest down the cascode, and the C M F B sets the bottom sinks to match."
+ },
+ {
+  "k": "bk1z36",
+  "text": "Tutorial 5 Q 2 times Razavi 9.12, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "ax2dez",
+  "text": "What it tests: Lecture 9’s habit of matching an amplifier to the levels around it, and the C M loop gain read as sense, then amplify, then current, then resistance."
+ },
+ {
+  "k": "emclo6",
+  "text": "Levels decide it. V E must sit near V G S 3, close to ground. A P mos input pair has its N mos mirror at the bottom, so its output rests near V G S, N, the right level. An N mos pair’s output would rest near V D D minus V G S, P."
+ },
+ {
+  "k": "1ocfynn",
+  "text": "Break the loop and follow a C M change: the sensor passes it with gain 1, the error amp multiplies by Ay E A, M 3, M 4 turn it into G M 3 Ay E A times that current,"
+ },
+ {
+  "k": "le7v9b",
+  "text": "and that current lands on each output, which (for a C M change) sees only the cascodes: R up in parallel with R down. Loop gain T equals Ay E A G M 3 ( R up in parallel with R down )."
+ },
+ {
+  "k": "2t28v8",
+  "text": "Check the sign too: V out, C M up, then V E up, then M 3, M 4 pull harder, then outputs down. Negative feedback, as required."
+ },
+ {
+  "k": "x16ilr",
+  "text": "The triode equation (your page). Now make V D S tiny, tens of millivolts."
+ },
+ {
+  "k": "xpibli",
+  "text": "Then V D S squared is negligible next to 2( V G S minus V threshold ) V D S: drop it. The current is proportional to V D S."
+ },
+ {
+  "k": "ym9i9h",
+  "text": "A current proportional to the voltage is a resistor: R on equals 1 over ( mu n C O X W over L ( V G S minus V threshold ))."
+ },
+ {
+  "k": "mye28d",
+  "text": "On the I D, V D S curves (your sketch): near the origin each curve is a straight line through zero. Its slope is 1 over R on."
+ },
+ {
+  "k": "mfcx6o",
+  "text": "Zoom in: every curve is a line. A bigger V G S gives a steeper line, a smaller resistance. The gate controls the resistance."
+ },
+ {
+  "k": "35fynl",
+  "text": "Your page’s one-liner: in saturation a MOSFET is a voltage-controlled current source; in deep triode it is a voltage-controlled resistor. Lectures 11 to 12 use the resistor."
+ },
+ {
+  "k": "1trqlbo",
+  "text": "R on equals 1 over ( mu n C O X W over L ( V G S minus V threshold ))."
+ },
+ {
+  "k": "1860ex6",
+  "text": "Let us follow the current in Lecture 11’s telescopic, with the numbers of Tutorial 5 Question 1: each column carries half a milliamp."
+ },
+ {
+  "k": "1sv59vl",
+  "text": "Start at the top. M 8 and M 9 have a fixed gate bias, so they are current sources: each pushes half a milliamp down its own column. A P mos conducts from its source at the supply to its drain, so the current flows down."
+ },
+ {
+  "k": "16hqxbf",
+  "text": "Nothing leaves the column on the way down. The same current passes the output node, then the N mos cascode and the input device. An N mos conducts from drain to source: down again."
+ },
+ {
+  "k": "34vil2",
+  "text": "The blue wires from the outputs to the gates of M 10 and M 11 carry a voltage, not a current: a gate draws no current."
+ },
+ {
+  "k": "1ndigm3",
+  "text": "At node P the two columns meet. Kirchhoff’s current law: whatever flows into P must flow out, and the only way out is down through the triode devices M 10 and M 11."
+ },
+ {
+  "k": "1c5qkb1",
+  "text": "One milliamp arrives at P. With equal outputs, M 10 and M 11 are equal resistors, so they split it equally: half a milliamp each, down to ground."
+ },
+ {
+  "k": "1i6l6to",
+  "text": "Now add a small differential input: the input device M 2 takes a little more, I D plus delta I, and M 3 a little less, I D minus delta I."
+ },
+ {
+  "k": "rs8azb",
+  "text": "Add them at P: plus delta I and minus delta I cancel. The total stays at one milliamp; the input only moves current from one side to the other."
+ },
+ {
+  "k": "1i8iu6x",
+  "text": "But the P mos source on top still gives exactly I D. The extra delta I on the left has to come out of the output node, so V out 1 falls, and on the right V out 2 rises. That current mismatch is the output signal."
+ },
+ {
+  "k": "qd4ge5",
+  "text": "And the tail? V out 1 down makes M 10 a bigger resistor, V out 2 up makes M 11 a smaller one: the split under P shifts, but the sum still matches one milliamp."
+ },
+ {
+  "k": "49np7u",
+  "text": "Your page’s circuit: a telescopic op amp whose tail is two transistors M 10, M 11 in deep triode, with their gates driven by the two outputs."
+ },
+ {
+  "k": "cs6mg",
+  "text": "They sit between node P and ground with only a tiny V D S (= V P ), so each is a resistor set by its gate, that is, by an output voltage."
+ },
+ {
+  "k": "ut5zz9",
+  "text": "In parallel, conductances add: 1 over R total equals 1 over R on 10 plus 1 over R on 11,"
+ },
+ {
+  "k": "imwiz9",
+  "text": "each conductance is mu n C O X W over L ( V G S minus V threshold ) with V G S equals an output,"
+ },
+ {
+  "k": "qqos24",
+  "text": "so only the sum V out 1 plus V out 2 appears, twice the output C M."
+ },
+ {
+  "k": "tbtl75",
+  "text": "Watch the conductances. A differential signal raises one output and lowers the other: G10 grows, G11 shrinks by the same amount, the total does not move. The sensor ignores the signal."
+ },
+ {
+  "k": "ym4qz2",
+  "text": "A common-mode rise raises both: the total conductance grows, R total falls, the tail pulls harder, and the outputs are pulled back down. Feedback, built right into the tail."
+ },
+ {
+  "k": "22ssq7",
+  "text": "R total equals 1 over ( mu n C O X W over L ( V out 1 plus V out 2 minus 2 V threshold )): sees C M, blind to D M."
+ },
+ {
+  "k": "3690id",
+  "text": "Follow the current in the pair sensor. Two sources set everything: M 5 at the top, and the two sinks I 1 at the bottom. Take M 5 as 20 microamps and each sink as 50."
+ },
+ {
+  "k": "jkutot",
+  "text": "M 5 is a P mos with a fixed gate bias: a current source. Its 20 microamps flow down from the supply, source to drain, into the node below it."
+ },
+ {
+  "k": "grnf0t",
+  "text": "At that node it splits: part goes down through M 3, the rest through M 4. K C L: I 5 equals I D 3 plus I D 4. With equal outputs the circuit is symmetric, so the halves are equal."
+ },
+ {
+  "k": "1ilg02j",
+  "text": "Each follower carries its own current from the supply, drain to source. At the follower’s source node it meets M 3’s current, and the sink below takes both: I 1 equals I D 1 plus I D 3."
+ },
+ {
+  "k": "19erhhc",
+  "text": "M 3 gets 10 microamps, so the follower M 1 carries the rest of the sink: 50 minus 10, 40 microamps. The same on the right."
+ },
+ {
+  "k": "1o3avep",
+  "text": "The rule for every node: the sources set the currents, the devices only share them. If M 3 takes more, M 1 must take less, because the sink below is fixed."
+ },
+ {
+  "k": "ywx01s",
+  "text": "Another sensor on your page: followers M 1, M 2 copy the outputs, and P mos devices M 3, M 4 (gates at V R E F ) compare them, sharing the current source M 5."
+ },
+ {
+  "k": "sbgd3k",
+  "text": "Each device’s current follows the square law of its own difference from V R E F, so the sensed current is a sum of squares (your page’s last line)."
+ },
+ {
+  "k": "1abu4x",
+  "text": "And a sum of squares does not depend only on the sum of the outputs: for big swings the differential signal leaks into the reading. Good for small swings only."
+ },
+ {
+  "k": "1bmxkbv",
+  "text": "Compare the triode sensor, whose reading depends exactly on V out 1 plus V out 2 (as long as the devices stay in deep triode)."
+ },
+ {
+  "k": "45grlv",
+  "text": "Pair sensing: I grows like ( V R E F minus V out 1 ) squared plus ( V R E F minus V out 2 ) squared, nonlinear, small swings only."
+ },
+ {
+  "k": "mwz6rb",
+  "text": "Your page writes Lecture 1’s two lines again: the closed-loop result A over (1 plus beta A) and the error is about 1 over ( beta A) (circled)."
+ },
+ {
+  "k": "3dge79",
+  "text": "The C M F B loop is an ordinary negative-feedback loop. How close the output C M gets to V R E F depends on its loop gain, just like the gain error of Lecture 1."
+ },
+ {
+  "k": "1f2l1se",
+  "text": "Your two circuits: an error amplifier comparing the resistor-sensed C M with V R E F and driving a current source; or triode devices that sense and correct in one go."
+ },
+ {
+  "k": "1ri91l6",
+  "text": "Lecture 12 adds that the error amplifier can drive any current source in the output path, the input tail, or the bottom sources. Wherever it acts, it moves a current until V out, C M equals V R E F."
+ },
+ {
+  "k": "17qkcq2",
+  "text": "Exam link: the loop gain you computed in Lecture 10’s past papers is exactly this beta A of the C M loop."
+ },
+ {
+  "k": "l8lza2",
+  "text": "C M F B is a feedback loop: the C M error is about 1 over ( beta A)."
+ },
+ {
+  "k": "1vc53sh",
+  "text": "Lecture 12’s version (devices renamed: input pair M 3, M 4 with gates at V B 1, triode pair M 11, M 12)."
+ },
+ {
+  "k": "1lflx4b",
+  "text": "Link: node P is M 3’s source, one V G S 3 below its gate: V P equals V B 1 minus V G S 3. The bias fixes P."
+ },
+ {
+  "k": "6xq9hj",
+  "text": "Ohm’s law: the whole tail current 2 I D flows through R total, P, so V P equals 2 I D R total, P."
+ },
+ {
+  "k": "1meripj",
+  "text": "Put in the triode R total, P from Lecture 11,"
+ },
+ {
+  "k": "6tf24t",
+  "text": "and solve for V out 1 plus V out 2: the output C M is now fixed by sizes and biases. Questions use it both ways: size W over L for a wanted C M, or find the C M from the sizes."
+ },
+ {
+  "k": "1btzqzg",
+  "text": "This is exactly Tutorial 5 Q 1, asked again as the 2025 mid sem Q 4, and Quiz 2. Solved below."
+ },
+ {
+  "k": "wmv23t",
+  "text": "V B 1 minus V G S 3 equals 2 I D R total, P pins the output C M."
+ },
+ {
+  "k": "13l2sw4",
+  "text": "Follow the current in the replica circuit. Take the source on the left as I 1 equals 100 microamps."
+ },
+ {
+  "k": "hdkwap",
+  "text": "Start on the left, the replica branch. The source pushes I 1 down through M 14 and M 15 to ground. M 14 is diode-connected: its gate settles at whatever voltage lets it carry I 1."
+ },
+ {
+  "k": "sxhbpr",
+  "text": "Now look right. M 11 is the tail of the input pair, and its gate is tied to M 14’s gate. That wire carries a voltage, not a current."
+ },
+ {
+  "k": "uxefq4",
+  "text": "Same size, same gate voltage: M 11 copies M 14 and carries I 1, 100 microamps. That is the tail current of the input pair."
+ },
+ {
+  "k": "19j853z",
+  "text": "Where does the tail current come from? From the folded cascode above, down through M 1 and M 2, drain to source. They join at the tail node: I D 1 plus I D 2 equals I D 11. Equal inputs, so half each."
+ },
+ {
+  "k": "ckwb6p",
+  "text": "Below M 11 the current splits again, into the two triode sensors M 12 and M 13, and goes to ground. K C L: I D 11 equals I D 12 plus I D 13."
+ },
+ {
+  "k": "6o5i9",
+  "text": "Equal outputs make M 12 and M 13 equal resistors, so they share the 100 microamps: 50 each."
+ },
+ {
+  "k": "wzbhw8",
+  "text": "Now let the output common mode rise. M 12 and M 13 conduct better, the node under M 11 drops, M 11 gets a bigger gate-source voltage and pulls more than I 1. More tail current leaves less for the output branches, and the outputs come back down. The only resting point is V out C M equal to V REF."
+ },
+ {
+  "k": "1pzdycj",
+  "text": "Instead of solving the square law, build a twin. On the right, the real tail: M 11 above the triode sensors M 12, M 13 (gates on the outputs). On the left, a replica branch fed by I 1."
+ },
+ {
+  "k": "m9882c",
+  "text": "M 14 is M 11’s twin (same size, same gate, same current I 1 ). M 15 is the twin of M 12 and M 13 together, but its gate sits at V R E F instead of the outputs."
+ },
+ {
+  "k": "5hotqu",
+  "text": "Your page’s three lines. Same gate voltage and same current only if the two bottom resistors match: M 15’s conductance must equal M 12’s + M 13’s."
+ },
+ {
+  "k": "1oaf21x",
+  "text": "With (W over L) 15 equals (W over L) 12 plus (W over L) 13 that happens exactly when the outputs average to V R E F. The C M is set by V R E F directly, no square-law algebra."
+ },
+ {
+  "k": "1nr4qkl",
+  "text": "Last refinement on your page: M 14’s drain does not sit where M 11’s does, so V D S differs and the copy is slightly off. Put copies of M 1, M 2 (M 17, M 18) on top of M 14, now the replica matches exactly."
+ },
+ {
+  "k": "1ocvk3v",
+  "text": "(W over L) 14 equals (W over L) 11, (W over L) 15 equals (W over L) 12 plus (W over L) 13."
+ },
+ {
+  "k": "tzg5ne",
+  "text": "And the questions: Tutorial 5 Q 1 (the 2025 mid sem Q 4), Quiz 2, and Problem Set 2 P 5."
+ },
+ {
+  "k": "1m3le2h",
+  "text": "Tutorial 5 Q 1 equals mid sem 2025-26 Q 4, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "128m2a0",
+  "text": "What it tests: the triode equation with V G S equals the output C M and V D S equals V P, a link for V B 1, and the output range by checks."
+ },
+ {
+  "k": "6o3tf4",
+  "text": "Triode equation with V G S equals 1.5 volts and V D S equals 0.1 volts: (W over L) 7,8 equals 49.4. (Dropping V D S squared gives 46.3, both marked right.)"
+ },
+ {
+  "k": "vnwr48",
+  "text": "M 5’s source is P, so its gate sits one V G S 5 above: V B 1 equals 0.1 plus 0.7 plus 0.387 equals 1.187 volts."
+ },
+ {
+  "k": "sxdqbo",
+  "text": "Output range by checks: [0.875, 1.58] V per side; doubled for the differential output, 1.40 volts."
+ },
+ {
+  "k": "14a7ble",
+  "text": "Key values: 49.38, 1.187 volts, 1.412 volts. The method: triode equation for the sensors, a link for the bias, checks for the swing."
+ },
+ {
+  "k": "1eg8lcw",
+  "text": "What it tests: a link down from V B 1 to P, then the triode-pair equation solved for W over L, then checks for the lowest output."
+ },
+ {
+  "k": "185g1nj",
+  "text": "Link down from the gate bias: V P equals 0.6 minus (0.4 plus 0.089) equals 0.111 volts."
+ },
+ {
+  "k": "1l0koek",
+  "text": "Rearrange the Lecture 12 equation: (W over L) 11,12 equals 2 I D over ( mu n C O X V P (1.8 minus 0.8)) about 3.62."
+ },
+ {
+  "k": "1sv2avm",
+  "text": "Two checks above P: 0.111 plus 2(0.089) equals 0.289 volts."
+ },
+ {
+  "k": "10jic91",
+  "text": "Part B, new numbers: link down from V B 1 gives V P equals 0.071 volts; the triode equation gives (W over L) 11,12 equals 6.91."
+ },
+ {
+  "k": "zar995",
+  "text": "Part C: V P equals 0.121 volts and (W over L) 11,12 equals 9.85."
+ },
+ {
+  "k": "8mcm6i",
+  "text": "Three versions, one method: link to P, triode equation for W over L, checks for the swing."
+ },
+ {
+  "k": "de0tv9",
+  "text": "What it tests: the replica rules, and the balance condition as matched conductances, W over L ( V G S minus V threshold ) on both sides."
+ },
+ {
+  "k": "e546mo",
+  "text": "Same current, same gate: (W over L) 14 equals (W over L) 11 equals 40."
+ },
+ {
+  "k": "39evt9",
+  "text": "Two parallel devices act like one with the summed width: (W over L) 15 equals 24."
+ },
+ {
+  "k": "1yypmni",
+  "text": "An oversized M 15 conducts more at V R E F, so the loop pushes the outputs up until M 12 + M 13 match it: 1.7 volts instead of 1.5 volts."
+ },
+ {
+  "k": "130cjpw",
+  "text": "Replica questions are always match the twin: copy the device above, sum the devices below, and balance the conductances."
+ },
+ {
+  "k": "205qn6",
+  "text": "Start with the one component that makes everything slow: the capacitor. It is two plates; current flowing in piles charge on them, and the charge shows up as a voltage: Q equals Cv."
+ },
+ {
+  "k": "1rak1l4",
+  "text": "Think of a bucket: current is water flowing in, voltage is the water level, and C is how wide the bucket is. A wide bucket (big C ) rises slowly."
+ },
+ {
+  "k": "5kjnfu",
+  "text": "With a constant current the level rises by the same amount every second: a straight ramp."
+ },
+ {
+  "k": "ogyg7a",
+  "text": "In symbols: i equals C dv over dt, so the slope is dv over dt equals I over C volts per second. Double the current, then double the slope; double C, then half the slope."
+ },
+ {
+  "k": "1d9xv9j",
+  "text": "Units trick: micro A divided by pF gives volts per microsecond directly. 100 microamps into 5 picofarads ramps at 20 volts per microsecond. Remember this picture, slewing in Lecture 13 is nothing more than this ramp."
+ },
+ {
+  "k": "15swkot",
+  "text": "i equals C dv over dt: a constant current gives a ramp of slope I over C."
+ },
+ {
+  "k": "6eo68z",
+  "text": "Now feed the capacitor from a voltage step V 0 through a resistor R. This is your Lecture 13 page’s first circuit, and every op amp output behaves like it."
+ },
+ {
+  "k": "13ygvml",
+  "text": "At first the capacitor is empty, so the whole V 0 sits across R: a big current V 0 over R flows and v shoots up."
+ },
+ {
+  "k": "u4tuvz",
+  "text": "But as v rises, the voltage across R, V 0 minus v, shrinks, so the current shrinks, so v rises more slowly. It never quite stops: an exponential."
+ },
+ {
+  "k": "11q4rc1",
+  "text": "The curve is v(t) equals V 0 (1 minus e to the minus t over tau ) with the time constant tau equals RC, ohms times farads gives seconds."
+ },
+ {
+  "k": "1eivw1i",
+  "text": "Landmarks to memorise: after one τ it has covered 63 percent of the way,"
+ },
+ {
+  "k": "e3fyk0",
+  "text": "after 2.3τ, 90 percent,"
+ },
+ {
+  "k": "6h41z6",
+  "text": "after 4.6τ, 99 percent (within 1 percent), and after 6.9τ, 99.9 percent (within 0.1 percent)."
+ },
+ {
+  "k": "1khfrmg",
+  "text": "Where those numbers come from: the gap left after time t is e to the minus t over tau. Set it equal to the allowed error ε: t equals tau natural log of (1 over epsilon ). natural log of 100 equals 4.6, natural log of 1000 equals 6.9. This is how every settle within x % question is solved."
+ },
+ {
+  "k": "1gcir8p",
+  "text": "One more fact Lecture 13 needs: the starting slope is V 0 over tau, if it kept going straight it would reach V 0 in exactly one τ. A bigger step means a steeper start."
+ },
+ {
+  "k": "dj8wmu",
+  "text": "And the lab favourite: the 10 percent, 90 percent rise time is 2.2 tau."
+ },
+ {
+  "k": "1oi5gyh",
+  "text": "v equals V 0 (1 minus e to the minus t over tau ), tau equals RC."
+ },
+ {
+  "k": "m8p760",
+  "text": "63 percent at τ; 1 percent error after 4.6τ, 0.1 percent after 6.9τ."
+ },
+ {
+  "k": "eqinkd",
+  "text": "Frequency is about sine waves. Picture a point going round a circle at a steady speed; its height, plotted against time, is a sine wave."
+ },
+ {
+  "k": "1s2gmj5",
+  "text": "How fast it goes round is the frequency f, in turns per second, hertz. Engineers often count in radians instead: one turn is 2 pi radians, so omega equals 2 pi f in radians per second."
+ },
+ {
+  "k": "5bl160",
+  "text": "Units trap in every question: formulas like 1 over (RC) give ω in radians per second. Divide by 2 pi only when the question asks for hertz."
+ },
+ {
+  "k": "eq07e9",
+  "text": "Phase is how far round the circle a wave is. The dashed wave is the same wave arriving a quarter-turn, 90 degrees, later: it lags by 90 degrees."
+ },
+ {
+  "k": "1bd07li",
+  "text": "Remember two special lags: 90 degrees (a quarter turn) and 180 degrees (half a turn, the wave comes out upside down). Lecture 14’s stability story is built on these."
+ },
+ {
+  "k": "1r6n7dq",
+  "text": "omega equals 2 pi f."
+ },
+ {
+  "k": "jkkvd2",
+  "text": "Every amplifier output, seen as a model: the input device pushes a current G M V in into a node that has a resistance R out and a capacitance C L to ground."
+ },
+ {
+  "k": "hab0xf",
+  "text": "At DC (frequency zero) the capacitor is an open circuit: all the current goes through R out and V out equals G M V in R out, the normal gain."
+ },
+ {
+  "k": "is8lbo",
+  "text": "For a sine wave, a capacitor acts like a resistance 1 over ( omega C): enormous at low frequency, tiny at high frequency."
+ },
+ {
+  "k": "9i4xee",
+  "text": "Now raise the frequency (R equals 100 kilo-ohms, C equals 5 picofarads). Watch the two current paths: the purple arrow through R, the teal one through C."
+ },
+ {
+  "k": "1ltdebt",
+  "text": "As 1 over ( omega C) falls below R, more and more of the current escapes through the capacitor instead of through R, and V out, which is the current in R times R, shrinks."
+ },
+ {
+  "k": "51s35r",
+  "text": "Back to the special frequency where the two paths are equal: 1 over ( omega C) equals R. There the output is down to 70.7 percent of its DC value."
+ },
+ {
+  "k": "1lxx9n4",
+  "text": "That frequency is the pole: omega p equals 1 over (RC), or F P equals 1 over (2 pi RC) in hertz. Here 2 megaradians per second, that is, 318 kilohertz."
+ },
+ {
+  "k": "xmg8dz",
+  "text": "The one sentence to keep: every node with a resistance and a capacitance makes a pole at 1 over (RC), the same RC as the time constant. Fast in time ⇔ high in frequency."
+ },
+ {
+  "k": "1rpdzsm",
+  "text": "A node with R and C makes a pole at omega p equals 1 over (RC)."
+ },
+ {
+  "k": "1wxicom",
+  "text": "Gains range from 1 to 100 000, so engineers use decibels: dB equals 20 log ( gain ). Every times 10 adds 20 decibels. A gain of 1 is 0 decibels."
+ },
+ {
+  "k": "19ly0by",
+  "text": "The one to remember: minus 3 decibels means the gain has dropped to 1 over root 2 equals 0.707, exactly what happened at the pole."
+ },
+ {
+  "k": "1hs9trz",
+  "text": "The Bode plot: gain in dB against frequency on a log axis, where every decade ( times 10) gets the same width."
+ },
+ {
+  "k": "oyah4h",
+  "text": "For one pole the curve is flat at Ay 0 (40 decibels), then bends down at the pole,"
+ },
+ {
+  "k": "h5l17r",
+  "text": "and the dashed straight-line approximation explains the shape: flat, then falling 20 decibels per decade, ten times the frequency, one tenth of the gain."
+ },
+ {
+  "k": "1na9cbn",
+  "text": "The pole also delays the wave. The phase goes from 0 degrees to minus 90 degrees: minus 45 degrees exactly at the pole, about minus 6 degrees a decade below it, minus 84 degrees a decade above."
+ },
+ {
+  "k": "rakwc1",
+  "text": "Slide along. Up to the pole the gain is still 100,"
+ },
+ {
+  "k": "1bxfvz0",
+  "text": "at the pole: 37 decibels ( times 70.7, minus 3 decibels) and minus 45 degrees. That frequency is the bandwidth, the minus 3 decibels frequency of a one-pole amplifier is its pole."
+ },
+ {
+  "k": "1r5vd1c",
+  "text": "one decade higher: gain times 10 smaller (about 20 decibels), phase minus 84 degrees, nearly the full minus 90 degrees."
+ },
+ {
+  "k": "5d9bxe",
+  "text": "After the pole: minus 20 decibels per decade; at the pole: minus 3 decibels and minus 45 degrees."
+ },
+ {
+  "k": "hsfd9j",
+  "text": "Your notes write every amplifier as a function of s. For one pole: A(s) equals Ay 0 over (1 plus s over omega p). Here s is a shorthand that does two jobs."
+ },
+ {
+  "k": "1pjcsim",
+  "text": "Job 1, frequency: for a sine wave put s equals j omega ( j equals root minus 1 marks the 90 degrees direction). The size and angle of 1 plus j omega over omega p give exactly the Bode magnitude and phase you just saw."
+ },
+ {
+  "k": "z2kok7",
+  "text": "Job 2, the pole’s location: the pole is the value of s that makes the denominator zero: 1 plus s over omega p equals 0, so s equals minus omega p. Draw it as an cross on the s-plane."
+ },
+ {
+  "k": "isacrh",
+  "text": "And in time? A pole at s equals minus omega p means the response contains e to the minus omega pt, a decaying exponential with time constant tau equals 1 over omega p."
+ },
+ {
+  "k": "6ie6n7",
+  "text": "Push the pole further left (a higher omega p ): the step response gets faster. Same fact as before, now in pictures: high pole frequency ⇔ short time constant."
+ },
+ {
+  "k": "1e4choz",
+  "text": "Why this matters later: a pole on the left decays; a pole on the right would grow forever. Stability (Lecture 14 onwards) is all about where the poles sit."
+ },
+ {
+  "k": "1tk9ny4",
+  "text": "tau equals 1 over omega p."
+ },
+ {
+  "k": "1w5ejxw",
+  "text": "Past its pole a one-pole gain falls 10 times for every 10 times in frequency. So the product gain times frequency stays the same all along that sloping line."
+ },
+ {
+  "k": "28utco",
+  "text": "Follow the line down to gain 1 (0 decibels). That frequency is the unity-gain frequency omega u, and by the constant product, omega u equals Ay 0 omega p: the gain-bandwidth product, GBW."
+ },
+ {
+  "k": "hcr0ca",
+  "text": "Now the 5-T O T A. Ay 0 equals G M R out and omega p equals 1 over ( R out C L ). Watch what happens if R out changes: more gain, but the pole moves down by the same factor,"
+ },
+ {
+  "k": "1sos6j0",
+  "text": "less gain, the pole moves up. The sloping line never moves. Multiply them:"
+ },
+ {
+  "k": "5y9od1",
+  "text": "R out cancels: omega u equals G M over C L. The speed of an O T A is set only by the input G M and the load capacitor. In hertz: F U equals G M over (2 pi C L )."
+ },
+ {
+  "k": "19ip6nk",
+  "text": "So two different questions: the open-loop bandwidth 1 over (2 pi R out C L ), and the GBW G M over (2 pi C L ). Lab 7 and Quiz 1 ask both."
+ },
+ {
+  "k": "1y2rf3n",
+  "text": "omega u equals Ay 0 omega p equals G M over C L."
+ },
+ {
+  "k": "1uaxc1k",
+  "text": "The open-loop op amp (blue): gain 1000, pole at 10 kilohertz, unity gain at 10 megahertz."
+ },
+ {
+  "k": "12t3tk3",
+  "text": "Close the loop with β equals 0.1 (a gain-of-10 amplifier, orange). The gain drops to about 10, but the curve now stays flat until it meets the blue line, at about 1 megahertz."
+ },
+ {
+  "k": "rm7kui",
+  "text": "The algebra (one line): put A(s) equals Ay 0 over (1 plus s over omega p) into A over (1 plus beta A). The gain is divided by (1 plus beta Ay 0 ) and the pole is multiplied by (1 plus beta Ay 0 )."
+ },
+ {
+  "k": "1nb7bnl",
+  "text": "Change β and watch: less feedback, then more gain, less bandwidth; more feedback, then less gain, more bandwidth. The corner always slides along the blue line, so gain times bandwidth stays omega u."
+ },
+ {
+  "k": "migjg3",
+  "text": "Since beta Ay 0 much greater than 1: the closed-loop pole is is about beta omega u and the closed-loop time constant is tau equals 1 over ( beta omega u). A buffer (β equals 1) gets the whole omega u."
+ },
+ {
+  "k": "scrtea",
+  "text": "Put this together with t equals tau natural log of (1 over epsilon ) and you can already solve every settling-time question, two of them are coming up."
+ },
+ {
+  "k": "15nfuyw",
+  "text": "Feedback: gain divided by (1 plus beta Ay 0 ), pole times (1 plus beta Ay 0 ); tau cl equals 1 over ( beta omega u)."
+ },
+ {
+  "k": "12i6mo",
+  "text": "Read it once. Then four questions that use only this chapter: Lab 1, a past tutorial on pole shifting, Lab 7 and Lab 8."
+ },
+ {
+  "k": "1xgdn9u",
+  "text": "What it tests: τ equals RC, rise time equals 2.2τ, and bandwidth equals the pole 1 over (2 pi RC)."
+ },
+ {
+  "k": "3k01qj",
+  "text": "C equals tau over R equals 1 nanosecond over 1 kilo-ohm equals 1 picofarad."
+ },
+ {
+  "k": "1jcuz38",
+  "text": "10 percent is reached at 0.105τ and 90 percent at 2.303τ: the difference is 2.2τ equals 2.2 nanoseconds."
+ },
+ {
+  "k": "1aj2tpj",
+  "text": "One pole at 1 over (RC) radians per second; divide by 2 pi: 159 megahertz. DC gain 1 (0 decibels)."
+ },
+ {
+  "k": "6v6h25",
+  "text": "Three facts did it all: τ equals RC, rise time 2.2τ, bandwidth 1 over (2 pi tau )."
+ },
+ {
+  "k": "1xg7msq",
+  "text": "What it tests: the closed-loop pole omega p(1 plus beta Ay 0 ) from the last theory scene."
+ },
+ {
+  "k": "1uo4kyk",
+  "text": "The pole is multiplied by 1 plus beta Ay 0 equals 1001: from 100 hertz to 100.1 kilohertz (orange)."
+ },
+ {
+  "k": "1gjlnch",
+  "text": "With β equals 1 the factor is 100 001: the pole lands at 10 megahertz, the op amp’s whole F U equals Ay 0 F P (yellow)."
+ },
+ {
+  "k": "kt9rwc",
+  "text": "Quick check you can always do: the closed-loop pole is about beta F U. Here F U equals 10 to the 5 times 100 hertz equals 10 megahertz."
+ },
+ {
+  "k": "1g6stzc",
+  "text": "What it tests: gain equals G M R O, a pole 1 over (2 pi R O C L ), and GBW equals G M over (2 pi C L ): the cascode multiplies gain and divides bandwidth by the same factor."
+ },
+ {
+  "k": "lwdhhy",
+  "text": "0.2 millisiemens."
+ },
+ {
+  "k": "bjhqiy",
+  "text": "50."
+ },
+ {
+  "k": "1j4m60v",
+  "text": "About the square: 2500."
+ },
+ {
+  "k": "97z1dt",
+  "text": "637 kilohertz."
+ },
+ {
+  "k": "s1keyo",
+  "text": "31.8 megahertz for both: the cascode has 50 times the gain and a fiftieth of the bandwidth."
+ },
+ {
+  "k": "uzrd3k",
+  "text": "Gain-bandwidth is fixed by G M and C L; the output resistance only trades one for the other."
+ },
+ {
+  "k": "2rgyhz",
+  "text": "What it tests: GBW equals G M over (2 pi C L ) and converting dB back to a ratio."
+ },
+ {
+  "k": "16wnhhp",
+  "text": "G M equals 2 pi (5 megahertz)(5 picofarads) equals 0.157 millisiemens."
+ },
+ {
+  "k": "la8fjk",
+  "text": "10 to the 34 over 20 equals 50.1."
+ },
+ {
+  "k": "rfuroo",
+  "text": "10 to the 74 over 20 about 5012."
+ },
+ {
+  "k": "m7bodj",
+  "text": "GBW gives G M directly, no R out needed, because it cancels."
+ },
+ {
+  "k": "o2xfh0",
+  "text": "What it tests: everything in this chapter at once: F U equals G M over (2 pi C), Ay 0 equals G M R, β, A over (1 plus beta A) and the pole times (1 plus beta Ay 0 )."
+ },
+ {
+  "k": "11d76x0",
+  "text": "From GBW: C O U T equals G M over (2 pi F U ) equals 5.06 picofarads."
+ },
+ {
+  "k": "1fhadpi",
+  "text": "From the DC gain: R O U T equals 58.75 over 159 mu S equals 369 kilo-ohms."
+ },
+ {
+  "k": "69yox7",
+  "text": "A capacitive divider works like a resistive one: β equals 4 over (4+4) equals 0.5."
+ },
+ {
+  "k": "114792y",
+  "text": "58.75 over 30.375 equals 1.934, the ideal 2 is missed by the gain error 1 over (1 plus beta A) (Lecture 1)."
+ },
+ {
+  "k": "1t1wbdv",
+  "text": "Open-loop pole 85 kilohertz, multiplied by 30.4: 2.59 megahertz (close to beta F U equals 2.5 megahertz )."
+ },
+ {
+  "k": "2xl53j",
+  "text": "Notice the order: two specs fix the model (C from GBW, R from gain), then β, then the two feedback rules."
+ },
+ {
+  "k": "1t0h6p5",
+  "text": "Slew rate starts with one picture: a capacitor is a bucket. Current is water flowing in, the voltage is the water level, and the capacitance is how wide the bucket is."
+ },
+ {
+  "k": "1uvzwhp",
+  "text": "Pour in a fixed current, 100 microamps into 5 picofarads. The level rises in a perfectly straight line: every microsecond it gains the same amount, 20 volts."
+ },
+ {
+  "k": "xrqbwa",
+  "text": "That is i equals C dv over dt read backwards: dv over dt equals I over C. A fixed current gives a straight ramp, with slope I over C."
+ },
+ {
+  "k": "gxoikt",
+  "text": "Double the current: twice as fast, 40 volts per microsecond."
+ },
+ {
+  "k": "6mjw7k",
+  "text": "Go back to 100 microamps but make the bucket twice as wide, 10 picofarads: half as fast, 10 volts per microsecond."
+ },
+ {
+  "k": "1fi2g0s",
+  "text": "The unit trick that saves time in every question: microamps divided by picofarads comes out directly in volts per microsecond. 100 over 5 is 20 volts per microsecond, no powers of ten needed."
+ },
+ {
+  "k": "ju1j1",
+  "text": "Now an amplifier. The 5-transistor O T A’s input pair shares one fixed tail current, 40 microamps, between its two sides. The output capacitor gets the difference between the two sides."
+ },
+ {
+  "k": "wo3doe",
+  "text": "A small input step tilts the split a little: one side gets a bit more, the other a bit less, and the difference charges C L. The output follows the smooth exponential it is asked for, the dashed curve."
+ },
+ {
+  "k": "1ldri55",
+  "text": "A bigger step asks for a steeper start, so a bigger current. The split tilts further."
+ },
+ {
+  "k": "b62lie",
+  "text": "Keep going and one side runs empty: it switches off, and the other side carries all of I S S. That is the most current the pair can ever give."
+ },
+ {
+  "k": "uo16vk",
+  "text": "Now the output can only rise as fast as I S S fills C L: a straight ramp at I S S over C L, 20 volts per microsecond, instead of the steep start it wanted. That straight part is slewing, and I S S over C L is the slew rate."
+ },
+ {
+  "k": "1welive",
+  "text": "So every slew question is one comparison: the start slope the step wants, V 0 over tau, against the top speed, the maximum current over the capacitor. Bigger wanted slope: it slews. Once the remaining gap is small enough, it finishes with the normal exponential."
+ },
+ {
+  "k": "xx4273",
+  "text": "10 volts per microsecond."
+ },
+ {
+  "k": "17hir0v",
+  "text": "Time is distance over speed: 0.2 microseconds."
+ },
+ {
+  "k": "1jngmzo",
+  "text": "All of I S S into C L: 20 volts per microsecond."
+ },
+ {
+  "k": "alqrmw",
+  "text": "It wants 100 volts per microsecond and can do 20: it slews."
+ },
+ {
+  "k": "9535kz",
+  "text": "Set the wanted slope equal to the slew rate: 0.2 volts. Anything bigger slews."
+ },
+ {
+  "k": "ivfwmk",
+  "text": "It ramps until the remaining gap is small enough to finish linearly, 0.2 volts. So it ramps 0.8 volts at 20 volts per microsecond: 40 nanoseconds."
+ },
+ {
+  "k": "1xeq9gy",
+  "text": "Six steps, one idea. The tutorial questions after Lecture 13 are exactly these steps with real circuits around them."
+ },
+ {
+  "k": "mqhm03",
+  "text": "Lecture 13 opens with the RC circuit you just met, solved the way your page does it: with the Laplace transform. You only need two table entries."
+ },
+ {
+  "k": "6zgpod",
+  "text": "Laplace turns calculus into algebra: a step of size V 0 becomes V 0 over s; e to the minus at becomes 1 over (s plus a); a capacitor behaves like a resistance 1 over (sC)."
+ },
+ {
+  "k": "wzypfh",
+  "text": "The circuit is a divider: C (as 1 over sC ) under R. Simplify: 1 over (1 plus sRC) equals 1 over (1 plus s tau )."
+ },
+ {
+  "k": "mp9cy8",
+  "text": "Multiply by the step V 0 over s and split into two simple fractions (partial fractions: A equals 1, B equals minus tau on your page)."
+ },
+ {
+  "k": "idzrs",
+  "text": "Each piece is in the table: 1 over s is the step, 1 over (s plus 1 over tau ) is e to the minus t over tau. The exponential appears."
+ },
+ {
+  "k": "8b7drc",
+  "text": "Differentiate: the slope starts at V 0 over tau and dies away. Your page calls this a linear amplifier response."
+ },
+ {
+  "k": "1y210aj",
+  "text": "Linear means: double the step and the whole curve doubles, same shape, same τ, and a starting slope twice as steep. Your page sketches three such curves. Keep that last fact: it is what breaks when the op amp slews."
+ },
+ {
+  "k": "1j3u2s7",
+  "text": "Step is V 0 over s; 1 over (s plus a) gives e to the minus at."
+ },
+ {
+  "k": "6aet2i",
+  "text": "Your page’s model of a real op amp: an ideal gain A followed by its output resistance R out, driving the load C L and the feedback divider R 1, R 2."
+ },
+ {
+  "k": "wbm28c",
+  "text": "The feedback factor is the divider ratio, beta equals R 2 over ( R 1 plus R 2 ), exactly as in Lecture 1."
+ },
+ {
+  "k": "11sg4np",
+  "text": "K C L at the output (your page): the current through R out, the amplifier’s voltage minus V out, over R out, feeds the divider and the capacitor."
+ },
+ {
+  "k": "1h4gmha",
+  "text": "The divider is megohms, R out is kilohms, so drop the divider’s current. Collect V out."
+ },
+ {
+  "k": "1cah5wf",
+  "text": "Factor out (1 plus beta A): a DC gain A over (1 plus beta A) times a one-pole factor."
+ },
+ {
+  "k": "swr30a",
+  "text": "Read off the time constant: the open-loop R out C L, divided by (1 plus beta A). Feedback makes the output (1 plus beta A) times faster."
+ },
+ {
+  "k": "ejhpgh",
+  "text": "Check it against the foundations: with A equals G M R out this is C L over ( beta G M ) equals 1 over ( beta omega u). Two forms, one fact, Tutorial 6 uses the R out C L over (1 plus beta A) form."
+ },
+ {
+  "k": "1fqlwk9",
+  "text": "Three numbers every step question needs: the closed-loop gain, the final value V 0 Ay C L, and the starting slope V 0 Ay C L over tau. Note that the slope grows with the step."
+ },
+ {
+  "k": "4gngcf",
+  "text": "tau equals R out C L 1 plus beta A equals 1 over beta omega u."
+ },
+ {
+  "k": "1syjl75",
+  "text": "Now the real circuit on your page: a 5-T O T A in the same non-inverting loop. V in is on M 1’s gate; the divider brings V out back to M 2’s gate (node X)."
+ },
+ {
+  "k": "gbt78a",
+  "text": "At rest both sides carry I S S over 2. Apply a small step delta V between the gates."
+ },
+ {
+  "k": "1odcgdq",
+  "text": "M 1 takes G M delta V over 2 more; M 2 takes G M delta V over 2 less (the tail keeps the total fixed)."
+ },
+ {
+  "k": "koquvw",
+  "text": "The diode M 3 and mirror M 4 copy M 1’s extra current to the output side. At the output: M 4 pushes G M delta V over 2 more in, M 2 pulls G M delta V over 2 less out."
+ },
+ {
+  "k": "1u5oav1",
+  "text": "Net: G M delta V flows into the output node (your page writes V out (s) equals G M delta V over (s C L ) for the capacitor alone)."
+ },
+ {
+  "k": "osjklb",
+  "text": "That proportionality is what linear means here. And as the output rises, X rises with it, delta V shrinks, the current shrinks: the exponential approach with tau equals 1 over ( beta omega u)."
+ },
+ {
+  "k": "yyzd67",
+  "text": "But G M delta V cannot grow forever: the pair can never deliver more than its tail current I S S. Next scene: what happens when the step is large."
+ },
+ {
+  "k": "11nvcxl",
+  "text": "Small step: output current G M delta V, linear settling."
+ },
+ {
+  "k": "1tceu93",
+  "text": "Same circuit, now a large step. Watch the current in M 2 as delta V grows."
+ },
+ {
+  "k": "1siwxo9",
+  "text": "For small delta V the output current grows in proportion (dashed line, G M delta V ). But it bends over,"
+ },
+ {
+  "k": "uyf9u0",
+  "text": "because it can never exceed I S S: once delta V reaches root 2 V overdrive, M 2 is fully off and M 1 carries the whole tail current."
+ },
+ {
+  "k": "1hogda7",
+  "text": "Now the circuit is current-limited: M 1 carries I S S, M 3 and M 4 copy it, and a fixed current I S S flows into C L, no matter how large the step is."
+ },
+ {
+  "k": "1ev4xm3",
+  "text": "A fixed current into a capacitor, the very first scene of the foundations: a straight ramp at I S S over C L. That maximum slope is the slew rate. Your page: dv over dt max equals I S S over C L equals 5 volts over micro s."
+ },
+ {
+  "k": "1347ced",
+  "text": "Compare: the linear response would start much steeper (dashed). The real output can only ramp at the slew rate, then, once the error is small enough for the pair to come out of full steering, it finishes with the normal exponential."
+ },
+ {
+  "k": "19c73h1",
+  "text": "Remember why: slewing happens because the input pair has handed over all the current it has. More step cannot make more current, so the slope is capped at I S S over C L, up and down for the 5-T O T A."
+ },
+ {
+  "k": "9c9yfm",
+  "text": "Slew rate: slew rate equals I S S over C L."
+ },
+ {
+  "k": "119od9p",
+  "text": "At balance each device carries I S S over 2 with overdrive V overdrive (k equals micro C O X W over L)."
+ },
+ {
+  "k": "1o8cdb",
+  "text": "Fully steered, M 1 alone carries I S S, twice the current, so root 2 times the overdrive."
+ },
+ {
+  "k": "1w13dtj",
+  "text": "M 2 is just off: its gate is exactly one V threshold above the shared source."
+ },
+ {
+  "k": "kt1mzo",
+  "text": "Subtract: the thresholds cancel. The pair is fully steered once the gate difference reaches root 2 V overdrive."
+ },
+ {
+  "k": "1v9btv4",
+  "text": "Both slew-rate tutorials ask for this number. Smaller than root 2 V overdrive: both devices conduct and the response is roughly linear. Larger: full slewing."
+ },
+ {
+  "k": "aehfwl",
+  "text": "The pair is fully steered at root 2 V overdrive."
+ },
+ {
+  "k": "71q6kf",
+  "text": "Dashed: what a perfectly linear op amp would do. It starts with slope V 0 Ay C L over tau, and that grows with the step size."
+ },
+ {
+  "k": "1qp04e6",
+  "text": "The op amp can never go steeper than slew rate. So the test is a comparison:"
+ },
+ {
+  "k": "aabh12",
+  "text": "It slews if the linear starting slope V 0 Ay C L over tau would exceed slew rate, that is, if the step is bigger than V 0, crit equals slew rate tau over Ay C L (Tutorial 6 Q 1 c)."
+ },
+ {
+  "k": "pw8q2g",
+  "text": "The real output (blue): a straight ramp at slew rate, then it bends into the normal exponential."
+ },
+ {
+  "k": "gvcd07",
+  "text": "When does it switch? When the exponential’s own slope has fallen to slew rate. An exponential with gap G to go has slope G over tau, so the switch happens when the remaining gap is slew rate times tau."
+ },
+ {
+  "k": "1layo27",
+  "text": "Ramp at slew rate from 0 up to V 0 Ay C L minus slew rate tau: that takes T slew equals ( V 0 Ay C L minus slew rate tau ) over slew rate (Tutorial 6 Q 1 d)."
+ },
+ {
+  "k": "33u5qv",
+  "text": "Then settle linearly: the remaining gap decays as e to the minus t over tau, so add tau natural log of ( gap over ( epsilon V final )) to reach within ε. That is Tutorial 6 Q 2 d."
+ },
+ {
+  "k": "w0c01v",
+  "text": "The recipe for every step-response question: closed-loop gain and τ; slew rate; compare; if it slews, ramp time then exponential. Six questions use it next."
+ },
+ {
+  "k": "147lve5",
+  "text": "It slews if V 0 Ay C L over tau > slew rate."
+ },
+ {
+  "k": "ofkq2v",
+  "text": "T slew equals ( V 0 Ay C L minus slew rate tau ) over slew rate."
+ },
+ {
+  "k": "1p43ki2",
+  "text": "Now every Lecture 13 question: Razavi Example 9.2, Problem Set 1 P 2, Tutorial 6 Q 1 and Q 2, Quiz 1 2024 Q 2 and Lab 9."
+ },
+ {
+  "k": "q1x079",
+  "text": "What it tests: settling time tau natural log of (1 over epsilon ) with the closed-loop tau equals 1 over ( beta omega u)."
+ },
+ {
+  "k": "1bi4lxv",
+  "text": "e to the minus t over tau equals 0.01, so t equals 4.6 tau, so tau is at most 5 nanoseconds over 4.6 equals 1.09 nanoseconds."
+ },
+ {
+  "k": "1noo7or",
+  "text": "omega u is at least 1 over ( beta tau ) equals 9.21 gigaradians per second."
+ },
+ {
+  "k": "1q7jt1m",
+  "text": "Divide by 2 pi: F U is at least 1.47 gigahertz."
+ },
+ {
+  "k": "12hehrr",
+  "text": "Two lines: ε, then number of τ; τ, then omega u through β."
+ },
+ {
+  "k": "3rp2ee",
+  "text": "What it tests: Lecture 1’s error 1 over (1 plus beta A), then τ equals 1 over ( beta omega u) with omega u equals G M over C L, then 6.9τ."
+ },
+ {
+  "k": "xzds23",
+  "text": "epsilon equals 1 over (1 plus 0.2 times 84.3) equals 5.6 percent."
+ },
+ {
+  "k": "1peb3lv",
+  "text": "For 0.5 percent: A is at least 5 over 0.005 equals 1000."
+ },
+ {
+  "k": "p8j5x2",
+  "text": "omega u equals 1.26 millisiemens over 2 picofarads equals 632 megaradians per second; tau equals 1 over (0.2 times 632 M) equals 7.91 nanoseconds."
+ },
+ {
+  "k": "16eoutu",
+  "text": "6.91 tau equals 54.6 nanoseconds."
+ },
+ {
+  "k": "1o0h3j6",
+  "text": "Gain error and settling time come from the same loop gain, first Lecture 1, then Lecture 13."
+ },
+ {
+  "k": "11ytcl9",
+  "text": "Tutorial 6 Q 1, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1gu44rp",
+  "text": "What it tests: the whole Lecture 13 recipe: closed-loop gain and τ, the exponential, the starting slope, slew rate, the critical step and the slewing time."
+ },
+ {
+  "k": "8urhqe",
+  "text": "80 decibels is 10 to the 4. Ay C L equals 10 to the 4 over 2001 equals 4.9975."
+ },
+ {
+  "k": "10bkskr",
+  "text": "Open loop R out C L equals 400 nanoseconds; divided by 2001: τ equals 200 picoseconds."
+ },
+ {
+  "k": "1argrgr",
+  "text": "1 nanosecond is 5τ, so it is within 0.7 percent: 0.248 volts."
+ },
+ {
+  "k": "xcqotf",
+  "text": "Starting slope V 0 Ay C L over tau equals 1250 volts over micro s."
+ },
+ {
+  "k": "13x69pr",
+  "text": "160 microamps over 8 picofarads equals 20 volts per microsecond. So the 50 millivolts step, needing 1250 volts per microsecond, actually slews!"
+ },
+ {
+  "k": "1dc5ags",
+  "text": "V 0, crit equals 20 volts per microsecond times 200 picoseconds over 5 equals 0.8 millivolts, anything bigger slews."
+ },
+ {
+  "k": "iwcwch",
+  "text": "(4.9975 minus 0.004) over 20 volts per microsecond about 250 nanoseconds of pure ramp."
+ },
+ {
+  "k": "1ointto",
+  "text": "Moral: with a fast loop, even tiny steps hit the slew limit, speed is then set by current, not by τ."
+ },
+ {
+  "k": "1w7ys9e",
+  "text": "Tutorial 6 Q 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "13eoxec",
+  "text": "What it tests: slew rate of the 5-T O T A, full steering at root 2 V overdrive, when slewing ends, then linear settling."
+ },
+ {
+  "k": "2o9bjm",
+  "text": "slew rate+ equals slew rate minus equals I S S over C L equals 40 volts per microsecond."
+ },
+ {
+  "k": "sxhvge",
+  "text": "V overdrive equals root 2(100 mu ) over 4 m equals 0.224 volts, so 0.316 volts."
+ },
+ {
+  "k": "1tb59ba",
+  "text": "The pair stays fully steered until V in minus X equals 0.316 volts: V out equals (1.2 minus 0.316) over 0.25 equals 3.54 volts, reached after 3.54 over 40 volts per microsecond equals 88 nanoseconds."
+ },
+ {
+  "k": "1r9pb2e",
+  "text": "Each R O equals 200 kilo-ohms; in parallel 100 kilo-ohms."
+ },
+ {
+  "k": "160iqrs",
+  "text": "Ay 0 equals 89.4, 1 plus beta Ay 0 equals 23.4; tau equals 500 nanoseconds over 23.4 equals 21.4 nanoseconds."
+ },
+ {
+  "k": "1m47spv",
+  "text": "Gap 1.05 volts must shrink to 1 percent of 4.59 volts: 21.4 nanoseconds times natural log of (1.05 over 0.0459) equals 67 nanoseconds. Total about 156 nanoseconds."
+ },
+ {
+  "k": "1a36lfm",
+  "text": "Two phases, two formulas: current-limited ramp, then exponential. Slewing usually dominates for big steps."
+ },
+ {
+  "k": "14elqys",
+  "text": "Quiz 1 2024-25 Q 2 times 6 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1age7i2",
+  "text": "What it tests: slew rate equals I S S over C L backwards, mirror ratios, bandwidth 1 over (2 pi R out C L ) versus GBW G M over (2 pi C L )."
+ },
+ {
+  "k": "u12orh",
+  "text": "I S S equals 10 volts per microsecond times 2 picofarads equals 20 mu A; the tail is twice M 6, so I 1 equals 10 mu A."
+ },
+ {
+  "k": "1hfobs8",
+  "text": "R out equals 1 M in parallel with 1 M equals 500 kilo-ohms; F minus 3 decibels equals 159 kilohertz."
+ },
+ {
+  "k": "ylnxfu",
+  "text": "GBW equals 0.173 millisiemens over (2 pi times 2 picofarads) equals 13.8 megahertz, about 87 times the bandwidth, that is, the DC gain."
+ },
+ {
+  "k": "gzvj4n",
+  "text": "1.8 volts times 30 microamps equals 54 micro W."
+ },
+ {
+  "k": "vriewq",
+  "text": "Keep bandwidth (uses R out ) and GBW (uses only G M ) apart, this quiz asks both."
+ },
+ {
+  "k": "dw326n",
+  "text": "What it tests: the closed-loop τ equals 1 over (βω_u) and 6.91τ for 0.1 percent, the buffer window that rules out a telescopic, and headroom shared by four overdrives."
+ },
+ {
+  "k": "1x4vqr",
+  "text": "Folded cascode."
+ },
+ {
+  "k": "8q6v6f",
+  "text": "0.69 millisiemens."
+ },
+ {
+  "k": "18syfll",
+  "text": "0.3 volts each."
+ },
+ {
+  "k": "1wmo7z2",
+  "text": "0.72 milliwatts, with a gain around 2300, comfortably above 500."
+ },
+ {
+  "k": "y39ggk",
+  "text": "Every spec turned into one number: settling into G M, swing into overdrives, overdrives and currents into power."
+ },
+ {
+  "k": "16irihp",
+  "text": "What it tests: Lecture 1 error, rise time 2.2τ, τ equals 1 over omega u for a buffer, and slew rate equals I over C for the capacitor the slewing current charges."
+ },
+ {
+  "k": "7b7sj3",
+  "text": "A is at least 1 over 0.0005 equals 2000, that is, 66 decibels."
+ },
+ {
+  "k": "smrb93",
+  "text": "τ equals 70 over 2.2 equals 31.8 nanoseconds."
+ },
+ {
+  "k": "jkb9sb",
+  "text": "F U equals 1 over (2 pi tau ) equals 5 megahertz."
+ },
+ {
+  "k": "1s5sc2w",
+  "text": "Same i equals C dv over dt, but in a Miller op amp the first-stage current slews C C: I B 1 equals 5 volts per microsecond times 2.5 picofarads equals 12.5 mu A."
+ },
+ {
+  "k": "xyb5wp",
+  "text": "Each spec maps to one formula you now know."
+ },
+ {
+  "k": "1k1778y",
+  "text": "Lecture 14 asks the slew question for the op amps of Lectures 3 to 6. First the fully differential telescopic, with a C L on each output. At rest every branch carries I S S over 2; the top sources M 7, M 8 are fixed at I S S over 2."
+ },
+ {
+  "k": "9n4fn",
+  "text": "Apply a large step: M 2 turns off (red cross ) and M 1 takes the whole I S S."
+ },
+ {
+  "k": "18wsvzn",
+  "text": "Left output: M 7 still pushes only I S S over 2 in, but M 3 over M 1 now pull I S S out. The difference, I S S over 2, must come out of C L: V out 1 falls."
+ },
+ {
+  "k": "1ougwo7",
+  "text": "Right output: M 8 pushes I S S over 2 in and nothing pulls out (M 2 is off): all of I S S over 2 charges C L: V out 2 rises."
+ },
+ {
+  "k": "p08voa",
+  "text": "Each output: i equals C dv over dt with I S S over 2, so each slews at I S S over (2 C L ), in opposite directions."
+ },
+ {
+  "k": "m0gjq",
+  "text": "The differential output (the signal) moves twice as fast: I S S over C L, the same as the 5-T O T A."
+ },
+ {
+  "k": "6nvo49",
+  "text": "Problem Set 2 P 1 asks exactly this with numbers, coming up."
+ },
+ {
+  "k": "10z3s05",
+  "text": "Telescopic: each output I S S over 2 C L, differential I S S over C L."
+ },
+ {
+  "k": "kb5azw",
+  "text": "The fully differential folded cascode. The top sources M 9, M 10 each supply I P; the input pair M 1, M 2 pulls current out of the fold nodes; the bottom sources M 3, M 4 are fixed."
+ },
+ {
+  "k": "1rxx886",
+  "text": "At rest: each fold node gets I P from the top and gives I S S over 2 to the input device, so each cascode branch, and each bottom source, carries I P minus I S S over 2."
+ },
+ {
+  "k": "1jt7z4j",
+  "text": "Large step: M 2 off, M 1 takes all of I S S."
+ },
+ {
+  "k": "131od86",
+  "text": "Left: M 1 now takes I S S from the fold node, leaving I P minus I S S for the cascode branch. The bottom source still pulls I P minus I S S over 2. Net into C L: ( I P minus I S S ) minus ( I P minus I S S over 2) equals minus I S S over 2."
+ },
+ {
+  "k": "1qngye2",
+  "text": "Right: M 2 takes nothing, so the branch carries all of I P; the bottom pulls I P minus I S S over 2: net plus I S S over 2. Same as the telescopic: I S S over (2 C L ) each side,"
+ },
+ {
+  "k": "wlf3jd",
+  "text": "The catch (your page in green): if I P < I S S, I P minus I S S is negative, which a transistor cannot carry. That branch turns off, and the slewing current is set by I P instead of I S S."
+ },
+ {
+  "k": "1wdlgu8",
+  "text": "Design rule (also Lecture 5’s tip): make the folding current at least I S S, and the folded cascode slews like a telescopic."
+ },
+ {
+  "k": "2jjszl",
+  "text": "Tutorial 6 Q 3 is the single-ended version with a mirror at the bottom. Same rule: a branch that would go negative turns off, and I P sets the slew rate both ways."
+ },
+ {
+  "k": "eyjel4",
+  "text": "Folded cascode: need I P is at least I S S, otherwise I P limits the slew rate."
+ },
+ {
+  "k": "8cfbb6",
+  "text": "Your page’s block diagram: the input X S minus the fed-back X F gives the error X I; the amplifier A makes X O; the network β returns X F equals beta X O."
+ },
+ {
+  "k": "wqkzml",
+  "text": "Solve the loop (Lecture 1 again, but now with frequency): X O over X S equals A(s) over (1 plus beta A(s))."
+ },
+ {
+  "k": "1wp1agc",
+  "text": "The product beta A(s) is the loop gain: what a signal is multiplied by on one trip round the loop. β is a resistor ratio, independent of frequency, so all the frequency behaviour sits in A(s)."
+ },
+ {
+  "k": "bvr64d",
+  "text": "A real op amp has more than one pole. Your page writes a two-pole A(s): each high-resistance node (Lecture 7!) contributes one factor (1 plus s over omega p)."
+ },
+ {
+  "k": "a6bc3p",
+  "text": "Follow a signal round and round. Normally the fed-back signal opposes the input (the minus sign), so errors shrink: negative feedback."
+ },
+ {
+  "k": "19mretf",
+  "text": "Why stability is a question at all: the poles delay the signal. If the delay round the loop reaches 180 degrees, the minus sign’s opposition becomes help, and the amplifier may oscillate."
+ },
+ {
+  "k": "1bxdfwk",
+  "text": "Ay F equals A over (1 plus beta A); the loop gain is beta A(s)."
+ },
+ {
+  "k": "1hn8724",
+  "text": "Take one particular frequency omega 1 and follow a sine wave once round the loop."
+ },
+ {
+  "k": "1jel2go",
+  "text": "Suppose at omega 1 the loop gain has size exactly 1 and delays the wave by 180 degrees: it comes back the same size, upside down."
+ },
+ {
+  "k": "17vuznx",
+  "text": "The minus sign at the summer flips it again: now it is identical to what we started with."
+ },
+ {
+  "k": "kp5pxf",
+  "text": "It matches the starting wave exactly, so it can keep going round with no input at all. The amplifier produces a sine wave on its own: it oscillates."
+ },
+ {
+  "k": "v680jn",
+  "text": "These two conditions are Barkhausen’s criteria (boxed on your page): size 1 and phase minus 180 degrees at the same frequency."
+ },
+ {
+  "k": "1jhbsfd",
+  "text": "Together they say beta A(j omega 1) equals minus 1, so 1 plus beta A equals 0 and the closed-loop gain Ay F is infinite: an output with zero input."
+ },
+ {
+  "k": "1ff03c8",
+  "text": "If the size were bigger than 1 it would grow each trip; smaller than 1, it fades. So a stable amplifier is one whose loop gain drops below 1 before its phase reaches minus 180 degrees. Lectures 15 to 16 measure that margin."
+ },
+ {
+  "k": "ocybgg",
+  "text": "Barkhausen: beta A equals 1 and phase equals minus 180 degrees at the same frequency: oscillation."
+ },
+ {
+  "k": "d7yv7n",
+  "text": "Your page’s toolkit. A complex number a plus jb is an arrow: a along the real axis, b up the imaginary axis. Its size M is the arrow’s length, its angle θ the direction."
+ },
+ {
+  "k": "1xmw75d",
+  "text": "Apply it to one pole factor 1 plus j omega over omega p: the real part is 1, the imaginary part is omega over omega p."
+ },
+ {
+  "k": "eki2rm",
+  "text": "Sweep the frequency up: the arrow tips over towards vertical. At omega equals omega p it is at 45 degrees with size root 2; far above, it is nearly 90 degrees and long."
+ },
+ {
+  "k": "70hnai",
+  "text": "Dividing by that arrow gives the pole’s effect: size 1 over root 1 plus ( omega over omega p) squared and angle minus arc tan of ( omega over omega p), the Bode plot’s two curves, now explained."
+ },
+ {
+  "k": "2biv8l",
+  "text": "For two poles: the sizes multiply and the angles add. That is all you need to evaluate beta A and the angle of beta A at any frequency."
+ },
+ {
+  "k": "1xbg3am",
+  "text": "One consequence worth an exam line: with two poles the phase only reaches minus 180 degrees at infinite frequency, where the loop gain has vanished. Two poles alone cannot oscillate, but they can ring, as the next scene shows."
+ },
+ {
+  "k": "gt92yy",
+  "text": "Size root a squared plus b squared, angle arc tan of (b over a); pole sizes multiply, angles add."
+ },
+ {
+  "k": "18zucuo",
+  "text": "The closed-loop poles are where 1 plus beta A(s) equals 0. Put in the two-pole A(s) and multiply out,"
+ },
+ {
+  "k": "jkcizn",
+  "text": "a quadratic in s. Its two roots are the closed-loop poles. Watch them as beta Ay 0 grows."
+ },
+ {
+  "k": "9tov5j",
+  "text": "Small beta Ay 0: two real poles, near the open-loop ones. More feedback slides them towards each other,"
+ },
+ {
+  "k": "18idoqz",
+  "text": "they meet (coincident poles, Q equals 0.5), the fastest response that does not overshoot,"
+ },
+ {
+  "k": "13ho72",
+  "text": "then they split up and down into a complex pair. A complex pair means the step response rings (overshoots and wobbles), more feedback, more ringing."
+ },
+ {
+  "k": "1xf0r9w",
+  "text": "One number tracks it all: compare the quadratic with s squared plus ( omega 0 over Q)s plus omega 0 squared to get Q. Q equals 0.5 means coincident poles; Q equals 0.707 means the maximally flat response (no peaking in frequency, a small 4 percent overshoot)."
+ },
+ {
+  "k": "apd25d",
+  "text": "The past-tutorial question coming up asks exactly: which β makes the poles coincide, and which makes it maximally flat. Lectures 15 to 16 continue with phase margin."
+ },
+ {
+  "k": "5zpv0z",
+  "text": "s squared plus ( omega p1 plus omega p2 )s plus (1 plus beta Ay 0 ) omega p1 omega p2; Q of 0.707 is flat."
+ },
+ {
+  "k": "1g8rvpk",
+  "text": "Now the Lecture 14 questions: Problem Set 2 P 1, Tutorial 6 Q 3, the past tutorial on two poles, and a stability check built from your page."
+ },
+ {
+  "k": "1rg79er",
+  "text": "You have now seen slewing in four op amps. They all follow one sentence: the slew rate is the most current the circuit can deliver, divided by the capacitor that current has to fill."
+ },
+ {
+  "k": "16irvzy",
+  "text": "Five-transistor O T A: one side of the pair turns off and the whole tail current goes into C L."
+ },
+ {
+  "k": "1w9a3kt",
+  "text": "Fully differential telescopic: each output gets I S S over 2, because the top current sources keep pushing their half. The two outputs move in opposite directions, so the difference moves at I S S over C L."
+ },
+ {
+  "k": "1v87ezs",
+  "text": "Folded cascode: the folding current I P must be at least I S S, otherwise a branch runs dry and I P becomes the limit."
+ },
+ {
+  "k": "lsnm8n",
+  "text": "Two-stage Miller op amp, from Lecture 17: the tail current fills the compensation capacitor C C, unless the output stage, I 7 minus I 5, runs out filling C L first. The smaller one wins."
+ },
+ {
+  "k": "16zwmos",
+  "text": "Questions only change which current and which capacitor. Find those two and you are done."
+ },
+ {
+  "k": "2qy026",
+  "text": "Each output gets half the tail: 200 over 1, 200 volts per microsecond."
+ },
+ {
+  "k": "1l7oeg7",
+  "text": "Opposite slopes add: 400."
+ },
+ {
+  "k": "aaqv6e",
+  "text": "The folding current is the limit: 150 over 2, 75."
+ },
+ {
+  "k": "1sbpz6p",
+  "text": "Raise I P to 200 microamps and it is 100."
+ },
+ {
+  "k": "kk9viu",
+  "text": "The tail into C C: 20."
+ },
+ {
+  "k": "1y2g5yg",
+  "text": "The output stage has only 80 microamps left for 5 picofarads: 16. The smaller wins, so the op amp slews at 16, set by the output stage this time."
+ },
+ {
+  "k": "5ct9kl",
+  "text": "Now the real questions: Problem Set 2 P 1 and Tutorial 6 Q 3 next, and the two-stage mid sem questions in the Lecture 15 to 17 lesson."
+ },
+ {
+  "k": "ov1pf",
+  "text": "What it tests: K C L at each output while slewing: what is pushed in minus what is pulled out, into C L."
+ },
+ {
+  "k": "4jhw63",
+  "text": "Left output: in 0.5 milliamps, out 1 milliamp. Net 0.5 milliamps out of 2 picofarads: falls at 250 volts per microsecond."
+ },
+ {
+  "k": "1k7iros",
+  "text": "Right output: rises at the same 250 volts per microsecond."
+ },
+ {
+  "k": "17jl7qg",
+  "text": "Opposite slopes add: 500 volts per microsecond equals I S S over C L."
+ },
+ {
+  "k": "dcrw08",
+  "text": "Same answer as I S S over C L, fully differential circuits don’t lose slew rate."
+ },
+ {
+  "k": "k9x9hv",
+  "text": "Tutorial 6 Q 3, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "82gkh",
+  "text": "What it tests: branch currents I P minus I D clipped at zero, the mirror copying the left branch, and root 2 V overdrive."
+ },
+ {
+  "k": "dqw3xc",
+  "text": "Bookkeeping: the right branch delivers I P minus I D 2 to the output; the mirror sinks a copy of the left branch, I P minus I D 1. Neither can go negative."
+ },
+ {
+  "k": "jkt3px",
+  "text": "Positive slewing: 200 microamps into 4 picofarads equals 50 volts per microsecond."
+ },
+ {
+  "k": "16b8kr6",
+  "text": "Negative slewing: also 200 microamps over 4 picofarads equals 50 volts per microsecond. Limited by I P, not I S S."
+ },
+ {
+  "k": "s0xv2q",
+  "text": "I P is at least I S S equals 300 mu A; then slew rate equals 75 volts per microsecond both ways."
+ },
+ {
+  "k": "ety4q7",
+  "text": "root 2 times 0.15 equals 0.212 volts."
+ },
+ {
+  "k": "1lt4v26",
+  "text": "Folded cascodes: always compare I P with I S S first."
+ },
+ {
+  "k": "1wx7t11",
+  "text": "What it tests: the closed-loop quadratic and its Q from the last theory scene."
+ },
+ {
+  "k": "ptkevf",
+  "text": "(1.01 times 10 to the 6) squared over (4 times 10 to the 10 ) equals 25.5 equals 1 plus 100 beta, so β equals 0.245."
+ },
+ {
+  "k": "14ofj0u",
+  "text": "1 plus 100 beta equals 51.0, so β about 0.50."
+ },
+ {
+  "k": "w5bxk7",
+  "text": "100 over 51 equals 1.96."
+ },
+ {
+  "k": "1oo30ch",
+  "text": "More feedback (bigger β) pushes Q up: from coincident to flat to ringing."
+ },
+ {
+  "k": "1lxel49",
+  "text": "What it tests: adding the pole angles, and whether two poles alone can ever meet Barkhausen’s criteria."
+ },
+ {
+  "k": "1df1yd4",
+  "text": "First pole: arc tan of (10) equals 84.3 degrees; second: arc tan of (1) equals 45 degrees. Total minus 129.3 degrees."
+ },
+ {
+  "k": "1hzgw8v",
+  "text": "No: the phase only approaches minus 180 degrees as the frequency goes to infinity, and there the size is zero. Two poles can ring, but need a third pole (or delay) to oscillate."
+ },
+ {
+  "k": "2z1hyv",
+  "text": "This angles add evaluation is exactly what phase-margin questions use next."
+ },
+ {
+  "k": "1od0glf",
+  "text": "One card: C M F B levels, the time constant, poles and bandwidth, slewing, stability. Every question in this lesson used these."
+ },
+ {
+  "k": "1mpae9y",
+  "text": "Use the chapter list to replay any topic, and the Past papers tab to jump straight to a question."
+ },
+ {
+  "k": "1txkelf",
+  "text": "Say it back. Listen first."
+ },
+ {
+  "k": "1ugcqec",
+  "text": "Next line."
+ },
+ {
+  "k": "1j12cua",
+  "text": "Now from memory."
+ }
+]

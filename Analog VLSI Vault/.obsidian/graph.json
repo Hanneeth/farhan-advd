@@ -1,0 +1,79 @@
+{
+  "collapse-filter": false,
+  "search": "-path:\"06 Symbols\"",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"00 Home\"",
+      "color": {
+        "a": 1,
+        "rgb": 16317180
+      }
+    },
+    {
+      "query": "path:\"01 Lectures\"",
+      "color": {
+        "a": 1,
+        "rgb": 16486972
+      }
+    },
+    {
+      "query": "path:\"02 Topics\"",
+      "color": {
+        "a": 1,
+        "rgb": 10980346
+      }
+    },
+    {
+      "query": "tag:#source/mid-sem OR tag:#source/quiz OR tag:#source/compre",
+      "color": {
+        "a": 1,
+        "rgb": 16281969
+      }
+    },
+    {
+      "query": "path:\"03 Questions\"",
+      "color": {
+        "a": 1,
+        "rgb": 3718648
+      }
+    },
+    {
+      "query": "path:\"04 Formulas\" OR path:\"05 Flashcards\"",
+      "color": {
+        "a": 1,
+        "rgb": 16498468
+      }
+    },
+    {
+      "query": "path:\"06 Symbols\"",
+      "color": {
+        "a": 1,
+        "rgb": 3462041
+      }
+    },
+    {
+      "query": "path:\"My notes\"",
+      "color": {
+        "a": 1,
+        "rgb": 16020150
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -0.6,
+  "nodeSizeMultiplier": 1.15,
+  "lineSizeMultiplier": 0.8,
+  "collapse-forces": false,
+  "centerStrength": 0.45,
+  "repelStrength": 14,
+  "linkStrength": 0.9,
+  "linkDistance": 220,
+  "scale": 0.55,
+  "close": false
+}

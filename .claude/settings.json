@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run dev)",
+      "Bash(npx vitest run:*)",
+      "Bash(npx vite build:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Read(./study-package/**)",
+      "Read(./node_modules/**)",
+      "Read(./dist/**)",
+      "Read(./dist-single/**)",
+      "Read(./test-results/**)",
+      "Read(./package-lock.json)"
+    ]
+  }
+}

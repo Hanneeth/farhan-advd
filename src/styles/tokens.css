@@ -1,0 +1,110 @@
+/* Design tokens — see content/design-tokens.md */
+:root {
+  --paper: #f5f2eb;
+  --surface: #ffffff;
+  --surface-2: #faf8f3;
+  --bench: #eef0ea;
+  --bench-dot: #d3d8cc;
+  --ink: #1b1f24;
+  --ink-2: #474d57;
+  --muted: #6a7079;
+  --line: #e2ddd1;
+  --rule: #e6e1d6;
+  --margin: #d9534f;
+  --nmos: #6b4fbb;
+  --nmos-bg: #eeeaf8;
+  --pmos: #0e7d76;
+  --pmos-bg: #e2f2f0;
+  --signal: #c9561c;
+  --signal-bg: #fbeadf;
+  --signal-ink: #ffffff;
+  --ok: #2e7d4f;
+  --ok-bg: #e2f1e7;
+  --bad: #b8382a;
+  --bad-bg: #f9e3df;
+  --water: #7fb8c9;
+  --focus: var(--signal);
+  --shadow: 0 1px 2px rgba(40, 32, 20, 0.06), 0 6px 20px rgba(40, 32, 20, 0.06);
+  --shadow-lg: 0 2px 4px rgba(40, 32, 20, 0.06), 0 14px 40px rgba(40, 32, 20, 0.1);
+
+  --font-display: 'IBM Plex Sans Condensed', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --grid: 24px;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --text-col: 780px;
+  --wide-col: 1600px;
+  --tabbar-h: 0px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #111317;
+    --surface: #1a1d23;
+    --surface-2: #1f232a;
+    --bench: #161a1f;
+    --bench-dot: #2c323b;
+    --ink: #e8e5dc;
+    --ink-2: #c2beb3;
+    --muted: #9297a1;
+    --line: #2c3038;
+    --rule: #262a31;
+    --margin: #b5504c;
+    --nmos: #a893f2;
+    --nmos-bg: #26213a;
+    --pmos: #4fcbc1;
+    --pmos-bg: #15302e;
+    --signal: #f08a55;
+    --signal-bg: #3a2519;
+    --signal-ink: #1a1208;
+    --ok: #5cc28a;
+    --ok-bg: #173325;
+    --bad: #f07a68;
+    --bad-bg: #3a211e;
+    --water: #3b7c8f;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.3), 0 14px 40px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #111317;
+  --surface: #1a1d23;
+  --surface-2: #1f232a;
+  --bench: #161a1f;
+  --bench-dot: #2c323b;
+  --ink: #e8e5dc;
+  --ink-2: #c2beb3;
+  --muted: #9297a1;
+  --line: #2c3038;
+  --rule: #262a31;
+  --margin: #b5504c;
+  --nmos: #a893f2;
+  --nmos-bg: #26213a;
+  --pmos: #4fcbc1;
+  --pmos-bg: #15302e;
+  --signal: #f08a55;
+  --signal-bg: #3a2519;
+  --signal-ink: #1a1208;
+  --ok: #5cc28a;
+  --ok-bg: #173325;
+  --bad: #f07a68;
+  --bad-bg: #3a211e;
+  --water: #3b7c8f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.3), 0 14px 40px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
