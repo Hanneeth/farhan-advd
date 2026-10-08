@@ -1464,8 +1464,13 @@ function pyqFrame(S, o) {
     fo.style.opacity = 0;
     S.slideIn(fo, T0, 0.7, 0, 18);
     const nextPage = page.findIndex((p, j) => j > i && p > page[i]);
-    if (nextPage > 0) S.out(fo, off + o.steps[nextPage].t - 0.6, 0.5);
+    // the next step marked fresh: '<caption>' hides this card (and the old caption) before its stop, when this card's
+    // result would give the next answer away (e.g. SR+ = SR− by symmetry); otherwise cards leave when their page turns
+    const fr = o.steps[i + 1] && o.steps[i + 1].fresh ? i + 1 : -1;
+    if (fr > 0) S.out(fo, off + o.steps[fr].t - 1.2, 0.4);
+    else if (nextPage > 0) S.out(fo, off + o.steps[nextPage].t - 0.6, 0.5);
     if (st.say) S.say(T0, st.say);
+    if (st.fresh) S.say(T0 - 1.1, st.fresh);
     if (st.try) S.stop(T0 - 0.4, { src: o.src, top, ...st.try });
     (st.hl || []).forEach(([x, y2, w, h, col]) => {
       const tEnd = off + (o.steps[i + 1] ? o.steps[i + 1].t : st.t + 6);
@@ -2880,6 +2885,14 @@ scene(L7, 'Lecture 7 in one card', 30, (S) => {
 /* Set A (Razavi 0.5 µm) as the tutorials use it */
 const L7_SET_A = 'Set A: $\\mu_nC_{ox} = 134.28\\,\\mu$A/V², $\\mu_pC_{ox} = 38.36\\,\\mu$A/V², $V_{thn} = 0.7$ V, $|V_{thp}| = 0.8$ V, $\\lambda_n = 0.1$ V⁻¹, $\\lambda_p = 0.2$ V⁻¹, $V_{DD} = 3$ V';
 
+/* branch currents on twoStage1 as printed (figure coordinates): I_SS/2 down each first-stage branch into the tail,
+   I_D5, I_D6 down the two second-stage branches */
+const T3Q2_CUR = { tf: 'translate(-130 188) scale(0.76)', list: [
+  [[[660, 180], [660, 500], [794, 500]], 'I_SS/2', { color: C.n, at: [745, 385] }],
+  [[[940, 180], [940, 500], [806, 500]], null, { color: C.n }],
+  [[[400, 180], [400, 525]], 'I_D5', { color: C.cur, at: [330, 420] }],
+  [[[1200, 180], [1200, 525]], 'I_D6', { color: C.cur, at: [1265, 430] }],
+] };
 scene(L7, 'Tutorial 3 Q2: two-stage, level at X, gain, swing', 78, (S) => {
   const T = tfm(0.76, -130, 188);
   // every intermediate, from the givens (Set A, W/L = 200, I_SS/2 = 0.5 mA, I_D5 = 1 mA)
@@ -2893,7 +2906,7 @@ scene(L7, 'Tutorial 3 Q2: two-stage, level at X, gain, swing', 78, (S) => {
     q: 'Your circuit 1 with $(W/L)_{1-8} = 200$, $I_{SS} = 1$ mA, $I_{D5} = I_{D6} = 1$ mA. (a) CM level at X, Y and the input-CM ceiling. (b) Gain and maximum output swing.',
     giv: L7_SET_A + '. M7, M8 are NMOS sinks of 1 mA, also $W/L = 200$.',
     qh: 270, tests: 'the **link** that pins the level between two stages, the **fence** for the input-CM ceiling, and **gain = product of stage gains**.',
-    fig: (S2) => { const c = twoStage1(S2, { printed: true }); c.g.setAttribute('transform', 'translate(-130 188) scale(0.76)'); },
+    fig: (S2) => { const c = twoStage1(S2, { printed: true }); c.g.setAttribute('transform', 'translate(-130 188) scale(0.76)'); }, currents: T3Q2_CUR,
     steps: [
       { t: 7, title: '**(a) Start at stage 2: the link.** X is **M5’s gate** and M5’s source is on $V_{DD}$. M5 must carry 1 mA, so its $|V_{GS5}|$ is fixed and X sits exactly that far below $V_{DD}$ (Y the same).',
         tex: '|V_{ov5}| = \\sqrt{\\frac{2I_{D5}}{\\mu_pC_{ox}(W/L)}} = \\sqrt{\\frac{2(1\\,\\text{m})}{38.36\\,\\mu\\times200}} = 0.511\\,\\text{V},\\quad V_X = V_{DD} - |V_{thp}| - |V_{ov5}| = 3 - 0.8 - 0.511 = 1.689\\,\\text{V}', hl: [T([330, 170, 150, 130, C.volt])],
@@ -3637,7 +3650,6 @@ scene(L8, '2025 mid-sem Q1: CS-boosted cascode, full solve', 92, (S) => {
     q: '$I_1 = 100\\,\\mu$A (M3’s load, feeds P), $I_2 = 0.5$ mA (output), $(W/L)_{1,2,3} = 200$; $I_1, I_2$ are PMOS with $W/L = 100$. (a) DC voltages at X and P. (b) Maximum swing. (c) Gain.',
     giv: '$V_{DD} = 3$ V, $\\mu_nC_{ox} = 135\\,\\mu$, $\\mu_pC_{ox} = 40\\,\\mu$A/V², $V_{thn} = 0.7$, $|V_{thp}| = 0.8$ V, $\\lambda_n = 0.1$, $\\lambda_p = 0.2$ V⁻¹',
     qh: 290, tests: 'implementation 1 of Lec 8: **links up from ground** for the biases, the **booster’s swing penalty**, and the **load trap** in the gain.',
-    currents: REG_CUR,
     fig: (S2) => { const c = regCascode(S2, { iout: 'I_2 (PMOS)', iaux: 'I_1 (PMOS)', pname: 'P' }); c.g.setAttribute('transform', 'translate(0 90)'); },
     steps: [
       { t: 7, title: '**(a) Walk up from ground.** M3’s source is on ground and it carries $I_1 = 100\\,\\mu$A, so its gate X sits exactly one $V_{GS3}$ up — a **link**, not a choice.',
@@ -4876,7 +4888,7 @@ scene(L10, 'Follow the current: resistive CM sensing', 62, (S) => {
   eqAt(S, 'V_{out1} = V_{out2} \\;\\Rightarrow\\; I_R = 0', 1180, 230, 13, { size: 28, w: 700 });
   S.say(13, 'At rest both outputs sit at the same voltage. No voltage across $R_1$ and $R_2$ means no current in them.');
   current(S, [[402, 320], [520, 320], [638, 320]], 20, 39, 'I_R', { at: [520, 268], color: C.pink });
-  eqAt(S, 'I_R = \\frac{V_{out1} - V_{out2}}{R_1 + R_2}', 1180, 330, 20, { size: 30, w: 700 });
+  eqAt(S, 'I_R = \\frac{V_{out1} - V_{out2}}{R_1 + R_2}', 1180, 330, 27.3, { size: 30, w: 700 }); // only after the stop that asks for it
   S.say(20, 'Now a differential output: $V_{out1}$ up, $V_{out2}$ down. A current $I_R$ flows from the higher output, through $R_1$ and $R_2$, into the lower one. The midpoint stays at the average.');
   S.stop(27, {
     src: 'Exam-style check',
@@ -4889,7 +4901,7 @@ scene(L10, 'Follow the current: resistive CM sensing', 62, (S) => {
     why: 'Only the differential part of the outputs drives current through the sensing resistors.',
     answer: 1e-5, unit: 'A', tol: 0.02,
   });
-  eqAt(S, '= \\frac{0.2\\,\\text{V}}{20\\,\\text{k}\\Omega} = 10\\,\\mu\\text{A}', 1180, 420, 27.4, { size: 28, w: 700, color: '#ffd38a' });
+  eqAt(S, '= \\frac{0.2\\,\\text{V}}{20\\,\\text{k}\\Omega} = 10\\,\\mu\\text{A}', 1180, 420, 28, { size: 28, w: 700, color: '#ffd38a' });
   eqAt(S, '\\text{KCL at } V_{out1}\\text{: } I_{D3} = I_{D1} + I_R', 1180, 510, 32, { size: 28, w: 700 });
   S.say(32, 'Where does $I_R$ come from? KCL at $V_{out1}$: M3’s current now feeds both M1 and the resistor. The resistor takes signal current away from the output node. That is the gain loss: $R_1$ appears in parallel with $r_O$.');
   S.stop(40, {

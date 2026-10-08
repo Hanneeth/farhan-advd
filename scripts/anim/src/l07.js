@@ -665,6 +665,14 @@ scene(L7, 'Lecture 7 in one card', 30, (S) => {
 /* Set A (Razavi 0.5 µm) as the tutorials use it */
 const L7_SET_A = 'Set A: $\\mu_nC_{ox} = 134.28\\,\\mu$A/V², $\\mu_pC_{ox} = 38.36\\,\\mu$A/V², $V_{thn} = 0.7$ V, $|V_{thp}| = 0.8$ V, $\\lambda_n = 0.1$ V⁻¹, $\\lambda_p = 0.2$ V⁻¹, $V_{DD} = 3$ V';
 
+/* branch currents on twoStage1 as printed (figure coordinates): I_SS/2 down each first-stage branch into the tail,
+   I_D5, I_D6 down the two second-stage branches */
+const T3Q2_CUR = { tf: 'translate(-130 188) scale(0.76)', list: [
+  [[[660, 180], [660, 500], [794, 500]], 'I_SS/2', { color: C.n, at: [690, 565] }],
+  [[[940, 180], [940, 500], [806, 500]], null, { color: C.n }],
+  [[[400, 180], [400, 525]], 'I_D5', { color: C.cur, at: [330, 420] }],
+  [[[1200, 180], [1200, 525]], 'I_D6', { color: C.cur, at: [1265, 430] }],
+] };
 scene(L7, 'Tutorial 3 Q2: two-stage, level at X, gain, swing', 78, (S) => {
   const T = tfm(0.76, -130, 188);
   // every intermediate, from the givens (Set A, W/L = 200, I_SS/2 = 0.5 mA, I_D5 = 1 mA)
@@ -678,7 +686,7 @@ scene(L7, 'Tutorial 3 Q2: two-stage, level at X, gain, swing', 78, (S) => {
     q: 'Your circuit 1 with $(W/L)_{1-8} = 200$, $I_{SS} = 1$ mA, $I_{D5} = I_{D6} = 1$ mA. (a) CM level at X, Y and the input-CM ceiling. (b) Gain and maximum output swing.',
     giv: L7_SET_A + '. M7, M8 are NMOS sinks of 1 mA, also $W/L = 200$.',
     qh: 270, tests: 'the **link** that pins the level between two stages, the **fence** for the input-CM ceiling, and **gain = product of stage gains**.',
-    fig: (S2) => { const c = twoStage1(S2, { printed: true }); c.g.setAttribute('transform', 'translate(-130 188) scale(0.76)'); },
+    fig: (S2) => { const c = twoStage1(S2, { printed: true }); c.g.setAttribute('transform', 'translate(-130 188) scale(0.76)'); }, currents: T3Q2_CUR,
     steps: [
       { t: 7, title: '**(a) Start at stage 2: the link.** X is **M5’s gate** and M5’s source is on $V_{DD}$. M5 must carry 1 mA, so its $|V_{GS5}|$ is fixed and X sits exactly that far below $V_{DD}$ (Y the same).',
         tex: '|V_{ov5}| = \\sqrt{\\frac{2I_{D5}}{\\mu_pC_{ox}(W/L)}} = \\sqrt{\\frac{2(1\\,\\text{m})}{38.36\\,\\mu\\times200}} = 0.511\\,\\text{V},\\quad V_X = V_{DD} - |V_{thp}| - |V_{ov5}| = 3 - 0.8 - 0.511 = 1.689\\,\\text{V}', hl: [T([330, 170, 150, 130, C.volt])],

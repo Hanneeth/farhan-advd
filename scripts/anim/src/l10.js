@@ -197,7 +197,7 @@ scene(L10, 'Follow the current: resistive CM sensing', 62, (S) => {
   eqAt(S, 'V_{out1} = V_{out2} \\;\\Rightarrow\\; I_R = 0', 1180, 230, 13, { size: 28, w: 700 });
   S.say(13, 'At rest both outputs sit at the same voltage. No voltage across $R_1$ and $R_2$ means no current in them.');
   current(S, [[402, 320], [520, 320], [638, 320]], 20, 39, 'I_R', { at: [520, 268], color: C.pink });
-  eqAt(S, 'I_R = \\frac{V_{out1} - V_{out2}}{R_1 + R_2}', 1180, 330, 20, { size: 30, w: 700 });
+  eqAt(S, 'I_R = \\frac{V_{out1} - V_{out2}}{R_1 + R_2}', 1180, 330, 27.3, { size: 30, w: 700 }); // only after the stop that asks for it
   S.say(20, 'Now a differential output: $V_{out1}$ up, $V_{out2}$ down. A current $I_R$ flows from the higher output, through $R_1$ and $R_2$, into the lower one. The midpoint stays at the average.');
   S.stop(27, {
     src: 'Exam-style check',
@@ -210,7 +210,7 @@ scene(L10, 'Follow the current: resistive CM sensing', 62, (S) => {
     why: 'Only the differential part of the outputs drives current through the sensing resistors.',
     answer: 1e-5, unit: 'A', tol: 0.02,
   });
-  eqAt(S, '= \\frac{0.2\\,\\text{V}}{20\\,\\text{k}\\Omega} = 10\\,\\mu\\text{A}', 1180, 420, 27.4, { size: 28, w: 700, color: '#ffd38a' });
+  eqAt(S, '= \\frac{0.2\\,\\text{V}}{20\\,\\text{k}\\Omega} = 10\\,\\mu\\text{A}', 1180, 420, 28, { size: 28, w: 700, color: '#ffd38a' });
   eqAt(S, '\\text{KCL at } V_{out1}\\text{: } I_{D3} = I_{D1} + I_R', 1180, 510, 32, { size: 28, w: 700 });
   S.say(32, 'Where does $I_R$ come from? KCL at $V_{out1}$: M3’s current now feeds both M1 and the resistor. The resistor takes signal current away from the output node. That is the gain loss: $R_1$ appears in parallel with $r_O$.');
   S.stop(40, {

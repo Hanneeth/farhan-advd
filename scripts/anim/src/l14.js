@@ -304,12 +304,21 @@ function t6q3Fig(S) {
   wire(S, [[260, 470], [260, 490], [380, 490], [380, 470]]); isrc(S, 320, 530, { label: 'I_SS', len: 40 }); gnd(S, 320, 570);
   r(); return g;
 }
+/* quiescent branch currents on t6q3Fig (figure coordinates): I_P from each top source splits at the fold node into
+   I_SS/2 for the input device and I_P − I_SS/2 down the cascode column */
+const T6Q3_CUR = { tf: 'translate(-140 80)', list: [
+  [[[560, 160], [560, 262]], null, { color: C.p }], [[[760, 160], [760, 262]], null, { color: C.p }],
+  [[[554, 268], [260, 268], [260, 372]], 'I_SS/2', { color: C.n, at: [330, 300] }],
+  [[[754, 268], [700, 268], [700, 240], [380, 240], [380, 372]], null, { color: C.n }],
+  [[[560, 276], [560, 622]], 'I_P − I_SS/2', { color: C.cur, at: [660, 525] }], [[[760, 276], [760, 622]], null, { color: C.cur }],
+  [[[260, 470], [260, 490], [320, 490], [320, 568]], null, { color: C.ok }],
+] };
 scene(L14, 'Tutorial 6 Q3: folded-cascode slew rate', 66, (S) => {
   pyqFrame(S, {
     paper: 't6q3', tag: 'LEC 14 · QUESTION 2 OF 4', title: 'Folded-cascode slew rate, both directions', src: 'Tutorial 6 Q3',
     q: 'NMOS-input folded cascode, cascode-mirror bottom: $C_L = 4$ pF, $I_{SS} = 300\\,\\mu$A, each folding source $I_P = 200\\,\\mu$A, $V_{ov1,2} = 150$ mV. (a) SR+. (b) SR− and what limits it. (c) Condition on $I_P$ for symmetric SR = $I_{SS}/C_L$. (d) Step for full slewing.', qh: 270,
     tests: 'branch currents $I_P - I_D$ clipped at zero, the mirror copying the left branch, and $\\sqrt2V_{ov}$.',
-    fig: (S2) => { const g = t6q3Fig(S2); g.setAttribute('transform', 'translate(-140 80)'); },
+    fig: (S2) => { const g = t6q3Fig(S2); g.setAttribute('transform', 'translate(-140 80)'); }, currents: T6Q3_CUR,
     steps: [
       { t: 8, title: '**Bookkeeping first.** The right cascode branch delivers $I_P - I_{D2}$ to the output; the bottom mirror sinks a copy of the left branch, $I_P - I_{D1}$. A branch **cannot carry negative current**: if the sum says negative, it is off (0).', tex: 'I_{C_L} = (I_P - I_{D2}) - (I_P - I_{D1}),\\quad \\text{each bracket} \\ge 0', say: 'Bookkeeping: the right branch delivers $I_P - I_{D2}$ to the output; the mirror sinks a copy of the left branch, $I_P - I_{D1}$. Neither can go negative.' },
       { t: 16, title: '**(a) Rising output:** M2 off ($I_{D2} = 0$), M1 takes all of $I_{SS}$. The right branch delivers the full $I_P$; the left branch would need $I_P - I_{SS} < 0$, so it is off and the mirror sinks nothing.', tex: 'SR_+ = \\frac{I_P - 0}{C_L} = \\frac{200\\,\\mathrm{\\mu A}}{4\\,\\mathrm{pF}} = 50\\,\\mathrm{V/\\mu s}',
@@ -331,7 +340,7 @@ scene(L14, 'Tutorial 6 Q3: folded-cascode slew rate', 66, (S) => {
           ],
           answer: ans('bank-t6q3', 'srp'), unit: 'V/s', tol: 0.02,
         }, say: 'Positive slewing: 200 µA into 4 pF = 50 V/µs.' },
-      { t: 25, title: '**(b) Falling output:** now M1 is off and M2 takes all of $I_{SS}$. The right branch would need $I_P - I_{SS} < 0$, so it is off; the left branch carries the full $I_P$ and the mirror sinks a copy of it. **$I_P$ limits it, not $I_{SS}$.**', tex: 'SR_- = \\frac{0 - I_P}{C_L} = \\frac{-200\\,\\mathrm{\\mu A}}{4\\,\\mathrm{pF}} = -50\\,\\mathrm{V/\\mu s}',
+      { t: 25, fresh: 'Now the step goes the other way. Before reading on, redo the bookkeeping yourself.', title: '**(b) Falling output:** now M1 is off and M2 takes all of $I_{SS}$. The right branch would need $I_P - I_{SS} < 0$, so it is off; the left branch carries the full $I_P$ and the mirror sinks a copy of it. **$I_P$ limits it, not $I_{SS}$.**', tex: 'SR_- = \\frac{0 - I_P}{C_L} = \\frac{-200\\,\\mathrm{\\mu A}}{4\\,\\mathrm{pF}} = -50\\,\\mathrm{V/\\mu s}',
         try: {
           q: '**(b)** Now the step goes the other way (M1 off). Find the size of the negative slew rate $SR_-$.',
           hint: ['Same bookkeeping with the roles swapped: which branch now goes negative and turns off? What does the mirror copy?', 'Right branch: $I_P - I_{SS}$ (clip at 0). Left branch: $I_P - 0$, and the mirror sinks a copy of it. $|SR_-| = \\frac{|I_{C_L}|}{C_L}$.'],

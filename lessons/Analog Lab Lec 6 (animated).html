@@ -1464,8 +1464,13 @@ function pyqFrame(S, o) {
     fo.style.opacity = 0;
     S.slideIn(fo, T0, 0.7, 0, 18);
     const nextPage = page.findIndex((p, j) => j > i && p > page[i]);
-    if (nextPage > 0) S.out(fo, off + o.steps[nextPage].t - 0.6, 0.5);
+    // the next step marked fresh: '<caption>' hides this card (and the old caption) before its stop, when this card's
+    // result would give the next answer away (e.g. SR+ = SR− by symmetry); otherwise cards leave when their page turns
+    const fr = o.steps[i + 1] && o.steps[i + 1].fresh ? i + 1 : -1;
+    if (fr > 0) S.out(fo, off + o.steps[fr].t - 1.2, 0.4);
+    else if (nextPage > 0) S.out(fo, off + o.steps[nextPage].t - 0.6, 0.5);
     if (st.say) S.say(T0, st.say);
+    if (st.fresh) S.say(T0 - 1.1, st.fresh);
     if (st.try) S.stop(T0 - 0.4, { src: o.src, top, ...st.try });
     (st.hl || []).forEach(([x, y2, w, h, col]) => {
       const tEnd = off + (o.steps[i + 1] ? o.steps[i + 1].t : st.t + 6);
