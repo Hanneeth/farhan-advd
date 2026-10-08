@@ -9,6 +9,7 @@ The original PDFs and the animated lessons. They appear here after you run **Set
 
 - [[Analog Lab Lec 11-14 (animated).html]]
 - [[Analog Lab Lec 15-17 (animated).html]]
+- [[Analog Lab Lec 18-22 (animated).html]]
 - [[Analog Lab Lec 6 (animated).html]]
 - [[Analog Lab Lec 7-12 (animated).html]]
 - [[Analog Lab Revision Lec 1-10 (animated).html]]

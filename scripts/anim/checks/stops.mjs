@@ -4,7 +4,8 @@ import { existsSync } from 'node:fs';
 const exe = [process.env.PW_CHROME, '/opt/pw-browsers/chromium', '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'].find((p) => p && existsSync(p));
 const dir = process.env.ANIM_OUT || new URL('../../../anim-dist', import.meta.url).pathname;
 const b = await chromium.launch(exe ? { executablePath: exe } : {});
-for (const f of ['index.html', 'lec11-14.html', 'lec06.html', 'lec15-17.html', 'rev01-10.html']) {
+const FILES = process.argv.slice(2).length ? process.argv.slice(2) : ['index.html', 'lec11-14.html', 'lec06.html', 'lec15-17.html', 'rev01-10.html', 'lec18-22.html'];
+for (const f of FILES) {
   const p = await b.newPage({ viewport: { width: 1600, height: 1000 } });
   const errs = []; p.on('pageerror', (e) => errs.push(String(e)));
   await p.goto('file://' + dir + '/' + f); await p.waitForTimeout(800);

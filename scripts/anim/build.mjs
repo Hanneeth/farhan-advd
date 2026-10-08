@@ -24,6 +24,8 @@ LESSONS.d = { out: 'lec15-17.html', title: 'Analog Lab: Lec 15–17', h1: 'Analo
   files: ['engine.js', 'voice.js', 'lib.js', 'data.js', 'd_intro.js', 'freq.js', 'f_extra.js', 'd_lib.js', 'd_found.js', 'l15.js', 'l16.js', 'l17.js', 'd_outro.js', 'r_1314.js', 'r_1517.js', 'app.js'] };
 LESSONS.e = { out: 'rev01-10.html', title: 'Analog Lab: Revision Lec 1–10', h1: 'Analog Lab · Revision, Lectures 1–10', sub: 'Every formula of Lectures 1–10 in one scene per lecture, then rapid-fire questions against the exam clock',
   files: ['engine.js', 'voice.js', 'lib.js', 'data.js', 'c_found.js', 'c_lec6.js', 'l07.js', 'l08.js', 'l09.js', 'l10.js', 'e_rev.js', 'app.js'] };
+LESSONS.f = { out: 'lec18-22.html', title: 'Analog Lab: Lec 18–22', h1: 'Analog Lab · Lectures 18–22', sub: 'Poles, bandwidth and slewing from zero, the two-stage op amp designed spec by spec, then the inverter · every tutorial and past-paper question, solved by you first',
+  files: ['engine.js', 'voice.js', 'lib.js', 'data.js', 'd_lib.js', 'f_num.js', 'f_intro.js', 'g_found.js', 'l18.js', 'l19.js', 'l20.js', 'l2122.js', 'f_outro.js', 'app.js'] };
 const L = LESSONS[process.argv[2] || 'a'];
 const FILES = L.files;
 const key = process.argv[2] || 'a';
