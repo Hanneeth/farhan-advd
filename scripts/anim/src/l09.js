@@ -491,10 +491,10 @@ function t4q3Fig(S) {
   // bias string
   pmos(S, xb, 210, { name: 'M8', right: true, gl: 24, nameSide: 'l' }); wire(S, [[xb, 150], [xb, 160]]);
   wire(S, [[xb, 260], [xb, 275]]); dot(S, xb, 268); wire(S, [[xb, 268], [194, 268], [194, 210]]); dot(S, 194, 210);
-  res(S, xb, 275, 355, { label: 'R_1', left: true }); dot(S, xb, 355); res(S, xb, 355, 435, { label: 'R_2', left: true });
+  res(S, xb, 275, 360, { label: 'R_1', left: true }); dot(S, xb, 360); res(S, xb, 360, 435, { label: 'R_2', left: true });
   nmos(S, xb, 485, { name: 'M7', right: true, gl: 24, nameSide: 'l' }); wire(S, [[xb, 435], [xb, 435]]); dot(S, xb, 448); wire(S, [[xb, 448], [194, 448], [194, 485]]); gnd(S, xb, 535);
   wire(S, [[194, 210], [456, 210]]); // Vbp to M5
-  wire(S, [[xb, 355], [440, 355], [440, 360]]); // Vb4 to M4 gate
+  wire(S, [[xb, 360], [430, 360]]); // Vb4 to M4 gate
   wire(S, [[194, 485], [470, 485]]); // Vbn to M9 gate
   // M3 on R3
   res(S, x3, 150, 230, { label: 'R_3' });

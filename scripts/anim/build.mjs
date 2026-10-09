@@ -32,7 +32,12 @@ const key = process.argv[2] || 'a';
 // recorded narration (scripts/anim/audio/<lesson>.json manifest + audio/mp3/<k>.mp3 per line), rendered by tts.py
 let audio = {};
 const man = join(here, 'audio', key + '.json');
-if (existsSync(man)) for (const { k } of JSON.parse(readFileSync(man, 'utf8'))) { const f = join(here, 'audio', 'mp3', k + '.mp3'); if (existsSync(f)) audio[k] = 'data:audio/mpeg;base64,' + readFileSync(f).toString('base64'); }
+// alias.json: new line key → the key of an older recording of the same line (spoken text changed only slightly); a fresh render wins
+const alias = existsSync(join(here, 'audio', 'alias.json')) ? JSON.parse(readFileSync(join(here, 'audio', 'alias.json'), 'utf8')) : {};
+const mp3 = (k) => join(here, 'audio', 'mp3', k + '.mp3');
+if (existsSync(man)) for (const { k } of JSON.parse(readFileSync(man, 'utf8'))) { const f = existsSync(mp3(k)) ? mp3(k) : alias[k] && existsSync(mp3(alias[k])) ? mp3(alias[k]) : null; if (f) audio[k] = 'data:audio/mpeg;base64,' + readFileSync(f).toString('base64'); }
+// a lesson that is mostly unrecorded uses the system voice throughout, rather than switching voices line by line
+if (existsSync(man) && Object.keys(audio).length < 0.5 * JSON.parse(readFileSync(man, 'utf8')).length) audio = {};
 const app = `const AUDIO = ${JSON.stringify(audio)};\nconst PROBLEMS = ${problems};\nconst PAPERS = ${JSON.stringify(papers)};\n` + FILES.map((f) => `/* ── ${f} ── */\n` + src(f)).join('\n');
 const out = src('shell.html')
   .replace('/*KATEXCSS*/', () => kcss)

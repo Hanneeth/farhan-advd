@@ -10,7 +10,7 @@ const GIV18 = '$G_{m1} = 0.1$ mS, $G_{m2} = 1$ mS, $R_1 = 200$ kΩ, $R_2 = 100$ 
 function ssModel(S, x, y) {
   const g = S.g(); const r = S.into(g);
   const yt = y + 100, yb = y + 330, P = x + 340, O = x + 540;
-  wire(S, [[x + 110, yt], [P, yt]]); wire(S, [[O, yt], [x + 820, yt]]); wire(S, [[x + 110, yb], [x + 780, yb]]); gnd(S, x + 450, yb);
+  wire(S, [[x + 110, yt], [P, yt]]); wire(S, [[O, yt], [x + 820, yt]]); wire(S, [[x + 110, yb], [x + 690, yb]]); gnd(S, x + 450, yb);
   isrc(S, x + 110, y + 215, { label: 'G_m1 v_in', left: true, len: 115, lsize: 20 });
   res(S, x + 210, yt, yb, { label: 'R_1', lsize: 20 }); wire(S, [[x + 300, yt], [x + 300, y + 190]]); cap(S, x + 300, y + 190, { label: 'C_1' });
   dot(S, P, yt); txt(S, P - 4, yt - 16, 'P', { size: 22, color: C.bad, weight: 800, anchor: 'middle' });
@@ -18,7 +18,7 @@ function ssModel(S, x, y) {
   wire(S, [[P, yt], [x + 434, yt]]); S.el('line', { x1: x + 434, y1: yt - 18, x2: x + 434, y2: yt + 18, stroke: C.amb, 'stroke-width': 3.6 });
   S.el('line', { x1: x + 446, y1: yt - 18, x2: x + 446, y2: yt + 18, stroke: C.amb, 'stroke-width': 3.6 }); wire(S, [[x + 446, yt], [O, yt]]);
   txt(S, x + 440, yt - 30, 'C_c', { size: 21, color: C.amb, weight: 700, anchor: 'middle' });
-  isrc(S, O + 60, y + 215, { label: 'G_m2 v_P', len: 115, lsize: 20 }); wire(S, [[O, yt], [O + 60, yt]]);
+  isrc(S, O + 60, y + 215, { label: 'G_m2 v_P', len: 115, lsize: 20, left: true }); wire(S, [[O, yt], [O + 60, yt]]);
   res(S, x + 690, yt, yb, { label: 'R_2', lsize: 20 }); wire(S, [[x + 780, yt], [x + 780, y + 190]]); cap(S, x + 780, y + 190, { label: 'C_2' });
   dot(S, O, yt); txt(S, x + 830, yt + 7, 'v_out', { size: 22, color: C.volt, weight: 700 });
   r(); return g;

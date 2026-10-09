@@ -71,6 +71,8 @@ header.top .sub { color: var(--muted); font-size: 14px; }
 .try input { width: 170px !important; }
 .try .box { pointer-events: auto; width: min(680px, 45%); max-height: 92%; overflow: auto; background: rgba(16,22,32,.96); border: 1px solid #f0a050; border-radius: 14px; padding: 16px 18px; color: #eef2f7; box-shadow: 0 12px 40px rgba(0,0,0,.5); backdrop-filter: blur(6px); }
 .try .tag { font: 700 12px/1 "Inter", sans-serif; letter-spacing: .12em; color: #ffb36b; text-transform: uppercase; }
+.try .tag .readq { margin-left: 10px; padding: 1px 7px; font-size: 13px; line-height: 1.2; vertical-align: middle; background: transparent; border: 1px solid #ffb36b55; border-radius: 6px; cursor: pointer; }
+.try .tag .readq:hover { background: #ffb36b22; }
 .try .p { font-size: 17px; margin: 10px 0 14px; line-height: 1.55; }
 .try .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .try input { font: 600 16px "JetBrains Mono", ui-monospace, monospace; width: 140px; padding: 8px 10px; border-radius: 9px; border: 1px solid #3a475b; background: #0b1018; color: #fff; }
@@ -517,7 +519,15 @@ const Player = (() => {
       // interactive stops
       const lt0 = t - offsets[cur], lt1 = nt - offsets[cur];
       const stop = S.stops.find((s) => s.t > lt0 - 1e-6 && s.t <= lt1 && !stopsDone.has(cur + '@' + s.t));
-      if (stop) { nt = offsets[cur] + stop.t; stopsDone.add(cur + '@' + stop.t); playing = false; Voice.cancel(); Try.open(stop); listeners.forEach((f) => f(nt)); }
+      if (stop) {
+        nt = offsets[cur] + stop.t;
+        // never cut the voice off for a question: finish the line (and one at the stop's own moment), breathe, then ask
+        const capThere = S.caps.filter((c) => c.t <= stop.t + 1e-6).pop();
+        const unread = capThere && capThere.html && capThere.html !== lastCap;
+        if (!(voice && (Voice.talking() || unread || Voice.idleFor() < 450))) {
+          stopsDone.add(cur + '@' + stop.t); playing = false; Voice.cancel(); Try.open(stop); listeners.forEach((f) => f(nt));
+        }
+      }
       // say-it-back drill at the end of a scene
       const sc = SCENES[cur], dEnd = sc.dur - 0.01;
       if (!stop && sc.recall && drills && lt1 >= dEnd && lt0 < dEnd + 1e-6 && !stopsDone.has(cur + '@' + dEnd)) {
@@ -616,9 +626,10 @@ const Try = (() => {
     const tries = { n: 0 };
     const b = box.querySelector('.box');
     const B = Budget.for(st), t0 = performance.now();
-    b.innerHTML = `<div class="tag">Your turn${st.src ? ' · ' + st.src : ''}</div>
+    b.innerHTML = `<div class="tag">Your turn${st.src ? ' · ' + st.src : ''}<button class="readq" title="Read the question aloud">🔈</button></div>
       <div class="timer"><div class="ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" class="bg"/><circle cx="22" cy="22" r="19" class="fg"/></svg><span></span></div>
       <div class="tl"><b>Exam budget ${mmss(B.secs)}</b><br><small>${B.note}</small></div></div><div class="p">${rt(st.q)}</div>`;
+    b.querySelector('.readq').onclick = () => Voice.speak(st.q, { gap: 220 });
     const ring = b.querySelector('.timer'), fg = b.querySelector('.timer .fg'), rs = b.querySelector('.timer .ring span');
     const C0 = 2 * Math.PI * 19; fg.style.strokeDasharray = C0;
     const used = () => (performance.now() - t0) / 1000;
@@ -699,8 +710,8 @@ const Try = (() => {
           if (Number.isNaN(v)) { fb.className = 'fb bad'; fb.textContent = 'Type a number (you can use p, n, µ/u, m, k, M, G).'; return; }
           const tol = st.tol ?? 0.03;
           const ok = Math.abs(v - st.answer) <= tol * Math.abs(st.answer) + (st.abs || 0);
-          if (ok) finish('✓ Correct.', true);
-          else { tries.n++; fb.className = 'fb bad'; fb.innerHTML = `✗ Not quite: you wrote ${pretty(v, st.unit)}. ${shown < hints.length ? 'Open a hint and try again.' : 'Check your working, or press “Show me”.'}`; }
+          if (ok) { finish('✓ Correct.', true); say('Correct.'); }
+          else { tries.n++; say('Not quite.'); fb.className = 'fb bad'; fb.innerHTML = `✗ Not quite: you wrote ${pretty(v, st.unit)}. ${shown < hints.length ? 'Open a hint and try again.' : 'Check your working, or press “Show me”.'}`; }
         };
         chk.onclick = check;
         inp.onkeydown = (e) => { e.stopPropagation(); if (e.key === 'Enter') check(); };
@@ -718,9 +729,11 @@ const Try = (() => {
         const last = document.createElement('div'); last.className = 'part final-q';
         last.innerHTML = `<div class="ph">Step ${parts.length + 1} of ${parts.length + 1} · the answer</div>`;
         partBox.appendChild(last);
+        say('Now the answer to the question.', 500);
         mainBlock(last); return;
       }
       const P = parts[i];
+      if (i > 0) say(`Step ${i + 1}. ${P.q}`, 500);
       const d = document.createElement('div'); d.className = 'part';
       d.innerHTML = `<div class="ph">Step ${i + 1} of ${parts.length + 1}</div><div class="pq">${rt(P.q)}</div>`;
       const row = document.createElement('div'); row.className = 'row';
@@ -751,7 +764,7 @@ const Try = (() => {
         const v = parseNum(inp.value);
         if (Number.isNaN(v)) { pf.className = 'fb bad'; pf.textContent = 'Type a number (you can use p, n, µ/u, m, k, M, G).'; return; }
         const ok = Math.abs(v - P.answer) <= (P.tol ?? 0.03) * Math.abs(P.answer) + (P.abs || 0);
-        if (ok) done(true); else { pf.className = 'fb bad'; pf.innerHTML = `✗ Not quite: you wrote ${pretty(v, P.unit)}. ${k < ph2.length ? 'Open the hint and try again.' : 'Check it, or press “Show me”.'}`; }
+        if (ok) done(true); else { say('Not quite.'); pf.className = 'fb bad'; pf.innerHTML = `✗ Not quite: you wrote ${pretty(v, P.unit)}. ${k < ph2.length ? 'Open the hint and try again.' : 'Check it, or press “Show me”.'}`; }
       };
       chk.onclick = check; sh.onclick = () => done(false);
       inp.onkeydown = (e) => { e.stopPropagation(); if (e.key === 'Enter') check(); };
@@ -759,6 +772,7 @@ const Try = (() => {
       setTimeout(() => { if (i === 0) { inp.focus({ preventScroll: true }); b.scrollTop = 0; } else inp.focus(); }, 50);
     };
     if (parts.length) askPart(0); else mainBlock(null);
+    say(st.q + (parts.length ? ' First, step 1. ' + parts[0].q : ''), 350);
     b.append(hintBox, calcBox, fb, sol);
     sol.style.display = 'none';
     const r2 = document.createElement('div'); r2.className = 'row'; r2.style.marginTop = '10px';
@@ -777,7 +791,10 @@ const Try = (() => {
     b.style.maxHeight = pc ? (100 * (98.5 - pc)) / (100 - pc) + '%' : '';
     box.classList.toggle('col', !!pc);
   }
-  function close() { open = false; clearInterval(tick); document.querySelector('.try').classList.remove('on'); }
+  function close() { open = false; clearInterval(tick); clearTimeout(sayT); Voice.cancel(); document.querySelector('.try').classList.remove('on'); }
+  /* the question read aloud (voice on): after a short pause, so it never talks over the line before it */
+  let sayT = null;
+  function say(html, delay = 0) { clearTimeout(sayT); if (!Player.voice() || !Voice.canSay(html)) return; sayT = setTimeout(() => { if (open) Voice.speak(html, { gap: 220 }); }, delay); }
   return { open: openStop, close, isOpen: () => open };
 })();
 
@@ -791,7 +808,7 @@ const Voice = (() => {
   const GOOD = /Ava|Zoe|Samantha|Daniel|Serena|Karen|Moira|Tessa|Rishi|Veena|Allison|Susan|Tom|Evan|Nathan|Joelle|Noelle|Aria|Jenny|Guy|Sonia|Libby|Ryan|Neerja|Prabhat|Natasha|William/;
   const score = (v) => (/Premium/i.test(v.name) ? 120 : 0) + (/Enhanced|Neural|Natural|Online/i.test(v.name) ? 90 : 0) + (/Google/.test(v.name) ? 60 : 0)
     + (GOOD.test(v.name) ? 40 : 0) + (/en[-_](GB|US|IN|AU|IE)/i.test(v.lang) ? 10 : 0) + (v.localService ? 0 : 5) - (NOVELTY.test(v.name) ? 500 : 0);
-  let chosen = null, gen = 0, talking = false, keep = [], audio = null;
+  let chosen = null, gen = 0, talking = false, keep = [], audio = null, lastEnd = 0, alive = null;
   /* pre-recorded natural voice (neural TTS rendered at build time), keyed by a hash of the spoken text */
   const AUD = typeof AUDIO !== 'undefined' ? AUDIO : {};
   const STUDIO = { name: 'Studio voice (natural, recorded)', lang: 'en-US', studio: true };
@@ -815,18 +832,35 @@ const Voice = (() => {
 
   /* ── how a teacher reads the symbols ── */
   const SUB = { th: 'threshold', thp: 'threshold P', thn: 'threshold N', ov: 'overdrive', in: 'in', out: 'out', min: 'min', max: 'max', up: 'up', down: 'down',
-    casc: 'cascode', bottom: 'bottom', src: 'source', ox: 'O X', eff: 'effective', tot: 'total', id: 'I D', b: 'B' };
+    casc: 'cascode', bottom: 'bottom', src: 'source', ox: 'ox', eff: 'effective', tot: 'total', id: 'I D', b: 'B', BIAS: 'bias', bias: 'bias', OUT: 'out', IN: 'in', REF: 'ref', ref: 'ref',
+    DD: 'D D', SS: 'S S', CM: 'C M', DM: 'D M' };
   const letters = (s) => s.toUpperCase().split('').join(' ');
+  /* the letter A as a symbol: written "A." so every voice says "ay" (never "uh", and never "eye" as "Ay" was) */
+  const LETTER_A = 'A.';
   function subWord(tok) {
-    return tok.split(/,\s*/).map((part) => part.replace(/([A-Za-z]+)|(\d+)/g, (_m, w, d) => {
-      if (d) return ' ' + d + ' ';
+    const parts = tok.split(/,\s*/);
+    return parts.map((part) => part.replace(/([A-Za-z]+)|(\d+)/g, (_m, w, d) => {
+      if (d) return ' ' + (d === '0' ? 'zero' : d) + ' ';
       if (SUB[w] !== undefined) return ' ' + SUB[w] + ' ';
-      if (w.length <= 3 && /^[A-Z]+$/.test(w)) return ' ' + letters(w) + ' ';
-      if (w.length === 1) return ' ' + w.toUpperCase() + ' ';
+      if (w.length <= 3 && /^[A-Z]+$/.test(w)) return ' ' + (w === 'A' ? LETTER_A : letters(w)) + ' ';
+      if (w.length === 1) return ' ' + (w === 'a' || w === 'A' ? LETTER_A : w.toUpperCase()) + ' ';
       return ' ' + w + ' ';
-    })).join(', ');
+    })).join(parts.every((x) => /^\d+$/.test(x)) ? ' and ' : ', ');
   }
-  const varSpeak = (base, sub) => ` ${base === 'A' || base === 'a' ? 'Ay' : base.length === 1 ? base.toUpperCase() : base} ${subWord(sub)} `;
+  const varSpeak = (base, sub) => ` ${base === 'A' || base === 'a' ? LETTER_A : base.length === 1 ? base.toUpperCase() : letters(base)} ${subWord(sub)} `;
+  const GREEK = { α: 'alpha', β: 'beta', γ: 'gamma', δ: 'delta', ε: 'epsilon', θ: 'theta', λ: 'lambda', τ: 'tau', φ: 'phi', ω: 'omega', Δ: 'delta', π: 'pi', ρ: 'rho', σ: 'sigma' };
+  const SUPS = '⁰¹²³⁴⁵⁶⁷⁸⁹', SUBS = '₀₁₂₃₄₅₆₇₈₉';
+  /* words a voice gets wrong if left alone: GB is not gigabytes, PM is not the afternoon, VOL is not a volume */
+  const LEX = [
+    [/\bGBW\b/g, 'G B W'], [/\bGBP\b/g, 'G B P'], [/\bGB\b/g, 'G B'], [/\bUGB\b/g, 'unity-gain bandwidth'], [/\bPM\b/g, 'phase margin'],
+    [/\bdB\b/g, 'decibels'], [/\bCMRR\b/g, 'C M R R'], [/\bPSRR\b/g, 'P S R R'], [/\bRHP\b/g, 'right-half-plane'], [/\bLHP\b/g, 'left-half-plane'],
+    [/\bICMR\b/g, 'I C M R'], [/\bVTC\b/g, 'V T C'], [/\bDC\b/g, 'D C'], [/\bCMOS\b/g, 'C mos'], [/\b[nN]MOS\b/g, 'N mos'], [/\b[pP]MOS\b/g, 'P mos'], [/\bMOS\b/g, 'mos'],
+    [/\b(VDD|VSS|VOL|VOH|VIL|VIH|NML|NMH|VCM|ISS|VISS|ACM|SR|KCL|KVL|CMFB|OTA|DM|CM)\b/g, (w) => (w === 'SR' ? 'slew rate' : letters(w))],
+    [/\bV(DS|GS|SB|DSAT|ds|gs)(\d*)\b/g, (_m, s, d) => `V ${letters(s)} ${d}`], [/\bVth(\d*)\b/g, 'V threshold $1'], [/\bVov(\d*)\b/g, 'V overdrive $1'], [/\bVin\b/g, 'V in'], [/\bVout\b/g, 'V out'],
+    [/\b([gr])([mO])(\d+)\b/g, (_m, a, b, d) => `${a.toUpperCase()} ${b.toUpperCase()} ${d}`], [/\bgm\b/g, 'G M'], [/\brO\b/g, 'R O'],
+    [/\b([ICRV])(\d+)\b/g, '$1 $2'], [/\bCc\b/g, 'C C'], [/\bCL\b/g, 'C L'], [/\bRL\b/g, 'R L'], [/\bRz\b/g, 'R Z'], [/\bk([nRpP])\b/g, 'k $1'], [/\bRout\b/g, 'R out'],
+    [/\bA([vd])\b/g, `${LETTER_A} $1`], [/\bA(\d)\b/g, (_m, d) => `${LETTER_A} ${d === '0' ? 'zero' : d}`], [/\bpF\b/g, 'picofarads'], [/\bAv(\d)\b/g, `${LETTER_A} V $1`],
+  ];
 
   function texSpeak(x) {
     let s = x;
@@ -836,35 +870,54 @@ const Voice = (() => {
     for (let i = 0; i < 3; i++) {
       s = s.replace(/\\(?:text|mathrm|mathbf|operatorname)\{([^{}]*)\}/g, ' $1 ')
         .replace(/\\underbrace\{((?:[^{}]|\{[^{}]*\})*)\}_\{(?:[^{}]|\{[^{}]*\})*\}/g, ' $1 ')
-        .replace(/\\t?frac12/g, ' half ').replace(/\\t?frac\{([^{}]*)\}\{([^{}]*)\}/g, ' $1 over $2 ').replace(/\\t?frac\s*([A-Za-z0-9])([A-Za-z0-9])/g, ' $1 over $2 ');
+        .replace(/\\[td]?frac12/g, ' half ').replace(/\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}/g, ' $1 over $2 ').replace(/\\[td]?frac\s*([A-Za-z0-9])([A-Za-z0-9])/g, ' $1 over $2 ');
     }
-    s = s.replace(/\\left|\\right/g, '').replace(/\\tan\^\{-1\}/g, ' arc tan of ').replace(/\\Delta\s*/g, ' delta ').replace(/\\log_\{?10\}?/g, ' log ').replace(/\\log/g, ' log ').replace(/\\ln/g, ' natural log of ').replace(/\\sqrt\{([^{}]*)\}/g, ' root $1 ').replace(/\\sqrt\s*(\d)/g, ' root $1 ').replace(/\\pi/g, ' pi ').replace(/\\gg/g, ' much greater than ').replace(/\\ll/g, ' much less than ').replace(/\\angle/g, ' the angle of ').replace(/\\circ/g, ' degrees ').replace(/\\max/g, ' the larger of ').replace(/\\min/g, ' the smaller of ')
+    s = s.replace(/(\d)\s*(?:\\[,;])?\s*\\mu\s*(A|W|s|m|V)\b/g, (_m, n, u) => `${n} micro${{ A: 'amps', W: 'watts', s: 'seconds', m: 'metres', V: 'volts' }[u]}`)
+      .replace(/\\left|\\right/g, '').replace(/\^\{?\\circ\}?/g, ' degrees ').replace(/([A-Za-z])(?:'|\^\{?\\prime\}?)_\{?([A-Za-z0-9]+)\}?/g, (_m, b, sub) => varSpeak(b, sub) + ' prime ').replace(/\^\{?\\prime\}?|'|\\prime/g, ' prime ').replace(/\\ne(q)?\b/g, ' is not ').replace(/\\lt\b|</g, ' is less than ').replace(/\\gt\b|>/g, ' is greater than ').replace(/\\tan\^\{-1\}/g, ' arc tan of ').replace(/\\Delta\s*/g, ' delta ').replace(/\\log_\{?10\}?/g, ' log ').replace(/\\log/g, ' log ').replace(/\\ln/g, ' natural log of ').replace(/\\sqrt\{([^{}]*)\}/g, ' root $1 ').replace(/\\sqrt\s*(\d)/g, ' root $1 ').replace(/\\pi/g, ' pi ').replace(/\\gg/g, ' much greater than ').replace(/\\ll/g, ' much less than ').replace(/\\angle/g, ' the angle of ').replace(/\\circ/g, ' degrees ').replace(/\\max/g, ' the larger of ').replace(/\\min/g, ' the smaller of ')
       .replace(/\\parallel/g, ' in parallel with ').replace(/\\times|\\cdot/g, ' times ').replace(/\\approx/g, ' is about ').replace(/\\ge(q)?/g, ' is at least ').replace(/\\le(q)?/g, ' is at most ')
       .replace(/\\Rightarrow|\\implies/g, ', so ').replace(/\\to/g, ' to ').replace(/\\in\b/g, ' in ').replace(/\\propto/g, ' grows like ').replace(/\\infty/g, ' infinity ').replace(/\\pm/g, ' plus or minus ')
-      .replace(/\\(mu|lambda|beta|omega|tau|alpha|gamma|phi|theta)/g, ' $1 ').replace(/\\varepsilon/g, ' epsilon ').replace(/\\Delta/g, ' delta ')
+      .replace(/\\(mu|lambda|beta|omega|tau|alpha|gamma|phi|theta|rho|sigma|delta|epsilon)/g, ' $1 ').replace(/\\varepsilon/g, ' epsilon ').replace(/\\Delta/g, ' delta ')
       .replace(/\\qquad|\\quad/g, ', ').replace(/\\[,;!: ]/g, ' ')
       .replace(/\(g_m ?r_O\)\^2/g, ' g M r O, squared ')
       .replace(/([A-Za-z])_\{([^{}]*)\}/g, (_m, b, sub) => varSpeak(b, sub)).replace(/([A-Za-z])_([A-Za-z0-9])/g, (_m, b, sub) => varSpeak(b, sub))
-      .replace(/\^2/g, ' squared ').replace(/\^3/g, ' cubed ').replace(/\^\{-([^{}]*)\}/g, ' to the minus $1 ').replace(/\^\{([^{}]*)\}/g, ' to the $1 ')
+      .replace(/\^2(?!\d)/g, ' squared ').replace(/\^3(?!\d)/g, ' cubed ').replace(/\^(-?)(\d+)/g, (_m, m, d) => ` to the ${m ? 'minus ' : ''}${d} `).replace(/\^\{-([^{}]*)\}/g, ' to the minus $1 ').replace(/\^\{([^{}]*)\}/g, ' to the $1 ')
       .replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}_\\]/g, ' ').replace(/\|/g, ' ')
       .replace(/(\d)\s*-\s*(\d)/g, '$1 minus $2').replace(/\s-\s/g, ' minus ').replace(/(^|[\s(=])-(\d)/g, '$1minus $2')
-      .replace(/\+/g, ' plus ').replace(/=/g, ' equals ').replace(/[[\]]/g, ' ');
+      .replace(/\+/g, ' plus ').replace(/=/g, ' equals ').replace(/[[\]]/g, ' ').replace(/\//g, ' over ').replace(/\^/g, ' ')
+      .replace(/(^|[\s(])A(?=[\s),]|$)/g, `$1${LETTER_A}`); // a lone A in maths is the gain, the letter
     return s;
   }
   const UNIT = { V: ['volt', 'volts'], mV: ['millivolt', 'millivolts'], 'µA': ['microamp', 'microamps'], uA: ['microamp', 'microamps'], mA: ['milliamp', 'milliamps'],
     'kΩ': ['kilo-ohm', 'kilo-ohms'], 'MΩ': ['mega-ohm', 'mega-ohms'], 'Ω': ['ohm', 'ohms'], mW: ['milliwatt', 'milliwatts'], W: ['watt', 'watts'], pF: ['picofarad', 'picofarads'],
     fF: ['femtofarad', 'femtofarads'], MHz: ['megahertz', 'megahertz'], GHz: ['gigahertz', 'gigahertz'], kHz: ['kilohertz', 'kilohertz'], ns: ['nanosecond', 'nanoseconds'], ps: ['picosecond', 'picoseconds'], Hz: ['hertz', 'hertz'],
-    'µs': ['microsecond', 'microseconds'], us: ['microsecond', 'microseconds'], ms: ['millisecond', 'milliseconds'], dB: ['decibel', 'decibels'] };
+    'µs': ['microsecond', 'microseconds'], us: ['microsecond', 'microseconds'], ms: ['millisecond', 'milliseconds'], dB: ['decibel', 'decibels'], 'µW': ['microwatt', 'microwatts'], uW: ['microwatt', 'microwatts'], nW: ['nanowatt', 'nanowatts'],
+    nA: ['nanoamp', 'nanoamps'], pA: ['picoamp', 'picoamps'], A: ['amp', 'amps'], 'µV': ['microvolt', 'microvolts'], kV: ['kilovolt', 'kilovolts'], 'µm': ['micrometre', 'micrometres'], nm: ['nanometre', 'nanometres'],
+    nF: ['nanofarad', 'nanofarads'], 'µF': ['microfarad', 'microfarads'] };
+  const UNITS_RE = 'mV|µA|uA|mA|nA|pA|kΩ|MΩ|Ω|mW|µW|uW|nW|W|pF|fF|nF|µF|MHz|GHz|kHz|ns|ps|µs|us|ms|dB|Hz|µV|kV|V|µm|nm'; // not bare A: "10 A" is usually a gain
   function units(s) {
     return s.replace(/(\d)\s*(?:\\[,;])?\s*\\(?:mathrm|text)\{([^{}]+)\}/g, '$1 $2')
       .replace(/(\d+(?:\.\d+)?)\s*(G|M|k)rad\/s/g, (_m, n, p) => `${n} ${{ G: 'giga', M: 'mega', k: 'kilo' }[p]}radians per second`)
       .replace(/(\d+(?:\.\d+)?)\s*(m|µ|u)S\b/g, (_m, n, p) => `${n} ${p === 'm' ? 'milli' : 'micro'}siemens`)
+      .replace(/(µ|m|)A\s*\/\s*V(?:\^2|²|\^\{2\})/g, (_m, p) => `${{ µ: 'micro', m: 'milli', '': '' }[p]}amps per volt squared`)
+      .replace(/(\d)\s*V(?:\^\{-1\}|⁻¹)/g, '$1 per volt').replace(/\bin\s+V(?:\^\{-1\}|⁻¹)/g, 'in inverse volts').replace(/\bV(?:\^\{-1\}|⁻¹)/g, 'per volt')
       .replace(/rad\/s\b/g, 'radians per second').replace(/V\/µs\b/g, 'volts per microsecond').replace(/µA\/pF/g, 'microamps per picofarad').replace(/(\d)\s*–\s*(\d)/g, '$1 to $2')
-      .replace(/(\d+(?:\.\d+)?)\s*(mV|µA|uA|mA|kΩ|MΩ|Ω|mW|W|pF|fF|MHz|GHz|kHz|ns|ps|µs|us|ms|dB|Hz|V)(?![A-Za-z0-9_{])/g, (_m, n, u) => `${n} ${UNIT[u][+n === 1 ? 0 : 1]}`);
+      .replace(new RegExp(`(\\d+(?:\\.\\d+)?)\\s*(${UNITS_RE})(?![A-Za-z0-9_{⁻²])`, 'g'), (_m, n, u) => `${n} ${UNIT[u][+n === 1 ? 0 : 1]}`);
   }
   function plainSpeak(s) {
+    s = s.replace(/([A-Za-z])([₀-₉]+)/g, (_m, b, d) => varSpeak(b, [...d].map((c) => SUBS.indexOf(c)).join(''))).replace(/[₀-₉]+/g, (c) => ' ' + [...c].map((d) => SUBS.indexOf(d)).join('') + ' ')
+      .replace(/(\d)\s*([⁻]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_m, d, e) => e === '²' ? `${d} squared` : `${d} to the ${e.replace('⁻', 'minus ').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (c) => SUPS.indexOf(c))}`)
+      .replace(/⁻¹/g, ' inverse').replace(/²/g, ' squared').replace(/³/g, ' cubed')
+      .replace(/([αβγδεθλτφωρσ])_\{?([A-Za-z0-9,]+)\}?/g, (_m, g, sub) => ` ${GREEK[g]} ${subWord(sub)} `)
+      .replace(/µ\s*([np])\s*C_?\{?ox\}?/g, 'mu $1 C ox').replace(/µ\s*C_?\{?ox\}?/g, 'mu C ox').replace(/µS\b/g, 'microsiemens').replace(/µ(A|W|s|m|V)\b/g, (_m, u) => 'micro' + { A: 'amps', W: 'watts', s: 'seconds', m: 'metres', V: 'volts' }[u])
+      .replace(/([αβγδεθλτφωρσ])/g, (g) => ' ' + GREEK[g] + ' ').replace(/([A-Za-z])′_\{?([A-Za-z0-9]+)\}?/g, (_m, b, sub) => varSpeak(b, sub) + ' prime ').replace(/\bbeta\s+A\b(?!\.)/g, `beta ${LETTER_A}`).replace(/′/g, ' prime ').replace(/≠/g, ' is not ')
+      .replace(/\|/g, ' ').replace(/</g, ' is less than ').replace(/>/g, ' is greater than ')
+      .replace(/\s·\s*(?=\d+(?:\.\d+)? marks)/g, ', ').replace(/\s+·\s+(?=[A-Z(])/g, ', ')
+      .replace(/\b(20\d\d)-(\d\d)\b/g, '$1 $2').replace(/(\d)\s*\+\s*(\d)/g, '$1 plus $2').replace(/\)(\d+),(\d+)\b/g, ') $1 and $2').replace(/\)(\d+)\b/g, ') $1')
+      .replace(/\bV\/s\b/g, 'volts per second').replace(/\bf\s*[−-]\s*3\s*dB\b/g, 'f minus 3 decibels').replace(/\(=\s*/g, '(equals ').replace(/(\d)[\u2009\u202f\u00a0](\d{3})(?!\d)/g, '$1$2').replace(/\bj(\d)/g, 'j $1')
+      .replace(/([A-Za-z])_\{([^{}]*)\}/g, (_m, b, sub) => varSpeak(b, sub)).replace(/\b([A-Za-z]{1,3})_([A-Za-z0-9]+(?:,[A-Za-z0-9]+)*)/g, (_m, b, sub) => varSpeak(b, sub))
+      .replace(/\bA(?=\s*(?:=|≈))/g, LETTER_A);
+    LEX.forEach(([re, to]) => { s = s.replace(re, to); });
     return s
-      .replace(/([A-Za-z])_\{([^{}]*)\}/g, (_m, b, sub) => varSpeak(b, sub)).replace(/\b([A-Za-z])_([A-Za-z0-9]+(?:,[A-Za-z0-9]+)*)/g, (_m, b, sub) => varSpeak(b, sub))
       .replace(/−\s*(\d)/g, 'minus $1').replace(/\s[−-]\s/g, ' minus ').replace(/−/g, ' minus ')
       .replace(/\bLecs?\b\.?/g, 'Lecture').replace(/\bEx\b\.?/g, 'Example').replace(/\bmid-sem\b/gi, 'mid sem').replace(/\bvs\.?\b/g, 'versus').replace(/\bi\.e\.,?/g, 'that is,').replace(/\be\.g\.,?/g, 'for example,')
       .replace(/\b(CM|KCL|KVL|CMFB|PMOS|NMOS|OTA|SR)\b/g, (w) => ({ CM: 'C M', KCL: 'K C L', KVL: 'K V L', CMFB: 'C M F B', PMOS: 'P mos', NMOS: 'N mos', OTA: 'O T A', SR: 'slew rate' }[w]))
@@ -876,20 +929,27 @@ const Voice = (() => {
       .replace(/→/g, ', then ').replace(/↑/g, ' goes up ').replace(/↓/g, ' goes down ').replace(/≈/g, ' about ').replace(/≥/g, ' at least ').replace(/≤/g, ' at most ')
       .replace(/×/g, ' times ').replace(/∥/g, ' in parallel with ').replace(/÷/g, ' divided by ').replace(/Ω/g, ' ohms ').replace(/µ/g, ' micro ')
       .replace(/[“”"]/g, '').replace(/…/g, ', ').replace(/\s*[—–]\s*/g, ', ').replace(/[①②③④⑤]/g, (c) => ' ' + ('①②③④⑤'.indexOf(c) + 1) + ', ').replace(/[✓✗▶↺★💡]/g, ' ')
-      .replace(/\s+([,.;:!?])/g, '$1').replace(/,\s*,/g, ',').replace(/\s+/g, ' ').replace(/^[\s,;:]+/, '').trim();
+      .replace(/\s+([,.;:!?])/g, '$1').replace(/,\s*,/g, ',').replace(/\s+/g, ' ').replace(/^[\s,;:]+/, '').replace(/\bA\.\./g, 'A.').trim();
   }
   function toSpeech(html) {
-    const s = html.replace(/(\d)\$\s*((?:G|M|k)?rad\/s|mV|µA|uA|mA|kΩ|MΩ|Ω|mW|W|pF|fF|MHz|GHz|kHz|ns|µs|us|ms|dB|mS|µS|V)(?![A-Za-z0-9_{])/g, '$1 $2$$').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, ' and ').replace(/&[a-z]+;/g, ' ').replace(/\*\*/g, '')
-      .split('$').map((seg, i) => (i % 2 ? ' ' + texSpeak(units(seg)) + ' ' : units(seg))).join('');
+    const s = html.replace(/\\mu\$\s*(A|W|s|m|V|F|S)\b/g, '$µ$1').replace(/(\d)\$\s*((?:G|M|k)?rad\/s|mV|µA|uA|mA|kΩ|MΩ|Ω|mW|W|pF|fF|MHz|GHz|kHz|ns|µs|us|ms|dB|mS|µS|V)(?![A-Za-z0-9_{])/g, '$1 $2$$').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, ' and ').replace(/&lt;/g, ' is less than ').replace(/&gt;/g, ' is greater than ').replace(/&[a-z]+;/g, ' ').replace(/\*\*/g, '')
+      .split('$').map((seg, i) => (i % 2 ? ' ' + texSpeak(units(seg.replace(/\\mu\s*(?=(?:A|W|s|m|V|F|S)\b)/g, 'µ'))) + ' ' : units(seg))).join('');
     return plainSpeak(s);
   }
   /* split into breath-sized pieces: sentences, and long sentences at ';' or ':' */
   function pieces(text) {
     const out = [];
-    text.split(/(?<=[.!?])\s+(?=[A-Z0-9(])/).forEach((sen) => {
+    text.split(/(?<=[.!?])(?<!\bA\.)\s+(?=[A-Z0-9(])/).forEach((sen) => {
       if (sen.length > 160) sen.split(/(?<=[;:])\s+/).forEach((p) => p && out.push(p)); else if (sen) out.push(sen);
     });
-    return out;
+    // some engines (Chrome's online voices) stop mid-utterance after ~15 s: keep each piece short, breaking at commas
+    return out.flatMap((p) => {
+      if (p.length <= 200) return [p];
+      const r = []; let cur = '';
+      p.split(/(?<=,)\s+/).forEach((c) => { if (cur && (cur + ' ' + c).length > 180) { r.push(cur); cur = c; } else cur = cur ? cur + ' ' + c : c; });
+      if (cur) r.push(cur);
+      return r;
+    });
   }
   const words = (html) => toSpeech(html).split(/\s+/).filter(Boolean).length;
 
@@ -911,7 +971,7 @@ const Voice = (() => {
       let i = 0;
       const next = () => {
         if (my !== gen) return res(false);
-        if (i >= parts.length) { talking = false; return res(true); }
+        if (i >= parts.length) { talking = false; lastEnd = performance.now(); clearInterval(alive); alive = null; return res(true); }
         const u = new SpeechSynthesisUtterance(parts[i++]);
         u.rate = clamp(rate * (o.speed || 1), 0.6, 1.7); u.pitch = 1; u.lang = back?.lang || 'en-GB';
         if (back) u.voice = back;
@@ -920,6 +980,7 @@ const Voice = (() => {
         u.onend = fin; u.onerror = fin;
         keep.push(u); // Chrome drops callbacks of garbage-collected utterances
         s.speak(u);
+        if (back && !back.localService && !alive) alive = setInterval(() => { if (s.speaking && !s.paused) { s.pause(); s.resume(); } }, 9000); // online voices time out otherwise
         // safety net: some engines never fire onend
         setTimeout(() => { if (!done && !s.speaking && my === gen) fin(); }, 1500 + 160 * u.text.split(' ').length * 1.6);
       };
@@ -931,14 +992,14 @@ const Voice = (() => {
     return new Promise((res) => {
       const a = new Audio(src); audio = a;
       a.preservesPitch = true; a.playbackRate = clamp(o.speed || 1, 0.5, 2);
-      const end = (ok) => { if (audio === a) audio = null; if (my === gen) talking = false; res(ok && my === gen); };
+      const end = (ok) => { if (audio === a) audio = null; if (my === gen) { talking = false; lastEnd = performance.now(); } res(ok && my === gen); };
       a.onended = () => end(true); a.onerror = () => end(false); a.onpause = () => { if (!a.ended) end(false); };
       a.play().catch(() => end(false));
     });
   }
-  function cancel() { gen++; talking = false; keep = []; if (audio) { const a = audio; audio = null; a.pause(); } synth()?.cancel(); }
+  function cancel() { gen++; talking = false; keep = []; clearInterval(alive); alive = null; if (audio) { const a = audio; audio = null; a.pause(); } synth()?.cancel(); }
   const PROMPTS = ['Say it back. Listen first.', 'Next line.', 'Now from memory.'];
-  return { speak, cancel, toSpeech, words, list, pick, choose, key, PROMPTS, hasStudio, current: () => chosen, talking: () => talking, setRate: (r) => { rate = r; }, store };
+  return { speak, cancel, toSpeech, words, list, pick, choose, key, PROMPTS, hasStudio, current: () => chosen, canSay: (html) => !chosen?.studio || !!AUD[key(toSpeech(html))], talking: () => talking, idleFor: () => (talking ? 0 : performance.now() - lastEnd), setRate: (r) => { rate = r; }, store };
 })();
 
 /* ── study pacing: extra time after each subtitle, in ms ── */
@@ -2165,7 +2226,7 @@ scene(GF, 'One stage: gain, bandwidth and GBW', 86, (S) => {
   isrc(S, 260, 380, { label: 'g_m v_in', up: true, lsize: 22 }); wire(S, [[260, 300], [260, 338]]); wire(S, [[260, 422], [260, 480]]);
   wire(S, [[260, 300], [520, 300]]); dot(S, 400, 300); dot(S, 520, 300);
   res(S, 400, 300, 470, { label: 'R' }); cap(S, 520, 300, { label: 'C' }); wire(S, [[400, 470], [400, 480]]);
-  wire(S, [[200, 480], [560, 480]]); gnd(S, 380, 480);
+  wire(S, [[260, 480], [400, 480]]); gnd(S, 330, 480);
   wire(S, [[520, 300], [600, 300]]); txt(S, 610, 308, 'v_out', { size: 22, color: C.cur, weight: 700 });
   rr(); cg.style.opacity = 0; S.fade(cg, 0.3, 0.6);
   S.say(0.3, 'Every amplifier stage in this course is this picture: a transistor turns the input into a current $g_m v_{in}$, and that current flows into the resistance $R$ and capacitance $C$ at its output node.');
@@ -2348,7 +2409,7 @@ scene(GF, 'Ground up in one card', 30, (S) => {
     'Lags add; $PM = 180° - $ lag where $|\\beta A| = 1$; two-stage buffer: $PM ≈ 90° - \\tan^{-1}(GB/\\omega_{p2})$.',
     'Slews if $V_0/\\tau > SR$; then $t_{slew} ≈ (V_0 - SR\\,\\tau)/SR$.'], 0.4, 'Ground up in one card');
   S.say(0.4, 'Seven lines, and every one of them comes back in Lectures 18 and 19.');
-}, { recall: ['i equals C d v d t: a current fills a capacitor at I over C.', 'The pole is at one over R C; above it the gain falls twenty d B per decade.', 'Gain times bandwidth is g m over C: R cancels.', 'Phase margin is 180 degrees minus the lag where the loop gain is one.'] });
+}, { recall: ['i equals C dv by dt: a current fills a capacitor at I over C.', 'The pole is at one over R C; above it the gain falls twenty decibels per decade.', 'Gain times bandwidth is g m over C: R cancels.', 'Phase margin is 180 degrees minus the lag where the loop gain is one.'] });
 
 /* ── l18.js ── */
 /* Lesson F: Lecture 18 — the two-stage op amp's transfer function, its two poles and RHP zero, and where the
@@ -2363,7 +2424,7 @@ const GIV18 = '$G_{m1} = 0.1$ mS, $G_{m2} = 1$ mS, $R_1 = 200$ kΩ, $R_2 = 100$ 
 function ssModel(S, x, y) {
   const g = S.g(); const r = S.into(g);
   const yt = y + 100, yb = y + 330, P = x + 340, O = x + 540;
-  wire(S, [[x + 110, yt], [P, yt]]); wire(S, [[O, yt], [x + 820, yt]]); wire(S, [[x + 110, yb], [x + 780, yb]]); gnd(S, x + 450, yb);
+  wire(S, [[x + 110, yt], [P, yt]]); wire(S, [[O, yt], [x + 820, yt]]); wire(S, [[x + 110, yb], [x + 690, yb]]); gnd(S, x + 450, yb);
   isrc(S, x + 110, y + 215, { label: 'G_m1 v_in', left: true, len: 115, lsize: 20 });
   res(S, x + 210, yt, yb, { label: 'R_1', lsize: 20 }); wire(S, [[x + 300, yt], [x + 300, y + 190]]); cap(S, x + 300, y + 190, { label: 'C_1' });
   dot(S, P, yt); txt(S, P - 4, yt - 16, 'P', { size: 22, color: C.bad, weight: 800, anchor: 'middle' });
@@ -2371,7 +2432,7 @@ function ssModel(S, x, y) {
   wire(S, [[P, yt], [x + 434, yt]]); S.el('line', { x1: x + 434, y1: yt - 18, x2: x + 434, y2: yt + 18, stroke: C.amb, 'stroke-width': 3.6 });
   S.el('line', { x1: x + 446, y1: yt - 18, x2: x + 446, y2: yt + 18, stroke: C.amb, 'stroke-width': 3.6 }); wire(S, [[x + 446, yt], [O, yt]]);
   txt(S, x + 440, yt - 30, 'C_c', { size: 21, color: C.amb, weight: 700, anchor: 'middle' });
-  isrc(S, O + 60, y + 215, { label: 'G_m2 v_P', len: 115, lsize: 20 }); wire(S, [[O, yt], [O + 60, yt]]);
+  isrc(S, O + 60, y + 215, { label: 'G_m2 v_P', len: 115, lsize: 20, left: true }); wire(S, [[O, yt], [O + 60, yt]]);
   res(S, x + 690, yt, yb, { label: 'R_2', lsize: 20 }); wire(S, [[x + 780, yt], [x + 780, y + 190]]); cap(S, x + 780, y + 190, { label: 'C_2' });
   dot(S, O, yt); txt(S, x + 830, yt + 7, 'v_out', { size: 22, color: C.volt, weight: 700 });
   r(); return g;
@@ -2609,7 +2670,7 @@ function t7Fig(S) {
   // bias: I_BIAS into the diode M6, mirrored to M5 and M8
   isrc(S, 120, 330, { label: 'I_BIAS', left: true, len: 50 }); wire(S, [[120, 170], [120, 280]]); wire(S, [[120, 380], [120, 480]]);
   nmos(S, 120, 530, { name: 'M6', right: true, gl: 30, nameSide: 'l' }); gnd(S, 120, 580);
-  wire(S, [[120, 505], [180, 505], [180, 530]]); dot(S, 120, 505); dot(S, 180, 530); wire(S, [[180, 530], [250, 530]]);
+  wire(S, [[120, 488], [180, 488], [180, 530]]); dot(S, 120, 488); dot(S, 180, 530); wire(S, [[180, 530], [250, 530]]);
   wire(S, [[180, 530], [180, 616], [560, 616], [560, 530], [570, 530]]);
   // second stage
   const m7 = pmos(S, 640, 250, { name: 'M7', gl: 30 }); wire(S, [[640, 170], [640, 200]]);
@@ -2844,7 +2905,7 @@ scene(L19, 'Tutorial 7 Q1: design the Miller two-stage', 150, (S) => {
 
 /* ── the page's own spec: CL = 5 pF. The power check fails; bigger M3/M4 fix it. ── */
 const L19X = F.l19, L19B = F.l19b, L19F = F.l19fix;
-scene(L19, 'Your page’s spec: C_L = 5 pF, and the power check fails', 120, (S) => {
+scene(L19, 'Your page’s spec: C_L = 5 pF, and the power check fails', 106, (S) => {
   pyqFrame(S, {
     tag: 'LEC 19 · YOUR PAGE’S EXAMPLE', title: 'Same recipe, bigger load: the power check fails, then the fix', src: 'Lec 19 example (your page)',
     q: '$V_{DD} = 1.8$ V, $A_v = 60$ dB, GBW ≥ 30 MHz, ICMR+ = 1.6 V, ICMR− = 0.8 V, $C_L = 5$ pF, power ≤ 300 µW, SR = 20 V/µs, PM ≥ 60°. Run the recipe and check the power.',
@@ -2852,30 +2913,22 @@ scene(L19, 'Your page’s spec: C_L = 5 pF, and the power check fails', 120, (S)
     tests: 'the same eight steps; then what to change when a check fails. Only the load differs from Tutorial 7, and that is enough to break the power budget.',
     fig: (S2) => { const t = twoStageFig(S2, { x: 60, y: 120, sc: 1, caps: true }); return t; },
     steps: [
-      { t: 6, title: '**1–2 · $C_c$ and $I_5$.**', tex: `C_c = 0.22\\times5\\,\\text{p} = 1.1\\,\\text{pF},\\quad I_5 = 20\\,\\text{V}/\\mu\\text{s}\\times1.1\\,\\text{p} = ${u3(L19X.i5, 1e-6, 'µA')}`,
-        try: { q: 'C_L = 5 pF: the tail current I₅ (after C_c from the PM rule)?', answer: L19X.i5, unit: 'A', tol: 0.02,
-          parts: [{ q: 'First $C_c$?', answer: L19X.cc, unit: 'F', tol: 0.02, hint: ['$0.22\\,C_L$'], how: ['$$0.22\\times5\\,\\text{p} = 1.1\\,\\text{pF}$$'] }],
-          hint: ['Same two steps as Tutorial 7.', '$C_c = 0.22C_L$, $I_5 = SR\\cdot C_c$'], how: ['$$C_c = 1.1\\,\\text{pF},\\quad I_5 = (20\\times10^6)(1.1\\times10^{-12}) = 22\\,\\mu\\text{A}$$'] }, say: 'Cc = 1.1 pF, I5 = 22 µA.' },
-      { t: 14, title: '**3–5 · M3, M1, M5** exactly as before (the 0.16 V and $V_{DS5}$ do not change).', tex: `\\left(\\tfrac WL\\right)_3 = ${fx(L19X.wl3, 3)},\\; g_{m1} = ${u3(L19X.gm1, 1e-6, 'µS')},\\; \\left(\\tfrac WL\\right)_1 = ${fx(L19X.wl1, 3)},\\; V_{DS5} = ${fx(L19X.vds5, 3)},\\; \\left(\\tfrac WL\\right)_5 = ${fx(L19X.wl5, 3)}`,
-        try: { q: 'g_m1 for GBW = 30 MHz with C_c = 1.1 pF?', answer: L19X.gm1, unit: 'S', tol: 0.02,
-          hint: ['GBW in hertz.', '$g_{m1} = 2\\pi\\,GBW\\,C_c$'], how: ['$$g_{m1} = 2\\pi(30\\,\\text{M})(1.1\\,\\text{p}) = 207\\,\\mu\\text{S}$$', `Then as in Tutorial 7: $(W/L)_3 = ${fx(L19X.wl3, 3)}$, $(W/L)_1 = ${fx(L19X.wl1, 3)}$, $V_{DS5} = ${fx(L19X.vds5, 3)}$ V, $(W/L)_5 = ${fx(L19X.wl5, 3)}$.`] }, say: 'gm1 = 207 µS; M3, M1, M5 follow.' },
-      { t: 22, title: '**6 · M6** at ten times $g_{m1}$ and M4’s 0.16 V overdrive: its current is large.', tex: `g_{m6} = ${u3(L19X.gm6, 1e-3, 'mS')},\\quad I_6 = \\tfrac12 g_{m6}(0.16) = ${u3(L19X.i6, 1e-6, 'µA')}`,
-        try: { q: 'What current I₆ does M6 carry (g_m6 = 10 g_m1, |V_ov6| = |V_ov4| = 0.16 V)?', answer: L19X.i6, unit: 'A', tol: 0.02,
-          parts: [{ q: 'First $g_{m6}$?', answer: L19X.gm6, unit: 'S', tol: 0.02, hint: ['$10\\,g_{m1}$'], how: ['$$10\\times207\\,\\mu = 2.07\\,\\text{mS}$$'] }],
-          hint: ['$I_D = \\tfrac12 g_m|V_{ov}|$.', '$I_6 = \\tfrac12(10g_{m1})(0.16)$'], how: [`$$I_6 = \\tfrac12(2.07\\,\\text{m})(0.16) = ${fx(L19X.i6 * 1e6, 3)}\\,\\mu\\text{A}$$`] }, say: `I6 = ${fx(L19X.i6 * 1e6, 3)} µA.` },
-      { t: 30, title: '**8 · power check: it fails.**', tex: `P = 1.8(22 + 22 + ${fx(L19X.i6 * 1e6, 3)})\\,\\mu = ${u3(L19X.pdAll, 1e-6, 'µW')} > 300\\,\\mu\\text{W}\\;✗`,
-        try: { q: 'Total power with the bias branch (I_bias = I₅)? Compare with 300 µW.', answer: L19X.pdAll, unit: 'W', tol: 0.02,
+      { t: 6, title: '**1–6 · the recipe, exactly as in Tutorial 7** (you solved each step there; only $C_L$ changed). The 0.16 V overdrive and $V_{DS5}$ do not change.',
+        tex: `C_c = 0.22(5\\,\\text{p}) = 1.1\\,\\text{pF},\\; I_5 = 20\\,\\tfrac{\\text{V}}{\\mu\\text{s}}(1.1\\,\\text{p}) = ${u3(L19X.i5, 1e-6, 'µA')},\\; g_{m1} = 2\\pi(30\\,\\text{M})(1.1\\,\\text{p}) = ${u3(L19X.gm1, 1e-6, 'µS')},\\; g_{m6} = 10g_{m1},\\; I_6 = \\tfrac12 g_{m6}(0.16) = ${u3(L19X.i6, 1e-6, 'µA')}`,
+        say: `Same recipe: $C_c$ = 1.1 pF, $I_5$ = 22 µA, $g_{m1}$ = ${fx(L19X.gm1 * 1e6, 3)} µS, and M6 must carry ${fx(L19X.i6 * 1e6, 3)} µA. Now the check.` },
+      { t: 16, title: '**8 · power check: it fails.**', tex: `P = 1.8(22 + 22 + ${fx(L19X.i6 * 1e6, 3)})\\,\\mu = ${u3(L19X.pdAll, 1e-6, 'µW')} > 300\\,\\mu\\text{W}\\;✗`,
+        try: { q: `Total power with the bias branch? Use $I_{bias} = I_5 = 22\\,\\mu$A and $I_6 = ${fx(L19X.i6 * 1e6, 3)}\\,\\mu$A from the recipe above; compare with 300 µW.`, answer: L19X.pdAll, unit: 'W', tol: 0.02,
           hint: ['Add every branch current and multiply by $V_{DD}$.', '$P = V_{DD}(I_{bias} + I_5 + I_6)$'], how: [`$$P = 1.8\\times(22 + 22 + ${fx(L19X.i6 * 1e6, 3)})\\,\\mu = ${fx(L19X.pdAll * 1e6, 3)}\\,\\mu\\text{W}$$`, 'Over the 300 µW budget ✗.'],
           why: 'The output stage is the culprit: $I_6 = \\tfrac12g_{m6}|V_{ov}|$ grows with the load (through $C_c$, $g_{m1}$, $g_{m6}$).' }, say: `${fx(L19X.pdAll * 1e6, 3)} µW: over budget. Go back.` },
-      { t: 40, title: '**The fix:** $g_{m6}$ cannot drop (PM), but its **overdrive** can. A smaller $|V_{ov4}| = |V_{ov6}|$ means wider M3, M4, M6 and less $I_6$.', tex: `I_6 \\le \\frac{300\\,\\mu}{1.8} - 2(22\\,\\mu) = ${u3(L19F.i6max, 1e-6, 'µA')}\\;\\Rightarrow\\; |V_{ov}| \\le \\frac{2I_6}{g_{m6}} = ${fx(L19F.vov, 3)}\\,\\text{V}`,
+      { t: 26, title: '**The fix:** $g_{m6}$ cannot drop (PM), but its **overdrive** can. A smaller $|V_{ov4}| = |V_{ov6}|$ means wider M3, M4, M6 and less $I_6$.', tex: `I_6 \\le \\frac{300\\,\\mu}{1.8} - 2(22\\,\\mu) = ${u3(L19F.i6max, 1e-6, 'µA')}\\;\\Rightarrow\\; |V_{ov}| \\le \\frac{2I_6}{g_{m6}} = ${fx(L19F.vov, 3)}\\,\\text{V}`,
         try: { q: 'What is the largest overdrive |V_ov4| = |V_ov6| that keeps the power at 300 µW?', answer: L19F.vov, unit: 'V', tol: 0.02,
           parts: [{ q: 'First the largest $I_6$ the budget allows (bias and tail take 22 µA each)?', answer: L19F.i6max, unit: 'A', tol: 0.02, hint: ['$P_{max}/V_{DD} - 2I_5$'], how: [`$$\\frac{300\\,\\mu}{1.8} - 44\\,\\mu = ${fx(L19F.i6max * 1e6, 3)}\\,\\mu\\text{A}$$`] }],
           hint: ['$I_6 = \\tfrac12 g_{m6}|V_{ov}|$ with $g_{m6}$ fixed.', '$|V_{ov}| = \\dfrac{2I_{6,max}}{g_{m6}}$'], how: [`$$|V_{ov}| \\le \\frac{2\\times${fx(L19F.i6max * 1e6, 3)}\\,\\mu}{2.07\\,\\text{m}} = ${fx(L19F.vov, 3)}\\,\\text{V}$$`] }, say: `|Vov| at most ${fx(L19F.vov, 3)} V.` },
-      { t: 50, title: '**…so M3, M4 get wider** than the ICMR+ minimum (this only improves ICMR+).', tex: `\\left(\\tfrac WL\\right)_3 = \\frac{I_5}{\\mu_pC_{ox}|V_{ov}|^2} = ${fx(L19F.wl3, 3)}\\;\\to\\;${Math.ceil(L19F.wl3)},\\quad P = ${u3(L19B.pdAll, 1e-6, 'µW')}\\;✓`,
+      { t: 36, title: '**…so M3, M4 get wider** than the ICMR+ minimum (this only improves ICMR+).', tex: `\\left(\\tfrac WL\\right)_3 = \\frac{I_5}{\\mu_pC_{ox}|V_{ov}|^2} = ${fx(L19F.wl3, 3)}\\;\\to\\;${Math.ceil(L19F.wl3)},\\quad P = ${u3(L19B.pdAll, 1e-6, 'µW')}\\;✓`,
         try: { q: 'The new (W/L)₃ = (W/L)₄ for that overdrive (I₅ = 22 µA)?', answer: L19F.wl3, unit: '', tol: 0.02,
           hint: ['Square law for M3 at $I_5/2$ with the new overdrive.', '$\\left(\\frac WL\\right)_3 = \\dfrac{I_5}{\\mu_pC_{ox}|V_{ov}|^2}$'], how: [`$$\\left(\\frac WL\\right)_3 = \\frac{22\\,\\mu}{60\\,\\mu\\times${fx(L19F.vov, 3)}^2} = ${fx(L19F.wl3, 3)}$$`, `Round up to ${Math.ceil(L19F.wl3)}: then $I_6 = ${fx(L19B.i6 * 1e6, 3)}\\,\\mu$A and $P = ${fx(L19B.pdAll * 1e6, 3)}\\,\\mu$W ✓. A smaller $|V_{GS3}|$ also raises the ICMR+.`],
           why: 'When a check fails, change a choice that the failing quantity depends on but the satisfied specs do not: here the overdrive, not $g_{m6}$ or $C_c$.' }, say: `(W/L)3,4 ≈ ${Math.ceil(L19F.wl3)}: power ${fx(L19B.pdAll * 1e6, 3)} µW.` },
-      { t: 60, ans: true, title: `**Result:** $C_c = 1.1$ pF, $I_5 = 22\\,\\mu$A, $(W/L)_{3,4} = ${Math.ceil(L19F.wl3)}$, $(W/L)_6 = ${fx(L19B.wl6, 3)}$, $I_6 = ${fx(L19B.i6 * 1e6, 3)}\\,\\mu$A, $(W/L)_7 = ${fx(L19B.wl7, 3)}$, $P = ${fx(L19B.pdAll * 1e6, 3)}\\,\\mu$W. Design is iteration: the recipe gives a first try, the checks decide.`, say: 'Same recipe; one failed check; one choice changed. That is how Lecture 19’s procedure is used in practice.' },
+      { t: 46, ans: true, title: `**Result:** $C_c = 1.1$ pF, $I_5 = 22\\,\\mu$A, $(W/L)_{3,4} = ${Math.ceil(L19F.wl3)}$, $(W/L)_6 = ${fx(L19B.wl6, 3)}$, $I_6 = ${fx(L19B.i6 * 1e6, 3)}\\,\\mu$A, $(W/L)_7 = ${fx(L19B.wl7, 3)}$, $P = ${fx(L19B.pdAll * 1e6, 3)}\\,\\mu$W. Design is iteration: the recipe gives a first try, the checks decide.`, say: 'Same recipe; one failed check; one choice changed. That is how Lecture 19’s procedure is used in practice.' },
     ],
   });
 }, { q: 'Lec 19 example' });

@@ -1,0 +1,1334 @@
+[
+ {
+  "k": "mn5c86",
+  "text": "If frequency, poles, bandwidth and slewing feel shaky, you are in the right place: the first chapter builds them from a bucket of water, and you solve a question after every idea."
+ },
+ {
+  "k": "rt6ljf",
+  "text": "Then Lecture 18: the two-stage op amp’s poles and the three phase-margin rules. Lecture 19: designing it spec by spec, with Tutorial 7 solved by you. Lectures 20 to 22: the inverter and its noise margins, with the resistive load worked out fully."
+ },
+ {
+  "k": "4q8x9",
+  "text": "Orange stops are your turn. Every number is checked, every step has a hint, and the full method appears after you answer."
+ },
+ {
+  "k": "1209s4p",
+  "text": "Start with the simplest picture. A capacitor is a bucket for charge. The water level is the voltage; how wide the bucket is, is the capacitance."
+ },
+ {
+  "k": "jove9b",
+  "text": "Pour in a steady flow, a constant current. The level rises at a steady rate: a straight line."
+ },
+ {
+  "k": "69lspk",
+  "text": "The circuit is the same thing: a current source pushing a fixed current I into a capacitor C."
+ },
+ {
+  "k": "4gr8cz",
+  "text": "Charge piles up: q equals C v. A current is charge per second, so i equals C dv over dt. Turn it round: the voltage rises at I over C volts per second."
+ },
+ {
+  "k": "acii38",
+  "text": "Same flow into a wider bucket rises more slowly. Remember this one: it is the whole of slewing."
+ },
+ {
+  "k": "khwslb",
+  "text": "10 microamps into 2 picofarads: 5 volts per microsecond."
+ },
+ {
+  "k": "72uz0g",
+  "text": "Next: what if the water comes from a tank through a pipe, instead of a fixed flow?"
+ },
+ {
+  "k": "brvk7a",
+  "text": "A steady 10 microamps flows into a 2 picofarads capacitor. How fast does its voltage rise? (answer in volts per second; 1 volts per microsecond equals 10 to the 6 volts per second)"
+ },
+ {
+  "k": "1sum8tv",
+  "text": "Now the water comes from a full tank, through a narrow pipe. The tank is a voltage source V zero; the pipe is a resistor R; the bucket is C."
+ },
+ {
+  "k": "i12djg",
+  "text": "Open the pipe. At first the levels are far apart, so the flow is fast. As the bucket fills, the difference shrinks, and so does the flow. The rise keeps slowing down."
+ },
+ {
+  "k": "1hf4hi6",
+  "text": "That curve is v equals V zero (1 minus e to the minus t over tau ) with tau equals RC: bigger pipe resistance or bigger bucket, slower fill."
+ },
+ {
+  "k": "1nd9pxm",
+  "text": "Two numbers to keep: after one tau it has covered 63 percent; after three, 95 percent. How long for 99 percent, settled to 1 percent? That is your next question."
+ },
+ {
+  "k": "39ta2e",
+  "text": "tau equals 200 nanoseconds, and 1 percent settling takes 4.6 tau about 921 nanoseconds."
+ },
+ {
+  "k": "ltkz6a",
+  "text": "So a resistor and a capacitor together make a time constant. Next: what happens when the input does not step, but wiggles?"
+ },
+ {
+  "k": "uxcbth",
+  "text": "A 100 kilo-ohms resistor charges a 2 picofarads capacitor from a step. What is the time constant tau?"
+ },
+ {
+  "k": "qagqql",
+  "text": "With tau equals 200 nanoseconds from above, how long until the output is within 1 percent of its final value? First, step 1. First: how many time constants does 1 percent settling take? ( natural log of 100 )"
+ },
+ {
+  "k": "v1zv7x",
+  "text": "A wiggle that repeats smoothly is a sine wave. The cleanest way to see one: an arrow turning at a steady speed, and its shadow on the vertical axis."
+ },
+ {
+  "k": "jm0yl5",
+  "text": "Each full turn of the arrow draws one full cycle. The time for one turn is the period T."
+ },
+ {
+  "k": "1sh9fil",
+  "text": "Turns per second is the frequency f, in hertz. One turn is 2 pi radians, so the angle grows at omega equals 2 pi f radians per second. Engineers use both; formulas with RC give omega."
+ },
+ {
+  "k": "1t74y5q",
+  "text": "1 megahertz is 6.28 million radians per second; 10 to the 9 radians per second is 159 megahertz."
+ },
+ {
+  "k": "usoynf",
+  "text": "A signal repeats one million times per second (f equals 1 megahertz). What is its angular frequency omega in radians per second?"
+ },
+ {
+  "k": "tty6f5",
+  "text": "Going the other way: a pole sits at omega equals 10 to the 9 radians per second. What frequency is that in hertz?"
+ },
+ {
+  "k": "1c3mvla",
+  "text": "Put the same R and C between a wiggling input and the output. Watch the input (blue) and the voltage on the capacitor (orange) at three speeds."
+ },
+ {
+  "k": "8q1zi4",
+  "text": "Slow wiggle: the capacitor has plenty of time to follow. Output almost equals input."
+ },
+ {
+  "k": "64sl9s",
+  "text": "Faster: now it lags and only reaches 0.707 of the input, 45 degrees late. This speed is special: it is the pole, omega p equals 1 over RC."
+ },
+ {
+  "k": "n64g40",
+  "text": "Much faster: the capacitor barely starts filling before the input turns round. The output is small and nearly a quarter-cycle late."
+ },
+ {
+  "k": "1fu7xgh",
+  "text": "In one line: the size falls as 1 over root 1 plus ( omega over omega p) squared and the lag grows as arc tan of ( omega over omega p). A pole is simply the speed where a node stops keeping up."
+ },
+ {
+  "k": "eurolb",
+  "text": "F P about 796 kilohertz, and ten times above it only about a tenth gets through."
+ },
+ {
+  "k": "rrq7q1",
+  "text": "R equals 100 kilo-ohms and C equals 2 picofarads. At what frequency f (in hertz) is the pole? First, step 1. First the pole in radians per second, omega p equals 1 over RC."
+ },
+ {
+  "k": "1ebjgth",
+  "text": "A signal at ten times the pole frequency ( omega equals 10 omega p) goes through. What fraction of its size comes out?"
+ },
+ {
+  "k": "12xljc3",
+  "text": "Gains in an op amp run from 1 to a million, so we use decibels: twenty times the log of the ratio. Ten times is 20 decibels, a hundred is 40 decibels, and 0.707 is minus 3 decibels. Each further factor of ten adds another 20."
+ },
+ {
+  "k": "1i7guik",
+  "text": "Plot gain in decibels against frequency on a log axis and a pole becomes two straight lines: flat, then falling 20 decibels for every factor of ten in frequency."
+ },
+ {
+  "k": "1ubtx5d",
+  "text": "Here is a gain of 1000, 60 decibels, with a pole at 10 kilohertz. Flat, then straight down. The phase slides from 0 to minus 90 degrees, passing minus 45 degrees exactly at the pole."
+ },
+ {
+  "k": "8zio9e",
+  "text": "40 decibels: one decade, minus 20."
+ },
+ {
+  "k": "1pnf8ki",
+  "text": "Where does this line hit 0 decibels? Three decades above the pole, at 10 megahertz: gain times bandwidth. That product is the next scene."
+ },
+ {
+  "k": "vmiln0",
+  "text": "An amplifier has a D C gain of 1000. What is that in decibels?"
+ },
+ {
+  "k": "ylpv1f",
+  "text": "Same amplifier (60 decibels, pole at 10 kilohertz). What is the gain in decibels one decade above the pole, at 100 kilohertz?"
+ },
+ {
+  "k": "1y4s5st",
+  "text": "Every amplifier stage in this course is this picture: a transistor turns the input into a current G M V in, and that current flows into the resistance R and capacitance C at its output node."
+ },
+ {
+  "k": "1sle40k",
+  "text": "At low frequency the capacitor does nothing: the gain is G M R. And the node is one pole, at 1 over RC."
+ },
+ {
+  "k": "1d3ch74",
+  "text": "Multiply them: R cancels. Gain times bandwidth is G M over C, whatever R is. This product is the G B W, and it is where the gain line reaches 1."
+ },
+ {
+  "k": "uqcdnd",
+  "text": "Watch R slide up and down. The gain rises, the bandwidth falls, and the line always hits 0 decibels at the same place: the dashed green line, G M over 2 pi C."
+ },
+ {
+  "k": "18vcalx",
+  "text": "100, 1.59 megahertz, 159 megahertz. Raise R and you trade bandwidth for gain; the product stays G M over C."
+ },
+ {
+  "k": "8h803l",
+  "text": "A stage has G M equals 1 millisiemens, R equals 100 kilo-ohms and C equals 1 picofarad. What is its D C gain A. zero?"
+ },
+ {
+  "k": "mmhhxt",
+  "text": "Same stage: what is its minus 3 decibels bandwidth in hertz?"
+ },
+ {
+  "k": "1k1qou1",
+  "text": "And its gain, bandwidth product G B W in hertz? (Try it two ways: A. zero times fminus 3 decibels, and G M over 2 pi C.)"
+ },
+ {
+  "k": "1tbhvdk",
+  "text": "Why does a pole make the output late? Write the pole as 1 plus j omega over omega p: an arrow one unit across and omega over omega p up."
+ },
+ {
+  "k": "srqmjr",
+  "text": "As the frequency rises the vertical part grows. The arrow tilts up: its angle is arc tan of ( omega over omega p), and the output lags by that angle. Its length grows too, and the output shrinks by it."
+ },
+ {
+  "k": "79iod7",
+  "text": "It can tilt towards 90 degrees but never past it. One pole costs at most 90 degrees."
+ },
+ {
+  "k": "1mhh8ej",
+  "text": "Two poles in a row: their lags add, so the total can approach 180 degrees. That is the danger of a two-stage op amp, and the reason for compensation."
+ },
+ {
+  "k": "1os8g09",
+  "text": "63.4 degrees for one pole at 2 omega p; 84.3 plus 26.6 equals 110.9 degrees for the pair."
+ },
+ {
+  "k": "1tev8by",
+  "text": "One pole, signal at twice its frequency ( omega equals 2 omega p). How many degrees does the output lag?"
+ },
+ {
+  "k": "sjxekq",
+  "text": "Two poles. The signal is 10 times above the first pole and at half the second ( omega equals 10 omega p1 equals 0.5 omega p2). Total lag? First, step 1. The first pole’s lag, arc tan of 10?"
+ },
+ {
+  "k": "1hk1g9h",
+  "text": "Close a loop around the op amp. A wiggle goes in, through the amplifier, and part of it comes back to the minus input."
+ },
+ {
+  "k": "nh98bg",
+  "text": "The minus input already turns it upside down: 180 degrees. If the amplifier’s poles add another 180 degrees of lag, the wiggle comes back in step with itself. If it is also still at least as big, it feeds itself forever: oscillation."
+ },
+ {
+  "k": "q9lu5i",
+  "text": "So we ask: at the frequency where the loop gain has fallen to exactly 1, how much lag is there? 180 degrees minus that lag is the phase margin."
+ },
+ {
+  "k": "1w7u1bo",
+  "text": "For a two-stage op amp as a buffer, the gain reaches 1 at the G B W. By then the first pole is far behind and costs its full 90 degrees. The second pole costs arc tan of (G B over omega p2 ). What is left is the margin."
+ },
+ {
+  "k": "1b2jk40",
+  "text": "63.4 degrees, and the pole must sit at the G B W itself for 45 degrees. Lecture 18 asks the real question: where for 60 degrees, with a zero in the way too?"
+ },
+ {
+  "k": "r7m71p",
+  "text": "A two-stage op amp as a buffer: G B equals 10 megahertz, second pole at 20 megahertz (first pole far below). Phase margin? First, step 1. First, the second pole’s lag at the G B W, arc tan of (G B over F P 2 )?"
+ },
+ {
+  "k": "1npeg5j",
+  "text": "Same G B equals 10 megahertz. Where must the second pole sit for a phase margin of only 45 degrees?"
+ },
+ {
+  "k": "10k2cqa",
+  "text": "Back to the bucket. An amplifier in feedback answers a small step with the exponential of scene 2: fast at first, then easing in, with tau."
+ },
+ {
+  "k": "czxleh",
+  "text": "Small step, 0.4 volts: a clean exponential. Its starting slope is the step over tau: V zero over tau."
+ },
+ {
+  "k": "1u3scda",
+  "text": "Large step, 2 volts: the exponential would want a starting slope of 2 volts over 50 nanoseconds, 40 volts per microsecond. The amplifier cannot: its largest current, into its capacitor, allows only so much."
+ },
+ {
+  "k": "1jf52nq",
+  "text": "So it ramps in a straight line at its top speed, the slew rate. Only when the remaining gap is small enough does it switch to the normal exponential."
+ },
+ {
+  "k": "cnrjsr",
+  "text": "The slew rate is scene 1 again: the largest current over the capacitor it charges. In the two-stage op amp, the tail current I 5 into C C. It slews whenever the step wants a steeper start than that: V zero over tau is greater than slew rate."
+ },
+ {
+  "k": "w00mbc",
+  "text": "10 volts per microsecond; up to 0.5 volts it stays linear; a 2 volts step slews for about 150 nanoseconds."
+ },
+ {
+  "k": "o2bpqx",
+  "text": "A two-stage op amp has I 5 equals 10 microamps and C C equals 1 picofarad. What is its slew rate (volts per second)?"
+ },
+ {
+  "k": "1h29ruu",
+  "text": "Its closed-loop tau is 50 nanoseconds. What is the largest step V zero that does NOT slew?"
+ },
+ {
+  "k": "w57t0z",
+  "text": "Now a 2 volts step. Roughly how long does it slew before linear settling takes over? (It ramps until the remaining gap is slew rate times tau.)"
+ },
+ {
+  "k": "8yq9li",
+  "text": "Seven lines, and every one of them comes back in Lectures 18 and 19."
+ },
+ {
+  "k": "d8cicj",
+  "text": "i equals C dv by dt: a current fills a capacitor at I over C."
+ },
+ {
+  "k": "1epg5h6",
+  "text": "The pole is at one over R C; above it the gain falls twenty decibels per decade."
+ },
+ {
+  "k": "1hwqoq3",
+  "text": "Gain times bandwidth is g m over C: R cancels."
+ },
+ {
+  "k": "1iu3ajc",
+  "text": "Phase margin is 180 degrees minus the lag where the loop gain is one."
+ },
+ {
+  "k": "11iiff8",
+  "text": "Lecture 18 opens with the two-stage op amp you met in Lecture 17: a differential pair M 1, M 2 with mirror M 3, M 4 and tail M 5, then the common-source stage M 6 with its current source M 7, and the Miller capacitor C C from P to the output."
+ },
+ {
+  "k": "xkk89o",
+  "text": "Only two nodes matter for speed: P, the first stage’s output, and the final output. Each sees a large resistance and some capacitance, each is one pole, exactly as in the ground-up scenes."
+ },
+ {
+  "k": "1izpr7h",
+  "text": "Replace each stage by what it does: a transconductance pushing current into a resistance and a capacitance. Stage 1: G M 1 V in into R 1 and C 1 at P. Stage 2: G M 2 V P into R 2 and C 2 at the output. C C bridges them."
+ },
+ {
+  "k": "1bsrkxe",
+  "text": "The dictionary from your page: G M 1 is the input pair’s G M, G M 2 is G M 6, R 1 is R O 2 in parallel with R O 4, R 2 is R O 6 in parallel with R O 7, C 2 is essentially the load C L, and C 1 is small."
+ },
+ {
+  "k": "1d28kvo",
+  "text": "20 times 100 equals 2000. We keep these numbers for the whole lecture."
+ },
+ {
+  "k": "1kv1ol6",
+  "text": "With G M 1 equals 0.1 millisiemens, G M 2 equals 1 millisiemens, R 1 equals 200 kilo-ohms, R 2 equals 100 kilo-ohms, C 1 equals 0.1 picofarads, C 2 equals C L equals 2 picofarads, C C equals 0.5 picofarads: what is the op amp's D C gain A. zero? First, step 1. First stage gain A. 1 equals G M 1 R 1?"
+ },
+ {
+  "k": "181zp0z",
+  "text": "Step 2. Second stage gain A. 2 equals G M 2 R 2?"
+ },
+ {
+  "k": "1kzrviq",
+  "text": "Before any frequency maths, follow the D C currents of this circuit."
+ },
+ {
+  "k": "xvyvel",
+  "text": "The tail M 5 pulls I 5 out of the pair. At rest it splits equally: I 5 over 2 down each side, through M 3 into M 1 and through M 4 into M 2. P mos source to drain, N mos drain to source: always downwards."
+ },
+ {
+  "k": "18i79dy",
+  "text": "The second stage is a separate branch: M 6 pushes I 6 down into M 7 and the load. I 6 is set by M 7, a copy of the tail’s bias, scaled by (W over L) 7 over (W over L) 5."
+ },
+ {
+  "k": "xcaein",
+  "text": "Keep these three currents in mind: I 5 will set the slew rate, I 6 the second pole, and together they set the power."
+ },
+ {
+  "k": "ctiqa3",
+  "text": "If I 5 equals 20 microamps and M 7 is sized (W over L) 7 equals 7.5 times (W over L) 5 (same gate voltage), what current I 6 flows in the second stage?"
+ },
+ {
+  "k": "11g3izy",
+  "text": "Solving the model’s two node equations gives your page’s transfer function. It looks frightening; read it piece by piece."
+ },
+ {
+  "k": "14vqjph",
+  "text": "At s equals 0 the fraction is G M 1 R 1 G M 2 R 2: the D C gain, 2000 in our example."
+ },
+ {
+  "k": "6a0n9j",
+  "text": "The numerator has its own root: 1 minus s C C over G M 2 equals 0 at s equals plus G M 2 over C C. A positive root is a zero in the right half-plane. It lifts the gain like any zero but adds lag like a pole: the worst of both."
+ },
+ {
+  "k": "7ygyzs",
+  "text": "The denominator is a quadratic in s: two poles. Look inside the s coefficient: the (1 plus G M 2 R 2 ) C C R 1 term is C C multiplied by the second stage’s gain. That is the Miller effect, and it will be the dominant pole."
+ },
+ {
+  "k": "8r9d2b",
+  "text": "omega z equals 2 times 10 to the 9 radians per second. Keep it for the phase margin."
+ },
+ {
+  "k": "mxrabr",
+  "text": "With G M 1 equals 0.1 millisiemens, G M 2 equals 1 millisiemens, R 1 equals 200 kilo-ohms, R 2 equals 100 kilo-ohms, C 1 equals 0.1 picofarads, C 2 equals C L equals 2 picofarads, C C equals 0.5 picofarads: where is the right-half-plane zero, omega z (radians per second)?"
+ },
+ {
+  "k": "122ac78",
+  "text": "Any two-pole denominator can be written as (1 plus s over omega p1 )(1 plus s over omega p2 ). Multiply it out: the s coefficient is 1 over omega p1 plus 1 over omega p2, and the s squared coefficient is 1 over ( omega p1 omega p2 )."
+ },
+ {
+  "k": "31pppy",
+  "text": "Compensation makes the poles far apart. Then 1 over omega p1 dominates the s coefficient, and inside it the Miller term dominates: omega p1 is about 1 over ( G M 2 R 2 R 1 C C ). A tiny C C, multiplied by the second-stage gain, makes a very low first pole."
+ },
+ {
+  "k": "1yubur3",
+  "text": "The s squared coefficient gives the product; divide by omega p1 and the second pole falls out: G M 2 C C over (( C 1 plus C 2 ) C C plus C 1 C 2 ). When C C is larger than C 1 C 2 over ( C 1 plus C 2 ) this is about G M 2 over ( C 1 plus C 2 ), and with C 1 small, G M 2 over C L."
+ },
+ {
+  "k": "cyclm2",
+  "text": "That is pole splitting: C C pushes the first pole down and the second one up, to G M 2 over C L. The second pole no longer depends on R 2: M 6 acts like a diode at high frequency through C C."
+ },
+ {
+  "k": "16hrb2w",
+  "text": "omega p1 equals 10 to the 5 and omega p2 is about 4.8 times 10 to the 8 radians per second: almost four decades apart. That is what compensation buys."
+ },
+ {
+  "k": "h06s5w",
+  "text": "With G M 1 equals 0.1 millisiemens, G M 2 equals 1 millisiemens, R 1 equals 200 kilo-ohms, R 2 equals 100 kilo-ohms, C 1 equals 0.1 picofarads, C 2 equals C L equals 2 picofarads, C C equals 0.5 picofarads: the dominant pole omega p1 (radians per second)? First, step 1. First, the Miller capacitance G M 2 R 2 C C seen at P?"
+ },
+ {
+  "k": "4zl2ft",
+  "text": "Same values: the second pole omega p2 is about G M 2 over ( C 1 plus C 2 ) (radians per second)?"
+ },
+ {
+  "k": "1oqb8fr",
+  "text": "Exactly like the single stage in the ground-up chapter: multiply the gain by the dominant pole and every resistance cancels. What is left is the input G M over C C."
+ },
+ {
+  "k": "h0uper",
+  "text": "So the G B is a design choice: G M 1 over C C. Lecture 19 runs this backwards: from the G B W spec and C C to G M 1."
+ },
+ {
+  "k": "ayoe6h",
+  "text": "G B equals 2 times 10 to the 8 radians per second, the same both ways."
+ },
+ {
+  "k": "ij2hqm",
+  "text": "With G M 1 equals 0.1 millisiemens, G M 2 equals 1 millisiemens, R 1 equals 200 kilo-ohms, R 2 equals 100 kilo-ohms, C 1 equals 0.1 picofarads, C 2 equals C L equals 2 picofarads, C C equals 0.5 picofarads: the unity-gain frequency G B (radians per second)?"
+ },
+ {
+  "k": "ifnret",
+  "text": "At the unity-gain frequency, three things lag: the dominant pole, the second pole, and the right-half-plane zero (which lags like a pole). The phase margin is what is left of 180 degrees."
+ },
+ {
+  "k": "1ouubsg",
+  "text": "For 60 degrees of margin the three lags together may use at most 120 degrees."
+ },
+ {
+  "k": "elgg5u",
+  "text": "The first one is easy: G B over omega p1 is the D C gain, a thousand or more, so it costs essentially the full 90 degrees. That leaves 30 degrees for the second pole and the zero together."
+ },
+ {
+  "k": "1qjr4o6",
+  "text": "So 90 degrees plus arc tan of (G B over omega p2 ) plus 5.71 degrees is at most 120 degrees."
+ },
+ {
+  "k": "1moi03c",
+  "text": "The second pole must sit at least 2.2 times above the G B, and the zero at least 10 times. Those are the two boxed results on your page."
+ },
+ {
+  "k": "1ju4j7g",
+  "text": "Your page puts the zero at ten times the G B ( omega z equals 10 G B). How many degrees of lag does the zero cost at omega equals G B?"
+ },
+ {
+  "k": "16e6wq7",
+  "text": "How many degrees may the second pole cost at omega equals G B?"
+ },
+ {
+  "k": "10zihpj",
+  "text": "So how far above G B must the second pole sit? Find the smallest ratio omega p2 over G B. First, step 1. First (24.29 degrees ), the largest allowed G B over omega p2?"
+ },
+ {
+  "k": "1q86wpw",
+  "text": "Rule one: the zero is G M 2 over C C and the G B is G M 1 over C C. C C cancels: the second stage needs at least ten times the input pair’s G M. That is why M 6 is big and carries a large current."
+ },
+ {
+  "k": "89oh32",
+  "text": "Rule two: the second pole G M 6 over C L (with C 1 small and C 2 is about C L ) must be 2.2 times G M 1 over C C. Solve for C C."
+ },
+ {
+  "k": "yrs9tm",
+  "text": "With G M 6 exactly ten times G M 1: C C is at least 0.22 C L. The first number of every Lecture 19 design."
+ },
+ {
+  "k": "1dnngz",
+  "text": "0.44 picofarads for Tutorial 7; and halving G M 6 would push C C to 0.59 C L. Everything is a trade."
+ },
+ {
+  "k": "a6scva",
+  "text": "Tutorial 7’s load is C L equals 2 picofarads. With G M 6 equals 10 G M 1, what is the smallest C C for phase margin equals 60 degrees?"
+ },
+ {
+  "k": "nhcamv",
+  "text": "Suppose you can only afford G M 6 equals 5 G M 1 (half the current in M 6). The zero now sits at 5 G B. What C C over C L is needed for 60 degrees now? First, step 1. First, the angle left for the second pole (30 degrees minus the zero’s lag)?"
+ },
+ {
+  "k": "6g38wr",
+  "text": "Back to our example. From the earlier stops: G B equals 2 times 10 to the 8, omega p2 is about 4.76 times 10 to the 8, omega z equals 2 times 10 to the 9 radians per second."
+ },
+ {
+  "k": "1iqq8w1",
+  "text": "61.5 degrees: both rules are met with a little room. Using the exact second pole it would be 57.7 degrees, which is why designers do not sit exactly on 0.22."
+ },
+ {
+  "k": "g3rt2s",
+  "text": "Using G B equals 2 times 10 to the 8, omega p2 about 4.76 times 10 to the 8 and omega z equals 2 times 10 to the 9 radians per second (from the stops above), what is the phase margin? First, step 1. The second pole’s lag at G B?"
+ },
+ {
+  "k": "47zx0a",
+  "text": "Lecture 18 in six lines: the dictionary, the two poles and the zero, the G B, the phase-margin sum, and the two rules that become G M 6 is at least 10 G M 1 and C C is at least 0.22 C L."
+ },
+ {
+  "k": "gqepf9",
+  "text": "The dominant pole is one over G m 2 R 2 R 1 C c."
+ },
+ {
+  "k": "10gsj3g",
+  "text": "The second pole is about g m 6 over C L."
+ },
+ {
+  "k": "1oy8cyt",
+  "text": "G B is g m 1 over C c."
+ },
+ {
+  "k": "1dmxl6r",
+  "text": "For sixty degrees: the zero at ten G B, the second pole at 2.2 G B, so g m 6 at least ten g m 1 and C c at least 0.22 C L."
+ },
+ {
+  "k": "12rnojy",
+  "text": "Lecture 19 turns the two-stage op amp into a recipe. Your page marks each specification with a red arrow to the one device it decides."
+ },
+ {
+  "k": "18uhknp",
+  "text": "The G B W spec decides the input pair: G B W equals G M 1 over C C."
+ },
+ {
+  "k": "gqoayj",
+  "text": "The highest input common-mode level decides the mirror M 3, M 4: their V G S eats into the headroom above M 1."
+ },
+ {
+  "k": "ir9scw",
+  "text": "The lowest input common-mode level decides the tail M 5: it needs its V D S under M 1’s V G S."
+ },
+ {
+  "k": "be6ch9",
+  "text": "The slew rate decides the tail current I 5, because during slewing I 5 charges C C."
+ },
+ {
+  "k": "1kba54h",
+  "text": "The phase margin decides C C (Lecture 18: at least 0.22 C L )."
+ },
+ {
+  "k": "8ocg6u",
+  "text": "The zero rule decides M 6: G M 6 is at least 10 G M 1, with V G S 6 equals V G S 4 so the first stage stays balanced."
+ },
+ {
+  "k": "1gqyowu",
+  "text": "M 7 is a copy of M 5 scaled to carry I 6, or sized for the lowest output voltage."
+ },
+ {
+  "k": "1ut20lf",
+  "text": "And the power budget is V D D times every current, including the bias branch M 0."
+ },
+ {
+  "k": "gf4837",
+  "text": "Which specification decides the tail current I 5 (before any transistor is sized)?"
+ },
+ {
+  "k": "g39wws",
+  "text": "Step one: the phase margin fixes C C from the load, 0.22 C L."
+ },
+ {
+  "k": "1r7c9ob",
+  "text": "Step two: the slew rate and C C fix the tail current."
+ },
+ {
+  "k": "1mkrt8t",
+  "text": "Step three: the highest input C M fixes M 3 and M 4. Worst case: M 3’s threshold at its largest, M 1’s at its smallest. Your page writes V threshold 1 max here; the worst case, and the 2025 mid sem key, use V threshold 1 min with V threshold 3 max, and so do we."
+ },
+ {
+  "k": "1cj5b2x",
+  "text": "Step four: G B W and C C give G M 1; with the current per device, I 5 over 2, that sizes M 1 and M 2."
+ },
+ {
+  "k": "1h8k8il",
+  "text": "Step five: the lowest input C M leaves V D S 5 for the tail after M 1’s full V G S; that sizes M 5."
+ },
+ {
+  "k": "u274tq",
+  "text": "Step six: the zero rule gives G M 6; making V G S 6 equals V G S 4 gives M 6’s overdrive, so its size and current follow."
+ },
+ {
+  "k": "1ww8gnz",
+  "text": "Step seven: M 7 mirrors M 5, scaled to carry I 6."
+ },
+ {
+  "k": "1qwn25r",
+  "text": "Step eight: check the power, the phase margin and the gain. If one fails, go back and change a choice."
+ },
+ {
+  "k": "192j6ql",
+  "text": "Why must step 4 (sizing M 1 from the G B W) come after step 1 and step 2?"
+ },
+ {
+  "k": "3px9js",
+  "text": "Slewing first: with M 2 off, all of I 5 flows through the mirror into C C. So the slew rate is I 5 over C C, and the tail current is slew rate times C C."
+ },
+ {
+  "k": "133if8n",
+  "text": "The top of the input range: M 1’s drain is held one V G S 3 below V D D by the diode M 3, and M 1’s gate may be at most V threshold 1 above its drain. So the room left for M 3’s overdrive is V D D minus V in, max minus V threshold 3 plus V threshold 1, taken at the worst-case thresholds."
+ },
+ {
+  "k": "1faprdg",
+  "text": "Then the square law with M 3’s own current I 5 over 2 gives its size."
+ },
+ {
+  "k": "xs086u",
+  "text": "The bottom of the input range: M 1’s gate sits one V G S 1 above the tail node, and the tail needs its V D S 5. What is left of V in, min after M 1’s full V G S (worst case: largest threshold) is the room for M 5, and the square law sizes it."
+ },
+ {
+  "k": "1n9qszt",
+  "text": "0.16 volts of overdrive for M 3: a high input range costs mirror width."
+ },
+ {
+  "k": "10f53va",
+  "text": "V D D equals 1.8 volts, V in, max (I C M R+) equals 1.6 volts, V threshold 3 max equals 0.51 volts, V threshold 1 (min) equals 0.47 volts. How much overdrive may M 3 have?"
+ },
+ {
+  "k": "ajrmrn",
+  "text": "The second stage. Lecture 18 gave the first number: G M 6 is at least 10 G M 1, so the right-half-plane zero sits ten times above the G B."
+ },
+ {
+  "k": "m3cdrr",
+  "text": "Its gate is P, which sits one V G S 4 below V D D when the first stage is balanced. For no offset, M 6 must want exactly that V G S: same overdrive as M 4."
+ },
+ {
+  "k": "1o3rges",
+  "text": "With G M equals mu p C ox (W over L) V overdrive the size follows, and so does its current: I D equals half G M V overdrive."
+ },
+ {
+  "k": "j5iec8",
+  "text": "M 7 sinks that current and shares M 5’s gate, so it is M 5 scaled by the current ratio."
+ },
+ {
+  "k": "2mxqr6",
+  "text": "G M 6 must be 2 millisiemens and M 4’s overdrive is V overdrive 4 equals 0.16 volts. What current I 6 does M 6 carry?"
+ },
+ {
+  "k": "3ls9yb",
+  "text": "Same design: I 5 equals 20 microamps and (W over L) 5 equals 12. Size M 7 so it sinks I 6 equals 160 microamps."
+ },
+ {
+  "k": "1j3ilpm",
+  "text": "The right-half-plane zero exists because C C feeds the signal straight across, against M 6. Your page’s fix: put a resistor R Z in series with C C."
+ },
+ {
+  "k": "u9x5b4",
+  "text": "The zero becomes 1 over ( C C (1 over G M 6 minus R Z )). With R Z equals 0 it is the old G M 6 over C C."
+ },
+ {
+  "k": "b2z37x",
+  "text": "Watch the zero as R Z grows. Below 1 over G M 6 it is still on the right, moving out. At exactly R Z equals 1 over G M 6 the bracket is zero: the zero is at infinity, gone. Larger still, it reappears on the left, where it adds phase instead of costing it."
+ },
+ {
+  "k": "uu03ys",
+  "text": "G M 6 equals 0.829 millisiemens. Which R Z removes the zero completely?"
+ },
+ {
+  "k": "yv3mlg",
+  "text": "Tutorial 7 Q 1, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "o1dq7o",
+  "text": "What it tests: the Lecture 19 order: C C, then I 5, then M 3, then M 1, then M 5, then M 7, then M 8, then the power and phase margin checks. Tutorial 7’s M 7 is the lecture’s M 6, its M 8 the lecture’s M 7."
+ },
+ {
+  "k": "hqhtqg",
+  "text": "C C equals 0.44 picofarads."
+ },
+ {
+  "k": "jld1ja",
+  "text": "I 5 equals 8.8 microamps, 4.4 microamps per side."
+ },
+ {
+  "k": "8649jj",
+  "text": "(W over L) 3 and 4 equals 5.73."
+ },
+ {
+  "k": "jphgf8",
+  "text": "G M 1 equals 82.9 microsiemens, (W over L) 1 and 2 equals 2.61."
+ },
+ {
+  "k": "1x3cddl",
+  "text": "V D S 5 equals 0.104 volts."
+ },
+ {
+  "k": "4fvxmd",
+  "text": "(W over L) 5 equals 5.43; M 6 copies it for I bias equals I 5."
+ },
+ {
+  "k": "436kag",
+  "text": "G M 7 equals 829 microsiemens."
+ },
+ {
+  "k": "1j7tk37",
+  "text": "(W over L) 7 equals 86.4."
+ },
+ {
+  "k": "11v4gr",
+  "text": "I 7 equals 66.4 microamps."
+ },
+ {
+  "k": "mw64k9",
+  "text": "(W over L) 8 equals 41."
+ },
+ {
+  "k": "1fyozn0",
+  "text": "Power 151 microwatts: inside the budget."
+ },
+ {
+  "k": "1h2lzsy",
+  "text": "phase margin about 59.8 degrees: on target."
+ },
+ {
+  "k": "19tm74i",
+  "text": "Every device sized from one spec each. The gain cannot be checked: the sheet gives no lambda."
+ },
+ {
+  "k": "m5yy2w",
+  "text": "The circuit, redrawn. Try each part when the lesson stops, then watch how it is done."
+ },
+ {
+  "k": "17t0bz3",
+  "text": "Step 1: the compensation capacitor C C for phase margin at least 60 degrees?"
+ },
+ {
+  "k": "2qagvq",
+  "text": "Step 2: the tail current I 5 for slew rate equals 20 volts per microsecond ( C C from step 1)?"
+ },
+ {
+  "k": "2pniud",
+  "text": "Step 3: (W over L) 3 equals (W over L) 4 from I C M R+ equals 1.6 volts ( I 5 from step 2)? First, step 1. First the overdrive M 3 may have, V overdrive 3?"
+ },
+ {
+  "k": "1u9v5gg",
+  "text": "Step 4: (W over L) 1 equals (W over L) 2 from G B W equals 30 megahertz ( C C, I 5 from steps 1 to 2)? First, step 1. First G M 1 for G B W equals 30 megahertz?"
+ },
+ {
+  "k": "6td2f7",
+  "text": "Step 5: the voltage V D S 5 left for the tail at I C M R minus equals 0.8 volts (using (W over L) 1 from step 4)? First, step 1. First M 1’s overdrive at I 5 over 2?"
+ },
+ {
+  "k": "ihf8mw",
+  "text": "Size the tail M 5 (it carries I 5, overdrive equals V D S 5 from above)."
+ },
+ {
+  "k": "ysxwsl",
+  "text": "Step 6: the second-stage transconductance G M 7 that puts the zero at 10 times G B?"
+ },
+ {
+  "k": "1cx9rn2",
+  "text": "Size M 7 so that V G S 7 equals V G S 4 (overdrive of M 4 at I 5 over 2, W over L from step 3). First, step 1. First M 4’s overdrive V overdrive 4?"
+ },
+ {
+  "k": "tean7e",
+  "text": "What current I 7 does M 7 then carry?"
+ },
+ {
+  "k": "pyzev6",
+  "text": "Step 7: size the sink M 8 (W over L) 8 so it carries I 7 (from above)."
+ },
+ {
+  "k": "1w0gjso",
+  "text": "Step 8: the total power (bias branch I bias equals I 5 included)? Is it within 300 microwatts?"
+ },
+ {
+  "k": "1pkdv82",
+  "text": "Step 8: the phase margin of this design (G B equals G M 1 over C C, omega P 2 equals G M 7 over C L, omega Z equals G M 7 over C C )? First, step 1. First omega p2 over G B equals ( G M 7 over C L ) over ( G M 1 over C C )?"
+ },
+ {
+  "k": "a4o28b",
+  "text": "What it tests: the same eight steps; then what to change when a check fails. Only the load differs from Tutorial 7, and that is enough to break the power budget."
+ },
+ {
+  "k": "10a11x0",
+  "text": "Same recipe: C C equals 1.1 picofarads, I 5 equals 22 microamps, G M 1 equals 207 microsiemens, and M 6 must carry 166 microamps. Now the check."
+ },
+ {
+  "k": "fkd4qk",
+  "text": "378 microwatts: over budget. Go back."
+ },
+ {
+  "k": "1pzr8zf",
+  "text": "V overdrive at most 0.118 volts."
+ },
+ {
+  "k": "1dag4lh",
+  "text": "(W over L) 3 and 4 about 27: power 297 microwatts."
+ },
+ {
+  "k": "14ocqri",
+  "text": "Same recipe; one failed check; one choice changed. That is how Lecture 19’s procedure is used in practice."
+ },
+ {
+  "k": "1pd94r4",
+  "text": "Total power with the bias branch? Use I bias equals I 5 equals 22 microamps and I 6 equals 166 microamps from the recipe above; compare with 300 microwatts."
+ },
+ {
+  "k": "1609vxu",
+  "text": "What is the largest overdrive V overdrive 4 equals V overdrive 6 that keeps the power at 300 microwatts? First, step 1. First the largest I 6 the budget allows (bias and tail take 22 microamps each)?"
+ },
+ {
+  "k": "ysrm02",
+  "text": "The new (W over L) 3 equals (W over L) 4 for that overdrive ( I 5 equals 22 microamps)?"
+ },
+ {
+  "k": "1k4hcbt",
+  "text": "The whole procedure on one card, with the two fixes: shrink the overdrive when the power is too high, and add R Z equals 1 over G M 6 to remove the zero."
+ },
+ {
+  "k": "1w83h4i",
+  "text": "C c is 0.22 C L, then I 5 is S R times C c."
+ },
+ {
+  "k": "144inm3",
+  "text": "g m 1 is two pi G B W times C c."
+ },
+ {
+  "k": "qmopnz",
+  "text": "g m 6 is ten g m 1, with the same overdrive as M 4."
+ },
+ {
+  "k": "1leze80",
+  "text": "R z equals one over g m 6 removes the zero."
+ },
+ {
+  "k": "3rj6uq",
+  "text": "Lecture 20 starts the digital half with the inverter: a 0 at the input gives a 1 at the output, and a 1 gives a 0."
+ },
+ {
+  "k": "1kqwkmw",
+  "text": "Its static behaviour is one curve: the output voltage against the input voltage, the V T C. The ideal inverter would be a cliff: output at V D D until the input reaches V D D over 2, then instantly zero."
+ },
+ {
+  "k": "5sa7el",
+  "text": "With a cliff, any input on the low side is a clean 0 and any input on the high side a clean 1. A real inverter has a slope, and the next scenes measure how good that slope is."
+ },
+ {
+  "k": "vla4gr",
+  "text": "An ideal inverter on V D D equals 5 volts receives 1.9 volts. What does it output?"
+ },
+ {
+  "k": "8llyzn",
+  "text": "Your page draws every inverter the same way: a load from V D D to the output, and an N mos switch from the output to ground, driven by the input."
+ },
+ {
+  "k": "1mqv5u0",
+  "text": "Input high: M 1 turns on, current flows through the load, and the drop across the load pulls the output down: a 0."
+ },
+ {
+  "k": "u5afw",
+  "text": "Input low: M 1 is off, no current flows, so there is no drop across the load and the output sits at V D D: a 1."
+ },
+ {
+  "k": "cxfd7w",
+  "text": "In this circuit, when does current flow from V D D to ground in steady state?"
+ },
+ {
+  "k": "powt6b",
+  "text": "Here is a real V T C, from the resistive-load inverter of Lecture 21 with V D D equals 5 volts. It starts high, falls steeply in the middle, and ends low but not at zero."
+ },
+ {
+  "k": "1596jrj",
+  "text": "V O H: the highest output, when the input is a solid 0."
+ },
+ {
+  "k": "1c262lw",
+  "text": "V O L: the output when the input is V O H, what the previous gate really delivers as a 1."
+ },
+ {
+  "k": "1nv58xs",
+  "text": "V threshold, the switching threshold: where the curve crosses the line V out equals V in."
+ },
+ {
+  "k": "bc562f",
+  "text": "V I L and V I H are where the slope is exactly minus 1: the green tangent lines. Below V I L the input is a reliable 0; above V I H a reliable 1. In between, the gate cannot be trusted."
+ },
+ {
+  "k": "1xd4xnn",
+  "text": "Your page’s five definitions in one box. Learn them word for word: exam questions name them and expect you to know which equation each one comes from."
+ },
+ {
+  "k": "1sn3oj4",
+  "text": "Which point of the V T C is defined by the slope D V out over D V in equals minus 1 at the HIGHER input voltage?"
+ },
+ {
+  "k": "d175rm",
+  "text": "Your Lecture 21 page explains the minus 1: add a little noise to the input. To first order the output changes by the slope of the V T C times the noise. The slope is the inverter’s gain for small wiggles."
+ },
+ {
+  "k": "12dli5l",
+  "text": "Wiggle the input around 0.6 volts, in the flat part: the output barely moves. Slope near 0: the noise is swallowed."
+ },
+ {
+  "k": "1mzw5jn",
+  "text": "Now around 1.9 volts, on the steep part: the same input wiggle makes a huge output swing. Slope steeper than minus 1: the noise is amplified, and logic levels are lost."
+ },
+ {
+  "k": "1et6b0h",
+  "text": "So the boundary between noise gets smaller and noise gets bigger is a slope of exactly minus 1. That is the whole reason for the definition."
+ },
+ {
+  "k": "tnh6s7",
+  "text": "At some input the V T C slope is minus 3. A 0.1 volts noise spike arrives on the input. How big is the spike at the output?"
+ },
+ {
+  "k": "1ezkcq5",
+  "text": "One gate drives the next through a wire, and wires pick up noise. Gate 1 delivers at worst V O H for a 1 and V O L for a 0. Gate 2 needs at least V I H to see a 1, and at most V I L to see a 0."
+ },
+ {
+  "k": "y75zw7",
+  "text": "The margins are the gaps. For a 0, the wire may add up to V I L minus V O L before gate 2 is unsure: N M L. For a 1, it may take away up to V O H minus V I H: N M H."
+ },
+ {
+  "k": "oj35kr",
+  "text": "0.95 volts and 2.57 volts: the 0 is the weak side of this inverter."
+ },
+ {
+  "k": "16f83uu",
+  "text": "An inverter has V O H equals 5 volts, V O L equals 0.25 volts, V I L equals 1.2 volts and V I H equals 2.43 volts. What is its low noise margin N M L?"
+ },
+ {
+  "k": "28rdos",
+  "text": "Same inverter: its high noise margin N M H?"
+ },
+ {
+  "k": "1ien438",
+  "text": "Your page adds two more static figures. Power: the gate spends half its time with each input, so the static power is V D D times the average of the two currents."
+ },
+ {
+  "k": "94mdzt",
+  "text": "Area: roughly W times L of each device. Lecture 22 shows that a resistor can cost far more area than the transistor."
+ },
+ {
+  "k": "1x2cui8",
+  "text": "For the resistive load: no current with the input low, and ( V D D minus V O L ) over R L with the input high."
+ },
+ {
+  "k": "1c1zot9",
+  "text": "V D D equals 5 volts, R L equals 50 kilo-ohms and V O L equals 0.245 volts. What is the average static power? First, step 1. First the current while the output is low?"
+ },
+ {
+  "k": "w2ln8x",
+  "text": "Five voltages, the reason for minus one, the two margins, power and area."
+ },
+ {
+  "k": "176uo1p",
+  "text": "V I L and V I H are where the slope is minus one."
+ },
+ {
+  "k": "f3f7s8",
+  "text": "N M L is V I L minus V O L; N M H is V O H minus V I H."
+ },
+ {
+  "k": "hwmof3",
+  "text": "Static power is V D D times the average current."
+ },
+ {
+  "k": "16bp7ii",
+  "text": "The resistive-load inverter: a resistor R L from V D D to the output, and the N mos driver M 1 from the output to ground."
+ },
+ {
+  "k": "m9vm19",
+  "text": "There is no other path: the current through R L is the drain current of M 1. That single equation, resistor current equals transistor current, gives every point of the V T C."
+ },
+ {
+  "k": "1a3to2r",
+  "text": "Every critical voltage comes from that equation, with M 1 in the right region, plus one extra condition: a slope of minus 1, or V in equals V out."
+ },
+ {
+  "k": "jz9u86",
+  "text": "V D D equals 5 volts, R L equals 50 kilo-ohms, and the output sits at 1 volt. How much current flows through M 1?"
+ },
+ {
+  "k": "ejw617",
+  "text": "Sweep the input from 0 to 5 volts and watch the driver."
+ },
+ {
+  "k": "1b8fwue",
+  "text": "Below the threshold M 1 is off: no current, no drop across R L, the output sits at V D D."
+ },
+ {
+  "k": "53frhj",
+  "text": "Past V T zero, M 1 turns on in saturation: its current grows with the square of the overdrive, the drop across R L grows, the output falls fast."
+ },
+ {
+  "k": "8nt4d7",
+  "text": "Saturation needs V out is at least V in minus V T zero: the dashed line. Where the curve crosses it, M 1 enters triode, and the output flattens near the bottom."
+ },
+ {
+  "k": "kr6kk7",
+  "text": "Your page’s three regions, as inequalities."
+ },
+ {
+  "k": "125gpdb",
+  "text": "V in equals 3 volts and the output is 0.5 volts ( V T zero equals 1 volt). Which region is M 1 in?"
+ },
+ {
+  "k": "1ugyzum",
+  "text": "V O H first, and it is free: with M 1 off no current flows, so nothing drops across R L: V O H equals V D D."
+ },
+ {
+  "k": "y2x470",
+  "text": "V O L: the input is the previous gate’s V O H equals V D D. The output is low, so M 1 is in triode. Resistor current equals the triode current."
+ },
+ {
+  "k": "1wy5f44",
+  "text": "Multiply out and collect: a quadratic in V O L, exactly as on your page."
+ },
+ {
+  "k": "9ykdmm",
+  "text": "Take the smaller root (the larger one would exceed V D D ). Notice everything depends on one product, K N R L."
+ },
+ {
+  "k": "14mprt3",
+  "text": "V D D equals 5 volts, V T zero equals 1 volt, K N equals mu n C ox W over L equals 100 microamps per volt squared, R L equals 50 kilo-ohms. What is V O L? First, step 1. First the product K N R L (in inverse volts)?"
+ },
+ {
+  "k": "de56ix",
+  "text": "Step 2. Then the bracket a equals V D D minus V T zero plus 1 over ( K N R L )?"
+ },
+ {
+  "k": "15a6chj",
+  "text": "Near V I L the output is still high, so M 1 is in saturation."
+ },
+ {
+  "k": "bn2zx1",
+  "text": "Differentiate both sides with respect to V in: the left side gives minus 1 over R L d V out d V in."
+ },
+ {
+  "k": "15jvf81",
+  "text": "Set the slope to minus 1: 1 over R L equals K N ( V I L minus V T zero ), so V I L equals V T zero plus 1 over ( K N R L ). Just one step above threshold."
+ },
+ {
+  "k": "1dlez6",
+  "text": "Put it back into the saturation equation and the output there is V D D minus 1 over (2 K N R L ): still almost at the top."
+ },
+ {
+  "k": "1867c5u",
+  "text": "V D D equals 5 volts, V T zero equals 1 volt, K N equals mu n C ox W over L equals 100 microamps per volt squared, R L equals 50 kilo-ohms. What is V I L?"
+ },
+ {
+  "k": "1kbsmi3",
+  "text": "And the output voltage at V in equals V I L?"
+ },
+ {
+  "k": "ug3r7",
+  "text": "Near V I H the output is low: triode."
+ },
+ {
+  "k": "1jitoh7",
+  "text": "Differentiate (product rule on the V in V out term), put the slope to minus 1, and your page gets V I H equals V T zero plus 2 V out minus 1 over ( K N R L ). One equation, two unknowns."
+ },
+ {
+  "k": "o3ui2d",
+  "text": "Substitute that V I H back into the triode equation; the terms collapse to 3 over 2 K N R L V out squared equals V D D, so V out equals 2 V D D over (3 K N R L )."
+ },
+ {
+  "k": "6qvs9r",
+  "text": "And V I H equals V T zero plus 8 V D D over (3 K N R L ) minus 1 over ( K N R L ), boxed on your page."
+ },
+ {
+  "k": "2pi4nq",
+  "text": "V D D equals 5 volts, V T zero equals 1 volt, K N equals mu n C ox W over L equals 100 microamps per volt squared, R L equals 50 kilo-ohms. What is V I H? First, step 1. First the output voltage at V I H?"
+ },
+ {
+  "k": "1hjkw7l",
+  "text": "At the switching threshold V in equals V out equals V threshold, so V D S equals V G S and M 1 is in saturation (always, since V D S is at least V G S minus V T zero )."
+ },
+ {
+  "k": "gkgoin",
+  "text": "Call the overdrive u: it is a quadratic, and the positive root gives V threshold equals V T zero plus u."
+ },
+ {
+  "k": "16uk5zq",
+  "text": "V D D equals 5 volts, V T zero equals 1 volt, K N equals mu n C ox W over L equals 100 microamps per volt squared, R L equals 50 kilo-ohms. What is the switching threshold V threshold? First, step 1. First the overdrive u equals V threshold minus V T zero?"
+ },
+ {
+  "k": "n517f3",
+  "text": "Your page ends Lecture 22 with the power: zero current with the input low, ( V D D minus V O L ) over R L with it high, averaged."
+ },
+ {
+  "k": "lh2voo",
+  "text": "And the area: a resistor of tens of kilo-ohms is a long meander of polysilicon, many times the size of the transistor next to it. That, plus the static current, is why the resistive load was replaced."
+ },
+ {
+  "k": "19g8p5",
+  "text": "V D D equals 5 volts, V T zero equals 1 volt, K N equals mu n C ox W over L equals 100 microamps per volt squared, R L equals 50 kilo-ohms; from the earlier stop V O L equals 0.245 volts. What is the average static power?"
+ },
+ {
+  "k": "11wonrw",
+  "text": "Your page’s last circuit: the C mos inverter, complementary mos. The load is now a P mos whose gate is the same input."
+ },
+ {
+  "k": "1gsklvo",
+  "text": "Input low: the P mos is on and the N mos off. The output is pulled all the way to V D D, with no current."
+ },
+ {
+  "k": "dfod79",
+  "text": "Input high: the opposite. The output goes all the way to 0, again with no steady current."
+ },
+ {
+  "k": "1yg07rn",
+  "text": "So C mos gives the full swing, no static power and no resistor. The price is a second device type: the P mos needs its own n-type well."
+ },
+ {
+  "k": "47o0in",
+  "text": "What is V O L of a C mos inverter with V D D equals 3.3 volts (input at V D D )?"
+ },
+ {
+  "k": "1ktlz5g",
+  "text": "One equation, one product K N R L, five boxed results, the power, and why C mos replaced it all."
+ },
+ {
+  "k": "1s01821",
+  "text": "V I L is V T zero plus one over k n R L."
+ },
+ {
+  "k": "1ih5ulk",
+  "text": "V I H is V T zero plus root of eight V D D over three k n R L, minus one over k n R L."
+ },
+ {
+  "k": "grlmoy",
+  "text": "The power is V D D over two times V D D minus V O L, over R L."
+ },
+ {
+  "k": "bmob5f",
+  "text": "Tutorial 7 Q 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "wyqzlv",
+  "text": "What it tests: the five boxed results of Lecture 21 to 22, all through one number, K N R L (careful: K N equals K N prime times W over L )."
+ },
+ {
+  "k": "5zl8zv",
+  "text": "k n R L equals 8 per volt."
+ },
+ {
+  "k": "c38p8p",
+  "text": "V O L equals 0.147 volts."
+ },
+ {
+  "k": "3nidrb",
+  "text": "V I L equals 0.925 volts."
+ },
+ {
+  "k": "119cc6x",
+  "text": "V I H equals 1.966 volts."
+ },
+ {
+  "k": "5n9t47",
+  "text": "N M L equals 0.778 volts, N M H equals 3.034 volts: the answer key’s values."
+ },
+ {
+  "k": "oc29cn",
+  "text": "All six, from one product."
+ },
+ {
+  "k": "11nhgfs",
+  "text": "First the product K N times R L (with K N equals K N prime times W over L), in inverse volts?"
+ },
+ {
+  "k": "1mbpx7g",
+  "text": "V O L? ( V O H equals V D D equals 5 volts) First, step 1. The bracket a equals V D D minus V T zero plus 1 over ( K N R L )?"
+ },
+ {
+  "k": "wbi6ov",
+  "text": "V I L?"
+ },
+ {
+  "k": "1t2dqra",
+  "text": "V I H? First, step 1. First the output at V I H, 2 V D D over (3 K N R L )?"
+ },
+ {
+  "k": "127ec08",
+  "text": "N M L (from V I L and V O L above)?"
+ },
+ {
+  "k": "1m9o4aa",
+  "text": "Tutorial 7 Q 3, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1ie66m0",
+  "text": "What it tests: the V O L equation run backwards for K N; then the same boxed results. gamma is a decoy: M 1’s source is on ground, so V S B equals 0 and V T equals V T zero."
+ },
+ {
+  "k": "16cxs2k",
+  "text": "k n equals 1.982 milliamps per volt squared."
+ },
+ {
+  "k": "jqbwcd",
+  "text": "W over L about 90: the key’s 90."
+ },
+ {
+  "k": "1n6nqn2",
+  "text": "V I L equals 1.505 volts, V I H equals 3.089 volts."
+ },
+ {
+  "k": "vfnqk2",
+  "text": "N M L equals 0.905 volts, N M H equals 1.91 volts."
+ },
+ {
+  "k": "t24o7n",
+  "text": "A 1 kilo-ohm load needs a wide driver: W over L about 90."
+ },
+ {
+  "k": "hqb95d",
+  "text": "(a) First the device constant K N equals mu n C ox times W over L that gives V O L equals 0.6 volts (in amps per volt squared). First, step 1. The current through R when the output is 0.6 volts?"
+ },
+ {
+  "k": "1hkgc2d",
+  "text": "(a) The aspect ratio W over L (mu n C ox equals 22 microamps per volt squared)?"
+ },
+ {
+  "k": "12ejof",
+  "text": "(b) V I H? ( K N times R from (a)) First, step 1. First V I L equals V T zero plus 1 over ( K N R)?"
+ },
+ {
+  "k": "1xfl3it",
+  "text": "(c) N M H? First, step 1. First N M L equals V I L minus V O L?"
+ },
+ {
+  "k": "1ripih6",
+  "text": "This chapter goes one step beyond Lecture 22, because the 2024 25 tutorials and the compre ask it: the V T C of the C mos inverter. Here with V D D equals 3.3 volts."
+ },
+ {
+  "k": "19v3rf1",
+  "text": "It goes all the way from V D D to 0: full swing. The steep middle is where both transistors are on."
+ },
+ {
+  "k": "4tzg27",
+  "text": "At V threshold both are saturated and carry the same current."
+ },
+ {
+  "k": "fiz6k3",
+  "text": "Take square roots and solve: V threshold depends on the strength ratio K R equals K N over K P. A stronger N mos pulls V threshold down."
+ },
+ {
+  "k": "o3x5pb",
+  "text": "The slope minus 1 points use the same method as the resistive load, with one device saturated and the other in triode. For a symmetric inverter they reduce to (3 V D D plus 2 V T ) over 8 and (5 V D D minus 2 V T ) over 8. And since V O L equals 0 and V O H equals V D D, the margins are simply V I L and V D D minus V I H."
+ },
+ {
+  "k": "oqra00",
+  "text": "A symmetric C mos inverter: V D D equals 2.5 volts, V Tn equals V Tp equals 0.6 volts. What is V I L?"
+ },
+ {
+  "k": "1b12cho",
+  "text": "What it tests: the C mos V threshold formula with K R, and the slope minus 1 points for an unsymmetric inverter."
+ },
+ {
+  "k": "1d7ty6o",
+  "text": "k R equals 1.6."
+ },
+ {
+  "k": "jcx923",
+  "text": "V threshold equals 1.483 volts."
+ },
+ {
+  "k": "em1j47",
+  "text": "V I L about 1.20 volts (the key prints 1.16)."
+ },
+ {
+  "k": "s83csg",
+  "text": "V I H equals 1.696 volts, N M H equals 1.6 volts."
+ },
+ {
+  "k": "u8bu4r",
+  "text": "A stronger N mos (k R is greater than 1) pulls V threshold below V D D over 2."
+ },
+ {
+  "k": "payth",
+  "text": "The strength ratio K R equals K N over K P?"
+ },
+ {
+  "k": "1caos1x",
+  "text": "The switching threshold V threshold? First, step 1. First root 1 over K R?"
+ },
+ {
+  "k": "jp893g",
+  "text": "V I L (equals N M L, since V O L equals 0)?"
+ },
+ {
+  "k": "1vtohvn",
+  "text": "V I H?"
+ },
+ {
+  "k": "1ytguy2",
+  "text": "What it tests: recognising the symmetric inverter: equal delays mean equal strengths, K R equals 1."
+ },
+ {
+  "k": "yfqcy3",
+  "text": "V threshold equals 1.25 volts."
+ },
+ {
+  "k": "8aufqr",
+  "text": "Both margins 1.09 volts."
+ },
+ {
+  "k": "1hj3gen",
+  "text": "Symmetric sizing gives equal margins."
+ },
+ {
+  "k": "g0vkd9",
+  "text": "Equal rise over fall sizing makes the inverter symmetric. What is its V threshold?"
+ },
+ {
+  "k": "3xg92n",
+  "text": "(b) The noise margin N M L (equals N M H by symmetry)? First, step 1. First V I H equals (5 V D D minus 2 V T ) over 8?"
+ },
+ {
+  "k": "jdjkz7",
+  "text": "One card for the exam: the two-stage dictionary and phase margin, the design order, slewing, the resistive-load inverter from one product, and the C mos shortcuts."
+ },
+ {
+  "k": "1v17yxu",
+  "text": "Use the chapter list to replay any topic and the Past papers tab to jump to a question. Good luck."
+ },
+ {
+  "k": "1txkelf",
+  "text": "Say it back. Listen first."
+ },
+ {
+  "k": "1ugcqec",
+  "text": "Next line."
+ },
+ {
+  "k": "1j12cua",
+  "text": "Now from memory."
+ },
+ {
+  "k": "1xguizx",
+  "text": "Correct."
+ },
+ {
+  "k": "v0dd22",
+  "text": "Not quite."
+ },
+ {
+  "k": "p7sfia",
+  "text": "Now the answer to the question."
+ }
+]

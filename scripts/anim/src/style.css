@@ -61,6 +61,8 @@ header.top .sub { color: var(--muted); font-size: 14px; }
 .try input { width: 170px !important; }
 .try .box { pointer-events: auto; width: min(680px, 45%); max-height: 92%; overflow: auto; background: rgba(16,22,32,.96); border: 1px solid #f0a050; border-radius: 14px; padding: 16px 18px; color: #eef2f7; box-shadow: 0 12px 40px rgba(0,0,0,.5); backdrop-filter: blur(6px); }
 .try .tag { font: 700 12px/1 "Inter", sans-serif; letter-spacing: .12em; color: #ffb36b; text-transform: uppercase; }
+.try .tag .readq { margin-left: 10px; padding: 1px 7px; font-size: 13px; line-height: 1.2; vertical-align: middle; background: transparent; border: 1px solid #ffb36b55; border-radius: 6px; cursor: pointer; }
+.try .tag .readq:hover { background: #ffb36b22; }
 .try .p { font-size: 17px; margin: 10px 0 14px; line-height: 1.55; }
 .try .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .try input { font: 600 16px "JetBrains Mono", ui-monospace, monospace; width: 140px; padding: 8px 10px; border-radius: 9px; border: 1px solid #3a475b; background: #0b1018; color: #fff; }

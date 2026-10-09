@@ -20,7 +20,7 @@ function t7Fig(S) {
   // bias: I_BIAS into the diode M6, mirrored to M5 and M8
   isrc(S, 120, 330, { label: 'I_BIAS', left: true, len: 50 }); wire(S, [[120, 170], [120, 280]]); wire(S, [[120, 380], [120, 480]]);
   nmos(S, 120, 530, { name: 'M6', right: true, gl: 30, nameSide: 'l' }); gnd(S, 120, 580);
-  wire(S, [[120, 505], [180, 505], [180, 530]]); dot(S, 120, 505); dot(S, 180, 530); wire(S, [[180, 530], [250, 530]]);
+  wire(S, [[120, 488], [180, 488], [180, 530]]); dot(S, 120, 488); dot(S, 180, 530); wire(S, [[180, 530], [250, 530]]);
   wire(S, [[180, 530], [180, 616], [560, 616], [560, 530], [570, 530]]);
   // second stage
   const m7 = pmos(S, 640, 250, { name: 'M7', gl: 30 }); wire(S, [[640, 170], [640, 200]]);
@@ -255,7 +255,7 @@ scene(L19, 'Tutorial 7 Q1: design the Miller two-stage', 150, (S) => {
 
 /* ── the page's own spec: CL = 5 pF. The power check fails; bigger M3/M4 fix it. ── */
 const L19X = F.l19, L19B = F.l19b, L19F = F.l19fix;
-scene(L19, 'Your page’s spec: C_L = 5 pF, and the power check fails', 120, (S) => {
+scene(L19, 'Your page’s spec: C_L = 5 pF, and the power check fails', 106, (S) => {
   pyqFrame(S, {
     tag: 'LEC 19 · YOUR PAGE’S EXAMPLE', title: 'Same recipe, bigger load: the power check fails, then the fix', src: 'Lec 19 example (your page)',
     q: '$V_{DD} = 1.8$ V, $A_v = 60$ dB, GBW ≥ 30 MHz, ICMR+ = 1.6 V, ICMR− = 0.8 V, $C_L = 5$ pF, power ≤ 300 µW, SR = 20 V/µs, PM ≥ 60°. Run the recipe and check the power.',
@@ -263,30 +263,22 @@ scene(L19, 'Your page’s spec: C_L = 5 pF, and the power check fails', 120, (S)
     tests: 'the same eight steps; then what to change when a check fails. Only the load differs from Tutorial 7, and that is enough to break the power budget.',
     fig: (S2) => { const t = twoStageFig(S2, { x: 60, y: 120, sc: 1, caps: true }); return t; },
     steps: [
-      { t: 6, title: '**1–2 · $C_c$ and $I_5$.**', tex: `C_c = 0.22\\times5\\,\\text{p} = 1.1\\,\\text{pF},\\quad I_5 = 20\\,\\text{V}/\\mu\\text{s}\\times1.1\\,\\text{p} = ${u3(L19X.i5, 1e-6, 'µA')}`,
-        try: { q: 'C_L = 5 pF: the tail current I₅ (after C_c from the PM rule)?', answer: L19X.i5, unit: 'A', tol: 0.02,
-          parts: [{ q: 'First $C_c$?', answer: L19X.cc, unit: 'F', tol: 0.02, hint: ['$0.22\\,C_L$'], how: ['$$0.22\\times5\\,\\text{p} = 1.1\\,\\text{pF}$$'] }],
-          hint: ['Same two steps as Tutorial 7.', '$C_c = 0.22C_L$, $I_5 = SR\\cdot C_c$'], how: ['$$C_c = 1.1\\,\\text{pF},\\quad I_5 = (20\\times10^6)(1.1\\times10^{-12}) = 22\\,\\mu\\text{A}$$'] }, say: 'Cc = 1.1 pF, I5 = 22 µA.' },
-      { t: 14, title: '**3–5 · M3, M1, M5** exactly as before (the 0.16 V and $V_{DS5}$ do not change).', tex: `\\left(\\tfrac WL\\right)_3 = ${fx(L19X.wl3, 3)},\\; g_{m1} = ${u3(L19X.gm1, 1e-6, 'µS')},\\; \\left(\\tfrac WL\\right)_1 = ${fx(L19X.wl1, 3)},\\; V_{DS5} = ${fx(L19X.vds5, 3)},\\; \\left(\\tfrac WL\\right)_5 = ${fx(L19X.wl5, 3)}`,
-        try: { q: 'g_m1 for GBW = 30 MHz with C_c = 1.1 pF?', answer: L19X.gm1, unit: 'S', tol: 0.02,
-          hint: ['GBW in hertz.', '$g_{m1} = 2\\pi\\,GBW\\,C_c$'], how: ['$$g_{m1} = 2\\pi(30\\,\\text{M})(1.1\\,\\text{p}) = 207\\,\\mu\\text{S}$$', `Then as in Tutorial 7: $(W/L)_3 = ${fx(L19X.wl3, 3)}$, $(W/L)_1 = ${fx(L19X.wl1, 3)}$, $V_{DS5} = ${fx(L19X.vds5, 3)}$ V, $(W/L)_5 = ${fx(L19X.wl5, 3)}$.`] }, say: 'gm1 = 207 µS; M3, M1, M5 follow.' },
-      { t: 22, title: '**6 · M6** at ten times $g_{m1}$ and M4’s 0.16 V overdrive: its current is large.', tex: `g_{m6} = ${u3(L19X.gm6, 1e-3, 'mS')},\\quad I_6 = \\tfrac12 g_{m6}(0.16) = ${u3(L19X.i6, 1e-6, 'µA')}`,
-        try: { q: 'What current I₆ does M6 carry (g_m6 = 10 g_m1, |V_ov6| = |V_ov4| = 0.16 V)?', answer: L19X.i6, unit: 'A', tol: 0.02,
-          parts: [{ q: 'First $g_{m6}$?', answer: L19X.gm6, unit: 'S', tol: 0.02, hint: ['$10\\,g_{m1}$'], how: ['$$10\\times207\\,\\mu = 2.07\\,\\text{mS}$$'] }],
-          hint: ['$I_D = \\tfrac12 g_m|V_{ov}|$.', '$I_6 = \\tfrac12(10g_{m1})(0.16)$'], how: [`$$I_6 = \\tfrac12(2.07\\,\\text{m})(0.16) = ${fx(L19X.i6 * 1e6, 3)}\\,\\mu\\text{A}$$`] }, say: `I6 = ${fx(L19X.i6 * 1e6, 3)} µA.` },
-      { t: 30, title: '**8 · power check: it fails.**', tex: `P = 1.8(22 + 22 + ${fx(L19X.i6 * 1e6, 3)})\\,\\mu = ${u3(L19X.pdAll, 1e-6, 'µW')} > 300\\,\\mu\\text{W}\\;✗`,
-        try: { q: 'Total power with the bias branch (I_bias = I₅)? Compare with 300 µW.', answer: L19X.pdAll, unit: 'W', tol: 0.02,
+      { t: 6, title: '**1–6 · the recipe, exactly as in Tutorial 7** (you solved each step there; only $C_L$ changed). The 0.16 V overdrive and $V_{DS5}$ do not change.',
+        tex: `C_c = 0.22(5\\,\\text{p}) = 1.1\\,\\text{pF},\\; I_5 = 20\\,\\tfrac{\\text{V}}{\\mu\\text{s}}(1.1\\,\\text{p}) = ${u3(L19X.i5, 1e-6, 'µA')},\\; g_{m1} = 2\\pi(30\\,\\text{M})(1.1\\,\\text{p}) = ${u3(L19X.gm1, 1e-6, 'µS')},\\; g_{m6} = 10g_{m1},\\; I_6 = \\tfrac12 g_{m6}(0.16) = ${u3(L19X.i6, 1e-6, 'µA')}`,
+        say: `Same recipe: $C_c$ = 1.1 pF, $I_5$ = 22 µA, $g_{m1}$ = ${fx(L19X.gm1 * 1e6, 3)} µS, and M6 must carry ${fx(L19X.i6 * 1e6, 3)} µA. Now the check.` },
+      { t: 16, title: '**8 · power check: it fails.**', tex: `P = 1.8(22 + 22 + ${fx(L19X.i6 * 1e6, 3)})\\,\\mu = ${u3(L19X.pdAll, 1e-6, 'µW')} > 300\\,\\mu\\text{W}\\;✗`,
+        try: { q: `Total power with the bias branch? Use $I_{bias} = I_5 = 22\\,\\mu$A and $I_6 = ${fx(L19X.i6 * 1e6, 3)}\\,\\mu$A from the recipe above; compare with 300 µW.`, answer: L19X.pdAll, unit: 'W', tol: 0.02,
           hint: ['Add every branch current and multiply by $V_{DD}$.', '$P = V_{DD}(I_{bias} + I_5 + I_6)$'], how: [`$$P = 1.8\\times(22 + 22 + ${fx(L19X.i6 * 1e6, 3)})\\,\\mu = ${fx(L19X.pdAll * 1e6, 3)}\\,\\mu\\text{W}$$`, 'Over the 300 µW budget ✗.'],
           why: 'The output stage is the culprit: $I_6 = \\tfrac12g_{m6}|V_{ov}|$ grows with the load (through $C_c$, $g_{m1}$, $g_{m6}$).' }, say: `${fx(L19X.pdAll * 1e6, 3)} µW: over budget. Go back.` },
-      { t: 40, title: '**The fix:** $g_{m6}$ cannot drop (PM), but its **overdrive** can. A smaller $|V_{ov4}| = |V_{ov6}|$ means wider M3, M4, M6 and less $I_6$.', tex: `I_6 \\le \\frac{300\\,\\mu}{1.8} - 2(22\\,\\mu) = ${u3(L19F.i6max, 1e-6, 'µA')}\\;\\Rightarrow\\; |V_{ov}| \\le \\frac{2I_6}{g_{m6}} = ${fx(L19F.vov, 3)}\\,\\text{V}`,
+      { t: 26, title: '**The fix:** $g_{m6}$ cannot drop (PM), but its **overdrive** can. A smaller $|V_{ov4}| = |V_{ov6}|$ means wider M3, M4, M6 and less $I_6$.', tex: `I_6 \\le \\frac{300\\,\\mu}{1.8} - 2(22\\,\\mu) = ${u3(L19F.i6max, 1e-6, 'µA')}\\;\\Rightarrow\\; |V_{ov}| \\le \\frac{2I_6}{g_{m6}} = ${fx(L19F.vov, 3)}\\,\\text{V}`,
         try: { q: 'What is the largest overdrive |V_ov4| = |V_ov6| that keeps the power at 300 µW?', answer: L19F.vov, unit: 'V', tol: 0.02,
           parts: [{ q: 'First the largest $I_6$ the budget allows (bias and tail take 22 µA each)?', answer: L19F.i6max, unit: 'A', tol: 0.02, hint: ['$P_{max}/V_{DD} - 2I_5$'], how: [`$$\\frac{300\\,\\mu}{1.8} - 44\\,\\mu = ${fx(L19F.i6max * 1e6, 3)}\\,\\mu\\text{A}$$`] }],
           hint: ['$I_6 = \\tfrac12 g_{m6}|V_{ov}|$ with $g_{m6}$ fixed.', '$|V_{ov}| = \\dfrac{2I_{6,max}}{g_{m6}}$'], how: [`$$|V_{ov}| \\le \\frac{2\\times${fx(L19F.i6max * 1e6, 3)}\\,\\mu}{2.07\\,\\text{m}} = ${fx(L19F.vov, 3)}\\,\\text{V}$$`] }, say: `|Vov| at most ${fx(L19F.vov, 3)} V.` },
-      { t: 50, title: '**…so M3, M4 get wider** than the ICMR+ minimum (this only improves ICMR+).', tex: `\\left(\\tfrac WL\\right)_3 = \\frac{I_5}{\\mu_pC_{ox}|V_{ov}|^2} = ${fx(L19F.wl3, 3)}\\;\\to\\;${Math.ceil(L19F.wl3)},\\quad P = ${u3(L19B.pdAll, 1e-6, 'µW')}\\;✓`,
+      { t: 36, title: '**…so M3, M4 get wider** than the ICMR+ minimum (this only improves ICMR+).', tex: `\\left(\\tfrac WL\\right)_3 = \\frac{I_5}{\\mu_pC_{ox}|V_{ov}|^2} = ${fx(L19F.wl3, 3)}\\;\\to\\;${Math.ceil(L19F.wl3)},\\quad P = ${u3(L19B.pdAll, 1e-6, 'µW')}\\;✓`,
         try: { q: 'The new (W/L)₃ = (W/L)₄ for that overdrive (I₅ = 22 µA)?', answer: L19F.wl3, unit: '', tol: 0.02,
           hint: ['Square law for M3 at $I_5/2$ with the new overdrive.', '$\\left(\\frac WL\\right)_3 = \\dfrac{I_5}{\\mu_pC_{ox}|V_{ov}|^2}$'], how: [`$$\\left(\\frac WL\\right)_3 = \\frac{22\\,\\mu}{60\\,\\mu\\times${fx(L19F.vov, 3)}^2} = ${fx(L19F.wl3, 3)}$$`, `Round up to ${Math.ceil(L19F.wl3)}: then $I_6 = ${fx(L19B.i6 * 1e6, 3)}\\,\\mu$A and $P = ${fx(L19B.pdAll * 1e6, 3)}\\,\\mu$W ✓. A smaller $|V_{GS3}|$ also raises the ICMR+.`],
           why: 'When a check fails, change a choice that the failing quantity depends on but the satisfied specs do not: here the overdrive, not $g_{m6}$ or $C_c$.' }, say: `(W/L)3,4 ≈ ${Math.ceil(L19F.wl3)}: power ${fx(L19B.pdAll * 1e6, 3)} µW.` },
-      { t: 60, ans: true, title: `**Result:** $C_c = 1.1$ pF, $I_5 = 22\\,\\mu$A, $(W/L)_{3,4} = ${Math.ceil(L19F.wl3)}$, $(W/L)_6 = ${fx(L19B.wl6, 3)}$, $I_6 = ${fx(L19B.i6 * 1e6, 3)}\\,\\mu$A, $(W/L)_7 = ${fx(L19B.wl7, 3)}$, $P = ${fx(L19B.pdAll * 1e6, 3)}\\,\\mu$W. Design is iteration: the recipe gives a first try, the checks decide.`, say: 'Same recipe; one failed check; one choice changed. That is how Lecture 19’s procedure is used in practice.' },
+      { t: 46, ans: true, title: `**Result:** $C_c = 1.1$ pF, $I_5 = 22\\,\\mu$A, $(W/L)_{3,4} = ${Math.ceil(L19F.wl3)}$, $(W/L)_6 = ${fx(L19B.wl6, 3)}$, $I_6 = ${fx(L19B.i6 * 1e6, 3)}\\,\\mu$A, $(W/L)_7 = ${fx(L19B.wl7, 3)}$, $P = ${fx(L19B.pdAll * 1e6, 3)}\\,\\mu$W. Design is iteration: the recipe gives a first try, the checks decide.`, say: 'Same recipe; one failed check; one choice changed. That is how Lecture 19’s procedure is used in practice.' },
     ],
   });
 }, { q: 'Lec 19 example' });

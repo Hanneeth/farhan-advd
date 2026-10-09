@@ -249,7 +249,15 @@ const Player = (() => {
       // interactive stops
       const lt0 = t - offsets[cur], lt1 = nt - offsets[cur];
       const stop = S.stops.find((s) => s.t > lt0 - 1e-6 && s.t <= lt1 && !stopsDone.has(cur + '@' + s.t));
-      if (stop) { nt = offsets[cur] + stop.t; stopsDone.add(cur + '@' + stop.t); playing = false; Voice.cancel(); Try.open(stop); listeners.forEach((f) => f(nt)); }
+      if (stop) {
+        nt = offsets[cur] + stop.t;
+        // never cut the voice off for a question: finish the line (and one at the stop's own moment), breathe, then ask
+        const capThere = S.caps.filter((c) => c.t <= stop.t + 1e-6).pop();
+        const unread = capThere && capThere.html && capThere.html !== lastCap;
+        if (!(voice && (Voice.talking() || unread || Voice.idleFor() < 450))) {
+          stopsDone.add(cur + '@' + stop.t); playing = false; Voice.cancel(); Try.open(stop); listeners.forEach((f) => f(nt));
+        }
+      }
       // say-it-back drill at the end of a scene
       const sc = SCENES[cur], dEnd = sc.dur - 0.01;
       if (!stop && sc.recall && drills && lt1 >= dEnd && lt0 < dEnd + 1e-6 && !stopsDone.has(cur + '@' + dEnd)) {
@@ -348,9 +356,10 @@ const Try = (() => {
     const tries = { n: 0 };
     const b = box.querySelector('.box');
     const B = Budget.for(st), t0 = performance.now();
-    b.innerHTML = `<div class="tag">Your turn${st.src ? ' · ' + st.src : ''}</div>
+    b.innerHTML = `<div class="tag">Your turn${st.src ? ' · ' + st.src : ''}<button class="readq" title="Read the question aloud">🔈</button></div>
       <div class="timer"><div class="ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" class="bg"/><circle cx="22" cy="22" r="19" class="fg"/></svg><span></span></div>
       <div class="tl"><b>Exam budget ${mmss(B.secs)}</b><br><small>${B.note}</small></div></div><div class="p">${rt(st.q)}</div>`;
+    b.querySelector('.readq').onclick = () => Voice.speak(st.q, { gap: 220 });
     const ring = b.querySelector('.timer'), fg = b.querySelector('.timer .fg'), rs = b.querySelector('.timer .ring span');
     const C0 = 2 * Math.PI * 19; fg.style.strokeDasharray = C0;
     const used = () => (performance.now() - t0) / 1000;
@@ -431,8 +440,8 @@ const Try = (() => {
           if (Number.isNaN(v)) { fb.className = 'fb bad'; fb.textContent = 'Type a number (you can use p, n, µ/u, m, k, M, G).'; return; }
           const tol = st.tol ?? 0.03;
           const ok = Math.abs(v - st.answer) <= tol * Math.abs(st.answer) + (st.abs || 0);
-          if (ok) finish('✓ Correct.', true);
-          else { tries.n++; fb.className = 'fb bad'; fb.innerHTML = `✗ Not quite: you wrote ${pretty(v, st.unit)}. ${shown < hints.length ? 'Open a hint and try again.' : 'Check your working, or press “Show me”.'}`; }
+          if (ok) { finish('✓ Correct.', true); say('Correct.'); }
+          else { tries.n++; say('Not quite.'); fb.className = 'fb bad'; fb.innerHTML = `✗ Not quite: you wrote ${pretty(v, st.unit)}. ${shown < hints.length ? 'Open a hint and try again.' : 'Check your working, or press “Show me”.'}`; }
         };
         chk.onclick = check;
         inp.onkeydown = (e) => { e.stopPropagation(); if (e.key === 'Enter') check(); };
@@ -450,9 +459,11 @@ const Try = (() => {
         const last = document.createElement('div'); last.className = 'part final-q';
         last.innerHTML = `<div class="ph">Step ${parts.length + 1} of ${parts.length + 1} · the answer</div>`;
         partBox.appendChild(last);
+        say('Now the answer to the question.', 500);
         mainBlock(last); return;
       }
       const P = parts[i];
+      if (i > 0) say(`Step ${i + 1}. ${P.q}`, 500);
       const d = document.createElement('div'); d.className = 'part';
       d.innerHTML = `<div class="ph">Step ${i + 1} of ${parts.length + 1}</div><div class="pq">${rt(P.q)}</div>`;
       const row = document.createElement('div'); row.className = 'row';
@@ -483,7 +494,7 @@ const Try = (() => {
         const v = parseNum(inp.value);
         if (Number.isNaN(v)) { pf.className = 'fb bad'; pf.textContent = 'Type a number (you can use p, n, µ/u, m, k, M, G).'; return; }
         const ok = Math.abs(v - P.answer) <= (P.tol ?? 0.03) * Math.abs(P.answer) + (P.abs || 0);
-        if (ok) done(true); else { pf.className = 'fb bad'; pf.innerHTML = `✗ Not quite: you wrote ${pretty(v, P.unit)}. ${k < ph2.length ? 'Open the hint and try again.' : 'Check it, or press “Show me”.'}`; }
+        if (ok) done(true); else { say('Not quite.'); pf.className = 'fb bad'; pf.innerHTML = `✗ Not quite: you wrote ${pretty(v, P.unit)}. ${k < ph2.length ? 'Open the hint and try again.' : 'Check it, or press “Show me”.'}`; }
       };
       chk.onclick = check; sh.onclick = () => done(false);
       inp.onkeydown = (e) => { e.stopPropagation(); if (e.key === 'Enter') check(); };
@@ -491,6 +502,7 @@ const Try = (() => {
       setTimeout(() => { if (i === 0) { inp.focus({ preventScroll: true }); b.scrollTop = 0; } else inp.focus(); }, 50);
     };
     if (parts.length) askPart(0); else mainBlock(null);
+    say(st.q + (parts.length ? ' First, step 1. ' + parts[0].q : ''), 350);
     b.append(hintBox, calcBox, fb, sol);
     sol.style.display = 'none';
     const r2 = document.createElement('div'); r2.className = 'row'; r2.style.marginTop = '10px';
@@ -509,6 +521,9 @@ const Try = (() => {
     b.style.maxHeight = pc ? (100 * (98.5 - pc)) / (100 - pc) + '%' : '';
     box.classList.toggle('col', !!pc);
   }
-  function close() { open = false; clearInterval(tick); document.querySelector('.try').classList.remove('on'); }
+  function close() { open = false; clearInterval(tick); clearTimeout(sayT); Voice.cancel(); document.querySelector('.try').classList.remove('on'); }
+  /* the question read aloud (voice on): after a short pause, so it never talks over the line before it */
+  let sayT = null;
+  function say(html, delay = 0) { clearTimeout(sayT); if (!Player.voice() || !Voice.canSay(html)) return; sayT = setTimeout(() => { if (open) Voice.speak(html, { gap: 220 }); }, delay); }
   return { open: openStop, close, isOpen: () => open };
 })();

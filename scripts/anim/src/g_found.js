@@ -250,7 +250,7 @@ scene(GF, 'One stage: gain, bandwidth and GBW', 86, (S) => {
   isrc(S, 260, 380, { label: 'g_m v_in', up: true, lsize: 22 }); wire(S, [[260, 300], [260, 338]]); wire(S, [[260, 422], [260, 480]]);
   wire(S, [[260, 300], [520, 300]]); dot(S, 400, 300); dot(S, 520, 300);
   res(S, 400, 300, 470, { label: 'R' }); cap(S, 520, 300, { label: 'C' }); wire(S, [[400, 470], [400, 480]]);
-  wire(S, [[200, 480], [560, 480]]); gnd(S, 380, 480);
+  wire(S, [[260, 480], [400, 480]]); gnd(S, 330, 480);
   wire(S, [[520, 300], [600, 300]]); txt(S, 610, 308, 'v_out', { size: 22, color: C.cur, weight: 700 });
   rr(); cg.style.opacity = 0; S.fade(cg, 0.3, 0.6);
   S.say(0.3, 'Every amplifier stage in this course is this picture: a transistor turns the input into a current $g_m v_{in}$, and that current flows into the resistance $R$ and capacitance $C$ at its output node.');
@@ -433,4 +433,4 @@ scene(GF, 'Ground up in one card', 30, (S) => {
     'Lags add; $PM = 180° - $ lag where $|\\beta A| = 1$; two-stage buffer: $PM ≈ 90° - \\tan^{-1}(GB/\\omega_{p2})$.',
     'Slews if $V_0/\\tau > SR$; then $t_{slew} ≈ (V_0 - SR\\,\\tau)/SR$.'], 0.4, 'Ground up in one card');
   S.say(0.4, 'Seven lines, and every one of them comes back in Lectures 18 and 19.');
-}, { recall: ['i equals C d v d t: a current fills a capacitor at I over C.', 'The pole is at one over R C; above it the gain falls twenty d B per decade.', 'Gain times bandwidth is g m over C: R cancels.', 'Phase margin is 180 degrees minus the lag where the loop gain is one.'] });
+}, { recall: ['i equals C dv by dt: a current fills a capacitor at I over C.', 'The pole is at one over R C; above it the gain falls twenty decibels per decade.', 'Gain times bandwidth is g m over C: R cancels.', 'Phase margin is 180 degrees minus the lag where the loop gain is one.'] });

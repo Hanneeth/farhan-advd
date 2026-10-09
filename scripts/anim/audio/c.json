@@ -160,8 +160,8 @@
   "text": "Up multiplies: G M R O R S. Down divides: 1 over G M."
  },
  {
-  "k": "yav3ve",
-  "text": "Ay V equals G M ( R up in parallel with R down )."
+  "k": "3vdqc5",
+  "text": "A. V equals G M ( R up in parallel with R down )."
  },
  {
   "k": "1okwj0b",
@@ -208,8 +208,8 @@
   "text": "Lecture 5’s answer to that fight is folding: move the input device out of the output column. Next scene, watched step by step."
  },
  {
-  "k": "1nvkfv6",
-  "text": "R down equals G M 2 R O 2 R O 1, so Ay V is about g M r O, squared."
+  "k": "y5v5tp",
+  "text": "R down equals G M 2 R O 2 R O 1, so A. V is about g M r O, squared."
  },
  {
   "k": "126l2al",
@@ -376,8 +376,8 @@
   "text": "V in, C M, max equals V D D minus V overdrive 10 plus V threshold 1, above V D D."
  },
  {
-  "k": "y71d8",
-  "text": "Ay V equals G M 1 G M 8 R O 8 ( R O 10 in parallel with R O 2 ) in parallel with G M 6 R O 6 R O 4."
+  "k": "14u3dnf",
+  "text": "A. V equals G M 1 G M 8 R O 8 ( R O 10 in parallel with R O 2 ) in parallel with G M 6 R O 6 R O 4."
  },
  {
   "k": "7quy3c",
@@ -460,8 +460,8 @@
   "text": "The single-ended telescopic needs a mirror on top. The simple way (Lecture 3): M 7 and M 5 are both diodes (gates tied to their drains, orange), and M 8, M 6 copy their gates."
  },
  {
-  "k": "1n6v5fe",
-  "text": "A diode always takes a whole V G S, never just V overdrive. Two diodes in a row put M 6’s gate (= X) two V G S below V D D."
+  "k": "1g8lvha",
+  "text": "A diode always takes a whole V G S, never just V overdrive. Two diodes in a row put M 6’s gate (equals X) two V G S below V D D."
  },
  {
   "k": "1lffzok",
@@ -488,8 +488,8 @@
   "text": "M 5 saturated (P mos fence): its drain X may be at most V threshold 5 above its gate: V B is at least 1.1 minus 0.5 equals 0.6 volts, your page’s first line."
  },
  {
-  "k": "1ft0e4c",
-  "text": "M 7 saturated: its drain P (= M 5’s source, one link above V B ) must keep V overdrive 7 below V D D: P max equals 1.6 volts, so V B is at most 1.6 minus 0.7 equals 0.9 volts."
+  "k": "y0d0hu",
+  "text": "M 7 saturated: its drain P (equals M 5’s source, one link above V B ) must keep V overdrive 7 below V D D: P max equals 1.6 volts, so V B is at most 1.6 minus 0.7 equals 0.9 volts."
  },
  {
   "k": "1lvvtuj",
@@ -528,8 +528,8 @@
   "text": "Lectures 7 and 8 answer it, a second stage, and gain boosting. The Lecture 7 to 12 lesson picks up exactly here."
  },
  {
-  "k": "f4v8u6",
-  "text": "Ay V equals G M times R out."
+  "k": "d43hyr",
+  "text": "A. V equals G M times R out."
  },
  {
   "k": "840mr1",
@@ -556,16 +556,32 @@
   "text": "Highest: 3 minus 0.5 minus 0.5 equals 2 volts. A C M of 1.5 volts lies inside both the input range [minus 0.3, 1.5] and the output range [1, 2]: input C M equals output C M is possible (the telescopic of Example 9.6 could not do this)."
  },
  {
-  "k": "1rnuv9e",
-  "text": "This is why folded cascodes suit buffers and capacitive feedback: the same DC level can sit at the input and the output."
+  "k": "2m386q",
+  "text": "This is why folded cascodes suit buffers and capacitive feedback: the same D C level can sit at the input and the output."
  },
  {
-  "k": "1kfs54c",
-  "text": "Tutorial 2 Q 3 times Razavi 9.3, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1hangjr",
+  "text": "(a) Start with the low end. How low can the input common-mode level go before M 1 leaves saturation?"
  },
  {
-  "k": "18u72em",
-  "text": "What it tests: the Example 9.7-style design order on a folded cascode, the two looks for gain, and your page’s C M floor V overdrive 5 minus V threshold P."
+  "k": "6yjxhc",
+  "text": "Now the high end. How high can the input common-mode level go before the tail current source runs out of room?"
+ },
+ {
+  "k": "n061e4",
+  "text": "(b) Output range. First: what is the lowest output voltage before a transistor under the output leaves saturation?"
+ },
+ {
+  "k": "1l8oqts",
+  "text": "(b) Now the top of the output range. How high can the output go before a transistor above it leaves saturation?"
+ },
+ {
+  "k": "1hwxoeg",
+  "text": "Tutorial 2 Q 3, Razavi 9.3, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1q72b92",
+  "text": "What it tests: the Example 9.7-style design order on a folded cascode (power, then currents, swing, then overdrives), the two looks for gain, and your page’s question: can a P mos input pair take an input at ground?"
  },
  {
   "k": "l21cam",
@@ -580,8 +596,8 @@
   "text": "Two looks: P mos cascode up, N mos cascode with two R O at the fold node down. About 247."
  },
  {
-  "k": "lmyr3z",
-  "text": "0.45 minus 0.8 equals minus 0.35 volts < 0: yes, the input C M can go to 0 volts (and below)."
+  "k": "jdmzh5",
+  "text": "0.45 minus 0.8 equals minus 0.35 volts is less than 0: yes, the input C M can go to 0 volts (and below)."
  },
  {
   "k": "uq57fy",
@@ -590,6 +606,42 @@
  {
   "k": "m5yy2w",
   "text": "The circuit, redrawn. Try each part when the lesson stops, then watch how it is done."
+ },
+ {
+  "k": "wpm9zk",
+  "text": "Start with the currents. What tail current I S S does the input pair get? First, step 1. Total current drawn from the supply?"
+ },
+ {
+  "k": "s0pw5x",
+  "text": "Now the overdrives. All transistors in the output column get the same overdrive. What overdrive V overdrive allows the 2.4 volts differential swing? First, step 1. How much does EACH output swing (single-ended)?"
+ },
+ {
+  "k": "16gaji",
+  "text": "Find the open-loop gain A. V with G M equals G M 1. From the steps above: 0.5 milliamps in each input device and each cascode branch, 1 milliamp in each bottom source M 5, M 6; every overdrive (input pair included) 0.45 volts. First, step 1. G M of every device (0.5 milliamps, V overdrive equals 0.45 volts; the input pair has the same current and overdrive)?"
+ },
+ {
+  "k": "1js55dy",
+  "text": "Step 2. R O 3 of the N mos cascode (0.5 milliamps, lambda n equals 0.1 volts inverse)?"
+ },
+ {
+  "k": "hhgedh",
+  "text": "Step 3. R O of each P mos carrying 0.5 milliamps (M 1, M 7, M 9; lambda p equals 0.2 volts inverse)?"
+ },
+ {
+  "k": "1h4kges",
+  "text": "Step 4. R O 5 of the bottom N mos source (it carries 1 milliamp)?"
+ },
+ {
+  "k": "17us8xy",
+  "text": "Step 5. Look up from the output: R up of the P mos cascode M 7 on M 9?"
+ },
+ {
+  "k": "1yaiohb",
+  "text": "Step 6. Look down: R down of the N mos cascode M 3, whose source sits on the fold node X?"
+ },
+ {
+  "k": "1ovuto2",
+  "text": "Can the input common-mode level go down to 0 volts? Find the lowest input C M level (from the swing step, every column overdrive is V overdrive equals 0.45 volts )."
  },
  {
   "k": "2lnanr",
@@ -612,8 +664,8 @@
   "text": "(W over L) 1,2 equals 2(0.375 m) over (38.36 mu times 0.09) equals 217."
  },
  {
-  "k": "12gglu7",
-  "text": "Ay V about 333 (with G M equals G M 1; P 7 corrects this)."
+  "k": "1gu3r7e",
+  "text": "A. V about 333 (with G M equals G M 1; P 7 corrects this)."
  },
  {
   "k": "x16kcq",
@@ -622,6 +674,54 @@
  {
   "k": "sflrcr",
   "text": "Same order every time: power, then currents, swing, then overdrives, square law, then sizes, then gain and speed."
+ },
+ {
+  "k": "ytgm2",
+  "text": "(a) What is the tail current I S S? First, step 1. Total current drawn from the supply?"
+ },
+ {
+  "k": "bbtz4q",
+  "text": "(b) All of M 3, M 10 get the same overdrive. What V overdrive gives the 2.0 volts differential swing? First, step 1. How much does EACH output swing (single-ended)?"
+ },
+ {
+  "k": "1lnuat5",
+  "text": "Size the N mos cascodes M 3 and M 4. From (a): I S S equals 0.75 milliamps, branch current I equals 0.375 milliamps; from (b): V overdrive equals 0.5 volts. Which current do M 3, M 4 carry, and what is (W over L) 3,4?"
+ },
+ {
+  "k": "38qqkj",
+  "text": "(c) The input pair M 1, M 2 is P mos and runs at the chosen V overdrive 1, 2 equals 0.3 volts. Using I S S from (a) and mu p C ox equals 38.36 microamps per volt squared (Set A), find (W over L) 1,2. First, step 1. Drain current of each input device M 1, M 2?"
+ },
+ {
+  "k": "1k7yikd",
+  "text": "(d) Find the open-loop gain A. V, taking G M equals G M 1. From (a), (c): input devices and cascode branches carry 0.375 milliamps, the bottom sources M 5, M 6 carry 0.75 milliamps; V overdrive equals 0.5 volts for M 3, M 10, V overdrive 1 equals 0.3 volts. First, step 1. G M 1 of the input transistor (0.375 milliamps, V overdrive 1 equals 0.3 volts )?"
+ },
+ {
+  "k": "v4okbz",
+  "text": "Step 2. G M 3 of the N mos cascode (0.375 milliamps, V overdrive equals 0.5 volts )? (The P mos cascode M 7 has the same current and overdrive, so G M 7 equals G M 3.)"
+ },
+ {
+  "k": "ug96i3",
+  "text": "Step 3. R O 3 of the N mos cascode (0.375 milliamps, lambda n equals 0.1 volts inverse)?"
+ },
+ {
+  "k": "z0qyoi",
+  "text": "Step 4. R O of each P mos carrying 0.375 milliamps (M 1, M 7, M 9; lambda p equals 0.2 volts inverse)?"
+ },
+ {
+  "k": "4448n9",
+  "text": "Step 5. R O 5 of the bottom N mos source (it carries 0.75 milliamps)?"
+ },
+ {
+  "k": "15ypv4r",
+  "text": "Step 6. Look up from the output: R up of the P mos cascode M 7 on M 9?"
+ },
+ {
+  "k": "pe041a",
+  "text": "Step 7. Look down: R down of the N mos cascode M 3, whose source sees the fold node?"
+ },
+ {
+  "k": "y9y723",
+  "text": "(e) Find the unity-gain bandwidth omega u with C L equals 2 picofarads (each input device carries 0.375 milliamps at V overdrive 1 equals 0.3 volts )."
  },
  {
   "k": "1ckhj7l",
@@ -640,8 +740,36 @@
   "text": "G M about G M 1 is a good approximation, not exact, the fold node loses a few percent."
  },
  {
-  "k": "xe77zy",
-  "text": "Quiz 1 2023-24 Q 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1do934c",
+  "text": "What fraction of M 1’s small-signal current goes up through M 3 to the output? First, step 1. G M 3 of the N mos cascode M 3 (0.375 milliamps, V overdrive 3 equals 0.5 volts )?"
+ },
+ {
+  "k": "14y4ili",
+  "text": "Step 2. R O 3 of M 3 (N mos, 0.375 milliamps)?"
+ },
+ {
+  "k": "nq2s1e",
+  "text": "Step 3. R O 1 of the input device M 1 (P mos, 0.375 milliamps)?"
+ },
+ {
+  "k": "tm3koq",
+  "text": "Step 4. R O 5 of the bottom source M 5 (N mos, 0.75 milliamps)?"
+ },
+ {
+  "k": "1l35jm9",
+  "text": "Step 5. Resistance looking up into M 3’s source: 1 G M 3 in parallel with R O 3?"
+ },
+ {
+  "k": "1ed53b3",
+  "text": "Step 6. Resistance from the fold node down to AC ground: R O 1 in parallel with R O 5?"
+ },
+ {
+  "k": "zqxq5e",
+  "text": "P 6’s gain of 333 assumed all of M 1’s current reaches the output. Using the fraction you just found (0.911), what is the corrected gain?"
+ },
+ {
+  "k": "32puxr",
+  "text": "Quiz 1 2023 24 Q 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "1fxtol7",
@@ -676,6 +804,46 @@
   "text": "Every number came from a check, a link, or a fence. Biases at their limits buy the most swing."
  },
  {
+  "k": "2pzgif",
+  "text": "Lowest input common-mode level? First, step 1. V G S of every N mos ( V threshold equals 0.3 volts, V overdrive equals 0.15 volts )?"
+ },
+ {
+  "k": "bi2tuz",
+  "text": "How high can V B 2 go before the top P mos source M 5 leaves saturation? First, step 1. How high can the fold node rise before M 5 leaves saturation?"
+ },
+ {
+  "k": "tblzka",
+  "text": "How low can V B 1 go before the bottom N mos source M 9 leaves saturation?"
+ },
+ {
+  "k": "1pcg4de",
+  "text": "Highest input common-mode level (before you cap it at the supply)?"
+ },
+ {
+  "k": "7hgnb",
+  "text": "Maximum differential output swing, with the biases at the limits found above ( V B 1, min equals 0.6 volts, V B 2, max equals 2.4 volts )? First, step 1. Lowest voltage of one output (M 7’s fence, gate at V B 1 equals 0.6 volts )?"
+ },
+ {
+  "k": "7ihrah",
+  "text": "Step 2. Highest voltage of one output (M 3’s fence, gate at V B 2 equals 2.4 volts )?"
+ },
+ {
+  "k": "c90jnr",
+  "text": "Differential gain A. V? First, step 1. Look up from the output: R up (P mos cascode M 3; the fold node under it carries R O 1 in parallel with R O 5 )?"
+ },
+ {
+  "k": "r3jfri",
+  "text": "Step 2. Look down: R down (N mos cascode M 7 on M 9)?"
+ },
+ {
+  "k": "1ibe7ks",
+  "text": "Part 2: V B 2 is 0.1 volts below its maximum (2.4 volts) and V B 1 0.1 volts above its minimum (0.6 volts). New maximum differential swing? First, step 1. New highest output ( V B 2 equals 2.3 volts )?"
+ },
+ {
+  "k": "2j2sd",
+  "text": "Step 2. New lowest output ( V B 1 equals 0.7 volts )?"
+ },
+ {
   "k": "6khypl",
   "text": "What it tests: the background scene: M 4’s fence gives the floor, M 2’s fence (gate equals output) the ceiling."
  },
@@ -694,6 +862,22 @@
  {
   "k": "pz2kdt",
   "text": "Compare the folded buffer on your page: no ceiling from M 2 at all."
+ },
+ {
+  "k": "1obsbqn",
+  "text": "Lowest output voltage of the buffer?"
+ },
+ {
+  "k": "13uh45x",
+  "text": "Highest output voltage? Remember the output is also M 2’s gate. First, step 1. V G S 4?"
+ },
+ {
+  "k": "1mb1x1a",
+  "text": "Step 2. Voltage of node Q (M 2’s drain, M 4’s source)?"
+ },
+ {
+  "k": "1rqh07p",
+  "text": "How wide is the buffer’s output window? Use the floor and the ceiling you just found."
  },
  {
   "k": "n6l8ud",
@@ -720,8 +904,32 @@
   "text": "One honesty note: with W over L equals 200 the diode stack puts M 3’s drain below X, so M 3 is actually in triode; the key assumes saturation."
  },
  {
-  "k": "1wy9h2v",
-  "text": "mid sem 2024-25 Q 3 times 10 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "113u7pb",
+  "text": "(a) Find V X, the drain of M 1 (which is also the source of the cascode M 3). First, step 1. V overdrive 3 of the N mos cascode (0.5 milliamps, W over L equals 200)?"
+ },
+ {
+  "k": "39cpr7",
+  "text": "Step 2. V G S 3?"
+ },
+ {
+  "k": "17f1hsr",
+  "text": "(b) Output range, the low end first. How low can the output go before the N mos cascode M 4 leaves saturation?"
+ },
+ {
+  "k": "19tgez7",
+  "text": "(b, c) Highest output voltage with this diode-stack mirror load? First, step 1. V overdrive of each P mos (0.5 milliamps, W over L equals 200)?"
+ },
+ {
+  "k": "ffsekj",
+  "text": "Step 2. Voltage of M 6’s gate (two P mos diode drops below V D D )?"
+ },
+ {
+  "k": "1s1ch91",
+  "text": "(d) M 2’s gate is now tied to V out (unity-gain buffer). Highest output voltage? (From (a): V G S 3 equals V G S 4 equals 0.893 volts.)"
+ },
+ {
+  "k": "1k5d6e0",
+  "text": "mid sem 2024 25 Q 3, 10 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "1plfxoj",
@@ -756,8 +964,56 @@
   "text": "Flip N mos and P mos and every fence flips: the P mos telescopic’s buffer window is limited from below by M 2."
  },
  {
-  "k": "1ty8y46",
-  "text": "Tutorial 3 Q 1 times Razavi 9.4, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "n8dv9t",
+  "text": "Roles: M 2 is the input (P mos), M 4 the P mos cascode, M 6 the N mos cascode, M 8 the N mos current source. Find the input transconductance G M 2 ( V overdrive 2 equals 0.2 volts ). First, step 1. Drain current of each side ( I S S equals 50 microamps)?"
+ },
+ {
+  "k": "2gukho",
+  "text": "Step 2. G M 6 of the N mos cascode ( V overdrive 6 equals 0.1 volts )?"
+ },
+ {
+  "k": "8h45b8",
+  "text": "Step 3. R O of each P mos ( lambda p equals 0.2 volts inverse)?"
+ },
+ {
+  "k": "1ttllp6",
+  "text": "Step 4. R O of each N mos ( lambda n equals 0.1 volts inverse)?"
+ },
+ {
+  "k": "8sa4rg",
+  "text": "Open-loop gain A. V (output on M 2’s side)? Step 1 gave, at 25 microamps per side: G M 2 equals G M 4 equals 0.25 millisiemens, G M 6 equals 0.5 millisiemens, R O P equals 200 kilo-ohms, R O N equals 400 kilo-ohms. First, step 1. P mos look: G M 4 R O 4 R O 2?"
+ },
+ {
+  "k": "1kklgsg",
+  "text": "Step 2. N mos look: G M 6 R O 6 R O 8?"
+ },
+ {
+  "k": "xoqwuz",
+  "text": "Highest output voltage V out, max?"
+ },
+ {
+  "k": "1nq6f4m",
+  "text": "Lowest output voltage V out, min? First, step 1. V G S of each N mos diode (M 5, M 7)?"
+ },
+ {
+  "k": "1s77amf",
+  "text": "Step 2. Voltage of M 6’s gate (two diodes stacked on ground)?"
+ },
+ {
+  "k": "1bol45g",
+  "text": "Now V out is shorted to V in 2 (M 2’s gate). Lowest output voltage? First, step 1. V G S 4 of the P mos cascode?"
+ },
+ {
+  "k": "1ug01fi",
+  "text": "Step 2. Voltage of M 2’s drain (equals M 4’s source)?"
+ },
+ {
+  "k": "jtk6rj",
+  "text": "With V out shorted to V in 2, what happens to the highest output voltage?"
+ },
+ {
+  "k": "heokl8",
+  "text": "Tutorial 3 Q 1, Razavi 9.4, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "12yp9vg",
@@ -788,8 +1044,36 @@
   "text": "Your page’s last circuit in exam form: one link for X, two fences for the bias window."
  },
  {
-  "k": "agghzq",
-  "text": "Tutorial 2 Q 2 times Razavi 9.2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1nl3rqf",
+  "text": "(a) Maximum input common-mode level? First, step 1. V G S 3 of the N mos cascode (0.5 milliamps, W over L equals 200)?"
+ },
+ {
+  "k": "1fzpb2m",
+  "text": "Step 2. Voltage of M 1’s drain (equals M 3’s source)?"
+ },
+ {
+  "k": "1nbmvhm",
+  "text": "(b) Node X is the gate of the P mos M 7 (source on V D D ). Find V X. First, step 1. V overdrive 7 (0.5 milliamps, W over L equals 200)?"
+ },
+ {
+  "k": "12sagjj",
+  "text": "Step 2. V G S 7?"
+ },
+ {
+  "k": "918q60",
+  "text": "(c) M 2’s gate is tied to the output. Lowest output voltage?"
+ },
+ {
+  "k": "s453r0",
+  "text": "(d) Range of V B 2, low end: what is the smallest V B 2 that keeps M 5 saturated? (From (b): V X equals 1.839 volts.)"
+ },
+ {
+  "k": "1cnsdea",
+  "text": "Now the high end: the largest V B 2 that keeps M 7 saturated? (From (b): V X equals 1.839 volts and every P mos here has V G S equals 1.161 volts.)"
+ },
+ {
+  "k": "1mja1yo",
+  "text": "Tutorial 2 Q 2, Razavi 9.2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "lfrzqw",
@@ -800,8 +1084,8 @@
   "text": "3 minus 2 V G S, P is at least 1.4 minus 0.7, so each P mos may use at most 1.15 volts: an overdrive of at most 0.35 volts."
  },
  {
-  "k": "1hb2k8e",
-  "text": "W over L equals 212.8, so W equals 106 micro m."
+  "k": "puanh3",
+  "text": "W over L equals 212.8, so W equals 106 micrometres."
  },
  {
   "k": "nbdeoa",
@@ -820,8 +1104,56 @@
   "text": "Exactly the diode tax and the buffer window from the background scenes, now with numbers."
  },
  {
-  "k": "ffs27r",
-  "text": "mid sem 2023-24 Q 3 times 14 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1hvcua4",
+  "text": "(a) First the limit. M 3 must stay saturated. What is the largest overdrive V overdrive, P the P mos diodes may have? First, step 1. Lowest voltage M 3’s drain may sit at (M 3 is the N mos cascode, gate at V B equals 1.4 volts )?"
+ },
+ {
+  "k": "1y2r5xb",
+  "text": "Step 2. Largest V G S each P mos diode may take?"
+ },
+ {
+  "k": "tn9tx6",
+  "text": "(a) Step 1 found the largest allowed P mos overdrive, V overdrive, P equals 0.35 volts. What is the smallest P mos width W (L equals 0.5 micrometres)? First, step 1. Smallest W over L of the P mos (0.5 milliamps at V overdrive equals 0.35 volts )?"
+ },
+ {
+  "k": "1j0gkbg",
+  "text": "(b) Lowest output voltage?"
+ },
+ {
+  "k": "q3or8j",
+  "text": "(b) Highest output voltage? (M 2’s gate is tied to the output; from (a), V overdrive, P equals 0.35 volts.) First, step 1. Ceiling allowed by the P mos diode stack?"
+ },
+ {
+  "k": "1wd2xy1",
+  "text": "Step 2. V G S 4 of the N mos cascode (0.5 milliamps, W over L equals 200)?"
+ },
+ {
+  "k": "1i9si9a",
+  "text": "(c) Open-loop gain A. V? All devices carry 0.5 milliamps; N mos V overdrive equals 0.193 volts, P mos (minimum width from (a)) V overdrive equals 0.35 volts. First, step 1. G M 1 (equals G M 4 ) of the N mos (0.5 milliamps, V overdrive equals 0.193 volts )?"
+ },
+ {
+  "k": "9ui4c9",
+  "text": "Step 2. R O of each N mos (0.5 milliamps, lambda n equals 0.1 volts inverse)?"
+ },
+ {
+  "k": "j7uyfz",
+  "text": "Step 3. Look down: R down equals G M 4 R O 4 R O 2?"
+ },
+ {
+  "k": "rixso6",
+  "text": "Step 4. G M 6 of the P mos (0.5 milliamps, V overdrive equals 0.35 volts )?"
+ },
+ {
+  "k": "s2rh3z",
+  "text": "Step 5. R O of each P mos (0.5 milliamps, lambda p equals 0.2 volts inverse)?"
+ },
+ {
+  "k": "2bxu5k",
+  "text": "Step 6. Look up: R up equals G M 6 R O 6 R O 8?"
+ },
+ {
+  "k": "kgly2o",
+  "text": "mid sem 2023 24 Q 3, 14 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "1hsdkc6",
@@ -860,6 +1192,58 @@
   "text": "Specs to sizes in a fixed order: current, floor, ceiling, biases, gain."
  },
  {
+  "k": "ovlotf",
+  "text": "Start with the current. The output must slew at 5 volts per microsecond into C L equals 10 picofarads. What tail current I S S is needed?"
+ },
+ {
+  "k": "d8puyt",
+  "text": "Size the N mos from the output floor V out, min equals 0.3 volts (each side carries I D equals 25 microamps from step 1). What is (W over L) N? First, step 1. N mos overdrive V overdrive, N (the floor is two N mos overdrives)?"
+ },
+ {
+  "k": "1ara0xj",
+  "text": "Now size the P mos from the output ceiling V out, max equals 1.28 volts ( I D equals 25 microamps per side, I S S equals 50 microamps in the tail). What is (W over L) P? First, step 1. P mos overdrive V overdrive, P (M 4, M 2 one each, the tail root 2 times)?"
+ },
+ {
+  "k": "wkr5uy",
+  "text": "Lowest allowed V B 1 (gate of the N mos cascodes M 5, M 6)? From the floor step: V overdrive, N equals 0.15 volts. First, step 1. V G S 5 of the N mos cascode?"
+ },
+ {
+  "k": "136yx1p",
+  "text": "Highest allowed V B 2 (gate of the P mos cascodes M 3, M 4) before M 2 leaves saturation? From the ceiling step: V overdrive, P equals 0.211 volts (tail root 2 times that). First, step 1. Overdrive of the tail M 9 ( root 2 V overdrive, P )?"
+ },
+ {
+  "k": "1duslir",
+  "text": "Step 2. V G S 4 of the P mos cascode?"
+ },
+ {
+  "k": "2cj6rb",
+  "text": "What tail gate bias V B 3 gives I S S equals 50 microamps? (M 9 has the P mos size, (W over L) P equals 22.5.) First, step 1. V overdrive 9 of the tail (50 microamps, (W over L) P equals 22.5 )?"
+ },
+ {
+  "k": "11fu49p",
+  "text": "Open-loop gain A. V? From above: I D equals 25 microamps per side, V overdrive, N equals 0.15 volts, V overdrive, P equals 0.211 volts. First, step 1. G M 2 (equals G M 4 ) of the P mos (25 microamps, V overdrive equals 0.211 volts )?"
+ },
+ {
+  "k": "fpz3jh",
+  "text": "Step 2. G M 6 of the N mos (25 microamps, V overdrive equals 0.15 volts )?"
+ },
+ {
+  "k": "5fiokz",
+  "text": "Step 3. R O P (25 microamps, lambda p equals 0.2 volts inverse)?"
+ },
+ {
+  "k": "140si8z",
+  "text": "Step 4. R O N (25 microamps, lambda n equals 0.1 volts inverse)?"
+ },
+ {
+  "k": "fxloh2",
+  "text": "Step 5. Look up: G M 4 R O P squared (P mos cascode M 4 on M 2)?"
+ },
+ {
+  "k": "6qiwry",
+  "text": "Step 6. Look down: G M 6 R O N squared (N mos cascode M 6 on M 8)?"
+ },
+ {
   "k": "1i3syin",
   "text": "Four moves solve every Lecture 6 question: currents, levels by checks and links, fences for buffers and biases, and gain by two looks."
  },
@@ -874,5 +1258,17 @@
  {
   "k": "1j12cua",
   "text": "Now from memory."
+ },
+ {
+  "k": "1xguizx",
+  "text": "Correct."
+ },
+ {
+  "k": "v0dd22",
+  "text": "Not quite."
+ },
+ {
+  "k": "p7sfia",
+  "text": "Now the answer to the question."
  }
 ]

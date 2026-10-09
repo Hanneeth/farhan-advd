@@ -60,8 +60,8 @@
   "text": "The 5-T O T A, the telescopic and the folded cascode were all one stage. Now we chain two of them."
  },
  {
-  "k": "17qgawx",
-  "text": "A stage is one input device and its load: A equals G M R out; stages multiply."
+  "k": "1qya6tv",
+  "text": "A stage is one input device and its load: A. equals G M R out; stages multiply."
  },
  {
   "k": "1drv24y",
@@ -100,6 +100,14 @@
   "text": "The current rules of circuit 1 on one card. Next, the same circuit read for gain."
  },
  {
+  "k": "roufx0",
+  "text": "A small differential input makes M 1 carry delta I more than its 0.5 milliamps. The tail still pulls exactly 1 milliamp, and M 3 still supplies exactly 0.5 milliamps. Where does M 1’s extra delta I come from?"
+ },
+ {
+  "k": "1dhgsqo",
+  "text": "With no input signal, how much D C current does the whole op amp draw from V D D? (Tutorial 3 Q 2: I S S equals 1 milliamp, I D 5 equals I D 6 equals 1 milliamp.)"
+ },
+ {
   "k": "1cn2pts",
   "text": "Your first circuit. In the middle: a differential pair M 1, M 2 with P mos current-source loads M 3, M 4 and tail M 9, the familiar one-stage amplifier."
  },
@@ -124,12 +132,12 @@
   "text": "Stage 2’s gain is read the same way: G M 5 times R O 5 in parallel with R O 7. Only about G M R O over 2, modest."
  },
  {
-  "k": "d2fqf8",
-  "text": "Two stages in a chain: stage 1 amplifies by Ay 1, then stage 2 amplifies that again by Ay 2. Gains multiply: A equals Ay 1 Ay 2."
+  "k": "1szk4bm",
+  "text": "Two stages in a chain: stage 1 amplifies by A. 1, then stage 2 amplifies that again by A. 2. Gains multiply: A. equals A. 1 A. 2."
  },
  {
-  "k": "1wa2y2q",
-  "text": "Follow a signal: a tiny V in becomes Ay 1 V in at X, which is M 5’s gate, and stage 2 multiplies it again at V out 1."
+  "k": "1nsy1i3",
+  "text": "Follow a signal: a tiny V in becomes A. 1 V in at X, which is M 5’s gate, and stage 2 multiplies it again at V out 1."
  },
  {
   "k": "1kx5ynv",
@@ -140,12 +148,12 @@
   "text": "Why this matters: the gain came from multiplying stages, not from stacking devices in the output column."
  },
  {
-  "k": "122lbjo",
-  "text": "A equals Ay 1 Ay 2: stage 1 gives gain, stage 2 gives swing."
+  "k": "1rsie3w",
+  "text": "A. equals A. 1 A. 2: stage 1 gives gain, stage 2 gives swing."
  },
  {
-  "k": "1ir69gu",
-  "text": "Ay 2 equals G M 5, 6 ( R O 5, 6 in parallel with R O 7, 8 )."
+  "k": "2i3if3",
+  "text": "A. 2 equals G M 5, 6 ( R O 5, 6 in parallel with R O 7, 8 )."
  },
  {
   "k": "umvfkk",
@@ -164,8 +172,8 @@
   "text": "Your page draws it as two blocks: a high-gain amplifier followed by a high-swing amplifier."
  },
  {
-  "k": "1hqekxj",
-  "text": "Why this order? The big signal only exists at the final output. Stage 1’s output moves by just V out over Ay 2, a few millivolts,"
+  "k": "127c52k",
+  "text": "Why this order? The big signal only exists at the final output. Stage 1’s output moves by just V out over A. 2, a few millivolts,"
  },
  {
   "k": "1tf222v",
@@ -220,6 +228,14 @@
   "text": "The current rules of circuit 2. Next, the same circuit read for gain."
  },
  {
+  "k": "slcsku",
+  "text": "In the left column of stage 1 (M 7, M 5, M 3, M 1), which device carries the most D C current?"
+ },
+ {
+  "k": "13ebced",
+  "text": "With no input signal, how much D C current does circuit 2 draw from V D D in total? ( I S S equals 1 milliamp, I D 9 equals I D 10 equals 0.5 milliamps.)"
+ },
+ {
   "k": "4hguy3",
   "text": "Your second circuit. The middle is now a full telescopic cascode (M 1, M 8): input pair, N mos cascodes M 3, M 4, P mos cascodes M 5, M 6 and P mos sources M 7, M 8."
  },
@@ -236,12 +252,12 @@
   "text": "looking down you see the N mos cascode, G M 3 R O 3 R O 1. The input current G M 1 V in meets the two in parallel."
  },
  {
-  "k": "vkro8y",
-  "text": "Stage 2 is read the same way: Ay 2 equals G M 9 ( R O 9 in parallel with R O 11 ). With G M R O equals 50: Ay 1 about 1250, Ay 2 about 25, so A about 31 000."
+  "k": "aa7wsp",
+  "text": "Stage 2 is read the same way: A. 2 equals G M 9 ( R O 9 in parallel with R O 11 ). With G M R O equals 50: A. 1 about 1250, A. 2 about 25, so A. about 31 000."
  },
  {
-  "k": "ozcxzg",
-  "text": "A detail the tutorials ask (Tutorial 3 Q 2, Q 3): what DC voltage sits at X? X is M 9’s gate, and M 9’s source is V D D."
+  "k": "lu5j06",
+  "text": "A detail the tutorials ask (Tutorial 3 Q 2, Q 3): what D C voltage sits at X? X is M 9’s gate, and M 9’s source is V D D."
  },
  {
   "k": "1gkx608",
@@ -256,24 +272,24 @@
   "text": "Next: what does chaining two high-resistance nodes cost us?"
  },
  {
-  "k": "7er9ce",
-  "text": "Ay 1 equals G M 1 G M 5 R O 5 R O 7 in parallel with G M 3 R O 3 R O 1, Ay 2 equals G M 9 ( R O 9 in parallel with R O 11 )."
+  "k": "l27gey",
+  "text": "A. 1 equals G M 1 G M 5 R O 5 R O 7 in parallel with G M 3 R O 3 R O 1, A. 2 equals G M 9 ( R O 9 in parallel with R O 11 )."
  },
  {
   "k": "1imucdu",
   "text": "Level between the stages is a link: X equals V D D minus V G S 9."
  },
  {
-  "k": "troavq",
-  "text": "Your page sketches two Bode plots. Gain in dB against frequency."
+  "k": "1525gvl",
+  "text": "Your page sketches two Bode plots. Gain in decibels against frequency."
  },
  {
   "k": "qh6jr8",
   "text": "One stage: one high-resistance node, so one pole. Past it the gain falls at 20 decibels per decade, and the phase lag stops at 90 degrees."
  },
  {
-  "k": "1tk1aic",
-  "text": "Two stages: X and V out are both high-resistance nodes, each with its capacitance. The DC gain is higher, but there are two poles: minus 20, then minus 40 decibels over decade."
+  "k": "1ft3mi6",
+  "text": "Two stages: X and V out are both high-resistance nodes, each with its capacitance. The D C gain is higher, but there are two poles: minus 20, then minus 40 decibels over decade."
  },
  {
   "k": "1fr43tq",
@@ -312,6 +328,14 @@
   "text": "The current rules of the mirror version. Next, the same idea in the signal picture."
  },
  {
+  "k": "k882vz",
+  "text": "A small input makes X fall and Y rise. Then M 9 carries i more and M 10 carries i less. What net current leaves the output node V out?"
+ },
+ {
+  "k": "5y8ay8",
+  "text": "Suppose M 12 were drawn twice as wide as M 11 (same L), with I D 9 equals I D 10 equals 0.5 milliamps. How much current would M 12 try to sink?"
+ },
+ {
   "k": "lfpzc3",
   "text": "Same op amp, but now we want one output instead of two."
  },
@@ -340,8 +364,8 @@
   "text": "Single output: diode M 11 and mirror M 12, the two halves add."
  },
  {
-  "k": "kkde9t",
-  "text": "A new idea to get gain. Start from the one line you know: Ay V equals G M times R out."
+  "k": "1kikfc",
+  "text": "A new idea to get gain. Start from the one line you know: A. V equals G M times R out."
  },
  {
   "k": "1sizdye",
@@ -376,24 +400,24 @@
   "text": "Your page tries two ways. The first fails, and seeing why it fails makes the second one obvious."
  },
  {
-  "k": "7v4rqg",
-  "text": "Ay V equals G M times R out: G M is hard to raise, so raise R out without stacking."
+  "k": "1yxkizf",
+  "text": "A. V equals G M times R out: G M is hard to raise, so raise R out without stacking."
  },
  {
-  "k": "hzyt3t",
-  "text": "The obvious idea: put an amplifier Ay 1 in front of the gate. The transistor now sees Ay 1 V in,"
+  "k": "1kyll3z",
+  "text": "The obvious idea: put an amplifier A. 1 in front of the gate. The transistor now sees A. 1 V in,"
  },
  {
-  "k": "1cicpmr",
-  "text": "so I out over V in equals Ay 1 G M. It looks as if G M went up by Ay 1!"
+  "k": "18yesyj",
+  "text": "so I out over V in equals A. 1 G M. It looks as if G M went up by A. 1!"
  },
  {
   "k": "1i6o7d3",
   "text": "Now be honest about the transistor: it has its own R O 2, and below its source sits a resistance R S (in a cascode that is the input device’s R O )."
  },
  {
-  "k": "i9rtc6",
-  "text": "The gate sees Ay 1 V in, but the source has risen by I out R S. The current source inside M 2 gives G M 2 times V G S."
+  "k": "mjsf4n",
+  "text": "The gate sees A. 1 V in, but the source has risen by I out R S. The current source inside M 2 gives G M 2 times V G S."
  },
  {
   "k": "96zfwu",
@@ -408,12 +432,12 @@
   "text": "Solve. This is your page’s last line."
  },
  {
-  "k": "lh1n7s",
-  "text": "Read it carefully: it is Ay 1 times the plain degenerated transistor, about 1 over R S. The transistor did not get any better."
+  "k": "k6z0e3",
+  "text": "Read it carefully: it is A. 1 times the plain degenerated transistor, about 1 over R S. The transistor did not get any better."
  },
  {
-  "k": "x4l1yr",
-  "text": "Ay 1 is just an extra amplifier in front, a separate stage. And R out at the output is unchanged. Your page’s verdict: No improvement."
+  "k": "1hlww5q",
+  "text": "A. 1 is just an extra amplifier in front, a separate stage. And R out at the output is unchanged. Your page’s verdict: No improvement."
  },
  {
   "k": "7ubdhj",
@@ -428,8 +452,8 @@
   "text": "First recall a plain device with R S under its source (your page): looking into its drain you see R S plus R O plus G M R S R O, the cascode formula."
  },
  {
-  "k": "12g5gwd",
-  "text": "Now the working idea: an amplifier Ay 1 watches the source (its minus input) and drives the gate. To find R out, kill the input and push a test voltage V X into the drain."
+  "k": "1todoj4",
+  "text": "Now the working idea: an amplifier A. 1 watches the source (its minus input) and drives the gate. To find R out, kill the input and push a test voltage V X into the drain."
  },
  {
   "k": "jms9cu",
@@ -440,44 +464,44 @@
   "text": "I X through R S lifts the source by I X R S. A plain device’s V G S would shrink by just that much."
  },
  {
-  "k": "1748t0p",
-  "text": "But the amplifier sees the source rise and drives the gate down by Ay 1 I X R S (your page: minus Ay 1 I X R S )."
+  "k": "x7svjb",
+  "text": "But the amplifier sees the source rise and drives the gate down by A. 1 I X R S (your page: minus A. 1 I X R S )."
  },
  {
-  "k": "l5s9dw",
-  "text": "So V G S shrinks by (1 plus Ay 1 ) I X R S: M 2 fights back (1 plus Ay 1 ) times harder. The drain looks (1 plus Ay 1 ) times stiffer."
+  "k": "1enzji3",
+  "text": "So V G S shrinks by (1 plus A. 1 ) I X R S: M 2 fights back (1 plus A. 1 ) times harder. The drain looks (1 plus A. 1 ) times stiffer."
  },
  {
-  "k": "1wd2lla",
-  "text": "The algebra on your page: the current source inside M 2 is G M 2 times V G S, which is -(1 plus Ay 1 ) I X R S."
+  "k": "luhzkd",
+  "text": "The algebra on your page: the current source inside M 2 is G M 2 times V G S, which is -(1 plus A. 1 ) I X R S."
  },
  {
   "k": "1s1w8y",
   "text": "K C L at the drain: I X is that current plus what flows through R O 2, which sees V X minus I X R S."
  },
  {
-  "k": "1p7nxzz",
-  "text": "Solve for V X over I X: R out equals R S plus R O 2 plus G M 2 (1 plus Ay 1 ) R S R O 2, the cascode result with its big term multiplied by (1 plus Ay 1 )."
+  "k": "63zi4t",
+  "text": "Solve for V X over I X: R out equals R S plus R O 2 plus G M 2 (1 plus A. 1 ) R S R O 2, the cascode result with its big term multiplied by (1 plus A. 1 )."
  },
  {
-  "k": "1pqdt5g",
-  "text": "With G M R O equals 50 and Ay 1 equals 50 that is 51 times more output resistance, and nothing new was stacked in the output column. That is gain boosting."
+  "k": "1w2lp1d",
+  "text": "With G M R O equals 50 and A. 1 equals 50 that is 51 times more output resistance, and nothing new was stacked in the output column. That is gain boosting."
  },
  {
   "k": "kvyen1",
   "text": "Remember the picture: the amplifier holds the source still by moving the gate the opposite way."
  },
  {
-  "k": "1aufs1z",
-  "text": "R out equals R S plus R O plus (1 plus Ay 1 ) G M R S R O."
+  "k": "1jn0ft0",
+  "text": "R out equals R S plus R O plus (1 plus A. 1 ) G M R S R O."
  },
  {
   "k": "19519to",
   "text": "Pause here and read the card once. Then three past-paper questions, solved the way you would write them in the exam."
  },
  {
-  "k": "15khvmh",
-  "text": "Tutorial 3 Q 2 times Razavi 9.6, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "14cqsot",
+  "text": "Tutorial 3 Q 2, Razavi 9.6, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "1ibn18u",
@@ -492,8 +516,8 @@
   "text": "Ceiling: an N mos gate may sit one V threshold above its drain. 1.689 plus 0.7 equals 2.389 volts."
  },
  {
-  "k": "1li2nid",
-  "text": "G M 1 equals 5.18 millisiemens into 20 k in parallel with 10 k gives Ay 1 equals 34.5; M 5 at 1 milliamp gives Ay 2 equals 13.1. Multiply: 451."
+  "k": "31c82h",
+  "text": "G M 1 equals 5.18 millisiemens into 20 k in parallel with 10 k gives A. 1 equals 34.5; M 5 at 1 milliamp gives A. 2 equals 13.1. Multiply: 451."
  },
  {
   "k": "1aqnxwd",
@@ -508,12 +532,60 @@
   "text": "The circuit, redrawn. Try each part when the lesson stops, then watch how it is done."
  },
  {
-  "k": "1wi9mgg",
-  "text": "Tutorial 3 Q 3 times Razavi 9.8, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1o5s3pm",
+  "text": "(a) M 5 must carry its 1 milliamp. What D C voltage must sit at X (the C M level of X and Y)? First, step 1. First: M 5’s overdrive V overdrive 5 at 1 milliamp?"
  },
  {
-  "k": "udxsdw",
-  "text": "What it tests: the same link for X, then a headroom budget around X turned into sizes with the square law, then A₁ times A₂."
+  "k": "142opm5",
+  "text": "(a) With X at the level you just found, what is the highest input common-mode voltage that keeps M 1 and M 2 saturated?"
+ },
+ {
+  "k": "1tco5q6",
+  "text": "(b) What is the overall small-signal gain A. of the op amp? (Stage 1 runs I S S over 2 equals 0.5 milliamps per side, stage 2 runs 1 milliamp per side.) First, step 1. Stage 1: G M 1 of M 1 at 0.5 milliamps?"
+ },
+ {
+  "k": "1h48i0p",
+  "text": "Step 2. R O 1 of the N mos M 1 at 0.5 milliamps?"
+ },
+ {
+  "k": "1lslc9a",
+  "text": "Step 3. R O 3 of the P mos load M 3 at 0.5 milliamps?"
+ },
+ {
+  "k": "1qahzva",
+  "text": "Step 4. Stage-1 gain A. 1 equals G M 1 ( R O 1 in parallel with R O 3 )?"
+ },
+ {
+  "k": "15lrc48",
+  "text": "Step 5. Stage 2: G M 5 of M 5 at 1 milliamp (use V overdrive 5 from part (a))?"
+ },
+ {
+  "k": "1x9hl58",
+  "text": "Step 6. R O 5 of the P mos M 5 at 1 milliamp?"
+ },
+ {
+  "k": "rr8j2s",
+  "text": "Step 7. R O 7 of the N mos sink M 7 at 1 milliamp?"
+ },
+ {
+  "k": "1dyfyqa",
+  "text": "Step 8. Stage-2 gain A. 2 equals G M 5 ( R O 5 in parallel with R O 7 )?"
+ },
+ {
+  "k": "1fljzl8",
+  "text": "(b) What is the maximum differential output swing (peak-to-peak) with M 5 and M 7 kept saturated? First, step 1. First: V overdrive 7 of the N mos sink M 7 at 1 milliamp?"
+ },
+ {
+  "k": "1dphknk",
+  "text": "Step 2. Swing of ONE output (p-p), from V overdrive 7 up to V D D minus V overdrive 5?"
+ },
+ {
+  "k": "op22ja",
+  "text": "Tutorial 3 Q 3, Razavi 9.8, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "rt7l9k",
+  "text": "What it tests: the same link for X, then a headroom budget around X turned into sizes with the square law, then A. 1 times A. 2."
  },
  {
   "k": "ext2kw",
@@ -524,16 +596,28 @@
   "text": "The 200 millivolts swing means X moves ±0.1 volts. Under its lowest point: the tail and two N mos; above its highest point: two P mos. Split each share equally."
  },
  {
-  "k": "mbzolm",
-  "text": "The smallest devices are the ones with the largest allowed overdrive: W over L equals 2 I D over ( mu C O X V overdrive squared )."
+  "k": "wdj9ye",
+  "text": "The smallest devices are the ones with the largest allowed overdrive: W over L equals 2 I D over ( mu C ox V overdrive squared )."
  },
  {
-  "k": "1nl2q6q",
-  "text": "Ay 1 equals G M 1 ( R up in parallel with R down ) about 214, Ay 2 equals G M 9 ( R O 9 in parallel with R O 11 ) about 18.5, so A about 3950."
+  "k": "hzfbw4",
+  "text": "A. 1 equals G M 1 ( R up in parallel with R down ) about 214, A. 2 equals G M 9 ( R O 9 in parallel with R O 11 ) about 18.5, so A. about 3950."
  },
  {
   "k": "1kermac",
   "text": "The question doesn’t say how to split the headroom; equal sharing is the natural exam assumption. State it in one line."
+ },
+ {
+  "k": "mz2zwa",
+  "text": "(a) M 9 must carry 0.5 milliamps with its source on V D D. What C M level must X and Y sit at? First, step 1. First: M 9’s overdrive V overdrive 9 at 0.5 milliamps?"
+ },
+ {
+  "k": "qukgc9",
+  "text": "(b) X must swing 200 millivolts p-p around the level from (a), and the tail needs 400 millivolts. If M 1 and M 3 share the remaining room under X equally, what overdrive V overdrive, N can each have? First, step 1. First: the lowest voltage X reaches during the 200 millivolts p-p swing?"
+ },
+ {
+  "k": "5k6ueu",
+  "text": "(b) With that overdrive at 0.5 milliamps, what is the smallest (W over L) for M 1, M 4?"
  },
  {
   "k": "137ge8a",
@@ -544,8 +628,8 @@
   "text": "The main branch: the source I 2 equals 0.5 milliamps feeds the output node, then runs down through M 2 and M 1 to ground. In an N mos, drain to source: downwards."
  },
  {
-  "k": "2xnxfr",
-  "text": "The booster branch: I 1 equals 100 mu A flows down through M 3 alone. It is a separate, much smaller current."
+  "k": "1h5rj11",
+  "text": "The booster branch: I 1 equals 100 microamps flows down through M 3 alone. It is a separate, much smaller current."
  },
  {
   "k": "1j1jcw2",
@@ -560,12 +644,20 @@
   "text": "Now the boosting, told in currents. Suppose V out is pushed up a little: M 2 lets a tiny extra current down, and X starts to rise."
  },
  {
-  "k": "cf5wy3",
-  "text": "M 2’s gate falls while X rises, so M 2 fights the change (1 plus Ay 1 ) times harder. Very little extra current gets through: the output looks like a huge resistance."
+  "k": "v8vxkk",
+  "text": "M 2’s gate falls while X rises, so M 2 fights the change (1 plus A. 1 ) times harder. Very little extra current gets through: the output looks like a huge resistance."
  },
  {
   "k": "ukff1f",
   "text": "The current rules of the regulated cascode. Now the numbers of Tutorial 4 Q 1."
+ },
+ {
+  "k": "cg7fx0",
+  "text": "How much D C current flows through M 1? ( I 1 equals 100 microamps, I 2 equals 0.5 milliamps.)"
+ },
+ {
+  "k": "bpsfo6",
+  "text": "X rises a little. M 3 (gate on X) now wants more current than the I 1 its source supplies. Which way does M 2’s gate move, and what does that do to M 2’s current?"
  },
  {
   "k": "13y1smo",
@@ -576,12 +668,12 @@
   "text": "What it tests: the Lecture 7 boosted- R out formula with real numbers, and the load trap."
  },
  {
-  "k": "f6rpqc",
-  "text": "Spot the booster: M 3 watches X and drives M 2’s gate. It is a CS stage with an ideal load: Ay 1 equals G M 3 R O 3 about 263."
+  "k": "w3907x",
+  "text": "Spot the booster: M 3 watches X and drives M 2’s gate. It is a CS stage with an ideal load: A. 1 equals G M 3 R O 3 about 263."
  },
  {
-  "k": "16nzwt6",
-  "text": "R out equals R O 1 plus R O 2 plus (1 plus Ay 1 ) G M 2 R O 2 R O 1 about 619 mega-ohms."
+  "k": "1fvrjdt",
+  "text": "R out equals R O 1 plus R O 2 plus (1 plus A. 1 ) G M 2 R O 2 R O 1 about 619 mega-ohms."
  },
  {
   "k": "ygdum3",
@@ -596,12 +688,40 @@
   "text": "Exam tip: whenever you boost one side, look at the other side’s resistance before you multiply."
  },
  {
+  "k": "9l51bn",
+  "text": "(b) The booster M 3 is a common-source stage loaded by the ideal source I 1 equals 100 microamps. What is its gain A. 1? First, step 1. First: G M 3 of M 3 at I 1 equals 100 microamps?"
+ },
+ {
+  "k": "ba0tng",
+  "text": "Step 2. R O 3 of M 3 at 100 microamps?"
+ },
+ {
+  "k": "h9oox1",
+  "text": "(b) Using A. 1 from the last part, what is the output resistance R out looking down into M 2’s drain? (M 1 and M 2 carry I 2 equals 0.5 milliamps.) First, step 1. First: G M 2 of M 2 at I 2 equals 0.5 milliamps?"
+ },
+ {
+  "k": "1lu2za8",
+  "text": "Step 2. R O 1 equals R O 2 at 0.5 milliamps?"
+ },
+ {
+  "k": "1xxb7ep",
+  "text": "(c) Now I 2 is a real P mos current source ( lambda p equals 0.2 volts inverse, carrying I 2 equals 0.5 milliamps ). What is the gain magnitude A. V? First, step 1. First: G M 1 of the input device M 1 (0.5 milliamps, W over L equals 200, mu n C ox equals 172.35 microamps per volt squared)?"
+ },
+ {
+  "k": "9gjejq",
+  "text": "Step 2. The P mos source’s own output resistance R O, P ( lambda p equals 0.2 volts inverse, 0.5 milliamps)?"
+ },
+ {
+  "k": "1sh58s4",
+  "text": "Step 3. The resistance at the output: R out in parallel with R O, P (the boosted R out equals 619 mega-ohms from above, in parallel with R O, P )?"
+ },
+ {
   "k": "1xa472q",
   "text": "Lecture 8 starts by redoing the G M attempt properly. Now the amplifier’s inputs are V in and the source of the transistor."
  },
  {
-  "k": "tord9z",
-  "text": "Read the two voltages your page labels: the gate gets ( V in minus I out R S ) Ay 1, and the source sits at I out R S."
+  "k": "144fi5s",
+  "text": "Read the two voltages your page labels: the gate gets ( V in minus I out R S ) A. 1, and the source sits at I out R S."
  },
  {
   "k": "10mozn",
@@ -616,12 +736,12 @@
   "text": "Collect the I out terms and divide: your page’s result."
  },
  {
-  "k": "8tcpk1",
-  "text": "For a real device the (1 plus Ay 1 ) G M R O R S term dominates. Look what happens to Ay 1,"
+  "k": "1qbvb85",
+  "text": "For a real device the (1 plus A. 1 ) G M R O R S term dominates. Look what happens to A. 1,"
  },
  {
-  "k": "13vedim",
-  "text": "Ay 1 cancels. The amplifier and transistor form a feedback loop around R S, and the loop’s transconductance is just 1 over R S, set by the resistor, not by Ay 1."
+  "k": "c3tcdi",
+  "text": "A. 1 cancels. The amplifier and transistor form a feedback loop around R S, and the loop’s transconductance is just 1 over R S, set by the resistor, not by A. 1."
  },
  {
   "k": "x5xhi",
@@ -632,40 +752,40 @@
   "text": "Conclusion: the booster amplifier’s real job is the output resistance. From now on, gain boosting means multiplying R out."
  },
  {
-  "k": "1majrrj",
-  "text": "G M is about 1 over R S: Ay 1 cancels, so boosting raises R out, not G M."
+  "k": "jruqou",
+  "text": "G M is about 1 over R S: A. 1 cancels, so boosting raises R out, not G M."
  },
  {
-  "k": "1en70mq",
-  "text": "From Lecture 7, looking down into the boosted drain: R out equals R S plus R O plus (1 plus Ay 1 ) G M R S R O."
+  "k": "10m3k4p",
+  "text": "From Lecture 7, looking down into the boosted drain: R out equals R S plus R O plus (1 plus A. 1 ) G M R S R O."
  },
  {
   "k": "lw8oio",
   "text": "Now look up, into a source (your page, right): a plain device with R D on its drain shows ( R D plus R O ) over (1 plus G M R O ), about 1 over G M, small. Down divides."
  },
  {
-  "k": "erxn8e",
-  "text": "Boost it: the amplifier again moves the gate against any change of the source, so the device fights (1 plus Ay 1 ) times harder,"
+  "k": "b18r1v",
+  "text": "Boost it: the amplifier again moves the gate against any change of the source, so the device fights (1 plus A. 1 ) times harder,"
  },
  {
-  "k": "1w7mkes",
-  "text": "and the source looks (1 plus Ay 1 ) times stiffer: ( R D plus R O ) over (1 plus (1 plus Ay 1 ) G M R O )."
+  "k": "yhllqo",
+  "text": "and the source looks (1 plus A. 1 ) times stiffer: ( R D plus R O ) over (1 plus (1 plus A. 1 ) G M R O )."
  },
  {
-  "k": "1u0bhp9",
-  "text": "One rule for both directions: up multiplies, down divides, and boosting puts an extra (1 plus Ay 1 ) into both."
+  "k": "kzmiqy",
+  "text": "One rule for both directions: up multiplies, down divides, and boosting puts an extra (1 plus A. 1 ) into both."
  },
  {
   "k": "wnu7ev",
   "text": "Why we need the second one: in a boosted cascode, the input device’s current has to choose between going up into that stiff source or down into R O 1. Next scene."
  },
  {
-  "k": "6ugf9t",
-  "text": "Down into a boosted drain: R S plus R O plus (1 plus Ay 1 ) G M R S R O."
+  "k": "1pygi0q",
+  "text": "Down into a boosted drain: R S plus R O plus (1 plus A. 1 ) G M R S R O."
  },
  {
-  "k": "1o4f9as",
-  "text": "Up into a boosted source: ( R D plus R O ) over (1 plus (1 plus Ay 1 ) G M R O )."
+  "k": "11aavzj",
+  "text": "Up into a boosted source: ( R D plus R O ) over (1 plus (1 plus A. 1 ) G M R O )."
  },
  {
   "k": "txwnzd",
@@ -676,16 +796,16 @@
   "text": "Small-signal picture at X: M 1 pushes G M 1 V in into the node, which has two exits, up into M 2’s boosted source, or down through R O 1."
  },
  {
-  "k": "vrw3te",
-  "text": "With 1 over G M 2 equals 1 kilo-ohm and Ay 1 equals 50 the up path is about 20 ohms; R O 1 is tens of k ohms. Current takes the easy path: almost all of it goes up."
+  "k": "10dndtb",
+  "text": "With 1 over G M 2 equals 1 kilo-ohm and A. 1 equals 50 the up path is about 20 ohms; R O 1 is tens of k ohms. Current takes the easy path: almost all of it goes up."
  },
  {
   "k": "1sfycg9",
   "text": "The little box on your page is the current divider: the current into R 2 is I R 1 over ( R 1 plus R 2 ), the other resistance on top."
  },
  {
-  "k": "1e29nka",
-  "text": "Here: I out equals G M 1 V in R O 1 over ( R O 1 plus 1 over ((1 plus Ay 1 ) G M 2 )) about G M 1 V in."
+  "k": "1g7sh59",
+  "text": "Here: I out equals G M 1 V in R O 1 over ( R O 1 plus 1 over ((1 plus A. 1 ) G M 2 )) about G M 1 V in."
  },
  {
   "k": "11sfbym",
@@ -708,52 +828,56 @@
   "text": "Multiply by G M about G M 1 from the last scene."
  },
  {
-  "k": "13kkey6",
-  "text": "If the booster is one CS transistor M 3, Ay 1 equals G M 3 R O 3. With all G M and R O equal: three factors of G M R O."
+  "k": "1esprs7",
+  "text": "If the booster is one CS transistor M 3, A. 1 equals G M 3 R O 3. With all G M and R O equal: three factors of G M R O."
  },
  {
   "k": "1gmljit",
   "text": "The comparison to remember: same G M, same two devices in the output column, but R out and the gain grow by a whole factor of G M R O, about 2500, then 125 000."
  },
  {
-  "k": "1bl2g36",
-  "text": "Now: how do you actually build Ay 1? Your page shows three circuits. Watch what each one costs."
+  "k": "s7v3mj",
+  "text": "Now: how do you actually build A. 1? Your page shows three circuits. Watch what each one costs."
  },
  {
-  "k": "1s386lw",
-  "text": "R out is about (1 plus Ay 1 ) G M 2 R O 2 R O 1, so the gain is about ( G M R O ) cubed."
+  "k": "fth6h7",
+  "text": "R out is about (1 plus A. 1 ) G M 2 R O 2 R O 1, so the gain is about ( G M R O ) cubed."
  },
  {
-  "k": "140ctsa",
-  "text": "Before the booster’s maths, follow its currents. Two columns hang from V D D: the output column ( I 1, M 2, M 1) and the booster column ( I 2, M 3)."
+  "k": "g52omc",
+  "text": "You met these currents in Lecture 7: two columns from V D D, joined only by gates. Your Lecture 8 page draws the same circuit, but with the names swapped. Watch the letters."
  },
  {
-  "k": "18d6hsb",
-  "text": "The direction rule: current flows down from V D D to ground. An N mos takes it in at the drain and lets it out at the source. The current sources decide how much."
+  "k": "1u0wrhz",
+  "text": "Quick recap in the page’s names: the output source is I 1, through M 2 and M 1; the booster load is I 2, through M 3 alone. Gates take no current, so the two never mix."
  },
  {
-  "k": "dn2uji",
-  "text": "The booster column: I 2 pushes its current down into M 3’s drain, and M 3 sinks all of it to ground. With the 2025 mid sem numbers that is 100 microamps."
+  "k": "g7uk4o",
+  "text": "In the 2025 mid sem and Tutorial 4 it is the other way round: I 2 is the output source and I 1 is M 3’s load. Follow the branch, not the letter."
  },
  {
-  "k": "6lqx8h",
-  "text": "That node also feeds M 2’s gate, and X feeds M 3’s gate, but gates draw no current. Nothing crosses between the columns: they are two separate loops."
+  "k": "s668wz",
+  "text": "In the paper, I 2 equals 0.5 milliamps runs through M 2 and M 1, and I 1 equals 100 microamps runs through M 3 alone."
  },
  {
-  "k": "7t1pi4",
-  "text": "The output column is one series string: I 1, then M 2, then M 1. The same current all the way down: I D 2 equals I D 1 equals I 1."
+  "k": "194kkni",
+  "text": "What is new in Lecture 8: M 3’s source is on ground and the booster current flows through it. That current fixes M 3’s V G S, and X is M 3’s gate. So the booster current pins X at V G S 3."
  },
  {
-  "k": "mjch0f",
-  "text": "Watch the names: your Lecture 8 page calls the output source I 1, but the 2025 mid sem and Tutorial 4 call it I 2, and I 1 is M 3’s load there. Follow the branch, not the letter."
+  "k": "lvgnsp",
+  "text": "Twice the overdrive: X goes up, and since the output floor is X plus V overdrive 2, the swing shrinks. That is why the booster runs on a small current."
  },
  {
-  "k": "14tvez8",
-  "text": "With a signal, the sources still hold the currents. If X rises, M 3 wants more than I 2 can give, so its drain, M 2’s gate, falls instead. The currents stay put; the voltages move."
+  "k": "16zquc",
+  "text": "Remember: same currents as Lecture 7, but on this page the names are swapped, and the booster current pins X at V G S 3. Next: the gain and the swing cost."
  },
  {
-  "k": "tp9htc",
-  "text": "Remember: two columns flowing down, series devices share one current, and gates carry none. Now the same circuit, with its gain."
+  "k": "1529vak",
+  "text": "The 2025 mid sem gives I 1 equals 100 microamps and I 2 equals 0.5 milliamps, with I 2 on the output column. In that paper, how much current flows through M 1?"
+ },
+ {
+  "k": "1yavlsy",
+  "text": "In the 2025 mid sem, M 3 carries 100 microamps with an overdrive V overdrive 3 equals 0.0861 volts. If the booster current were made 4 times bigger (same M 3), what would V overdrive 3 become?"
  },
  {
   "k": "1nk9kkt",
@@ -788,8 +912,8 @@
   "text": "Can a P mos booster avoid the V G S 3 penalty? That is implementation 2."
  },
  {
-  "k": "1l6yz8i",
-  "text": "CS booster: Ay 1 equals G M 3 R O 3."
+  "k": "1gshhyj",
+  "text": "CS booster: A. 1 equals G M 3 R O 3."
  },
  {
   "k": "1tdhfnk",
@@ -822,6 +946,14 @@
  {
   "k": "jj1v6t",
   "text": "Remember: a P mos still carries current downward, source to drain, and the two columns only talk through gates. Now: can M 3 stay saturated?"
+ },
+ {
+  "k": "1leqsls",
+  "text": "Which way does the booster current flow through M 3?"
+ },
+ {
+  "k": "l8gjwj",
+  "text": "In Tutorial 4 Q 2 the output column carries 0.1 milliamps and the booster M 3 about 0.11 milliamps. Three wires meet at P: M 2’s source, M 1’s drain and M 3’s gate. How much current flows down through M 1?"
  },
  {
   "k": "77tf1j",
@@ -896,6 +1028,14 @@
   "text": "Remember the fold: two branches share one sink, so whatever M 3 loses, M 4 gains. Now the booster’s gain."
  },
  {
+  "k": "ximchg",
+  "text": "Take I 2 equals 150 microamps (the sink under F) and I 3 equals 50 microamps (the source above M 4). How much current does M 3 carry?"
+ },
+ {
+  "k": "6m5rx1",
+  "text": "M 3 now carries delta I less, while the sources I 2 and I 3 stay fixed. What happens?"
+ },
+ {
   "k": "ie9ag7",
   "text": "Implementation 3 (bottom of your page): the P mos booster M 3 is folded into an N mos cascode M 4, with current sources I 3 (top) and I 2 (bottom)."
  },
@@ -904,8 +1044,8 @@
   "text": "M 3 senses M 2’s source with its gate. Its drain current is folded into M 4’s source; M 4 carries the signal up to its drain, which drives M 2’s gate."
  },
  {
-  "k": "pekpsa",
-  "text": "The booster is itself a cascode amplifier: G M equals G M 3, and looking into M 4’s drain you see a cascode, G M 4 R O 4 R O 3. So Ay 1 equals G M 3 G M 4 R O 4 R O 3, about 2500 instead of 50."
+  "k": "1jafd6j",
+  "text": "The booster is itself a cascode amplifier: G M equals G M 3, and looking into M 4’s drain you see a cascode, G M 4 R O 4 R O 3. So A. 1 equals G M 3 G M 4 R O 4 R O 3, about 2500 instead of 50."
  },
  {
   "k": "16w74d5",
@@ -916,16 +1056,16 @@
   "text": "Best of both: no swing lost, and a booster gain of g M r O, squared instead of G M R O. This is the version Tutorial 4 Q 3 and the 2024 mid sem Q 4 use."
  },
  {
-  "k": "bngpdo",
-  "text": "Folded booster: Ay 1 equals G M 3 G M 4 R O 4 R O 3, no swing lost."
+  "k": "1grp2cj",
+  "text": "Folded booster: A. 1 equals G M 3 G M 4 R O 4 R O 3, no swing lost."
  },
  {
   "k": "hexy6v",
   "text": "Read it once. Then: the 2025 mid sem question on this exact circuit, and Tutorial 4."
  },
  {
-  "k": "1n9j5b6",
-  "text": "mid sem 2025-26 Q 1 times 13 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1rze5rd",
+  "text": "mid sem 2025 26 Q 1, 13 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "qkjox1",
@@ -948,16 +1088,64 @@
   "text": "Floor: X is at V G S 3 (the implementation-1 penalty) plus V overdrive 2: 0.979 volts. Swing equals 2.5 minus 0.979 equals 1.52 volts."
  },
  {
-  "k": "2gut65",
-  "text": "Careful: M 3’s load I 1 is a real P mos, so Ay 1 equals G M 3 ( R O 3 in parallel with R O, I 1 ) equals 77.5, and R down equals Ay 1 G M 2 R O 2 R O 1 about 161 mega-ohms."
+  "k": "vqhfge",
+  "text": "Careful: M 3’s load I 1 is a real P mos, so A. 1 equals G M 3 ( R O 3 in parallel with R O, I 1 ) equals 77.5, not the ideal-load 232."
  },
  {
-  "k": "cafet8",
-  "text": "Looking up, the P mos source shows 10 kilo-ohms. In parallel with 161 mega-ohms the 10 kilo-ohms wins: Ay V about minus 52. The boost is wasted by the load."
+  "k": "lbvw6z",
+  "text": "Looking up, the P mos source shows 10 kilo-ohms. In parallel with 161 mega-ohms the 10 kilo-ohms wins: A. V about minus 52. The boost is wasted by the load."
  },
  {
-  "k": "8zmih2",
-  "text": "Write-up order for 13 marks: biases by links from ground, ceiling from the P mos overdrive, floor equals X + V overdrive 2, then Ay 1, R down, and the gain with the load in parallel."
+  "k": "3w5bd5",
+  "text": "Write-up order for 13 marks: biases by links from ground, ceiling from the P mos overdrive, floor equals X + V overdrive 2, then A. 1, R down, and the gain with the load in parallel."
+ },
+ {
+  "k": "eoql22",
+  "text": "(a) M 3 carries I 1 equals 100 microamps with its source on ground. Find the D C voltage at X. First, step 1. First M 3’s overdrive V overdrive 3 at I 1 equals 100 microamps."
+ },
+ {
+  "k": "6enfzd",
+  "text": "(a) P is M 2’s gate. M 2 carries I 2 equals 0.5 milliamps. Using V X from above, find the D C voltage at P. First, step 1. First M 2’s overdrive V overdrive 2 (M 2 carries I 2 equals 0.5 milliamps )."
+ },
+ {
+  "k": "1sng4uy",
+  "text": "(b) The output current source I 2 is a P mos ( W over L equals 100 ) carrying 0.5 milliamps. How high can V out go before it leaves saturation? First, step 1. First the P mos source’s overdrive V overdrive at 0.5 milliamps."
+ },
+ {
+  "k": "u4ts71",
+  "text": "(b) Using V X from part (a) and the ceiling just found, what is the maximum output swing? First, step 1. First the floor V out, min, set by M 2."
+ },
+ {
+  "k": "kqt6za",
+  "text": "(c) First the booster. M 3 runs at I 1 equals 100 microamps, and its load I 1 is a P mos ( lambda p equals 0.2 volts inverse), M 3 has lambda n equals 0.1 volts inverse. Find the booster gain A. 1. First, step 1. M 3’s transconductance G M 3 at 100 microamps."
+ },
+ {
+  "k": "s4o8v",
+  "text": "Step 2. M 3’s own output resistance R O 3 ( lambda n equals 0.1 volts inverse)."
+ },
+ {
+  "k": "1nb2l5g",
+  "text": "Step 3. The P mos load’s output resistance R O, I 1 ( lambda p equals 0.2 volts inverse, same 100 microamps)."
+ },
+ {
+  "k": "14q7jjh",
+  "text": "(c) Now the whole gain. The output current source is a P mos at 0.5 milliamps ( lambda p equals 0.2 volts inverse), and A. 1 comes from the step above. Find the size of the overall gain, A. V. First, step 1. G M 1 (equals G M 2 ): M 1 and M 2 carry 0.5 milliamps."
+ },
+ {
+  "k": "1vz6207",
+  "text": "Step 2. R O 1 (equals R O 2 ) at 0.5 milliamps, lambda n equals 0.1 volts inverse."
+ },
+ {
+  "k": "7c8w4d",
+  "text": "Step 3. R down, looking down into M 2’s drain, boosted by A. 1 from the step above."
+ },
+ {
+  "k": "yoa8mw",
+  "text": "Step 4. R up, looking up into the P mos output source (0.5 milliamps, lambda p equals 0.2 volts inverse)."
+ },
+ {
+  "k": "m948by",
+  "text": "Step 5. R out equals R up in parallel with R down."
  },
  {
   "k": "hdjf7o",
@@ -980,8 +1168,8 @@
   "text": "(c) M 4 at 0.1 volts sets 113 microamps; M 3’s source V S sits one V G S 3 above its gate P: 1.094 volts."
  },
  {
-  "k": "1ivgj3k",
-  "text": "(d) Without the booster the gain is about g M r O, squared equals 2550, so G M R O equals 50.5 and lambda n equals 0.42 volts ⁻¹."
+  "k": "9s71v8",
+  "text": "(d) Without the booster the gain is about g M r O, squared equals 2550, so G M R O equals 50.5 and lambda n equals 0.42 volts inverse."
  },
  {
   "k": "1p68p54",
@@ -990,6 +1178,38 @@
  {
   "k": "1buy8na",
   "text": "Lesson of (b): a P mos booster only works if V G S 2 is squeezed below V threshold 3, exactly why your page calls it a bad idea."
+ },
+ {
+  "k": "vgi3pm",
+  "text": "(a) M 5 is a P mos load carrying 0.1 milliamps. Find its gate bias V bp. First, step 1. First M 5’s overdrive V overdrive 5 at 0.1 milliamps."
+ },
+ {
+  "k": "3xqjf1",
+  "text": "(b) Take V P equals V overdrive 1 (M 1 and M 2 carry 0.1 milliamps). Is the booster P mos M 3 saturated? First, step 1. V P equals V overdrive 1: M 1’s overdrive at 0.1 milliamps."
+ },
+ {
+  "k": "bi8hbd",
+  "text": "Step 2. M 3’s drain voltage V D 3 (it is M 2’s gate; M 2 also carries 0.1 milliamps)."
+ },
+ {
+  "k": "ba1l5h",
+  "text": "Step 3. The highest drain voltage M 3 allows in saturation, V G 3 plus V threshold P (its gate is P)."
+ },
+ {
+  "k": "5zc7ky",
+  "text": "(c) M 4 (N mos) runs at V overdrive 4 equals 0.1 volts. Before finding V S: what current does M 4 set in the booster branch?"
+ },
+ {
+  "k": "rso0q0",
+  "text": "(d) Remove the booster and make M 5 an ideal 0.1 milliamps source. Which lambda n makes the gain about 2550? First, step 1. G M R O needed for a gain of 2550."
+ },
+ {
+  "k": "2fykji",
+  "text": "Step 2. G M of each N mos at 0.1 milliamps."
+ },
+ {
+  "k": "qlrpa8",
+  "text": "Step 3. So the R O each device must have."
  },
  {
   "k": "km7vd7",
@@ -1020,8 +1240,24 @@
   "text": "Two equivalent ways to write the floor: X + V overdrive 2, or M 2’s gate minus V threshold. Use whichever is quicker with the given numbers."
  },
  {
-  "k": "cle6nv",
-  "text": "Lecture 9 opens with Lecture 8’s folded booster. Your page circles it in red and writes Ay aux equals V out over V in: treat it as an ordinary amplifier."
+  "k": "d13mcb",
+  "text": "(a) Find the gate bias of M 3 (the voltage at X). First, step 1. First M 3’s overdrive V overdrive 3 at I 1 equals 100 microamps."
+ },
+ {
+  "k": "ddn00n",
+  "text": "(a) Using V X from the step above, find the gate bias of M 2. First, step 1. First M 2’s overdrive V overdrive 2 at I 2 equals 0.5 milliamps."
+ },
+ {
+  "k": "14ojs91",
+  "text": "(c) Using V G 2 from part (a), what is the lowest output voltage that keeps M 2 saturated?"
+ },
+ {
+  "k": "172ojva",
+  "text": "(c) The output current source is a P mos ( W over L equals 100 ) carrying 0.5 milliamps from V D D equals 3 volts. What is the highest output voltage? First, step 1. First the P mos source’s overdrive V overdrive at 0.5 milliamps."
+ },
+ {
+  "k": "12yyikc",
+  "text": "Lecture 9 opens with Lecture 8’s folded booster. Your page circles it in red and writes A. aux equals V out over V in: treat it as an ordinary amplifier."
  },
  {
   "k": "1276am0",
@@ -1040,16 +1276,16 @@
   "text": "Substitute: your page’s final line. Roughly ( G M R O ) to the 4, a cascode’s gain times a cascode’s gain."
  },
  {
-  "k": "bggm3c",
-  "text": "Exam method: main G M, then the booster’s G M, aux R out, aux, then multiply the cascode’s resistance by (1 plus Ay aux )."
+  "k": "18ogxuz",
+  "text": "Exam method: main G M, then the booster’s G M, aux R out, aux, then multiply the cascode’s resistance by (1 plus A. aux )."
  },
  {
-  "k": "17j1fm5",
-  "text": "Ay V equals G M 1 1 plus G M 3 G M 4 R O 4 R O 3 G M 2 R O 2 R O 1."
+  "k": "m4qmzi",
+  "text": "A. V equals G M 1 1 plus G M 3 G M 4 R O 4 R O 3 G M 2 R O 2 R O 1."
  },
  {
-  "k": "1drqzo7",
-  "text": "Before boosting anything, follow the DC current. Only one thing sets it here: the tail source at the bottom, which pulls I S S down into ground."
+  "k": "1qf12y9",
+  "text": "Before boosting anything, follow the D C current. Only one thing sets it here: the tail source at the bottom, which pulls I S S down into ground."
  },
  {
   "k": "1u8m4qp",
@@ -1064,12 +1300,12 @@
   "text": "K C L at the tail node: what leaves through the sink equals what arrives from the two halves."
  },
  {
-  "k": "19phgq5",
-  "text": "Now the boosters. Ay 1 senses the node between M 3 and M 1 and drives M 3’s gate. Does it change the current in the branch?"
+  "k": "1s8qpgm",
+  "text": "Now the boosters. A. 1 senses the node between M 3 and M 1 and drives M 3’s gate. Does it change the current in the branch?"
  },
  {
-  "k": "1vekdrd",
-  "text": "They are equal. Gates draw no DC current, so the booster neither adds nor takes current: one branch, one current, from the output node down to the tail."
+  "k": "1vxtqdl",
+  "text": "They are equal. Gates draw no D C current, so the booster neither adds nor takes current: one branch, one current, from the output node down to the tail."
  },
  {
   "k": "innc1y",
@@ -1084,8 +1320,16 @@
   "text": "Remember: the tail sets the total, the halves share it, a booster only drives gates, and a differential input moves current from one side to the other."
  },
  {
-  "k": "cmlb6t",
-  "text": "A real op amp is differential. Each cascode (M 3, M 4) needs its own booster, and they must match: Ay 1 equals Ay 2."
+  "k": "nqq4ex",
+  "text": "Compare the D C current in the cascode M 3 with the current in the input device M 1 below it."
+ },
+ {
+  "k": "1qmpchj",
+  "text": "Take I S S equals 1 milliamp. A small differential input adds 20 microamps to the left half. How much D C current now flows through the right cascode M 4? First, step 1. Current in the left half, I D 1, with the input applied?"
+ },
+ {
+  "k": "1lcsp1l",
+  "text": "A real op amp is differential. Each cascode (M 3, M 4) needs its own booster, and they must match: A. 1 equals A. 2."
  },
  {
   "k": "fwstfq",
@@ -1104,8 +1348,8 @@
   "text": "Half the hardware for the same boost. But that booster has inputs, and inputs have levels, which costs headroom. Next scene."
  },
  {
-  "k": "zvjzwt",
-  "text": "Differential pair: Ay 1 equals Ay 2 on each side, or one differential booster."
+  "k": "1c9tz41",
+  "text": "Differential pair: A. 1 equals A. 2 on each side, or one differential booster."
  },
  {
   "k": "1pu2xah",
@@ -1140,12 +1384,20 @@
   "text": "M 6 loses the delta I that M 5 gains. And M 5 now wants more than I 1 supplies, so it pulls M 3’s gate node down: the booster fights the rise of X. That is the boost."
  },
  {
-  "k": "qhr40u",
-  "text": "Notice: no booster current ever enters the main branch. The two circuits touch only at gates, M 5’s gate on X and M 3’s gate on M 5’s drain, and gates draw no DC current."
+  "k": "1wdkibi",
+  "text": "Notice: no booster current ever enters the main branch. The two circuits touch only at gates, M 5’s gate on X and M 3’s gate on M 5’s drain, and gates draw no D C current."
  },
  {
   "k": "1fjfd2v",
   "text": "Remember: two circuits, two currents. The booster’s loads equal half its tail, a signal moves current from M 6 to M 5, and the booster only touches the main pair through gates."
+ },
+ {
+  "k": "hdmih3",
+  "text": "The booster’s tail is I S S 1 equals 40 microamps and its two halves are identical. What current must the load source I 1 supply?"
+ },
+ {
+  "k": "tric0o",
+  "text": "X rises a little, so M 5 carries a little more current, delta I. What happens to the current in M 6?"
  },
  {
   "k": "vbqn4y",
@@ -1196,8 +1448,8 @@
   "text": "K C L at the fold node: I D 9 equals I D 5 plus I D 7. Two currents in, one out, the folded-cascode signature."
  },
  {
-  "k": "ishree",
-  "text": "The main cascode M 3 over M 1 carries its own current from the load above. The booster touches it only at gates: M 5’s gate on X, and M 3’s gate driven from the booster’s output. Gates draw no DC current."
+  "k": "dwm1dy",
+  "text": "The main cascode M 3 over M 1 carries its own current from the load above. The booster touches it only at gates: M 5’s gate on X, and M 3’s gate driven from the booster’s output. Gates draw no D C current."
  },
  {
   "k": "dsf20f",
@@ -1216,6 +1468,14 @@
   "text": "Remember: two currents fold into F and M 9 sinks their sum; when the input loses current, the cascode branch gains it."
  },
  {
+  "k": "x6i817",
+  "text": "Take the 2024 mid sem numbers: the input device M 5 carries 10 microamps and the cascode branch M 13, M 11, M 7 carries 10 microamps. How much must the sink M 9 carry?"
+ },
+ {
+  "k": "1tjqyiu",
+  "text": "X rises, so the P mos input M 5 carries delta I less. M 9 is fixed by V B 2. What happens to the current in the cascode M 7?"
+ },
+ {
   "k": "1039t64",
   "text": "The best booster we know is a full folded cascode. Your page: P mos input M 5 (gate on X), N mos cascode M 7, bottom source M 9, P mos cascode load M 11 on M 13."
  },
@@ -1232,24 +1492,24 @@
   "text": "Looking down: the N mos cascode M 7, with two resistances on its source (the fold node F): R O 9 in parallel with R O 5, the folded-cascode signature."
  },
  {
-  "k": "2l9ri9",
-  "text": "So Ay aux equals G M 5 R up, aux in parallel with R down, aux, your page’s two lines."
+  "k": "xbrb2c",
+  "text": "So A. aux equals G M 5 R up, aux in parallel with R down, aux, your page’s two lines."
  },
  {
-  "k": "l0susf",
-  "text": "And the main cascode’s R out equals (1 plus Ay aux ) G M 3 R O 3 R O 1. This is exactly the circuit of the 2024 mid sem Q 4 (solved below)."
+  "k": "88vbec",
+  "text": "And the main cascode’s R out equals (1 plus A. aux ) G M 3 R O 3 R O 1. This is exactly the circuit of the 2024 mid sem Q 4 (solved below)."
  },
  {
   "k": "1eupzlx",
   "text": "Why a P mos input here? M 5’s gate sits on X, which is low (one V overdrive above ground). A P mos input works there, Lecture 6’s rule. Next scene uses that rule twice."
  },
  {
-  "k": "1eehx0x",
-  "text": "Ay aux equals G M 5 G M 11 R O 11 R O 13 in parallel with G M 7 R O 7 ( R O 9 in parallel with R O 5 )."
+  "k": "rhymsu",
+  "text": "A. aux equals G M 5 G M 11 R O 11 R O 13 in parallel with G M 7 R O 7 ( R O 9 in parallel with R O 5 )."
  },
  {
-  "k": "ic3m23",
-  "text": "R out equals (1 plus Ay aux ) G M 3 R O 3 R O 1."
+  "k": "1gnssgw",
+  "text": "R out equals (1 plus A. aux ) G M 3 R O 3 R O 1."
  },
  {
   "k": "y1aoj9",
@@ -1268,8 +1528,8 @@
   "text": "K C L at the tail, and series devices share one current: each side carries I S S over 2 from top to bottom."
  },
  {
-  "k": "1xywsji",
-  "text": "The boosters Ay 1 and Ay 2 are separate amplifiers with their own bias currents. They sense sources and drive gates, so they add nothing to these stacks and take nothing from them."
+  "k": "1ym0298",
+  "text": "The boosters A. 1 and A. 2 are separate amplifiers with their own bias currents. They sense sources and drive gates, so they add nothing to these stacks and take nothing from them."
  },
  {
   "k": "ovldz0",
@@ -1280,20 +1540,28 @@
   "text": "Remember: in a telescopic, current flows straight down each stack, half the tail per side, and the boosters never join the main path."
  },
  {
-  "k": "1a9ss1a",
-  "text": "Your page’s telescopic with both cascode pairs boosted: Ay 1 watches the N mos cascodes M 3, M 4; Ay 2 watches the P mos cascodes M 5, M 6."
+  "k": "49nce1",
+  "text": "Current comes down from V D D through the P mos cascode M 5. Which way does it flow inside M 5?"
+ },
+ {
+  "k": "1r14hk6",
+  "text": "Take I S S equals 1 milliamp with equal inputs. How much current flows through the P mos cascode M 5?"
+ },
+ {
+  "k": "kocj4m",
+  "text": "Your page’s telescopic with both cascode pairs boosted: A. 1 watches the N mos cascodes M 3, M 4; A. 2 watches the P mos cascodes M 5, M 6."
  },
  {
   "k": "lcg2xa",
   "text": "A booster’s inputs sit on the sources it watches. Where are they? M 3, M 4’s sources are only a couple of overdrives above ground. M 5, M 6’s sources are near V D D."
  },
  {
-  "k": "11g4a97",
-  "text": "So Ay 1 must accept inputs near ground: a folded-cascode amplifier with P mos input devices (Lecture 6: its C M floor passes ground)."
+  "k": "1o8j9qu",
+  "text": "So A. 1 must accept inputs near ground: a folded-cascode amplifier with P mos input devices (Lecture 6: its C M floor passes ground)."
  },
  {
-  "k": "65t143",
-  "text": "And Ay 2 must accept inputs near V D D: N mos input devices (their C M ceiling passes V D D ). Your page writes both labels in red."
+  "k": "gglvlw",
+  "text": "And A. 2 must accept inputs near V D D: N mos input devices (their C M ceiling passes V D D ). Your page writes both labels in red."
  },
  {
   "k": "1f5l5kx",
@@ -1328,16 +1596,24 @@
   "text": "Only 2 microamps, a mismatch no process can avoid. So where does it go?"
  },
  {
-  "k": "1v0zdqg",
-  "text": "Neither source can win. The output voltages move until the devices’ output resistances soak up the mismatch, and with resistances that large a few micro A moves the outputs by volts. Next scene: why that forces C M F B."
+  "k": "1azhb7o",
+  "text": "Neither source can win. The output voltages move until the devices’ output resistances soak up the mismatch, and with resistances that large a few microamps moves the outputs by volts. Next scene: why that forces C M F B."
  },
  {
   "k": "uljdgc",
   "text": "Remember: the P mos loads push, the pair pulls, and since the two never match exactly, the output level is undefined until C M F B adjusts one of them."
  },
  {
-  "k": "19scad7",
-  "text": "With resistor loads the output DC level is automatic: each R D drops R D I S S over 2, so V out, C M equals V D D minus R D I S S over 2. Nothing to worry about."
+  "k": "w0tkcz",
+  "text": "Take I S S equals 1 milliamp, and suppose M 3 is biased to push I P equals 502 microamps (a 0.4 percent mismatch). How much current I X is left over at that output node? First, step 1. Current I N that M 1 pulls out of the node?"
+ },
+ {
+  "k": "1qd1olo",
+  "text": "At the output node, M 3 pushes 502 microamps in and M 1 pulls 500 microamps out. What happens?"
+ },
+ {
+  "k": "1xvxubd",
+  "text": "With resistor loads the output D C level is automatic: each R D drops R D I S S over 2, so V out, C M equals V D D minus R D I S S over 2. Nothing to worry about."
  },
  {
   "k": "1hi8410",
@@ -1356,12 +1632,12 @@
   "text": "And R P in parallel with R N is huge, hundreds of k ohms (more with cascodes). A mismatch of just 1 microamp times 500 kilo-ohms equals 0.5 volts,"
  },
  {
-  "k": "1279iz7",
-  "text": "a few micro A more and the output runs into a rail. Process mismatch makes this certain: the output common-mode level is undefined."
+  "k": "6ldfv7",
+  "text": "a few microamps more and the output runs into a rail. Process mismatch makes this certain: the output common-mode level is undefined."
  },
  {
-  "k": "qmaet9",
-  "text": "So: a high-gain fully differential amplifier always needs a loop that senses the output C M, compares it with V R E F and corrects a current source. That loop is C M F B, Lectures 10 to 12."
+  "k": "k0r4un",
+  "text": "So: a high-gain fully differential amplifier always needs a loop that senses the output C M, compares it with V ref and corrects a current source. That loop is C M F B, Lectures 10 to 12."
  },
  {
   "k": "65tf4s",
@@ -1408,6 +1684,14 @@
   "text": "Remember: list every path from the supply, use K C L where paths join, and use W over L ratios where gates are shared. The power budget then gives every number."
  },
  {
+  "k": "11qkd29",
+  "text": "M 5, M 6 and M 8 have their gates on the same node V bp and their sources on V D D. How do their currents compare?"
+ },
+ {
+  "k": "ripkar",
+  "text": "Of the booster devices M 3, M 4, M 5 and M 9, which carries the largest current?"
+ },
+ {
   "k": "8dk0cd",
   "text": "Tutorial 4 Q 3, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
@@ -1424,8 +1708,8 @@
   "text": "Floor: two N mos overdrives (M 1, M 2). Ceiling: V D D minus V overdrive 6. With 2.5 volts between them, V overdrive 6 equals 0.184 volts and (W over L) 6 equals 296."
  },
  {
-  "k": "15c1py7",
-  "text": "Walk the levels: M 3’s gate is V P; its source is one V G S 3 above; R 3 equals (3 minus 1.074) over 100 mu A about 19.3 kilo-ohms."
+  "k": "aenwf3",
+  "text": "Walk the levels: M 3’s gate is V P; its source is one V G S 3 above; R 3 equals (3 minus 1.074) over 100 microamps about 19.3 kilo-ohms."
  },
  {
   "k": "1thhti5",
@@ -1440,8 +1724,8 @@
   "text": "Bias string: each resistor is (voltage across it) over 200 microamps. R 2 about 592 ohms, R 1 about 5.38 kilo-ohms."
  },
  {
-  "k": "1wg3co7",
-  "text": "The booster’s input device has R 3 in its source, so its G M is only G M 3 over (1 plus G M 3 R 3 ), a weak booster here, Ay aux about 1.26."
+  "k": "1eslioq",
+  "text": "The booster’s input device has R 3 in its source, so its G M is only G M 3 over (1 plus G M 3 R 3 ), a weak booster here, A. aux about 1.26."
  },
  {
   "k": "zghdoz",
@@ -1452,8 +1736,80 @@
   "text": "Design questions always go: currents, then overdrives from the swing, then sizes, then walk every bias node with links, then check saturation, then gain."
  },
  {
-  "k": "8ux9ak",
-  "text": "mid sem 2024-25 Q 4 times 7 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "mui3vp",
+  "text": "Start with the power budget. How much current flows in the booster’s input device M 3? First, step 1. Total current drawn from the supply?"
+ },
+ {
+  "k": "1jb9c0o",
+  "text": "Step 2. Current in M 5 (and in M 8)? M 6 carries M 1’s 500 microamps."
+ },
+ {
+  "k": "1do8m69",
+  "text": "(a) The output must swing 2.5 volts. Find (W over L) 6. First, step 1. V overdrive 1 of M 1 (W over L equals 200, 500 microamps)?"
+ },
+ {
+  "k": "1gskegf",
+  "text": "Step 2. V overdrive 6 that leaves exactly 2.5 volts of swing?"
+ },
+ {
+  "k": "l578ui",
+  "text": "(b) M 3’s gate is tied to V P, and V P equals V overdrive 1. Find R 3. First, step 1. (W over L) 3?"
+ },
+ {
+  "k": "rf1975",
+  "text": "Step 2. V overdrive 3 (M 3 carries 100 microamps)?"
+ },
+ {
+  "k": "1ohpclx",
+  "text": "Step 3. Voltage at M 3’s source, V S 3?"
+ },
+ {
+  "k": "mfyndk",
+  "text": "(c) Given V D S 9 equals 1.15 V overdrive 9: is M 4 in saturation? First, step 1. Voltage at node F ( equals V D S 9 )? M 9 carries 300 microamps, W over L equals 200."
+ },
+ {
+  "k": "16crjbw",
+  "text": "Step 2. M 4’s gate voltage V G 4? (M 4: 200 microamps, W over L equals 200)"
+ },
+ {
+  "k": "s3mbp4",
+  "text": "Step 3. M 4’s drain voltage V D 4 (it is M 2’s gate)?"
+ },
+ {
+  "k": "10lppe7",
+  "text": "(d) M 7 has its gate on the same node as M 9. Find (W over L) 7."
+ },
+ {
+  "k": "j3io3x",
+  "text": "(d, continued) Walk the bias string: find R 2, the resistor between M 7’s drain and the node that feeds M 4’s gate. First, step 1. V G S 7, the voltage at M 7’s drain (diode-connected, mirrors M 9)?"
+ },
+ {
+  "k": "zu0e59",
+  "text": "(e) Find the overall gain A. V. Start with the booster’s gain, then the resistances seen at the output. First, step 1. The booster input M 3’s effective transconductance G M 3 (degenerated by R 3 )?"
+ },
+ {
+  "k": "1fa2dlg",
+  "text": "Step 2. The booster’s output resistance R out, aux (at M 4’s drain)?"
+ },
+ {
+  "k": "92l2jk",
+  "text": "Step 3. The booster’s gain A. aux?"
+ },
+ {
+  "k": "jlzfpz",
+  "text": "Step 4. G M 1 of the main input device (500 microamps)?"
+ },
+ {
+  "k": "1jug4e",
+  "text": "Step 5. R down, the boosted resistance looking down from the output?"
+ },
+ {
+  "k": "1rmh83q",
+  "text": "Step 6. R up, looking up into M 6?"
+ },
+ {
+  "k": "7lqdxf",
+  "text": "mid sem 2024 25 Q 4, 7 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "11qgopu",
@@ -1464,12 +1820,12 @@
   "text": "K C L at the fold node F: M 4 and M 7 each bring 10 microamps, so M 3 sinks 20 microamps. Then every G M equals 2 I D over V overdrive and R O equals 1 over ( lambda I D )."
  },
  {
-  "k": "hw4j4a",
-  "text": "Look up from G: the P mos cascode, 25 mega-ohms. Look down: M 4 cascoded over R O 3 in parallel with R O 7 (two R O on the fold node), 50 mega-ohms. Ay aux equals 0.1 millisiemens times 16.7 M about 1667."
+  "k": "af3x9t",
+  "text": "Look up from G: the P mos cascode, 25 mega-ohms. Look down: M 4 cascoded over R O 3 in parallel with R O 7 (two R O on the fold node), 50 mega-ohms. A. aux equals 0.1 millisiemens times 16.7 M about 1667."
  },
  {
-  "k": "138h1r9",
-  "text": "R out about Ay aux G M 2 R O 2 R O 1 equals 1667 times 0.2 millisiemens times 1 M times 1 M about 333 G ohms."
+  "k": "ptw2b2",
+  "text": "R out about A. aux G M 2 R O 2 R O 1 equals 1667 times 0.2 millisiemens times 1 M times 1 M about 333 G ohms."
  },
  {
   "k": "hakfvz",
@@ -1480,8 +1836,32 @@
   "text": "Raise V B 2 and M 4’s gate climbs towards its drain G. G is M 2’s gate: X + V G S 2 equals 0.6 volts at the lowest X. M 4 stays saturated while V B 2 is at most G plus V threshold 4 equals 1.0 volt, the key’s value. (M 7’s fence gives 1.1 volts, so M 4 binds.)"
  },
  {
-  "k": "szhxda",
-  "text": "Pattern: K C L for currents, G M and R O for every device, booster gain by two looks, multiply the cascode by (1 plus Ay aux ), then fences for the bias limits."
+  "k": "10dqmf3",
+  "text": "Pattern: K C L for currents, G M and R O for every device, booster gain by two looks, multiply the cascode by (1 plus A. aux ), then fences for the bias limits."
+ },
+ {
+  "k": "1xytepg",
+  "text": "Start with the small-signal numbers. Find G M 7, the transconductance of the booster’s input device M 7."
+ },
+ {
+  "k": "xb34b3",
+  "text": "Find the booster’s gain A. aux (from X, M 7’s gate, to G, M 2’s gate). First, step 1. R up, looking up from G into the P mos cascode M 5 on M 6 (10 microamps each)?"
+ },
+ {
+  "k": "13oic85",
+  "text": "Step 2. R down, looking down from G into M 4 over the fold node?"
+ },
+ {
+  "k": "1tom14q",
+  "text": "Now find R out, looking down into M 2’s drain. First, step 1. The plain (unboosted) cascode G M 2 R O 2 R O 1? M 2 and M 1 carry 10 microamps, N mos V overdrive equals 0.1 volts."
+ },
+ {
+  "k": "1pz1e5r",
+  "text": "Find the smallest V B 2 that keeps every device in saturation. First, step 1. M 4’s gate-source voltage V G S 4?"
+ },
+ {
+  "k": "16d4ks9",
+  "text": "And the largest V B 2? First, step 1. Lowest voltage of node G (M 4’s drain equals M 2’s gate), with X at its lowest, V overdrive 1?"
  },
  {
   "k": "1hbl5ff",
@@ -1500,6 +1880,14 @@
   "text": "Both answers come from the same habit: before using any amplifier, ask where its inputs and outputs must sit."
  },
  {
+  "k": "10of433",
+  "text": "(a) With this booster in place, what is the lowest output voltage V out, min? First, step 1. Lowest voltage of node X (M 5’s gate)?"
+ },
+ {
+  "k": "1ryfgv6",
+  "text": "(b) In a telescopic, the N mos cascodes’ sources sit near 0.3 volts. Which booster should watch them?"
+ },
+ {
   "k": "6n4pax",
   "text": "Your page starts with an identity that is always true: each input is the average of the two (the common mode) plus half the difference."
  },
@@ -1516,8 +1904,8 @@
   "text": "Change only the C M and both waves slide up together; the difference does not change. Change only the D M and they move further apart; the average stays put."
  },
  {
-  "k": "yi8oa8",
-  "text": "Why we care: at the outputs, the differential part is our signal. The common part, the outputs’ shared DC level, is not controlled by anything yet."
+  "k": "ml4k42",
+  "text": "Why we care: at the outputs, the differential part is our signal. The common part, the outputs’ shared D C level, is not controlled by anything yet."
  },
  {
   "k": "1nzh0d7",
@@ -1564,6 +1952,14 @@
   "text": "The current rules for this pair, in one card. Sources set the currents; K C L at each node tells you how they split."
  },
  {
+  "k": "rq69qu",
+  "text": "Example: each load source gives I 1 equals 0.5 milliamps. For neither output to drift, how much current must the tail carry?"
+ },
+ {
+  "k": "k0k902",
+  "text": "With this differential input, M 1 carries I S S over 2 plus delta I and M 2 carries I S S over 2 minus delta I, while each load still gives exactly I 1 equals I S S over 2. What do the two outputs do?"
+ },
+ {
   "k": "1nbxrd4",
   "text": "Your page’s general structure. The pair M 1, M 2 with current-source loads I 1, the amplifier whose output C M floats."
  },
@@ -1572,16 +1968,16 @@
   "text": "Block 1, the C M sensing circuit: takes V out 1 and V out 2 and produces their average, V out, C M, ignoring the differential signal."
  },
  {
-  "k": "cctylk",
-  "text": "Block 2, the C M F B amplifier: compares V out, C M with a reference V R E F, the level we want."
+  "k": "1x9wa8e",
+  "text": "Block 2, the C M F B amplifier: compares V out, C M with a reference V ref, the level we want."
  },
  {
   "k": "dma8w7",
   "text": "Block 3, the correction: its output adjusts one current source, here the tail I S S."
  },
  {
-  "k": "5ih0oh",
-  "text": "Follow the loop. Suppose the outputs drift up: V out, C M exceeds V R E F,"
+  "k": "1bddpe7",
+  "text": "Follow the loop. Suppose the outputs drift up: V out, C M exceeds V ref,"
  },
  {
   "k": "566tew",
@@ -1592,16 +1988,16 @@
   "text": "the tail pulls more current,"
  },
  {
-  "k": "1m34xuq",
-  "text": "and both outputs are pulled back down. Negative feedback: it settles where V out, C M equals V R E F."
+  "k": "1tpqv8o",
+  "text": "and both outputs are pulled back down. Negative feedback: it settles where V out, C M equals V ref."
  },
  {
   "k": "11ih8eq",
   "text": "Key point: the differential signal leaves the average unchanged, so the C M F B loop never fights the signal. It only fixes the shared level."
  },
  {
-  "k": "1r9doja",
-  "text": "C M F B: sense V out, C M, compare with V R E F, correct a current source."
+  "k": "bz2x7o",
+  "text": "C M F B: sense V out, C M, compare with V ref, correct a current source."
  },
  {
   "k": "1j04qh2",
@@ -1630,6 +2026,14 @@
  {
   "k": "1iisi6z",
   "text": "The current rules for resistive sensing: bias currents go down, the resistor current goes across, and only for a differential signal."
+ },
+ {
+  "k": "vufaoy",
+  "text": "Example: V out 1 equals 1.0 volt, V out 2 equals 0.8 volts, R 1 equals R 2 equals 10 kilo-ohms. How much current flows through the sensing resistors?"
+ },
+ {
+  "k": "8wdbgf",
+  "text": "Now both outputs rise by 50 millivolts together (a pure C M change), with R 1 equals R 2 equals 10 kilo-ohms. What change of current flows in R 1?"
  },
  {
   "k": "x02c8b",
@@ -1664,8 +2068,8 @@
   "text": "V out, C M equals V out 1 plus V out 2 2."
  },
  {
-  "k": "mbdb5h",
-  "text": "The cost: Ay V equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R 1 )."
+  "k": "9tvty8",
+  "text": "The cost: A. V equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R 1 )."
  },
  {
   "k": "2r0hge",
@@ -1696,6 +2100,14 @@
   "text": "The current rules for follower sensing: each follower carries its own bias, and the resistor current comes from the followers, never from the outputs."
  },
  {
+  "k": "1jq41m3",
+  "text": "Example: I 1 equals I 2 equals 20 microamps and R 1 equals R 2 equals 50 kilo-ohms. A differential signal puts M 5’s source at 0.6 volts and M 6’s source at 0.4 volts. How much current does M 5 carry now? First, step 1. First: how much current I R flows through R 1 and R 2?"
+ },
+ {
+  "k": "2bi4hd",
+  "text": "How much of the resistor current I R comes out of the amplifier’s output nodes (the M 1, M 3 drains)?"
+ },
+ {
   "k": "8hiam2",
   "text": "Your page’s second sensor: each output drives the gate of a source follower (M 5, M 6, biased by I 1, I 2 ). The resistors hang on the followers’ sources instead."
  },
@@ -1708,12 +2120,12 @@
   "text": "The price: a follower’s source sits one link below its gate. Your page’s numbers: outputs at 0.9 volts, follower sources at 0.5 volts."
  },
  {
-  "k": "19xddky",
-  "text": "So the sensed value is the average shifted down by V G S 5, 6, choose V R E F (or the amplifier’s other input) to match."
+  "k": "1etioqw",
+  "text": "So the sensed value is the average shifted down by V G S 5, 6, choose V ref (or the amplifier’s other input) to match."
  },
  {
-  "k": "10y97v6",
-  "text": "Your page also marks each follower output as DC + AC: the C M level plus the signal. Averaging cancels the signal and keeps the level."
+  "k": "1mhts6y",
+  "text": "Your page also marks each follower output as D C + AC: the C M level plus the signal. Averaging cancels the signal and keeps the level."
  },
  {
   "k": "1jfgfjs",
@@ -1740,8 +2152,8 @@
   "text": "K C L at P: M 5 must pull exactly 100 microamps. Nothing copies that number into M 5. The C M F B amplifier moves M 5’s gate until it does."
  },
  {
-  "k": "9onfdy",
-  "text": "Suppose M 5 pulled 110 microamps. The loads still give only 100 microamps, so the extra 10 microamps is drawn out of the output nodes and both outputs fall. The amplifier sees V O, C M below V R E F and lowers M 5’s gate until the tail is back to 100 microamps."
+  "k": "1v83es4",
+  "text": "Suppose M 5 pulled 110 microamps. The loads still give only 100 microamps, so the extra 10 microamps is drawn out of the output nodes and both outputs fall. The amplifier sees V O, C M below V ref and lowers M 5’s gate until the tail is back to 100 microamps."
  },
  {
   "k": "1rudiyq",
@@ -1752,20 +2164,28 @@
   "text": "The current rules for this circuit: the mirrors fix the loads, K C L fixes the tail, and the C M F B amplifier makes M 5 obey it."
  },
  {
-  "k": "1zndj0",
-  "text": "Quiz 2 2024-25 Q 2 times 9 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1omkazw",
+  "text": "In this circuit the reference is 50 microamps and (W over L) 3 equals (W over L) 4 equals (W over L) 6. With the outputs at rest (no current in the R’s), how much current must the tail M 5 carry? First, step 1. First: how much current does M 3 carry?"
  },
  {
-  "k": "qj76y7",
-  "text": "What it tests: turning a gain into an overdrive ( Ay D equals 1 over ( lambda V overdrive ) ), the output range from checks (its middle is V R E F ), the input-C M range from a check + a fence, and what ±1 percent means for the C M gain."
+  "k": "oklmnw",
+  "text": "Now V in 1 rises slightly and V in 2 falls by the same amount (a differential input). What happens to M 5’s current?"
  },
  {
-  "k": "pvsgbe",
-  "text": "The trick: with equal λ, R O 1 in parallel with R O 3 equals 1 over (2 lambda I D ) and G M equals 2 I D over V overdrive, so the current cancels: Ay D equals 1 over ( lambda V overdrive 1 ), giving V overdrive 1 equals 0.1 volts, V overdrive 5 equals 0.2 volts, V overdrive 3 equals 0.3 volts."
+  "k": "1be6skn",
+  "text": "Quiz 2 2024 25 Q 2, 9 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
-  "k": "1a9jxz4",
-  "text": "Lowest output: the tail’s and M 1’s overdrives, 0.3 volts. Highest: 1.8 minus 0.3 equals 1.5 volts. C M F B holds the C M at V R E F, so put it in the middle: 0.9 volts."
+  "k": "caj1ky",
+  "text": "What it tests: turning a gain into an overdrive ( A. D equals 1 over ( lambda V overdrive ) ), the output range from checks (its middle is V ref ), the input-C M range from a check + a fence, and what ±1 percent means for the C M gain."
+ },
+ {
+  "k": "fc21kp",
+  "text": "The trick: with equal lambda, R O 1 in parallel with R O 3 equals 1 over (2 lambda I D ) and G M equals 2 I D over V overdrive, so the current cancels: A. D equals 1 over ( lambda V overdrive 1 ), giving V overdrive 1 equals 0.1 volts, V overdrive 5 equals 0.2 volts, V overdrive 3 equals 0.3 volts."
+ },
+ {
+  "k": "15oc5ji",
+  "text": "Lowest output: the tail’s and M 1’s overdrives, 0.3 volts. Highest: 1.8 minus 0.3 equals 1.5 volts. C M F B holds the C M at V ref, so put it in the middle: 0.9 volts."
  },
  {
   "k": "6l3nyq",
@@ -1776,8 +2196,40 @@
   "text": "C M gain equals output-C M change divided by input-C M change: (2 times 0.01 times 0.9) over 0.6 equals 0.03. The C M F B loop must make the C M gain at least this small."
  },
  {
-  "k": "i00irh",
-  "text": "Pattern for C M F B level questions: overdrives first, output range by checks (middle equals V R E F ), input range by check + link and fence (middle equals optimum), then C M gain equals allowed change divided by input range."
+  "k": "1f5v927",
+  "text": "Pattern for C M F B level questions: overdrives first, output range by checks (middle equals V ref ), input range by check + link and fence (middle equals optimum), then C M gain equals allowed change divided by input range."
+ },
+ {
+  "k": "em7lbv",
+  "text": "The differential gain is A. D equals 50 (without the R’s and the feedback amp), with lambda n equals lambda p equals 0.2 volts inverse. Find the overdrive of the input pair, V overdrive 1."
+ },
+ {
+  "k": "xa4705",
+  "text": "The C M F B loop holds the output C M at V ref. Using the overdrives from the first part, choose V ref so the outputs can swing equally far up and down. First, step 1. First: the lowest output V O, min that keeps M 5 and M 1 saturated?"
+ },
+ {
+  "k": "a28dyg",
+  "text": "Step 2. Next: the highest output V O, max that keeps M 3 saturated?"
+ },
+ {
+  "k": "8e8hyz",
+  "text": "Find the optimum input common-mode level V in, C M: the middle of the range of input C M that keeps M 5 and M 1 saturated, with the output C M at V ref from the previous part. First, step 1. First: M 1’s gate, source voltage V G S 1?"
+ },
+ {
+  "k": "125cjqk",
+  "text": "Step 2. The lowest input C M V in, min (tail M 5 just saturated)?"
+ },
+ {
+  "k": "cu0069",
+  "text": "Step 3. The highest input C M V in, max (M 1 just saturated, drain at V O, C M equals 0.9 volts )?"
+ },
+ {
+  "k": "1ikxgfr",
+  "text": "The output C M may vary by ±1 percent of its value while the input C M moves over its full range (previous part). What is the largest C M gain A. C M allowed? First, step 1. First: how much may the output C M move in total (±1 percent of 0.9 volts)?"
+ },
+ {
+  "k": "1rfel5m",
+  "text": "Step 2. Next: the full input-C M range delta V in, C M?"
  },
  {
   "k": "yz630",
@@ -1788,8 +2240,8 @@
   "text": "In the error amplifier, I 2 equals 200 microamps flows down through diode M 12. M 11 has the same W over L and gate voltage, so it copies 200 microamps and feeds the joined sources of the P mos pair M 7, M 8."
  },
  {
-  "k": "5tha34",
-  "text": "K C L at the pair’s sources: the 200 microamps splits. With V O, C M equals V R E F the gates are equal, so 100 microamps goes down each side, into the diodes M 9 and M 10."
+  "k": "1kny22y",
+  "text": "K C L at the pair’s sources: the 200 microamps splits. With V O, C M equals V ref the gates are equal, so 100 microamps goes down each side, into the diodes M 9 and M 10."
  },
  {
   "k": "4mdexi",
@@ -1804,44 +2256,92 @@
   "text": "The current rules for this C M F B circuit: each mirror copies its reference, the error pair re-shares a fixed 200 microamps, and M 5 copies M 7’s share."
  },
  {
-  "k": "9t5hno",
-  "text": "mid sem 2024-25 Q 1 equals Tutorial 5 Q 3 times 20 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "7542rk",
+  "text": "At balance ( V O, C M equals V ref ), how much current flows in M 7? ( I 2 equals 200 microamps, all W over L equals 50.) First, step 1. First: how much current does M 11 carry?"
  },
  {
-  "k": "oeqolj",
-  "text": "What it tests: mirror currents, the D M half circuit (the R midpoint is AC ground), the C M half circuit (tail counts as 2 R O 5 ), the output range’s middle, and CMRR equals Ay D over Ay C M."
+  "k": "1nko2r0",
+  "text": "The output C M drifts up, above V ref ( V O, C M drives M 8’s gate). How does the 200 microamps from M 11 re-split, and what does the tail do?"
+ },
+ {
+  "k": "1vulptf",
+  "text": "mid sem 2024 25 Q 1 equals Tutorial 5 Q 3, 20 marks, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "1w45g71",
+  "text": "What it tests: mirror currents, the D M half circuit (the R midpoint is AC ground), the C M half circuit (tail counts as 2 R O 5 ), the output range’s middle, and C M R R equals A. D over A. C M."
  },
  {
   "k": "ujqg6b",
   "text": "Mirrors first: M 3, M 4 copy 50 microamps, so M 5 carries 100 microamps. G M 1 equals 0.707 millisiemens, R O 1 equals 200 kilo-ohms, R O 3 equals R O 5 equals 100 kilo-ohms."
  },
  {
-  "k": "1sjjr74",
-  "text": "Lecture 10’s cost of resistive sensing shows up here: Ay D equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R) equals 46.8."
+  "k": "12m7geb",
+  "text": "Lecture 10’s cost of resistive sensing shows up here: A. D equals G M 1 ( R O 1 in parallel with R O 3 in parallel with R) equals 46.8."
  },
  {
-  "k": "wib23o",
-  "text": "In C M both outputs move together, so the R’s carry nothing. Each half sees the tail as 2 R O 5: Ay C M equals R O 3 over (1 over G M 1 plus 2 R O 5 ) about 0.5."
+  "k": "10dfq51",
+  "text": "In C M both outputs move together, so the R’s carry nothing. Each half sees the tail as 2 R O 5: A. C M equals R O 3 over (1 over G M 1 plus 2 R O 5 ) about 0.5."
  },
  {
   "k": "680ynb",
   "text": "Output floor: tail + M 1 overdrives, 0.341 volts. Ceiling: 1.8 minus V overdrive 3 equals 1.6 volts. Middle: 0.971 volts."
  },
  {
-  "k": "u4m13f",
-  "text": "CMRR equals 46.8 over 0.497 about 94 (39.5 decibels). Poor, part 2 adds the C M F B loop."
+  "k": "faz2hb",
+  "text": "C M R R equals 46.8 over 0.497 about 94 (39.5 decibels). Poor, part 2 adds the C M F B loop."
  },
  {
   "k": "2ynmbm",
   "text": "These match the 2024 key. Two half circuits, two different answers: in D M the R midpoint is ground, in C M the R’s are open."
  },
  {
-  "k": "1qhy8r9",
-  "text": "mid sem 2024-25 Q 1 equals Tutorial 5 Q 3 times part 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "rentfj",
+  "text": "First find the bias currents from the mirrors (all W over L equals 50). Then find G M 1 of the input transistor M 1. First, step 1. First: the drain current of M 1?"
  },
  {
-  "k": "1f7q9vu",
-  "text": "What it tests: the C M F B loop gain traced around the loop (sense, then error amp, then tail, then back), and feedback dividing the C M gain by (1 + T) while Ay D stays."
+  "k": "10a7nqy",
+  "text": "Find the differential gain A. D with the sensing resistors R connected (no C M F B amplifier yet). Use G M and R O from the first step. First, step 1. First: R O 1 (N mos, 50 microamps)?"
+ },
+ {
+  "k": "z4t8kd",
+  "text": "Step 2. Next: R O 3 (P mos, 50 microamps)?"
+ },
+ {
+  "k": "1h9jsc9",
+  "text": "Step 3. The resistance each output sees in D M: R O 1 in parallel with R O 3 in parallel with R?"
+ },
+ {
+  "k": "lrntcn",
+  "text": "Find the common-mode gain A. C M without C M F B (the R’s still connected). First, step 1. First: R O 5 of the tail (N mos, 100 microamps)?"
+ },
+ {
+  "k": "1scmoeb",
+  "text": "Step 2. Next: 1 over G M 1?"
+ },
+ {
+  "k": "6ckieh",
+  "text": "Find the optimum output C M level V O, C M: the level that allows the largest symmetric output swing. First, step 1. First: V overdrive 1 (M 1: 50 microamps)?"
+ },
+ {
+  "k": "1b5b5jx",
+  "text": "Step 2. Next: V overdrive 5 (tail M 5: 100 microamps)?"
+ },
+ {
+  "k": "eh9u4b",
+  "text": "Step 3. Next: V overdrive 3 (P mos M 3: 50 microamps)?"
+ },
+ {
+  "k": "1a6s2g1",
+  "text": "Find the C M R R of the amplifier without C M F B (as a ratio), from the two gains above."
+ },
+ {
+  "k": "1smeu5u",
+  "text": "mid sem 2024 25 Q 1 equals Tutorial 5 Q 3 times part 2, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+ },
+ {
+  "k": "l5d1a1",
+  "text": "What it tests: the C M F B loop gain traced around the loop (sense, then error amp, then tail, then back), and feedback dividing the C M gain by (1 + T) while A. D stays."
  },
  {
   "k": "208vxt",
@@ -1856,16 +2356,52 @@
   "text": "Feedback divides the C M gain by (1 plus T): 0.497 over 18.1 equals 0.027. The D M gain is unchanged."
  },
  {
-  "k": "1pah27h",
-  "text": "CMRR jumps to about 1700 (64.6 decibels). And 0.027 is below the 0.031 allowed, so the ±1 percent spec is met."
+  "k": "11c1w7t",
+  "text": "C M R R jumps to about 1700 (64.6 decibels). And 0.027 is below the 0.031 allowed, so the ±1 percent spec is met."
  },
  {
   "k": "1lyv8s2",
   "text": "Your key’s loop gain (55.7) comes from a slip in one G M. If the marker insists on the key, quote 55.7 and say why your 17 differs."
  },
  {
-  "k": "1y4odjq",
-  "text": "Write-up: loop gain equals product of every gain around the C M loop; closed-loop C M gain equals open-loop C M gain divided by (1 + T); CMRR equals Ay D divided by that."
+  "k": "zbl9rz",
+  "text": "Write-up: loop gain equals product of every gain around the C M loop; closed-loop C M gain equals open-loop C M gain divided by (1 + T); C M R R equals A. D divided by that."
+ },
+ {
+  "k": "1qw980p",
+  "text": "V O, C M (part 1) may vary by ±1 percent while the input C M moves over its full range. What is the largest C M gain allowed? First, step 1. First: the lowest input C M V in, min (tail M 5 just saturated)?"
+ },
+ {
+  "k": "1ucd6yp",
+  "text": "Step 2. Next: the highest input C M V in, max (M 1 just saturated)?"
+ },
+ {
+  "k": "69w4g1",
+  "text": "Step 3. Next: the allowed output-C M change (±1 percent of V O, C M )?"
+ },
+ {
+  "k": "zkkxzq",
+  "text": "Find the C M loop gain T of the C M F B loop (break it at the outputs and go once round: M 8 over M 7 pair, then diode M 9, then tail M 5, then back to the outputs). First, step 1. Loop, block 1: G M 7 of the error-amp pair (P mos, 100 microamps each)?"
+ },
+ {
+  "k": "1q66586",
+  "text": "Step 2. Block 2: the resistance at M 9’s drain, 1 G M 9 in parallel with R O 9 in parallel with R O 7 (both 100 microamps)?"
+ },
+ {
+  "k": "1w37132",
+  "text": "Step 3. Block 3: G M 5 of the tail (N mos, 100 microamps)?"
+ },
+ {
+  "k": "1xje0l6",
+  "text": "Step 4. Block 4: R dn, the C M resistance looking down into M 1 (degenerated by 2 R O 5 )?"
+ },
+ {
+  "k": "1g71nn0",
+  "text": "Using A. C M without C M F B (part 1) and the loop gain T just found, find the C M gain with the C M F B loop closed."
+ },
+ {
+  "k": "1ouikwp",
+  "text": "Find the C M R R with the C M F B loop closed (as a ratio)."
  },
  {
   "k": "112kq7m",
@@ -1892,8 +2428,16 @@
   "text": "The current rules for the folded cascode: the top source current folds, part into the input pair and the rest down the cascode, and the C M F B sets the bottom sinks to match."
  },
  {
-  "k": "bk1z36",
-  "text": "Tutorial 5 Q 2 times Razavi 9.12, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1rxush6",
+  "text": "Example numbers (Tutorial 5 Q 2 gives none): each top P mos source gives I P equals 1 milliamp and the tail gives I S S equals 1 milliamp, with equal inputs. How much current flows down each cascode branch into M 3 and M 4? First, step 1. First: how much current does the input transistor M 1 carry?"
+ },
+ {
+  "k": "i7jopu",
+  "text": "A small differential input makes M 1 carry I S S over 2 plus delta I. The top source still gives I P. What flows down the left cascode branch now?"
+ },
+ {
+  "k": "6rvyp2",
+  "text": "Tutorial 5 Q 2, Razavi 9.12, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "ax2dez",
@@ -1904,16 +2448,24 @@
   "text": "Levels decide it. V E must sit near V G S 3, close to ground. A P mos input pair has its N mos mirror at the bottom, so its output rests near V G S, N, the right level. An N mos pair’s output would rest near V D D minus V G S, P."
  },
  {
-  "k": "1ocfynn",
-  "text": "Break the loop and follow a C M change: the sensor passes it with gain 1, the error amp multiplies by Ay E A, M 3, M 4 turn it into G M 3 Ay E A times that current,"
+  "k": "10uomd1",
+  "text": "Break the loop and follow a C M change: the sensor passes it with gain 1, the error amp multiplies by A. E A., M 3, M 4 turn it into G M 3 A. E A. times that current,"
  },
  {
-  "k": "le7v9b",
-  "text": "and that current lands on each output, which (for a C M change) sees only the cascodes: R up in parallel with R down. Loop gain T equals Ay E A G M 3 ( R up in parallel with R down )."
+  "k": "s1k6ta",
+  "text": "and that current lands on each output, which (for a C M change) sees only the cascodes: R up in parallel with R down. Loop gain T equals A. E A. G M 3 ( R up in parallel with R down )."
  },
  {
   "k": "2t28v8",
   "text": "Check the sign too: V out, C M up, then V E up, then M 3, M 4 pull harder, then outputs down. Negative feedback, as required."
+ },
+ {
+  "k": "1mzyipx",
+  "text": "The error amplifier is a differential pair with a current-mirror load, and its output V E drives the gates of M 3 and M 4. Should its input pair be P mos or N mos?"
+ },
+ {
+  "k": "5qj5qb",
+  "text": "Which expression is the C M F B loop gain T C M?"
  },
  {
   "k": "x16ilr",
@@ -1924,8 +2476,8 @@
   "text": "Then V D S squared is negligible next to 2( V G S minus V threshold ) V D S: drop it. The current is proportional to V D S."
  },
  {
-  "k": "ym9i9h",
-  "text": "A current proportional to the voltage is a resistor: R on equals 1 over ( mu n C O X W over L ( V G S minus V threshold ))."
+  "k": "4xpwub",
+  "text": "A current proportional to the voltage is a resistor: R on equals 1 over ( mu n C ox W over L ( V G S minus V threshold ))."
  },
  {
   "k": "mye28d",
@@ -1940,8 +2492,8 @@
   "text": "Your page’s one-liner: in saturation a MOSFET is a voltage-controlled current source; in deep triode it is a voltage-controlled resistor. Lectures 11 to 12 use the resistor."
  },
  {
-  "k": "1trqlbo",
-  "text": "R on equals 1 over ( mu n C O X W over L ( V G S minus V threshold ))."
+  "k": "ptx3m0",
+  "text": "R on equals 1 over ( mu n C ox W over L ( V G S minus V threshold ))."
  },
  {
   "k": "1860ex6",
@@ -1984,20 +2536,28 @@
   "text": "And the tail? V out 1 down makes M 10 a bigger resistor, V out 2 up makes M 11 a smaller one: the split under P shifts, but the sum still matches one milliamp."
  },
  {
+  "k": "1e0w4l",
+  "text": "Both outputs sit at the same voltage, and each column carries I D equals 0.5 milliamps. How much current flows from P to ground through M 10 and M 11 together?"
+ },
+ {
+  "k": "vpct1q",
+  "text": "With this small differential input, what happens to the total current flowing from P to ground?"
+ },
+ {
   "k": "49np7u",
   "text": "Your page’s circuit: a telescopic op amp whose tail is two transistors M 10, M 11 in deep triode, with their gates driven by the two outputs."
  },
  {
-  "k": "cs6mg",
-  "text": "They sit between node P and ground with only a tiny V D S (= V P ), so each is a resistor set by its gate, that is, by an output voltage."
+  "k": "1mn4ywc",
+  "text": "They sit between node P and ground with only a tiny V D S (equals V P ), so each is a resistor set by its gate, that is, by an output voltage."
  },
  {
   "k": "ut5zz9",
   "text": "In parallel, conductances add: 1 over R total equals 1 over R on 10 plus 1 over R on 11,"
  },
  {
-  "k": "imwiz9",
-  "text": "each conductance is mu n C O X W over L ( V G S minus V threshold ) with V G S equals an output,"
+  "k": "eetn4j",
+  "text": "each conductance is mu n C ox W over L ( V G S minus V threshold ) with V G S equals an output,"
  },
  {
   "k": "qqos24",
@@ -2012,8 +2572,8 @@
   "text": "A common-mode rise raises both: the total conductance grows, R total falls, the tail pulls harder, and the outputs are pulled back down. Feedback, built right into the tail."
  },
  {
-  "k": "22ssq7",
-  "text": "R total equals 1 over ( mu n C O X W over L ( V out 1 plus V out 2 minus 2 V threshold )): sees C M, blind to D M."
+  "k": "1q84yvh",
+  "text": "R total equals 1 over ( mu n C ox W over L ( V out 1 plus V out 2 minus 2 V threshold )): sees C M, blind to D M."
  },
  {
   "k": "3690id",
@@ -2024,8 +2584,8 @@
   "text": "M 5 is a P mos with a fixed gate bias: a current source. Its 20 microamps flow down from the supply, source to drain, into the node below it."
  },
  {
-  "k": "grnf0t",
-  "text": "At that node it splits: part goes down through M 3, the rest through M 4. K C L: I 5 equals I D 3 plus I D 4. With equal outputs the circuit is symmetric, so the halves are equal."
+  "k": "1t0verm",
+  "text": "At that node it splits: part goes down through M 3, the rest through M 4. K C L: I 5 equals I D 3 plus I D 4. With equal outputs the circuit is symmetric, so the halves are equal. When the outputs move away from V REF, the split shifts with the square of the difference: that shift is what the sensor measures."
  },
  {
   "k": "1ilg02j",
@@ -2040,12 +2600,16 @@
   "text": "The rule for every node: the sources set the currents, the devices only share them. If M 3 takes more, M 1 must take less, because the sink below is fixed."
  },
  {
-  "k": "ywx01s",
-  "text": "Another sensor on your page: followers M 1, M 2 copy the outputs, and P mos devices M 3, M 4 (gates at V R E F ) compare them, sharing the current source M 5."
+  "k": "133teiu",
+  "text": "The outputs are equal. M 5 supplies I 5 equals 20 microamps and each sink is I 1 equals 50 microamps. How much current flows through the follower M 1? First, step 1. How much of M 5’s current flows through M 3?"
  },
  {
-  "k": "sbgd3k",
-  "text": "Each device’s current follows the square law of its own difference from V R E F, so the sensed current is a sum of squares (your page’s last line)."
+  "k": "nek7gi",
+  "text": "Another sensor on your page: followers M 1, M 2 copy the outputs, and P mos devices M 3, M 4 (gates at V ref ) compare them, sharing the current source M 5."
+ },
+ {
+  "k": "1ta7wlu",
+  "text": "Each device’s current follows the square law of its own difference from V ref, so the sensed current is a sum of squares (your page’s last line)."
  },
  {
   "k": "1abu4x",
@@ -2056,32 +2620,32 @@
   "text": "Compare the triode sensor, whose reading depends exactly on V out 1 plus V out 2 (as long as the devices stay in deep triode)."
  },
  {
-  "k": "45grlv",
-  "text": "Pair sensing: I grows like ( V R E F minus V out 1 ) squared plus ( V R E F minus V out 2 ) squared, nonlinear, small swings only."
+  "k": "hqmpv7",
+  "text": "Pair sensing: I grows like ( V ref minus V out 1 ) squared plus ( V ref minus V out 2 ) squared, nonlinear, small swings only."
  },
  {
-  "k": "mwz6rb",
-  "text": "Your page writes Lecture 1’s two lines again: the closed-loop result A over (1 plus beta A) and the error is about 1 over ( beta A) (circled)."
+  "k": "t24dub",
+  "text": "Your page writes Lecture 1’s two lines again: the closed-loop result A. over (1 plus beta A.) and the error is about 1 over ( beta A.) (circled)."
  },
  {
-  "k": "3dge79",
-  "text": "The C M F B loop is an ordinary negative-feedback loop. How close the output C M gets to V R E F depends on its loop gain, just like the gain error of Lecture 1."
+  "k": "yg5iev",
+  "text": "The C M F B loop is an ordinary negative-feedback loop. How close the output C M gets to V ref depends on its loop gain, just like the gain error of Lecture 1."
  },
  {
-  "k": "1f2l1se",
-  "text": "Your two circuits: an error amplifier comparing the resistor-sensed C M with V R E F and driving a current source; or triode devices that sense and correct in one go."
+  "k": "fko8hg",
+  "text": "Your two circuits: an error amplifier comparing the resistor-sensed C M with V ref and driving a current source; or triode devices that sense and correct in one go."
  },
  {
-  "k": "1ri91l6",
-  "text": "Lecture 12 adds that the error amplifier can drive any current source in the output path, the input tail, or the bottom sources. Wherever it acts, it moves a current until V out, C M equals V R E F."
+  "k": "wtg6ls",
+  "text": "Lecture 12 adds that the error amplifier can drive any current source in the output path, the input tail, or the bottom sources. Wherever it acts, it moves a current until V out, C M equals V ref."
  },
  {
-  "k": "17qkcq2",
-  "text": "Exam link: the loop gain you computed in Lecture 10’s past papers is exactly this beta A of the C M loop."
+  "k": "14lu0rk",
+  "text": "Exam link: the loop gain you computed in Lecture 10’s past papers is exactly this beta A. of the C M loop."
  },
  {
-  "k": "l8lza2",
-  "text": "C M F B is a feedback loop: the C M error is about 1 over ( beta A)."
+  "k": "1u9ox9q",
+  "text": "C M F B is a feedback loop: the C M error is about 1 over ( beta A.)."
  },
  {
   "k": "1vc53sh",
@@ -2144,20 +2708,28 @@
   "text": "Now let the output common mode rise. M 12 and M 13 conduct better, the node under M 11 drops, M 11 gets a bigger gate-source voltage and pulls more than I 1. More tail current leaves less for the output branches, and the outputs come back down. The only resting point is V out C M equal to V REF."
  },
  {
+  "k": "wqpde3",
+  "text": "M 11 has the same size as M 14 and the same gate voltage. With the outputs at V ref, how much current does the tail device M 11 carry? ( I 1 equals 100 microamps)"
+ },
+ {
+  "k": "1oghupr",
+  "text": "Both outputs sit at V ref and I 1 equals 100 microamps. How much current flows through each sensing device, M 12 and M 13?"
+ },
+ {
   "k": "1pzdycj",
   "text": "Instead of solving the square law, build a twin. On the right, the real tail: M 11 above the triode sensors M 12, M 13 (gates on the outputs). On the left, a replica branch fed by I 1."
  },
  {
-  "k": "m9882c",
-  "text": "M 14 is M 11’s twin (same size, same gate, same current I 1 ). M 15 is the twin of M 12 and M 13 together, but its gate sits at V R E F instead of the outputs."
+  "k": "tvx9xa",
+  "text": "M 14 is M 11’s twin (same size, same gate, same current I 1 ). M 15 is the twin of M 12 and M 13 together, but its gate sits at V ref instead of the outputs."
  },
  {
   "k": "5hotqu",
   "text": "Your page’s three lines. Same gate voltage and same current only if the two bottom resistors match: M 15’s conductance must equal M 12’s + M 13’s."
  },
  {
-  "k": "1oaf21x",
-  "text": "With (W over L) 15 equals (W over L) 12 plus (W over L) 13 that happens exactly when the outputs average to V R E F. The C M is set by V R E F directly, no square-law algebra."
+  "k": "1pczmll",
+  "text": "With (W over L) 15 equals (W over L) 12 plus (W over L) 13 that happens exactly when the outputs average to V ref. The C M is set by V ref directly, no square-law algebra."
  },
  {
   "k": "1nr4qkl",
@@ -2172,8 +2744,8 @@
   "text": "And the questions: Tutorial 5 Q 1 (the 2025 mid sem Q 4), Quiz 2, and Problem Set 2 P 5."
  },
  {
-  "k": "1m3le2h",
-  "text": "Tutorial 5 Q 1 equals mid sem 2025-26 Q 4, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
+  "k": "1g83k9s",
+  "text": "Tutorial 5 Q 1 equals mid sem 2025 26 Q 4, exactly as printed. Read it once, the lesson will make you solve every part before explaining it."
  },
  {
   "k": "128m2a0",
@@ -2196,6 +2768,30 @@
   "text": "Key values: 49.38, 1.187 volts, 1.412 volts. The method: triode equation for the sensors, a link for the bias, checks for the swing."
  },
  {
+  "k": "10jthg9",
+  "text": "(a) Find (W over L) 7,8 of the triode pair so that the output C M is 1.5 volts with V P equals 100 millivolts. First, step 1. The overdrive of M 7, M 8, V G S minus V threshold."
+ },
+ {
+  "k": "mowonx",
+  "text": "Step 2. The triode bracket 2( V G S minus V threshold ) V D S minus V D S squared (in V squared), with V D S equals V P."
+ },
+ {
+  "k": "b7qz3n",
+  "text": "(b) Every transistor now has W over L equals 49.38 (from part a). Find the gate bias V B 1 of M 5, M 6. First, step 1. The overdrive V overdrive 5 of M 5 (0.5 milliamps, W over L from part a)."
+ },
+ {
+  "k": "1cpnugp",
+  "text": "(c) All devices are sized as in (a) and carry 0.5 milliamps. Find the maximum differential output swing (peak-to-peak). First, step 1. The P mos overdrive V overdrive, P (0.5 milliamps, same W over L, mu p C ox equals 40 microamps per volt squared)."
+ },
+ {
+  "k": "4x2q65",
+  "text": "Step 2. The lowest output V out, min."
+ },
+ {
+  "k": "dyer6u",
+  "text": "Step 3. The highest output V out, max."
+ },
+ {
   "k": "1eg8lcw",
   "text": "What it tests: a link down from V B 1 to P, then the triode-pair equation solved for W over L, then checks for the lowest output."
  },
@@ -2204,8 +2800,8 @@
   "text": "Link down from the gate bias: V P equals 0.6 minus (0.4 plus 0.089) equals 0.111 volts."
  },
  {
-  "k": "1l0koek",
-  "text": "Rearrange the Lecture 12 equation: (W over L) 11,12 equals 2 I D over ( mu n C O X V P (1.8 minus 0.8)) about 3.62."
+  "k": "16mseb6",
+  "text": "Rearrange the Lecture 12 equation: (W over L) 11,12 equals 2 I D over ( mu n C ox V P (1.8 minus 0.8)) about 3.62."
  },
  {
   "k": "1sv2avm",
@@ -2224,6 +2820,42 @@
   "text": "Three versions, one method: link to P, triode equation for W over L, checks for the swing."
  },
  {
+  "k": "106cs0m",
+  "text": "Part A: find the voltage V P at the tail node. First, step 1. The overdrive of the input device M 10 (40 microamps, W over L equals 50)."
+ },
+ {
+  "k": "edx40j",
+  "text": "Part A: the output C M is 0.5 V D D. Using V P from the previous part, find (W over L) 11,12 of the triode pair. First, step 1. The tail current 2 I D through the triode pair."
+ },
+ {
+  "k": "1an6dz3",
+  "text": "Step 2. V out 1 plus V out 2 minus 2 V threshold with the outputs at the C M 0.5 V D D."
+ },
+ {
+  "k": "kz7u8s",
+  "text": "Part A: how low can each output go before an N mos below it leaves saturation? Find V out, min."
+ },
+ {
+  "k": "1iyb7ad",
+  "text": "Part B (new numbers, same circuit): mu n C ox equals 150 microamps per volt squared, N mos W over L equals 40 at 50 microamps each, V B 1 equals 0.6 volts, V threshold N equals 0.4 volts, V D D equals 1.8 volts, output C M equals 0.6 V D D. Find (W over L) 11,12. First, step 1. The overdrive of the input device (50 microamps, W over L equals 40)."
+ },
+ {
+  "k": "1hw5fbq",
+  "text": "Step 2. V P, by a link down from V B 1."
+ },
+ {
+  "k": "v1iumm",
+  "text": "Step 3. V out 1 plus V out 2 minus 2 V threshold with the outputs at 0.6 V D D."
+ },
+ {
+  "k": "408964",
+  "text": "Part C (same circuit): mu n C ox equals 120 microamps per volt squared, V threshold N equals 0.3 volts, N mos W over L equals 60 at 60 microamps each, V B 1 equals 0.55 volts, V D D equals 1.8 volts, output C M equals 0.4 V D D. Find (W over L) 11,12. First, step 1. The overdrive of the input device (60 microamps, W over L equals 60)."
+ },
+ {
+  "k": "197plt8",
+  "text": "Step 3. V out 1 plus V out 2 minus 2 V threshold with the outputs at 0.4 V D D."
+ },
+ {
   "k": "de0tv9",
   "text": "What it tests: the replica rules, and the balance condition as matched conductances, W over L ( V G S minus V threshold ) on both sides."
  },
@@ -2236,12 +2868,24 @@
   "text": "Two parallel devices act like one with the summed width: (W over L) 15 equals 24."
  },
  {
-  "k": "1yypmni",
-  "text": "An oversized M 15 conducts more at V R E F, so the loop pushes the outputs up until M 12 + M 13 match it: 1.7 volts instead of 1.5 volts."
+  "k": "16qxvm8",
+  "text": "An oversized M 15 conducts more at V ref, so the loop pushes the outputs up until M 12 + M 13 match it: 1.7 volts instead of 1.5 volts."
  },
  {
   "k": "130cjpw",
   "text": "Replica questions are always match the twin: copy the device above, sum the devices below, and balance the conductances."
+ },
+ {
+  "k": "ne5zzd",
+  "text": "(a) M 14 must be an exact copy of the tail device M 11. Find (W over L) 14."
+ },
+ {
+  "k": "1xidtuc",
+  "text": "(a) Now find (W over L) 15 so that the loop settles with V out, C M equals V ref."
+ },
+ {
+  "k": "6mw6jv",
+  "text": "(b) Someone uses (W over L) 15 equals 30 instead (M 12, M 13 stay at 12 each). Where does the output C M settle? First, step 1. How far above V threshold must the output C M sit, V out, C M minus V threshold?"
  },
  {
   "k": "2fdkid",
@@ -2262,5 +2906,17 @@
  {
   "k": "1j12cua",
   "text": "Now from memory."
+ },
+ {
+  "k": "1xguizx",
+  "text": "Correct."
+ },
+ {
+  "k": "v0dd22",
+  "text": "Not quite."
+ },
+ {
+  "k": "p7sfia",
+  "text": "Now the answer to the question."
  }
 ]

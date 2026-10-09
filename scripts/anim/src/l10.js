@@ -377,7 +377,7 @@ function q24bq2Fig(S) {
   const L = 400, R = 660;
   pmos(S, L, 220, { name: 'M3', gl: 30 }); pmos(S, R, 220, { name: 'M4', gl: 30, right: true });
   wire(S, [[240, 220], [336, 220]]); wire(S, [[L, 160], [L, 170]]); wire(S, [[R, 160], [R, 170]]);
-  wire(S, [[240, 196], [500, 196], [500, 186], [760, 186], [760, 220], [724, 220]]);
+  wire(S, [[240, 220], [240, 180], [760, 180], [760, 220], [724, 220]]); // over the sources, clear of M3's and M4's channels
   wire(S, [[L, 270], [L, 380]]); wire(S, [[R, 270], [R, 380]]); dot(S, L, 310); dot(S, R, 310);
   resh(S, L, 530, 310, { label: 'R' }); resh(S, 530, R, 310, { label: 'R' }); dot(S, 530, 310);
   txt(S, 530, 356, 'V_o,CM', { size: 18, color: C.amb, weight: 700, anchor: 'middle' }); wire(S, [[530, 310], [530, 334]]);
@@ -524,8 +524,8 @@ function t5q3Fig(S, sc = 1) {
   isrc(S, 110, 340, { label: 'I_1', left: true, len: 40 }); gnd(S, 110, 380);
   const L = 270, R = 450;
   pmos(S, L, 205, { name: 'M3', gl: 30 }); pmos(S, R, 205, { name: 'M4', gl: 30, right: true });
-  wire(S, [[170, 205], [206, 205]]); wire(S, [[L, 150], [L, 155]]); wire(S, [[R, 150], [R, 155]]);
-  wire(S, [[170, 178], [540, 178], [540, 205], [514, 205]]);
+  wire(S, [[170, 205], [210, 205]]); wire(S, [[L, 150], [L, 155]]); wire(S, [[R, 150], [R, 155]]);
+  wire(S, [[170, 205], [170, 166], [540, 166], [540, 205], [510, 205]]); // over the sources, clear of M3's and M4's channels
   wire(S, [[L, 255], [L, 350]]); wire(S, [[R, 255], [R, 350]]); dot(S, L, 290); dot(S, R, 290);
   resh(S, L, 360, 290, { label: 'R' }); resh(S, 360, R, 290, { label: 'R' }); dot(S, 360, 290);
   wire(S, [[360, 290], [360, 310]]); txt(S, 360, 332, 'V_O,CM', { size: 16, color: C.amb, weight: 700, anchor: 'middle' });

@@ -71,7 +71,7 @@ scene(L17, 'The Miller effect: a capacitor across a gain', 74, (S) => {
   pagePeek(S, 'n17b', 1010, 120, 540, 549, 0.3);
   const A2 = 4;
   const g = S.g(); const r = S.into(g);
-  wire(S, [[120, 420], [300, 420]]); dot(S, 300, 420); txt(S, 296, 458, 'node 1', { size: 19, color: C.p, weight: 700, anchor: 'middle' });
+  wire(S, [[120, 420], [300, 420]]); dot(S, 300, 420); txt(S, 112, 427, 'v_in', { size: 19, color: C.muted, anchor: 'end' }); txt(S, 296, 458, 'node 1', { size: 19, color: C.p, weight: 700, anchor: 'middle' });
   wire(S, [[300, 420], [380, 420]]); amp(S, 380, 420, { label: '−A₂', pm: false, w: 170, h: 150 }); wire(S, [[550, 420], [660, 420]]); dot(S, 660, 420);
   txt(S, 664, 458, 'node 2', { size: 19, color: C.n, weight: 700, anchor: 'middle' });
   wire(S, [[300, 420], [300, 250], [465, 250]]); wire(S, [[495, 250], [660, 250], [660, 420]]);

@@ -17,7 +17,7 @@ if not todo: sys.exit(0)
 k = Kokoro(os.path.join(kdir, 'kokoro-fp16.onnx'), os.path.join(kdir, 'voices.npz'))
 
 def sentences(t):
-    parts = re.split(r'(?<=[.!?])\s+(?=[A-Z0-9(])', t)
+    parts = re.split(r'(?<=[.!?])(?<!\sA\.)\s+(?=[A-Z0-9(])', t)  # "A." is the letter, not a full stop
     return [p for s in parts for p in (re.split(r'(?<=[;:])\s+', s) if len(s) > 220 else [s]) if p.strip()]
 
 for i, l in enumerate(todo):
